@@ -7451,15 +7451,18 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"creditLineLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMITE_CREDITO_TOTAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"consolidationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONSOLIDADO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"lineNameAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lineNameAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"isLimitFlexible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"limitAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.0001</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"usedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+      </span><span class="nl">"usedAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"usedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">7500.05</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2499.95</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7790,7 +7793,7 @@ This operation does not require authentication
       </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGTO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"creditDebitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASHBACK"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionalAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8093,7 +8096,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -8102,16 +8104,19 @@ This operation does not require authentication
           </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="w">
+      </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8442,7 +8447,7 @@ This operation does not require authentication
       </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGTO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"creditDebitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASHBACK"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionalAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16430,7 +16435,7 @@ This operation does not require authentication
 <td>lineName</td>
 <td><a href="#schemaenumcreditcardaccountslinename">EnumCreditCardAccountsLineName</a></td>
 <td>false</td>
-<td>Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas</td>
+<td></td>
 </tr>
 <tr>
 <td>lineNameAdditionalInfo</td>
@@ -17203,7 +17208,6 @@ This operation does not require authentication
 <a id="tocScreditcardaccountsbillsdata"></a>
 <a id="tocscreditcardaccountsbillsdata"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -17212,16 +17216,19 @@ This operation does not require authentication
       </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="w">
+  </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -17239,12 +17246,6 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>currency</td>
-<td>string</td>
-<td>true</td>
-<td>Moeda referente ao valor de todas transações relacionadas com fatura da conta de pagamento pós-paga, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os saldos informados estão representados com a moeda vigente do Brasil.</td>
-</tr>
-<tr>
 <td>dueDate</td>
 <td>string(date-time)</td>
 <td>true</td>
@@ -17257,7 +17258,7 @@ This operation does not require authentication
 <td>Lista que traz os valores relativos aos pagamentos da Fatura da conta de pagamento pós-paga</td>
 </tr>
 <tr>
-<td>billIdentification</td>
+<td>billId</td>
 <td>string</td>
 <td>true</td>
 <td>Informação que identifica a fatura</td>
@@ -17274,7 +17275,8 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='propriedades-19'>Propriedades</h3>
@@ -17304,6 +17306,12 @@ This operation does not require authentication
 <td>true</td>
 <td>Valor cobrado pelo encargo. Expresso em valor monetário com 4 casas decimais</td>
 </tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>false</td>
+<td>Moeda referente ao valor cobrado pelo encargo, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os saldos informados estão representados com a moeda vigente do Brasil.</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_CreditCardAccountsBillsPayment">CreditCardAccountsBillsPayment</h2>
@@ -17318,11 +17326,14 @@ This operation does not require authentication
   </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -17365,6 +17376,18 @@ This operation does not require authentication
 <td>number(double)</td>
 <td>true</td>
 <td>Valor da transação. Expresso em valor monetário com 4 casas decimais</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao valor da transação relacionada com fatura da conta de pagamento pós-paga, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os saldos informados estão representados com a moeda vigente do Brasil.</td>
+</tr>
+<tr>
+<td>isInstalment</td>
+<td>boolean</td>
+<td>true</td>
+<td>Indica se o pagamento da fatura foi parcelado (true) ou não (false).</td>
 </tr>
 <tr>
 <td>financeCharges</td>
@@ -17471,8 +17494,10 @@ This operation does not require authentication
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cartão Universitário"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLASSIC_NACIONAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTROS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"productAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OURO_INTERNACIONAL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"creditCardNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"networkAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
     </span><span class="nl">"isMultipleCreditCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -17539,15 +17564,18 @@ This operation does not require authentication
 <a id="tocscreditcardaccountslimitsdata"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"creditLineLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMITE_CREDITO_TOTAL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"consolidationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONSOLIDADO"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
   </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lineNameAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lineNameAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isLimitFlexible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limitAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"limitAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.0001</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"usedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+  </span><span class="nl">"usedAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"usedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">7500.05</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"availableAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2499.95</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -17564,12 +17592,6 @@ This operation does not require authentication
 <th>Descrição</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>true</td>
-<td>Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. &#39;BRL.&#39;<br>Todos os saldos informados estão representados com a moeda vigente do Brasil</td>
-</tr>
 <tr>
 <td>creditLineLimitType</td>
 <td><a href="#schemaenumcreditcardaccountslinelimittype">EnumCreditCardAccountsLineLimitType</a></td>
@@ -17592,7 +17614,7 @@ This operation does not require authentication
 <td>lineName</td>
 <td><a href="#schemaenumcreditcardaccountslinename">EnumCreditCardAccountsLineName</a></td>
 <td>false</td>
-<td>Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas</td>
+<td></td>
 </tr>
 <tr>
 <td>lineNameAdditionalInfo</td>
@@ -17604,7 +17626,13 @@ This operation does not require authentication
 <td>isLimitFlexible</td>
 <td>boolean</td>
 <td>true</td>
-<td>Indicador que permite informar se a operação de crédito é: com limite ou com limite flexível. Se aplica somente se for Limite Modalidade de operação. Opção &quot;SEM_LIMITE&quot; se aplica somente para a Modalidade &quot;CREDITO_A_VISTA&quot;</td>
+<td>Indica se a operação de crédito é: com limite flexível (true) ou com limite (false).</td>
+</tr>
+<tr>
+<td>limitAmountCurrency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. &#39;BRL.&#39;<br>Todos os saldos informados estão representados com a moeda vigente do</td>
 </tr>
 <tr>
 <td>limitAmount</td>
@@ -17613,10 +17641,28 @@ This operation does not require authentication
 <td>Valor total do limite informado Expresso em valor monetário com 4 casas decimais</td>
 </tr>
 <tr>
+<td>usedAmountCurrency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. &#39;BRL.&#39;<br>Todos os saldos informados estão representados com a moeda vigente do Brasil</td>
+</tr>
+<tr>
 <td>usedAmount</td>
 <td>number(double)</td>
 <td>true</td>
 <td>Valor utilizado do limite informado Expresso em valor monetário com 4 casas decimais</td>
+</tr>
+<tr>
+<td>availableAmountCurrency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. &#39;BRL.&#39;<br>Todos os saldos informados estão representados com a moeda vigente do Brasil</td>
+</tr>
+<tr>
+<td>availableAmount</td>
+<td>number(double)</td>
+<td>true</td>
+<td>Valor disponível do limite informado Expresso em valor monetário com 4 casas decimais</td>
 </tr>
 </tbody></table>
 
@@ -17631,7 +17677,7 @@ This operation does not require authentication
   </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
   </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGTO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"creditDebitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASHBACK"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"transactionalAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17674,7 +17720,7 @@ This operation does not require authentication
 <td>lineName</td>
 <td><a href="#schemaenumcreditcardaccountslinename">EnumCreditCardAccountsLineName</a></td>
 <td>false</td>
-<td>Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas</td>
+<td></td>
 </tr>
 <tr>
 <td>transactionName</td>
@@ -17683,9 +17729,9 @@ This operation does not require authentication
 <td>Campo de livre preenchimento. Literal usada na instituição financeira para identificar a transação</td>
 </tr>
 <tr>
-<td>billIdentification</td>
+<td>billId</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Informação que identifica a fatura onde consta a transação informada.</td>
 </tr>
 <tr>
@@ -17798,7 +17844,7 @@ This operation does not require authentication
     </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGTO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditDebitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASHBACK"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transactionalAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17875,8 +17921,8 @@ This operation does not require authentication
 <tr>
 <td>isMultipleCreditCard</td>
 <td>boolean</td>
-<td>true</td>
-<td>Informa se a conta de Pagamento pós paga é Múltipla. &quot;Cartões denominados múltiplos possuem tanto a função crédito quanto a débito, devendo o proprietário do cartão, no momento de sua utilização, informar se o pagamento é na função crédito (que leva a um pagamento futuro, por meio de uma fatura do cartão de crédito) ou na função débito&quot;.<br>Fonte: Tipos de cartão - Banco Central do Brasil www.bcb.gov.br › port › folder_serie_I_tipos_de_cartao</td>
+<td>false</td>
+<td>Indica se o Cartão de crédito associado à conta pagamento pós-paga é múltiplo ou não. Cartões denominados múltiplos possuem tanto a função crédito quanto a função débito, devendo o proprietário do cartão, no momento de sua utilização, informar se o pagamento é na função crédito (que leva a um pagamento futuro, por meio de uma fatura do cartão de crédito) ou na função débito.</td>
 </tr>
 </tbody></table>
 
@@ -21323,12 +21369,7 @@ incidem na fatura da conta de pagamento pós-paga. (Vide Enum)
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"CREDITO_A_VISTA"</span><span class="w">
 
-</span></code></pre></div>
-
-<p>Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas</p>
-
-<h3 id='propriedades-74'>Propriedades</h3>
-
+</span></code></pre></div><h3 id='propriedades-74'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -21341,12 +21382,10 @@ incidem na fatura da conta de pagamento pós-paga. (Vide Enum)
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas</td>
+<td></td>
 </tr>
 </tbody></table>
-
 <h4 id='enumerated-values-51'>Enumerated Values</h4>
-
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -21356,6 +21395,10 @@ incidem na fatura da conta de pagamento pós-paga. (Vide Enum)
 <tr>
 <td>**</td>
 <td>CREDITO_A_VISTA</td>
+</tr>
+<tr>
+<td>**</td>
+<td>CREDITO_PARCELADO</td>
 </tr>
 <tr>
 <td>**</td>
@@ -21371,7 +21414,7 @@ incidem na fatura da conta de pagamento pós-paga. (Vide Enum)
 </tr>
 <tr>
 <td>**</td>
-<td>OUTRAS</td>
+<td>OUTROS</td>
 </tr>
 </tbody></table>
 
@@ -21381,7 +21424,6 @@ incidem na fatura da conta de pagamento pós-paga. (Vide Enum)
 <a id="schema_EnumCreditCardAccountsOtherCredits"></a>
 <a id="tocSenumcreditcardaccountsothercredits"></a>
 <a id="tocsenumcreditcardaccountsothercredits"></a></p>
-
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"CREDITO_ROTATIVO"</span><span class="w">
 
 </span></code></pre></div>
@@ -27809,7 +27851,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -27818,16 +27859,19 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
           </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="w">
+      </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -27882,15 +27926,18 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"creditLineLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMITE_CREDITO_TOTAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"consolidationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONSOLIDADO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"lineNameAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lineNameAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"isLimitFlexible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"limitAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.0001</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"usedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+      </span><span class="nl">"usedAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"usedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">7500.05</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2499.95</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -27948,7 +27995,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
       </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4453</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lineName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_A_VISTA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGTO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"billIdentification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"creditDebitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASHBACK"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"transactionalAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">

@@ -3956,19 +3956,10 @@ components:
       type: object
       description: Conjunto das informações referentes a fatura associada à conta de pagamento pós-paga
       required:
-        - currency
         - dueDate
         - payments
-        - billIdentification
+        - billId
       properties:
-        currency:
-          type: string
-          pattern: '^(\w{3}){1}$'
-          maxLength: 3
-          description: |
-            Moeda referente ao valor de todas transações relacionadas com fatura da conta de pagamento pós-paga, segundo modelo ISO-4217. p.ex. 'BRL' 
-            Todos os saldos informados estão representados com a moeda vigente do Brasil.
-          example: BRL
         dueDate:
           description: 'Data de vencimento da Fatura, que aparece para pagamento pelo cliente'
           type: string
@@ -3982,7 +3973,7 @@ components:
           minItems: 1
           maxItems: 2
           description: Lista que traz os valores relativos aos pagamentos da Fatura da conta de pagamento pós-paga
-        billIdentification:
+        billId:
           description: Informação que identifica a fatura
           type: string
           maxLength: 100
@@ -4009,6 +4000,14 @@ components:
           minLength: 0
           example: 100000.04
           description: Valor cobrado pelo encargo. Expresso em valor monetário com 4 casas decimais
+        currency:
+          type: string
+          pattern: '^(\w{3}){1}$'
+          maxLength: 3
+          description: |
+            Moeda referente ao valor cobrado pelo encargo, segundo modelo ISO-4217. p.ex. 'BRL' 
+            Todos os saldos informados estão representados com a moeda vigente do Brasil.
+          example: BRL
       additionalProperties: false
     CreditCardAccountsBillsPayment:
       type: object
@@ -4018,6 +4017,8 @@ components:
         - paymentMode
         - valueType
         - amount
+        - currency
+        - isInstalment
         - financeCharges
       properties:
         transactionName:
@@ -4043,6 +4044,19 @@ components:
           minLength: 0
           example: 100000.04
           description: Valor da transação. Expresso em valor monetário com 4 casas decimais
+        currency:
+          type: string
+          pattern: '^(\w{3}){1}$'
+          maxLength: 3
+          description: |
+            Moeda referente ao valor da transação relacionada com fatura da conta de pagamento pós-paga, segundo modelo ISO-4217. p.ex. 'BRL' 
+            Todos os saldos informados estão representados com a moeda vigente do Brasil.
+          example: BRL
+        isInstalment:
+          type: boolean
+          example: true
+          description: |
+            Indica se o pagamento da fatura foi parcelado (true) ou não (false).
         financeCharges:
           type: array
           items:
@@ -4141,13 +4155,6 @@ components:
           example: NA
         paymentMethod:
           $ref: '#/components/schemas/CreditCardsAccountPaymentMethod'
-      example:
-        name: Cartão Universitário
-        productType: CLASSIC_NACIONAL
-        creditCardNetwork: VISA
-        paymentMethod:
-          identificationNumber: 4453
-          isMultipleCreditCard: true
       additionalProperties: false
     CreditCardAccountsLimitsData:
       type: object
@@ -4158,17 +4165,13 @@ components:
         - consolidationType
         - identificationNumber
         - isLimitFlexible
+        - limitAmountCurrency
         - limitAmount
+        - usedAmountCurrency
         - usedAmount
+        - availableAmountCurrency
+        - availableAmount
       properties:
-        currency:
-          type: string
-          description: |
-            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
-            Todos os saldos informados estão representados com a moeda vigente do Brasil
-          maxLength: 3
-          pattern: '^(\w{3}){1}$'
-          example: BRL
         creditLineLimitType:
           $ref: '#/components/schemas/EnumCreditCardAccountsLineLimitType'
         consolidationType:
@@ -4186,11 +4189,20 @@ components:
         lineNameAdditionalInfo:
           type: string
           pattern: \w*\W*
+          example: ''
           description: Campo de preenchimento obrigatório se selecionada a opção 'OUTRAS' em lineName
         isLimitFlexible:
           type: boolean
-          description: 'Indicador que permite informar se a operação de crédito é: com limite ou com limite flexível. Se aplica somente se for Limite Modalidade de operação. Opção "SEM_LIMITE" se aplica somente para a Modalidade "CREDITO_A_VISTA"'
+          description: 'Indica se a operação de crédito é: com limite flexível (true) ou com limite (false).'
           example: true
+        limitAmountCurrency:
+          type: string
+          maxLength: 3
+          pattern: '^(\w{3}){1}$'
+          example: BRL
+          description: |
+            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
+            Todos os saldos informados estão representados com a moeda vigente do 
         limitAmount:
           type: number
           format: double
@@ -4199,6 +4211,14 @@ components:
           maxLength: 19
           minLength: 0
           example: 100000.0001
+        usedAmountCurrency:
+          type: string
+          maxLength: 3
+          pattern: '^(\w{3}){1}$'
+          example: BRL
+          description: |
+            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
+            Todos os saldos informados estão representados com a moeda vigente do Brasil
         usedAmount:
           type: number
           format: double
@@ -4206,7 +4226,23 @@ components:
           description: Valor utilizado do limite informado Expresso em valor monetário com 4 casas decimais
           maxLength: 19
           minLength: 0
-          example: 100000.04
+          example: 7500.05
+        availableAmountCurrency:
+          type: string
+          maxLength: 3
+          pattern: '^(\w{3}){1}$'
+          example: BRL
+          description: |
+            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
+            Todos os saldos informados estão representados com a moeda vigente do Brasil
+        availableAmount:
+          type: number
+          format: double
+          pattern: '(-?\d{15}(.\d{4}?))$'
+          description: Valor disponível do limite informado Expresso em valor monetário com 4 casas decimais
+          maxLength: 19
+          minLength: 0
+          example: 2499.95
       additionalProperties: false
     CreditCardAccountsTransaction:
       type: object
@@ -4240,7 +4276,7 @@ components:
           maxLength: 100
           description: Campo de livre preenchimento. Literal usada na instituição financeira para identificar a transação
           example: PGTO
-        billIdentification:
+        billId:
           type: string
           maxLength: 100
           description: Informação que identifica a fatura onde consta a transação informada.
@@ -4335,7 +4371,6 @@ components:
       description: Conjunto de informações relativas aos Meios de Pagamento da Conta de pagamento pós-paga
       required:
         - identificationNumber
-        - isMultipleCreditCard
       properties:
         identificationNumber:
           type: number
@@ -4348,8 +4383,7 @@ components:
         isMultipleCreditCard:
           type: boolean
           description: |
-            Informa se a conta de Pagamento pós paga é Múltipla. "Cartões denominados múltiplos possuem tanto a função crédito quanto a débito, devendo o proprietário do cartão, no momento de sua utilização, informar se o pagamento é na função crédito (que leva a um pagamento futuro, por meio de uma fatura do cartão de crédito) ou na função débito".
-            Fonte: Tipos de cartão - Banco Central do Brasil www.bcb.gov.br › port › folder_serie_I_tipos_de_cartao
+            Indica se o Cartão de crédito associado à conta pagamento pós-paga é múltiplo ou não. Cartões denominados múltiplos possuem tanto a função crédito quanto a função débito, devendo o proprietário do cartão, no momento de sua utilização, informar se o pagamento é na função crédito (que leva a um pagamento futuro, por meio de uma fatura do cartão de crédito) ou na função débito.
           example: true
       additionalProperties: false
     CustomerContacts:
@@ -5161,13 +5195,13 @@ components:
       example: LIMITE_CREDITO_TOTAL
     EnumCreditCardAccountsLineName:
       type: string
-      description: Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas
       enum:
         - CREDITO_A_VISTA
+        - CREDITO_PARCELADO
         - SAQUE_CREDITO_BRASIL
         - SAQUE_CREDITO_EXTERIOR
         - EMPRESTIMO_CARTAO_CONSIGNADO
-        - OUTRAS
+        - OUTROS
       example: CREDITO_A_VISTA
     EnumCreditCardAccountsOtherCredits:
       type: string
