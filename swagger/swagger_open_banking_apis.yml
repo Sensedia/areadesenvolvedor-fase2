@@ -3814,7 +3814,7 @@ components:
           type: string
           maxLength: 70
           pattern: \w*\W*
-          example: NA
+          example: Stefany Teixeirass
           description: |
             Nome social da pessoa natural, se houver. Aquele pelo qual travestis e transexuais se reconhecem, 
             bem como são identificados por sua comunidade e em seu meio social, conforme Decreto Local.
@@ -4951,7 +4951,7 @@ components:
         - SEPARADO_JUDICIALMENTE
         - DIVORCIADO
         - UNIAO_ESTAVEL
-        - OUTROS
+        - OUTRO
       example: SOLTEIRO
     EnumOccupationMainCodeType:
       type: string
@@ -7474,7 +7474,7 @@ components:
           type: array
           description: Lista que traz relação de documentos complementares de pessoas com nacionalidade diferente de brasileira
           items:
-            $ref: '#/components/schemas/NationalityOther'
+            $ref: '#/components/schemas/NationalityOtherDocument'
       additionalProperties: false
     NationalityOther:
       type: object
@@ -7531,7 +7531,7 @@ components:
           maxLength: 70
           pattern: \w*\W*
           description: Campo livre de preenchimento obrigatório se selecionada a opção OUTROS tipos de documentos.
-          example: NA
+          example: Informações adicionais.
       additionalProperties: false
     PartiesParticipation:
       type: object
@@ -7693,8 +7693,8 @@ components:
       required:
         - updateDateTime
         - startDate
-        - productsServices
         - procurators
+        - productsServices
       properties:
         updateDateTime:
           type: string
@@ -7724,7 +7724,6 @@ components:
       description: Conjunto de informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa natural através de seus dados cadastrais.
       required:
         - updateDateTime
-        - personalId
         - brandID
         - brandName
         - civilName
@@ -7745,13 +7744,6 @@ components:
           maxLength: 20
           format: date-time
           example: '2021-05-21T08:30:00Z'
-          description: 'Data e hora da atualização do bloco, conforme especificação RFC-3339'
-        personalId:
-          type: string
-          maxLength: 100
-          pattern: \w*\W*
-          example: 578-psd-71md6971kjh-2d414
-          description: Um identificador único e imutável usado para identificar o recurso cliente pessoa natural. Este identificador não tem significado para o cliente que deu o consentimento
         brandID:
           type: string
           maxLength: 100
@@ -7912,7 +7904,7 @@ components:
           type: string
           maxLength: 70
           pattern: \w*\W*
-          example: NA
+          example: Carlos
           description: 'Nome social da pessoa natural, se houver. (aquele pelo qual travestis e transexuais se reconhecem, bem como são identificados por sua comunidade e em seu meio social, conforme Decreto Nº 51.180, de 14 de janeiro de 2010)'
       additionalProperties: false
     PersonalQualificationData:
