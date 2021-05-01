@@ -4493,8 +4493,7 @@ components:
           maxLength: 150
           pattern: \w*\W*
           example: 'Av Naburo Ykesaki, 1270'
-          description: |
-            Corresponde ao endereço comercial do cliente.
+          description: Corresponde ao endereço residencial do cliente.
         additionalInfo:
           type: string
           maxLength: 30
@@ -4504,10 +4503,10 @@ components:
         districtName:
           type: string
           maxLength: 50
+          nullable: true
           pattern: \w*\W*
           example: Centro
-          description: |
-            Bairro é uma comunidade ou região localizada em uma cidade ou município de acordo com as suas subdivisões geográficas.
+          description: Bairro é uma comunidade ou região localizada em uma cidade ou município de acordo com as suas subdivisões geográficas.
         townName:
           type: string
           maxLength: 50
@@ -4907,16 +4906,13 @@ components:
       example: JUROS_REMUNERATORIOS_POR_ATRASO
     EnumFiliationType:
       type: string
-      description: |
-        Tipo de filiação.
       enum:
         - MAE
         - PAI
       example: PAI
+      description: Tipo de filiação.
     EnumInformedIncomeFrequency:
       type: string
-      description: |
-        Traz a frequência ou período da renda informada.
       enum:
         - DIARIA
         - SEMANAL
@@ -4926,6 +4922,8 @@ components:
         - TRIMESTRAL
         - SEMESTRAL
         - ANUAL
+        - OUTROS
+      description: Traz a frequência ou período da renda informada.
     EnumInformedRevenueFrequency:
       type: string
       description: |
@@ -5399,7 +5397,7 @@ components:
       enum:
         - REPRESENTANTE_LEGAL
         - PROCURADOR
-        - NAO_POSSUI
+        - NAO_SE_APLICA
       example: PROCURADOR
       description: |
         Tipo de representante.
@@ -7637,36 +7635,42 @@ components:
       description: Objeto agrupador de informações relativas a Documentos da pessoa natural
       required:
         - cpfNumber
+        - passportNumber
+        - passportCountry
+        - passportExpirationDate
       properties:
         cpfNumber:
           type: string
-          pattern: '^\d{11}$|^NA$'
-          description: 'Número completo do CPF. Atributo que corresponde às informações mínimas exigidas pela Regulamentação em vigor. O CPF é o Cadastro de Pessoa natural.  Ele é um documento feito pela Receita Federal e serve para identificar os contribuintes. O CPF é uma numeração com 11 dígitos, que só mudam por decisão judicial. O documento é emitido pela receita federal'
           maxLength: 11
+          pattern: '^\d{11}$|^NA$'
           example: '25872252137'
+          description: 'Número completo do CPF. Atributo que corresponde às informações mínimas exigidas pela Regulamentação em vigor. O CPF é o Cadastro de Pessoa natural.  Ele é um documento feito pela Receita Federal e serve para identificar os contribuintes. O CPF é uma numeração com 11 dígitos, que só mudam por decisão judicial. O documento é emitido pela receita federal'
         passportNumber:
           type: string
           maxLength: 20
+          nullable: true
           pattern: \w*\W*
-          description: Número do Passaporte. Documento concedido aos viajantes por uma autoridade administrativa nacional a fim de certificar sua identidade perante autoridades estrangeiras. De preenchimento obrigatório. Aplicável somente à Pessoa natural residente no exterior desobrigada de inscrição no CPF.
           example: '75253468744594820620'
+          description: Número do Passaporte. Documento concedido aos viajantes por uma autoridade administrativa nacional a fim de certificar sua identidade perante autoridades estrangeiras. De preenchimento obrigatório. Aplicável somente à Pessoa natural residente no exterior desobrigada de inscrição no CPF.
         passportCountry:
           type: string
-          description: Pais de emissão do passaporte. Código do pais de acordo com o código “alpha3” do ISO-3166.
           maxLength: 3
+          nullable: true
           example: CAN
+          description: Pais de emissão do passaporte. Código do pais de acordo com o código 'alpha3' do ISO-3166.
         passportExpirationDate:
+          type: string
+          format: date
+          maxLength: 10
+          nullable: true
+          example: '2021-05-21'
           description: 'Data vigência do Passaporte, conforme especificação RFC-3339.'
-          type: string
-          maxLength: 10
-          format: date
-          example: '2021-05-21'
         passportIssueDate:
-          description: 'Data de emissão do passaporte, conforme especificação RFC-3339.'
           type: string
           maxLength: 10
           format: date
           example: '2021-05-21'
+          description: 'Data de emissão do passaporte, conforme especificação RFC-3339.'
       additionalProperties: false
     OverdraftLimitsBalance:
       type: object
@@ -7731,6 +7735,7 @@ components:
         - companyCnpj
         - documents
         - otherDocuments
+        - hasBrazilianNationality
         - nationality
         - filiation
         - contacts
@@ -7762,6 +7767,7 @@ components:
         civilName:
           type: string
           maxLength: 70
+          nullable: true
           pattern: \w*\W*
           example: Juan Kaique Cláudio Fernandes
           description: 'Nome civil completo da pessoa natural (Direito fundamental da pessoa, o nome civil é aquele atribuído à pessoa natural desde o registro de seu nascimento, com o qual será identificada por toda a sua vida, bem como após a sua morte)'
@@ -7816,6 +7822,8 @@ components:
           type: array
           items:
             type: object
+            required:
+              - type
             properties:
               type:
                 $ref: '#/components/schemas/EnumFiliationType'
@@ -7842,7 +7850,6 @@ components:
         - typeAdditionalInfo
         - number
         - checkDigit
-        - additionalInfo
         - expirationDate
       properties:
         type:
@@ -7851,33 +7858,33 @@ components:
           type: string
           maxLength: 70
           pattern: \w*\W*
-          description: Campo livre de preenchimento obrigatório se selecionada a opção OUTROS tipos de documentos
           example: NA
+          description: Campo livre de preenchimento obrigatório se selecionada a opção OUTROS tipos de documentos
         number:
           type: string
           maxLength: 11
           pattern: \w*\W*
-          description: Identificação/Número do documento informado
           example: '15291908'
+          description: Identificação/Número do documento informado
         checkDigit:
           type: string
           maxLength: 2
           pattern: \w*\W*
-          description: Dígito verificador do documento informado. De preenchimento obrigatório se o documento informado tiver dígito verificador
           example: P
+          description: Dígito verificador do documento informado. De preenchimento obrigatório se o documento informado tiver dígito verificador
         additionalInfo:
           type: string
           maxLength: 50
           pattern: \w*\W*
+          example: SSP/SP
           description: |
-            Campo livre, de preenchimento obrigatório quando o documento informado tiver informações complementares. p.ex. RG, este campo deve trazer: "SSP-SP' para RGs emitidos no estado de São Paulo - SP
-          example: SSP-SP
+            [Condicional] Obrigatório quando o Local de Emissão do Documento é relevante. Exemplo: Em se tratando de um documento 'RG', teremos 'SSP/SP' para RGs emitidos no estado de São Paulo - SP.
         expirationDate:
-          description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
           type: string
-          maxLength: 10
           format: date
+          maxLength: 10
           example: '2021-05-21'
+          description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
       additionalProperties: false
     PersonalProcurator:
       type: object
@@ -7885,6 +7892,7 @@ components:
         - type
         - cpfNumber
         - civilName
+        - socialName
       properties:
         type:
           $ref: '#/components/schemas/EnumProcuratorsTypePersonal'
@@ -7942,6 +7950,10 @@ components:
           description: 'Campo livre, de preenchimento obrigatório. Traz o código da ocupação ou o descritivo da ocupação, se selecionada a opção ''OUTRO'''
         informedIncome:
           type: object
+          required:
+            - amount
+            - currency
+            - date
           properties:
             frequency:
               $ref: '#/components/schemas/EnumInformedIncomeFrequency'
@@ -7959,6 +7971,7 @@ components:
             currency:
               type: string
               maxLength: 3
+              nullable: true
               pattern: '^(\w{3}){1}$'
               example: BRL
               description: 'Moeda referente ao valor da renda, segundo modelo ISO-4217.'
@@ -7966,12 +7979,17 @@ components:
               type: string
               format: date
               maxLength: 10
+              nullable: true
               pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
               example: '2021-05-21'
               description: 'Data da renda, conforme especificação RFC-3339.'
           additionalProperties: false
         informedPatrimony:
           type: object
+          required:
+            - amount
+            - currency
+            - year
           properties:
             amount:
               type: number
@@ -7986,8 +8004,9 @@ components:
                 "Patrimônio é o conjunto de bens vinculado a uma pessoa ou a uma entidade".
             currency:
               type: string
-              pattern: '^(\w{3}){1}$'
               maxLength: 3
+              nullable: true
+              pattern: '^(\w{3}){1}$'
               example: BRL
               description: 'Moeda referente ao valor do patrimônio, segundo modelo ISO-4217.'
             year:
