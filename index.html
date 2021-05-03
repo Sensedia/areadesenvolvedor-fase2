@@ -5145,6 +5145,7 @@ None ( Scopes: openId resources )
               </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423929299"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"typeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais."</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
@@ -6369,6 +6370,7 @@ This operation does not require authentication
     </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"productsServices"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEGURO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"productsServicesAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"procurators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCURADOR"</span><span class="p">,</span><span class="w">
@@ -26152,6 +26154,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423929299"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"typeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais."</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -26200,6 +26203,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423929299"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"typeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais."</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -26245,6 +26249,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423929299"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"typeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -26280,6 +26285,12 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>string(date)</td>
 <td>true</td>
 <td>Data de emissão do documento, conforme especificação RFC-3339.</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>false</td>
+<td>Nome do país</td>
 </tr>
 <tr>
 <td>typeAdditionalInfo</td>
@@ -26536,6 +26547,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"productsServices"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEGURO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"productsServicesAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"procurators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCURADOR"</span><span class="p">,</span><span class="w">
@@ -26577,6 +26589,12 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td><a href="#schemaenumproductservicetype">EnumProductServiceType</a></td>
 <td>true</td>
 <td>Relação dos produtos e serviços com contrato vigente.</td>
+</tr>
+<tr>
+<td>productsServicesAdditionalInfo</td>
+<td>string</td>
+<td>false</td>
+<td>Informações adicionais do tipo de serviço. Campo deverá ser informado quando em productsServices for informada a opção OUTROS</td>
 </tr>
 <tr>
 <td>procurators</td>
@@ -26633,6 +26651,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
           </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423929299"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"typeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais."</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -28063,6 +28082,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"productsServices"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEGURO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"productsServicesAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"procurators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCURADOR"</span><span class="p">,</span><span class="w">
@@ -28163,6 +28183,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
               </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423929299"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"typeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais."</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
