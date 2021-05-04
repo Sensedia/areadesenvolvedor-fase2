@@ -311,6 +311,7 @@ components:
       description: Conjunto de informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa jurídica através de seus dados cadastrais
       required:
         - updateDateTime
+        - businessId
         - brandId
         - brandName
         - cnpjNumber
@@ -427,7 +428,7 @@ components:
           description: |
             Nome social da pessoa natural, se houver. Aquele pelo qual travestis e transexuais se reconhecem, 
             bem como são identificados por sua comunidade e em seu meio social, conforme Decreto Local.
-            [Restrição] Preenchimento obrigatório quando o sócio for uma pessoa natural.
+            Preenchimento obrigatório quando o sócio for uma pessoa natural.
       additionalProperties: false
     BusinessQualificationData:
       type: object
@@ -463,9 +464,8 @@ components:
               type: string
               maxLength: 100
               pattern: \w*\W*
-              example: Informações adicionais
-              description: |
-                Texto livre para complementar informação relativa ao patrimonio. [Restrição] Preencher quando frequency for igual OUTROS.
+              example: Preencher quando frequency for igual OUTROS
+              description: Texto livre para complementar informação relativa ao patrimonio.
             amount:
               type: number
               format: double
@@ -618,10 +618,10 @@ components:
           $ref: '#/components/schemas/EnumCustomerPhoneType'
         additionalInfo:
           type: string
-          description: 'Informação complementar relativa ao tipo de telefone selecionado. [Restrição] De preenchimento obrigatório quando selecionado o tipo ''OUTRO''.'
+          description: Informação complementar relativa ao tipo de telefone selecionado. De preenchimento obrigatório quando selecionado o tipo `OUTRO`
           pattern: \w*\W*
           maxLength: 70
-          example: Informações adicionais.
+          example: '432'
         countryCallingCode:
           type: string
           maxLength: 4
