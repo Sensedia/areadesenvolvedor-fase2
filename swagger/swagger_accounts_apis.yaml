@@ -278,7 +278,7 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          description: 'Moeda referente ao valor do saldo disponível, segundo modelo ISO-4217. p.ex. ''BRL'''
+          description: 'Moeda referente ao valor do saldo disponível, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
         blockedAmount:
           type: number
@@ -293,7 +293,7 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          description: 'Moeda referente ao valor do saldo bloqueado, segundo modelo ISO-4217. p.ex. ''BRL'''
+          description: 'Moeda referente ao valor do saldo bloqueado, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
         automaticallyInvestedAmount:
           type: number
@@ -308,7 +308,7 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          description: 'Moeda referente ao valor do saldo disponível com aplicação automática, segundo modelo ISO-4217. p.ex. ''BRL'''
+          description: 'Moeda referente ao valor do saldo disponível com aplicação automática, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
       additionalProperties: false
     AccountData:
@@ -453,7 +453,7 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          description: 'Moeda referente ao valor do limite contratado do cheque especial, segundo modelo ISO-4217. p.ex. ''BRL''.'
+          description: 'Moeda referente ao valor do limite contratado do cheque especial, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
         overdraftUsedLimit:
           type: number
@@ -468,7 +468,7 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          description: 'Moeda referente ao valor utilizado total do limite do cheque especial e o adiantamento a depositante, segundo modelo ISO-4217. p.ex. ''BRL''.'
+          description: 'Moeda referente ao valor utilizado total do limite do cheque especial e o adiantamento a depositante, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
         unarrangedOverdraftAmount:
           type: number
@@ -478,11 +478,12 @@ components:
           maxLength: 19
           minLength: 0
           example: 99.9999
+          nullable: true
         unarrangedOverdraftAmountCurrency:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          description: 'Moeda referente ao valor de operação contratada em caráter emergencial para cobertura de saldo devedor em conta de depósitos à vista e de excesso sobre o limite pactuado de cheque especial, segundo modelo ISO-4217. p.ex. ''BRL''.'
+          description: 'Moeda referente ao valor de operação contratada em caráter emergencial para cobertura de saldo devedor em conta de depósitos à vista e de excesso sobre o limite pactuado de cheque especial, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
       additionalProperties: false
     AccountTransactionsData:
