@@ -482,11 +482,11 @@ components:
             amortizationScheduled:
               type: string
               description: |
-                "Sistema de amortização (Vide Enum)
-                - SAC (Sistema de Amortização Constante -   é aquele em que o valor da amortização permanece igual até o final. Os juros  cobrados sobre o parcelamento não entram nesta conta)
-                - PRICE (Sistema Francês de Amortização - As parcelas são fixas do início ao fim do contrato. Ou seja, todas as parcelas terão o mesmo valor, desde a primeira até a última. Nos primeiros pagamentos, a maior parte do valor da prestação corresponde aos juros. Ao longo do tempo, a taxa de juros vai decrescendo. Como o valor da prestação é fixo, com o passar das parcelas, o valor de amortização vai aumentando)
-                - SAM (Sociedade de arrendamento mercantil) - realiza arrendamento de bens móveis e imóveis adquiridos por ela, segundo as especificações da arrendatária (cliente), para fins de uso próprio desta. Assim, os contratantes deste serviço podem usufruir de determinado bem sem serem proprietários dele. As operações de arrendamento mercantil podem ser divididas em duas modalidades: leasing financeiro e leasing operacional. A diferença básica é que no leasing financeiro o prazo é usualmente maior e o arrendatário tem a possibilidade de adquirir o bem por um valor pré-estabelecido. Ao final do contrato, o arrendatário tem as opções de efetivar a aquisição do bem arrendado ou devolvê-lo. Ao final do leasing financeiro, em geral o cliente já terá pago a maior parte do valor do bem, não sendo a devolução, embora possível, financeiramente vantajosa)
-                - SEM SISTEMA DE AMORTIZAÇÃO"
+                Sistema de amortização (Vide Enum):
+                - SAC (Sistema de Amortização Constante) - É aquele em que o valor da amortização permanece igual até o final. Os juros cobrados sobre o parcelamento não entram nesta conta.
+                - PRICE (Sistema Francês de Amortização) - As parcelas são fixas do início ao fim do contrato. Ou seja, todas as parcelas terão o mesmo valor, desde a primeira até a última. Nos primeiros pagamentos, a maior parte do valor da prestação corresponde aos juros. Ao longo do tempo, a taxa de juros vai decrescendo. Como o valor da prestação é fixo, com o passar das parcelas, o valor de amortização vai aumentando.
+                - SAM (Sistema de Amortização Misto) - Cada prestação (pagamento) é a média aritmética das prestações respectivas no Sistemas Price e no Sistema de Amortização Constante (SAC).
+                - SEM SISTEMA DE AMORTIZAÇÃO
               maxLength: 24
               enum:
                 - SAC
@@ -535,18 +535,17 @@ components:
                     description: Base de cálculo
                     maxLength: 6
                     enum:
-                      - 21/25
+                      - 21/252
                       - 30/360
                       - 30/365
-                    example: 21/25
+                    example: 21/252
                   referentialRateIndexerType:
                     type: string
                     description: |
                       "Tipos de taxas referenciais ou indexadores, conforme Anexo 5: Taxa referencial ou Indexador (Indx), do Documento 3040"
-                    maxLength: 20
+                    maxLength: 18
                     enum:
-                      - SEM_SUB_TIPO_INDEXADOR
-                      - SEM_INDEXADOR_TAXA
+                      - SEM_TIPO_INDEXADOR
                       - PRE_FIXADO
                       - POS_FIXADO
                       - FLUTUANTES
@@ -558,10 +557,9 @@ components:
                     type: string
                     description: |
                       "Sub tipos de taxas referenciais ou indexadores, conforme Anexo 5: Taxa referencial ou Indexador (Indx), do Documento 3040"
-                    maxLength: 25
+                    maxLength: 24
                     enum:
                       - SEM_SUB_TIPO_INDEXADOR
-                      - SEM_INDEXADOR_TAXA
                       - PRE_FIXADO
                       - TR_TBF
                       - TJLP
@@ -607,15 +605,6 @@ components:
                     maxLength: 1200
                     description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
                     pattern: \w*\W*
-                example:
-                  interestRateType: SIMPLES
-                  taxPeriodicity: AA
-                  calculation: 21/25
-                  referentialRateIndexerType: PRE_FIXADO
-                  referentialRateIndexerSubType: TJLP
-                  preFixedRate: 0.6
-                  postFixedRate: 0.55
-                  additionalInfo: ''
                 additionalProperties: false
             contractedFees:
               type: array
