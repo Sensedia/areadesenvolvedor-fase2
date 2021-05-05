@@ -310,6 +310,11 @@ components:
         - payments
         - billId
       properties:
+        billId:
+          description: Informação que identifica a fatura
+          type: string
+          maxLength: 100
+          example: 3459087XXZTR
         dueDate:
           description: 'Data de vencimento da Fatura, que aparece para pagamento pelo cliente'
           type: string
@@ -323,11 +328,6 @@ components:
           minItems: 1
           maxItems: 2
           description: Lista que traz os valores relativos aos pagamentos da Fatura da conta de pagamento pós-paga
-        billId:
-          description: Informação que identifica a fatura
-          type: string
-          maxLength: 100
-          example: 3459087XXZTR
       additionalProperties: false
     CreditCardAccountsBillsFinanceCharge:
       type: object
@@ -349,6 +349,7 @@ components:
           maxLength: 19
           minLength: 0
           example: 100000.04
+          nullable: true
           description: Valor cobrado pelo encargo. Expresso em valor monetário com 4 casas decimais
         currency:
           type: string
@@ -406,7 +407,8 @@ components:
           type: boolean
           example: true
           description: |
-            Indica se o pagamento da fatura foi parcelado (true) ou não (false).
+            Indica se o pagamento da fatura foi parcelado (true) ou não (false). 
+            [Restrição] Deverá ser informado como true apenas se valueType for VALOR_PAGAMENTO_FATURA_PARCELADO, para os demais casos informar false.
         financeCharges:
           type: array
           items:
@@ -418,7 +420,7 @@ components:
       type: object
       description: Conjunto de informações das Contas de pagamento pós paga
       required:
-        - brandID
+        - brandId
         - brandName
         - companyCnpj
         - name
@@ -426,7 +428,12 @@ components:
         - creditCardNetwork
         - creditCardAccountId
       properties:
-        brandID:
+        creditCardAccountId:
+          type: string
+          description: 'Identifica de forma única a conta pagamento pós-paga do cliente, mantendo as regras de imutabilidade dentro da instituição transmissora.'
+          maxLength: 100
+          example: XXZTR3459087
+        brandId:
           type: string
           description: 'Identifica a Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
           maxLength: 100
@@ -465,11 +472,6 @@ components:
           pattern: \w*\W*
           maxLength: 50
           example: NA
-        creditCardAccountId:
-          type: string
-          description: Um identificador único e imutável usado para identificar o recurso da conta de pagamento pós paga. Este identificador não tem significado para o proprietário da conta
-          maxLength: 100
-          example: XXZTR3459087
       additionalProperties: false
     CreditCardAccountsLimitsData:
       type: object
@@ -492,13 +494,11 @@ components:
         consolidationType:
           $ref: '#/components/schemas/EnumCreditCardAccountsConsolidationType'
         identificationNumber:
-          type: number
+          type: string
           description: |
-            Número de identificação do cartão:  corresponde aos 4 últimos dígitos para PF, preencher com um identificador para PJ, com as caracteristicas definidas para os ID´s no Open Banking.
-          maxLength: 4
-          example: 4453
-          minimum: 1
-          maximum: 9999
+            Número de identificação do cartão: corresponde aos 4 últimos dígitos do cartão para PF, ou então, preencher com um identificador para PJ, com as caracteristicas definidas para os IDs no Open Banking.
+          maxLength: 100
+          example: '4453'
         lineName:
           $ref: '#/components/schemas/EnumCreditCardAccountsLineName'
         lineNameAdditionalInfo:
@@ -526,6 +526,7 @@ components:
           maxLength: 19
           minLength: 0
           example: 100000.0001
+          nullable: true
         usedAmountCurrency:
           type: string
           maxLength: 3
@@ -542,6 +543,7 @@ components:
           maxLength: 19
           minLength: 0
           example: 7500.05
+          nullable: true
         availableAmountCurrency:
           type: string
           maxLength: 3
@@ -564,15 +566,14 @@ components:
       description: Conjunto de informações relativas aos Meios de Pagamento da Conta de pagamento pós-paga
       required:
         - identificationNumber
+        - isMultipleCreditCard
       properties:
         identificationNumber:
-          type: number
+          type: string
           description: |
-            Número de identificação do cartão:  corresponde aos 4 últimos dígitos para PF, preencher com um identificador para PJ, com as caracteristicas definidas para os ID´s no Open Banking.
-          maxLength: 4
-          example: 4453
-          minimum: 1
-          maximum: 9999
+            Número de identificação do cartão: corresponde aos 4 últimos dígitos do cartão para PF, ou então, preencher com um identificador para PJ, com as caracteristicas definidas para os IDs no Open Banking.
+          maxLength: 100
+          example: '4453'
         isMultipleCreditCard:
           type: boolean
           description: |
@@ -596,14 +597,17 @@ components:
         - transactionDate
         - billPostDate
       properties:
+        transactionId:
+          type: string
+          maxLength: 100
+          description: Código ou identificador único prestado pela instituição que mantém a conta para representar a transação individual.
+          example: MzQ1OTA4N1hYWlRSQTk2R09QQ0FY
         identificationNumber:
-          type: number
+          type: string
           description: |
-            Número de identificação do cartão:  corresponde aos 4 últimos dígitos para PF, preencher com um identificador para PJ, com as caracteristicas definidas para os ID´s no Open Banking.
-          maxLength: 4
-          example: 4453
-          minimum: 1
-          maximum: 9999
+            Número de identificação do cartão: corresponde aos 4 últimos dígitos do cartão para PF, ou então, preencher com um identificador para PJ, com as caracteristicas definidas para os IDs no Open Banking.
+          maxLength: 100
+          example: '4453'
         lineName:
           $ref: '#/components/schemas/EnumCreditCardAccountsLineName'
         transactionName:
@@ -669,7 +673,7 @@ components:
           type: string
           maxLength: 3
           description: |
-            Moeda referente ao valor da transação, se a operação foi efeuatda em moeda  estrangeira, segundo modelo ISO-4217.
+            Moeda referente ao valor da transação, se a operação foi efetuada em moeda  estrangeira, segundo modelo ISO-4217.
             Todos os valores informados estão representados com a moeda vigente do Brasil
           pattern: '^(\w{3}){1}$'
           example: BRL
@@ -696,7 +700,8 @@ components:
       type: string
       description: |
         Traz os tipos de Tarifas: (Vide Enum)
-        Anuidade, Saque com cartão no Brasil, Saque com cartão no exterior, Avaliação emergencial de crédito, Emissão segunda via, Tarifa pagamento de contas, SMS, OUTRA
+        Anuidade, Saque com cartão no Brasil, Saque com cartão no exterior, Avaliação emergencial de crédito, Emissão segunda via, Tarifa pagamento de contas, SMS, OUTRA. 
+        [Restrição] Preenchimento obrigatório se Tipo de Transação selecionada for 'TARIFA' 
       enum:
         - ANUIDADE
         - SAQUE_CARTAO_BRASIL
@@ -781,7 +786,9 @@ components:
       example: VISA
     EnumCreditCardAccountsOtherCreditType:
       type: string
-      description: Traz outros tipos de crédito contratados no cartão.
+      description: |
+        Traz outros tipos de crédito contratados no cartão.
+        [Restrição] Preenchimento obrigatório se o tipo transação selecionado for 'OPERACOES_CREDITO_CONTRATADAS_CARTAO'
       enum:
         - CREDITO_ROTATIVO
         - PARCELAMENTO_FATURA
@@ -803,10 +810,10 @@ components:
         - PIX
     EnumCreditCardAccountsPaymentType:
       type: string
-      description: Traz os tipos de pagamento
+      description: Traz os tipos de pagamento. Preenchimento obrigatório se selecionado tipo de transação PAGAMENTO.
       enum:
         - A_VISTA
-        - PARCELADO
+        - A_PRAZO
       example: A_VISTA
     EnumCreditCardAccountsProductType:
       type: string
