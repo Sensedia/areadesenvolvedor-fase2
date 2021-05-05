@@ -348,6 +348,7 @@ components:
                 - TRIMESTRAL
                 - SEMESTRAL
                 - ANUAL
+                - OUTROS
               example: SEMANAL
             firstInstalmentDueDate:
               description: Data de vencimento primeira parcela do principal

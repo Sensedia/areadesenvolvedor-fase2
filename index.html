@@ -10472,15 +10472,18 @@ This operation does not require authentication
     </span><span class="nl">"productSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_PESSOAL_COM_CONSIGNACAO"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contractDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-05"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"disbursementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contractAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
     </span><span class="nl">"paidInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"interestRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"taxType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFETIVA"</span><span class="p">,</span><span class="w">
@@ -10510,8 +10513,7 @@ This operation does not require authentication
         </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"chargeRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
@@ -19030,6 +19032,10 @@ sem periodicidade regular, semanal, quinzenal, mensal, bimestral, trimestral, se
 <td>**</td>
 <td>ANUAL</td>
 </tr>
+<tr>
+<td>**</td>
+<td>OUTROS</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_EnumContractInterestRateType">EnumContractInterestRateType</h2>
@@ -25379,15 +25385,18 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"productSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_PESSOAL_COM_CONSIGNACAO"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contractDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-05"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"disbursementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-15"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contractAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paidInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
   </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"interestRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"taxType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFETIVA"</span><span class="p">,</span><span class="w">
@@ -25417,8 +25426,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
       </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"chargeRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -25468,8 +25476,14 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>disbursementDate</td>
 <td>string(date)</td>
-<td>true</td>
+<td>false</td>
 <td>Data do Desembolso do valor contratado. Especificação RFC-3339</td>
+</tr>
+<tr>
+<td>settlementDate</td>
+<td>string(date)¦null</td>
+<td>false</td>
+<td>Data de liquidação da operação.</td>
 </tr>
 <tr>
 <td>contractAmount</td>
@@ -25479,7 +25493,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>currency</td>
-<td>string(string)</td>
+<td>string</td>
 <td>true</td>
 <td>Moeda referente ao valor da garantia, segundo modelo ISO-4217. p.ex. &#39;BRL&#39;<br>Todos os valores monetários informados estão representados com a moeda vigente do Brasil</td>
 </tr>
@@ -25494,6 +25508,12 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td><a href="#schemaenumcontractinstalmentperiodicity">EnumContractInstalmentPeriodicity</a></td>
 <td>true</td>
 <td>&quot;Informação relativa à periodicidade regular das parcelas. (Vide Enum)<br>sem periodicidade regular, semanal, quinzenal, mensal, bimestral, trimestral, semestral, anual&quot;</td>
+</tr>
+<tr>
+<td>instalmentPeriodicityAdditionalInfo</td>
+<td>string</td>
+<td>false</td>
+<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Condicional] Obrigatório quando instalmentPeriodicity for igual &#39;OUTROS&#39;.</td>
 </tr>
 <tr>
 <td>firstInstalmentDueDate</td>
@@ -25526,6 +25546,12 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>&quot;Sistema de amortização (Vide Enum)<br>- SAC (Sistema de Amortização Constante -   é aquele em que o valor da amortização permanece igual até o final. Os juros  cobrados sobre o parcelamento não entram nesta conta)<br>- PRICE (Sistema Francês de Amortização - As parcelas são fixas do início ao fim do contrato. Ou seja, todas as parcelas terão o mesmo valor, desde a primeira até a última. Nos primeiros pagamentos, a maior parte do valor da prestação corresponde aos juros. Ao longo do tempo, a taxa de juros vai decrescendo. Como o valor da prestação é fixo, com o passar das parcelas, o valor de amortização vai aumentando)<br>- SAM (Sociedade de arrendamento mercantil) - realiza arrendamento de bens móveis e imóveis adquiridos por ela, segundo as especificações da arrendatária (cliente), para fins de uso próprio desta. Assim, os contratantes deste serviço podem usufruir de determinado bem sem serem proprietários dele. As operações de arrendamento mercantil podem ser divididas em duas modalidades: leasing financeiro e leasing operacional. A diferença básica é que no leasing financeiro o prazo é usualmente maior e o arrendatário tem a possibilidade de adquirir o bem por um valor pré-estabelecido. Ao final do contrato, o arrendatário tem as opções de efetivar a aquisição do bem arrendado ou devolvê-lo. Ao final do leasing financeiro, em geral o cliente já terá pago a maior parte do valor do bem, não sendo a devolução, embora possível, financeiramente vantajosa)<br>- SEM SISTEMA DE AMORTIZAÇÃO&quot;</td>
 </tr>
 <tr>
+<td>cnpjConsignee</td>
+<td>string</td>
+<td>true</td>
+<td>CNPJ do consignante (CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica). Deve-se ter apenas os números do CNPJ, sem máscara. Informação adicional específica para Modalidade de Crédito: Empréstimo-Crédito Pessoal Consignado</td>
+</tr>
+<tr>
 <td>interestRates</td>
 <td>[<a href="#schemaloanscontractinterestrate">LoansContractInterestRate</a>]</td>
 <td>true</td>
@@ -25542,12 +25568,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>[<a href="#schemaloansfinancecharge">LoansFinanceCharge</a>]</td>
 <td>true</td>
 <td>Lista que traz os encargos pactuados no contrato</td>
-</tr>
-<tr>
-<td>cnpjConsignee</td>
-<td>string</td>
-<td>false</td>
-<td>CNPJ do consignante (CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica). Deve-se ter apenas os números do CNPJ, sem máscara. Informação adicional específica para Modalidade de Crédito: Empréstimo-Crédito Pessoal Consignado</td>
 </tr>
 </tbody></table>
 
@@ -25608,7 +25628,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>feeAmount</td>
 <td>number</td>
-<td>false</td>
+<td>true</td>
 <td>Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
 <tr>
@@ -26095,7 +26115,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>warrantySubType</td>
 <td><a href="#schemaenumwarrantysubtype">EnumWarrantySubType</a></td>
-<td>false</td>
+<td>true</td>
 <td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</td>
 </tr>
 <tr>
@@ -28796,15 +28816,18 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"productSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO_PESSOAL_COM_CONSIGNACAO"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contractDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-05"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"disbursementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contractAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
     </span><span class="nl">"paidInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"interestRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"taxType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFETIVA"</span><span class="p">,</span><span class="w">
@@ -28834,8 +28857,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
         </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"chargeRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">

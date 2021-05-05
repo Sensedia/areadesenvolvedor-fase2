@@ -424,6 +424,7 @@ components:
         - TRIMESTRAL
         - SEMESTRAL
         - ANUAL
+        - OUTROS
       example: SEMANAL
     EnumWarrantySubType:
       type: string
