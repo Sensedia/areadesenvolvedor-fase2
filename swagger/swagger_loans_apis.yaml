@@ -48,7 +48,7 @@ paths:
         - Loans
       summary: Conjunto de informações  de contratos de empréstimo mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento
       description: Método para obter a lista de contratos de empréstimo mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento
-      operationId: getContracts
+      operationId: loans_get_contracts
       parameters:
         - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/xFapiAuthDate'
@@ -88,7 +88,7 @@ paths:
         - Loans
       summary: Obtém os dados do contrato de empréstimo identificado por contractId
       description: Método para obter os dados do contrato de empréstimo identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractId
+      operationId: loans_get_contracts_contractId
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/Authorization'
@@ -127,7 +127,7 @@ paths:
         - Loans
       summary: Obtém a lista de garantias vinculadas ao contrato de empréstimo identificado por contractId
       description: Método para obter a lista de garantias vinculadas ao contrato de empréstimo identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractIdWarranties
+      operationId: loans_get_contracts_contractId_warranties
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/page'
@@ -168,7 +168,7 @@ paths:
         - Loans
       summary: Obtém os dados do cronograma de parcelas do contrato de empréstimo identificado por contractId
       description: Método para obter os dados do cronograma de parcelas do contrato de empréstimo identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractIdScheduledInstalments
+      operationId: loans_get_contracts_contractId_scheduledInstalments
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/page'
@@ -209,7 +209,7 @@ paths:
         - Loans
       summary: Obtém os dados de pagamentos do contrato de empréstimo identificado por contractId
       description: Método para obter os dados de pagamentos do contrato de empréstimo identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractIdPayments
+      operationId: loans_get_contracts_contractId_payments
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/page'
@@ -888,7 +888,6 @@ components:
       description: Conjunto de informações  de contratos de empréstimo mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento
       required:
         - contractId
-        - brandID
         - brandName
         - companyCnpj
         - productType
@@ -900,12 +899,6 @@ components:
           maxLength: 100
           example: '92792126019929279212650822221989319252576'
           description: 'Identifica de forma única o contrato da operação de crédito do cliente, mantendo as regras de imutabilidade dentro da instituição transmissora.'
-        brandID:
-          type: string
-          maxLength: 100
-          pattern: \w*\W*
-          example: '29698749425984912674'
-          description: 'Identifica a Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
         brandName:
           type: string
           pattern: \w*\W*
@@ -1002,7 +995,9 @@ components:
           maxLength: 3
           pattern: '^(\w{3}){1}$'
           example: BRL
-          description: 'Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. ''BRL''. Todos os valores monetários informados estão representados com a moeda vigente do Brasil'
+          description: |
+            Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. 'BRL'.
+            Todos os valores monetários informados estão representados com a moeda vigente do Brasil.
         paidAmount:
           type: number
           format: double
@@ -1010,7 +1005,9 @@ components:
           minLength: 0
           pattern: '(-?\d{15}(.\d{4}?))$'
           example: 100000.04
-          description: Valor do pagamento referente ao  contrato da modalidade de crédito consultada. Expresso em valor monetário com até 4 casas decimais
+          description: |
+            Valor do pagamento referente ao  contrato da modalidade de crédito consultada.
+            Expresso em valor monetário com até 4 casas decimais.
         overParcel:
           type: object
           description: Objeto das tarifas e encargos que foram pagos fora da parcela.
@@ -1041,23 +1038,24 @@ components:
           type: string
           maxLength: 140
           pattern: \w*\W*
-          description: Denominação da Tarifa pactuada
           example: Reavaliação periódica do bem
+          description: Denominação da Tarifa pactuada
         feeCode:
           type: string
           maxLength: 140
           pattern: \w*\W*
-          description: Sigla identificadora da tarifa pactuada
           example: aval_bem
+          description: Sigla identificadora da tarifa pactuada
         feeAmount:
-          description: |
-            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
           maxLength: 19
           minLength: 0
           example: 100000.04
+          description: |
+            Valor monetário da tarifa pactuada no contrato.
+            [restriction] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo
       additionalProperties: false
     LoansWarranties:
       type: object
