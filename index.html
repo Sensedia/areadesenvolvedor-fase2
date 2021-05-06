@@ -11083,7 +11083,7 @@ This operation does not require authentication
           </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
@@ -25297,7 +25297,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -25320,7 +25320,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pago fora da parcela</td>
+<td>Campo livre para preenchimento das informações adicionais referente ao encargo.<br>[Restrição] Obrigatório quando chargeType for igual &#39;OUTROS&#39;.</td>
 </tr>
 <tr>
 <td>chargeAmount</td>
@@ -25880,7 +25880,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
         </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
@@ -25948,7 +25948,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -26063,7 +26063,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>feeAmount</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Valor monetário da tarifa pactuada no contrato.<br>[restriction] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
+<td>Valor monetário da tarifa pactuada no contrato.<br>[Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
 </tbody></table>
 
@@ -28990,7 +28990,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
           </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
