@@ -298,7 +298,9 @@ components:
           example: '2020-07-21T08:30:00Z'
           description: Data de início de relacionamento com a Instituição Financeira. Deve trazer o menor valor entre a informação reportada ao BACEN pelo DOC 3040 e CCS.
         productsServicesType:
-          $ref: '#/components/schemas/EnumProductServiceType'
+          type: array
+          items:
+            $ref: '#/components/schemas/EnumProductServiceType'
         procurators:
           type: array
           items:
@@ -497,6 +499,7 @@ components:
           required:
             - amount
             - currency
+            - date
           properties:
             amount:
               type: number
@@ -519,6 +522,7 @@ components:
               type: string
               description: Data do patrimônio informado.
               maxLength: 20
+              pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
               format: date
               example: '2021-05-21'
           additionalProperties: false
@@ -951,6 +955,8 @@ components:
     EnumProductServiceType:
       type: string
       maxLength: 24
+      minimum: 0
+      maximum: 12
       enum:
         - CONTA_DEPOSITO_A_VISTA
         - CONTA_POUPANCA
@@ -965,7 +971,7 @@ components:
         - CREDENCIAMENTO
         - OUTROS
       example: SEGURO
-      description: Relação dos produtos e serviços com contrato vigente.
+      description: Lista com a relação dos produtos e serviços com contrato vigente.
     EnumSex:
       type: string
       description: |
