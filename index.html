@@ -5464,7 +5464,6 @@ This operation does not require authentication
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"businessId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"578-psd-71md6971kjh-2d414"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"brandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29698749425984912674"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiza e Benjamin Assessoria Jurídica Ltda"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tradeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mundo da Eletronica"</span><span class="p">,</span><span class="w">
@@ -16738,7 +16737,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"businessId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"578-psd-71md6971kjh-2d414"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"brandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29698749425984912674"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"companyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiza e Benjamin Assessoria Jurídica Ltda"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tradeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mundo da Eletronica"</span><span class="p">,</span><span class="w">
@@ -16836,14 +16834,8 @@ This operation does not require authentication
 <tr>
 <td>businessId</td>
 <td>string</td>
-<td>false</td>
-<td>Um identificador único e imutável usado para identificar o recurso cliente pessoa jurídica. Este identificador não tem significado para o cliente que deu o consentimento</td>
-</tr>
-<tr>
-<td>brandId</td>
-<td>string</td>
 <td>true</td>
-<td>Identifica a Marca reportada pelo participante do Open Banking. O conceito a que se refere a &#39;marca&#39; é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.</td>
+<td>Um identificador único e imutável usado para identificar o recurso cliente pessoa jurídica. Este identificador não tem significado para o cliente que deu o consentimento</td>
 </tr>
 <tr>
 <td>brandName</td>
@@ -17081,7 +17073,7 @@ This operation does not require authentication
 <tr>
 <td>» frequency</td>
 <td><a href="#schemaenuminformedrevenuefrequency">EnumInformedRevenueFrequency</a></td>
-<td>false</td>
+<td>true</td>
 <td>Traz a frequência ou período do faturamento informado.<br>&quot;O faturamento é calculado a partir de todos os benefícios que a empresa conseguiu com sua atividade econômica em um determinado período. Esses benefícios são os rendimentos ou ganhos da organização através de suas vendas ou serviços prestados&quot;.</td>
 </tr>
 <tr>
@@ -17105,7 +17097,7 @@ This operation does not require authentication
 <tr>
 <td>» year</td>
 <td>number¦null</td>
-<td>true</td>
+<td>false</td>
 <td>Ano de referência do Patrimônio, conforme especificação RFC-3339.</td>
 </tr>
 <tr>
@@ -18155,7 +18147,7 @@ This operation does not require authentication
 <td>address</td>
 <td>string</td>
 <td>true</td>
-<td>Corresponde ao endereço residencial do cliente.</td>
+<td>Corresponde ao endereço comercial do cliente.</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -26390,7 +26382,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>type</td>
 <td><a href="#schemaenumpartiesparticipationtype">EnumPartiesParticipationType</a></td>
-<td>false</td>
+<td>true</td>
 <td>Indica o perfil de atuação na empresa. Vide Enum<br>O administrador é o responsável por desempenhar todas as funções administrativas da empresa. É ele quem conduz o dia a dia do negócio, assinando documentos, respondendo legalmente pela sociedade, realizando empréstimos e outras ações gerenciais. Apesar de estar na linha de frente da empresa, ele é denominado sócio por também possuir sua parcela de participação no Capital Social.<br>Sócio não tem qualquer envolvimento nas atividades administrativas da sociedade.</td>
 </tr>
 <tr>
@@ -27490,7 +27482,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"businessId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"578-psd-71md6971kjh-2d414"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"brandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29698749425984912674"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiza e Benjamin Assessoria Jurídica Ltda"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tradeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mundo da Eletronica"</span><span class="p">,</span><span class="w">
