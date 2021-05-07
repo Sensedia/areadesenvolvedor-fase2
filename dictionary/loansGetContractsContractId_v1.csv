@@ -1,5 +1,6 @@
 ﻿Xpath;Nome;Definição;Tipo de Dado;Tamanho;Mandatoriedade;Formato;Domínio;Mínimo de Ocorrências;Máximo de Ocorrências;Restrições;Nulidade;Tipo de Dado Json;Exemplo
 /data;data;Conjunto de informações referentes à identificação da operação de crédito de empréstimo;Objeto;;Obrigatório;;;1;1;"";Não permitido;object;
+/data/contractNumber;contractNumber;Número do contrato dado pela instituição contratante.;Texto;100;Obrigatório;;;1;1;"";Não permitido;string;1324926521496
 /data/ipocCode;ipocCode;"Número padronizado do contrato - IPOC (Identificação Padronizada da Operação de Crédito). Segundo DOC 3040, composta por:
 - **CNPJ da instituição:** 8 (oito) posições iniciais;
 - **Modalidade da operação:** 4 (quatro) posições;
@@ -37,9 +38,13 @@ TRIMESTRAL
 SEMESTRAL 
 ANUAL 
 OUTROS";1;1;"";Não permitido;string;SEMANAL
+/data/typeNumberOfInstalments;typeNumberOfInstalments;Tipo de prazo total do contrato referente à modalidade de crédito informada.;Texto;;Opcional;;"DIA 
+SEMANA 
+MES 
+ANO";0;1;"";Não permitido;string;MES
 /data/instalmentPeriodicityAdditionalInfo;instalmentPeriodicityAdditionalInfo;Campo livre para complementar a informação relativa à periodicidade de parcelamento.;Texto;50;Opcional;\w*\W*;;0;1;"";Não permitido;string;""
 /data/firstInstalmentDueDate;firstInstalmentDueDate;Data de vencimento primeira parcela do principal;Data;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;"";Não permitido;string;2018-02-15
-/data/totalNumberOfInstalments;totalNumberOfInstalments;Prazo Total em meses do contrato referente à Modalidade de Crédito informada;Número;3;Obrigatório;;;1;1;"";Não permitido;number;130
+/data/totalNumberOfInstalments;totalNumberOfInstalments;Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada;Número;3;Obrigatório;;;1;1;"";Não permitido;number;130
 /data/paidInstalments;paidInstalments;Quantidade de prestações pagas.;Número;3;Obrigatório;;;1;1;"";Não permitido;number;73
 /data/CET;CET;"CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).
 O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
@@ -52,6 +57,8 @@ O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas
 PRICE 
 SAM 
 SEM_SISTEMA_AMORTIZACAO";1;1;"";Não permitido;string;SAC
+/data/liquidationDate;liquidationDate;Data de liquidação da operação.;Data;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])|^NA$;;1;1;" Deve aceitar NA caso não seja retornado pela instituição.
+";Não permitido;string;2018-02-15
 /data/cnpjConsignee;cnpjConsignee;CNPJ do consignante (CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica). Deve-se ter apenas os números do CNPJ, sem máscara. Informação adicional específica para Modalidade de Crédito: Empréstimo-Crédito Pessoal Consignado;Texto;14;Obrigatório;\d{14};;1;1;"";Não permitido;string;60500998000135
 /data/interestRates;interestRates;"";Lista;;Obrigatório;;;1;N;"";Não permitido;array;
 /data/interestRates/taxType;taxType;"Tipo de Taxa (vide  Enum)
