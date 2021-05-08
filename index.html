@@ -5121,7 +5121,8 @@ None ( Scopes: openId resources )
       </span><span class="nl">"maritalStatusAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEMININO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"01773247000103"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"01773247000563"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"cpfNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25872252137"</span><span class="p">,</span><span class="w">
@@ -10486,7 +10487,6 @@ This operation does not require authentication
     </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"paidInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
@@ -11366,6 +11366,7 @@ This operation does not require authentication
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"contractRemainingNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contractRemainingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pastDueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
@@ -11375,7 +11376,8 @@ This operation does not require authentication
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"typeContractRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIA"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
@@ -19564,7 +19566,7 @@ a.a. - ao ano&quot;</p>
 
 </span></code></pre></div>
 
-<p>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</p>
+<p>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</p>
 
 <h3 id='propriedades-48'>Propriedades</h3>
 
@@ -19580,7 +19582,7 @@ a.a. - ao ano&quot;</p>
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</td>
+<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</td>
 </tr>
 </tbody></table>
 
@@ -23404,7 +23406,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>warrantySubType</td>
 <td><a href="#schemaenumwarrantysubtype">EnumWarrantySubType</a></td>
 <td>true</td>
-<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</td>
+<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</td>
 </tr>
 <tr>
 <td>warrantyAmount</td>
@@ -24616,7 +24618,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>warrantySubType</td>
 <td><a href="#schemaenumwarrantysubtype">EnumWarrantySubType</a></td>
 <td>true</td>
-<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</td>
+<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</td>
 </tr>
 <tr>
 <td>warrantyAmount</td>
@@ -25394,9 +25396,9 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
-<td>Valor monetário da parcela não regular a vencer.  Expresso em valor monetário com 4 casas decimais</td>
+<td>Valor monetário da parcela não regular a vencer.  Expresso em valor monetário com 4 casas decimais.</td>
 </tr>
 </tbody></table>
 
@@ -25536,7 +25538,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"paidInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
   </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
@@ -25632,7 +25633,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>settlementDate</td>
-<td>string(date)¦null</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data de liquidação da operação.</td>
 </tr>
@@ -25663,7 +25664,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>typeNumberOfInstalments</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Tipo de prazo total do contrato referente à modalidade de crédito informada.</td>
 </tr>
 <tr>
@@ -25682,13 +25683,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>totalNumberOfInstalments</td>
 <td>number</td>
 <td>true</td>
-<td>Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada</td>
-</tr>
-<tr>
-<td>paidInstalments</td>
-<td>number</td>
-<td>true</td>
-<td>Quantidade de prestações pagas.</td>
+<td>Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.</td>
 </tr>
 <tr>
 <td>CET</td>
@@ -25816,15 +25811,15 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>feeAmount</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
-<td>Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
+<td>Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.</td>
 </tr>
 <tr>
 <td>feeRate</td>
 <td>number</td>
 <td>false</td>
-<td>Percentual que representa o valor da tarifa pactuada para o contrato. Preenchimento obrigatório quando a forma de cobrança por Percentual</td>
+<td>Percentual que representa o valor da tarifa pactuada para o contrato. <br>[Restrição] Preenchimento obrigatório quando a forma de cobrança por Percentual.</td>
 </tr>
 </tbody></table>
 
@@ -25995,6 +25990,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <a id="tocsloansinstalments"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"contractRemainingNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contractRemainingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pastDueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
@@ -26004,7 +26000,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"typeContractRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIA"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -26022,20 +26019,26 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 </thead><tbody>
 <tr>
-<td>contractRemainingDays</td>
-<td>number</td>
+<td>contractRemainingNumber</td>
+<td>number¦null</td>
 <td>true</td>
-<td>Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada</td>
+<td>Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.</td>
+</tr>
+<tr>
+<td>contractRemainingDays</td>
+<td>number¦null</td>
+<td>true</td>
+<td>Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.</td>
 </tr>
 <tr>
 <td>dueInstalments</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>Quantidade de prestações a vencer. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)</td>
 </tr>
 <tr>
 <td>pastDueInstalments</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>Quantidade de prestações vencidas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)</td>
 </tr>
@@ -26044,6 +26047,38 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>[<a href="#schemaloansballoonpayment">LoansBalloonPayment</a>]</td>
 <td>true</td>
 <td></td>
+</tr>
+<tr>
+<td>typeContractRemaining</td>
+<td>string</td>
+<td>false</td>
+<td>Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-78'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>typeContractRemaining</td>
+<td>DIA</td>
+</tr>
+<tr>
+<td>typeContractRemaining</td>
+<td>SEMANA</td>
+</tr>
+<tr>
+<td>typeContractRemaining</td>
+<td>MES</td>
+</tr>
+<tr>
+<td>typeContractRemaining</td>
+<td>ANO</td>
 </tr>
 </tbody></table>
 
@@ -26101,7 +26136,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </thead><tbody>
 <tr>
 <td>paidInstalments</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>Quantidade total de parcelas pagas do contrato referente à Modalidade de Crédito informada.</td>
 </tr>
@@ -26168,14 +26203,14 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>paymentId</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Identificador de pagamento de responsabilidade de cada Instituição transmissora.</td>
 </tr>
 <tr>
 <td>isOverParcelPayment</td>
 <td>boolean</td>
 <td>true</td>
-<td>Identifica se é um pagamento pactuado ou avulso.</td>
+<td>Identifica se é um pagamento pactuado (false) ou avulso (true).</td>
 </tr>
 <tr>
 <td>instalmentId</td>
@@ -26306,13 +26341,13 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>warrantySubType</td>
 <td><a href="#schemaenumwarrantysubtype">EnumWarrantySubType</a></td>
 <td>true</td>
-<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</td>
+<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</td>
 </tr>
 <tr>
 <td>warrantyAmount</td>
 <td>number(double)¦null</td>
 <td>false</td>
-<td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.</td>
+<td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.<br>[Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;</td>
 </tr>
 </tbody></table>
 
@@ -26647,7 +26682,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-78'>Enumerated Values</h4>
+<h4 id='enumerated-values-79'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -26847,7 +26882,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"maritalStatusAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEMININO"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
+    </span><span class="s2">"01773247000103"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"01773247000563"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"cpfNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25872252137"</span><span class="p">,</span><span class="w">
@@ -28375,7 +28411,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
       </span><span class="nl">"maritalStatusAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEMININO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"01773247000103"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"01773247000563"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"cpfNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25872252137"</span><span class="p">,</span><span class="w">
@@ -29008,7 +29045,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"paidInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
@@ -29096,6 +29132,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <a id="tocsresponseloansinstalments"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"contractRemainingNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contractRemainingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pastDueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
@@ -29105,7 +29142,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"typeContractRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIA"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
@@ -30097,7 +30135,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>Meta informações referente a API requisitada.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-79'>Enumerated Values</h4>
+<h4 id='enumerated-values-80'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -30190,7 +30228,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>» warrantySubType</td>
 <td><a href="#schemaenumwarrantysubtype">EnumWarrantySubType</a></td>
 <td>true</td>
-<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)</td>
+<td>Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</td>
 </tr>
 <tr>
 <td>» warrantyAmount</td>

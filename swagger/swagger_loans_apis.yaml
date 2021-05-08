@@ -418,7 +418,7 @@ components:
       example: EMPRESTIMOS
     EnumWarrantySubType:
       type: string
-      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)'
+      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de ''SEM_TIPO_GARANTIA''.'
       maxLength: 100
       enum:
         - ACOES_DEBENTURES
@@ -557,10 +557,11 @@ components:
           maxLength: 3
           example: BRL
         amount:
-          description: Valor monetário da parcela não regular a vencer.  Expresso em valor monetário com 4 casas decimais
+          description: Valor monetário da parcela não regular a vencer.  Expresso em valor monetário com 4 casas decimais.
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
+          nullable: true
           maxLength: 19
           minLength: 0
           example: 100000.04
@@ -581,7 +582,7 @@ components:
         - instalmentPeriodicity
         - firstInstalmentDueDate
         - totalNumberOfInstalments
-        - paidInstalments
+        - typeNumberOfInstalments
         - CET
         - amortizationScheduled
         - liquidationDate
@@ -638,8 +639,7 @@ components:
           type: string
           format: date
           maxLength: 10
-          nullable: true
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$|^NA$'
           example: '2018-01-15'
           description: Data de liquidação da operação.
         contractAmount:
@@ -695,12 +695,7 @@ components:
           type: number
           maxLength: 3
           example: 130
-          description: 'Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada'
-        paidInstalments:
-          type: number
-          maxLength: 3
-          example: 73
-          description: Quantidade de prestações pagas.
+          description: 'Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
         CET:
           type: number
           maxLength: 19
@@ -723,7 +718,7 @@ components:
         cnpjConsignee:
           type: string
           maxLength: 14
-          pattern: '\d{14}'
+          pattern: '\d{14}|^NA$'
           example: '60500998000135'
           description: |
             CNPJ do consignante (CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica). Deve-se ter apenas os números do CNPJ, sem máscara. Informação adicional específica para Modalidade de Crédito: Empréstimo-Crédito Pessoal Consignado
@@ -772,13 +767,15 @@ components:
         feeAmount:
           type: number
           description: |
-            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo
+            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
           maxLength: 19
+          nullable: true
           example: 50
         feeRate:
           type: number
           description: |
-            Percentual que representa o valor da tarifa pactuada para o contrato. Preenchimento obrigatório quando a forma de cobrança por Percentual
+            Percentual que representa o valor da tarifa pactuada para o contrato. 
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança por Percentual.
           maxLength: 19
           example: 50
       additionalProperties: false
@@ -886,23 +883,33 @@ components:
       description: Conjunto de informações referentes ao prazo remanescente e às parcelas de uma operação de crédito de empréstimos
       required:
         - contractRemainingDays
+        - contractRemainingNumber
         - dueInstalments
         - pastDueInstalments
         - balloonPayments
       properties:
+        contractRemainingNumber:
+          type: number
+          maxLength: 6
+          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.
+          example: 14600
+          nullable: true
         contractRemainingDays:
           type: number
           maxLength: 6
-          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada
+          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.
           example: 14600
+          nullable: true
         dueInstalments:
           type: number
           maxLength: 3
           description: 'Quantidade de prestações a vencer. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
+          nullable: true
           example: 57
         pastDueInstalments:
           type: number
           maxLength: 3
+          nullable: true
           description: 'Quantidade de prestações vencidas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
           example: 73
         balloonPayments:
@@ -910,6 +917,16 @@ components:
           items:
             $ref: '#/components/schemas/LoansBalloonPayment'
           minItems: 1
+        typeContractRemaining:
+          type: string
+          enum:
+            - DIA
+            - SEMANA
+            - MES
+            - ANO
+          maxLength: 6
+          description: |
+            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.
       additionalProperties: false
     LoansListContract:
       type: object
@@ -969,6 +986,7 @@ components:
         paidInstalments:
           type: number
           maxLength: 3
+          nullable: true
           example: 73
           description: Quantidade total de parcelas pagas do contrato referente à Modalidade de Crédito informada.
         contractOutstandingBalance:
@@ -989,7 +1007,6 @@ components:
       type: object
       description: Lista dos pagamentos realizados no período
       required:
-        - paymentId
         - isOverParcelPayment
         - instalmentId
         - paidDate
@@ -1005,7 +1022,7 @@ components:
         isOverParcelPayment:
           type: boolean
           example: true
-          description: Identifica se é um pagamento pactuado ou avulso.
+          description: Identifica se é um pagamento pactuado (false) ou avulso (true).
         instalmentId:
           type: string
           maxLength: 100
@@ -1108,7 +1125,9 @@ components:
           format: double
           maxLength: 19
           nullable: true
-          description: 'Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.'
+          description: |
+            Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
+            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
           example: 200.0001
       additionalProperties: false
     Meta:
