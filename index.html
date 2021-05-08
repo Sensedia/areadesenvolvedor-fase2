@@ -10486,7 +10486,7 @@ This operation does not require authentication
     </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
@@ -11367,7 +11367,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"contractRemainingNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"contractRemainingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pastDueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
     </span><span class="nl">"balloonPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -25537,7 +25536,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
   </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
@@ -25991,7 +25990,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"contractRemainingNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"contractRemainingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pastDueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
   </span><span class="nl">"balloonPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -26022,29 +26020,23 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>contractRemainingNumber</td>
 <td>number¦null</td>
 <td>true</td>
-<td>Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.</td>
-</tr>
-<tr>
-<td>contractRemainingDays</td>
-<td>number¦null</td>
-<td>true</td>
-<td>Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.</td>
+<td>Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.</td>
 </tr>
 <tr>
 <td>dueInstalments</td>
 <td>number¦null</td>
 <td>true</td>
-<td>Quantidade de prestações a vencer. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)</td>
+<td>Quantidade de prestações a vencer.</td>
 </tr>
 <tr>
 <td>pastDueInstalments</td>
 <td>number¦null</td>
 <td>true</td>
-<td>Quantidade de prestações vencidas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)</td>
+<td>Quantidade de prestações vencidas.</td>
 </tr>
 <tr>
 <td>balloonPayments</td>
-<td>[<a href="#schemaloansballoonpayment">LoansBalloonPayment</a>]</td>
+<td>[<a href="#schemaloansballoonpayment">LoansBalloonPayment</a>]¦null</td>
 <td>true</td>
 <td></td>
 </tr>
@@ -26238,7 +26230,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>overParcel</td>
-<td>object</td>
+<td>object¦null</td>
 <td>true</td>
 <td>Objeto das tarifas e encargos que foram pagos fora da parcela.</td>
 </tr>
@@ -29044,7 +29036,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
@@ -29133,7 +29125,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"contractRemainingNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"contractRemainingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">14600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pastDueInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
     </span><span class="nl">"balloonPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">

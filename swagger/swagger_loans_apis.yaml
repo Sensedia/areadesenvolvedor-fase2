@@ -693,8 +693,8 @@ components:
           description: Data de vencimento primeira parcela do principal
         totalNumberOfInstalments:
           type: number
-          maxLength: 3
-          example: 130
+          maxLength: 6
+          example: 130632
           description: 'Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
         CET:
           type: number
@@ -882,7 +882,6 @@ components:
       type: object
       description: Conjunto de informações referentes ao prazo remanescente e às parcelas de uma operação de crédito de empréstimos
       required:
-        - contractRemainingDays
         - contractRemainingNumber
         - dueInstalments
         - pastDueInstalments
@@ -891,32 +890,27 @@ components:
         contractRemainingNumber:
           type: number
           maxLength: 6
-          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.
-          example: 14600
-          nullable: true
-        contractRemainingDays:
-          type: number
-          maxLength: 6
-          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada.
+          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
           nullable: true
         dueInstalments:
           type: number
           maxLength: 3
-          description: 'Quantidade de prestações a vencer. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
+          description: Quantidade de prestações a vencer.
           nullable: true
           example: 57
         pastDueInstalments:
           type: number
           maxLength: 3
           nullable: true
-          description: 'Quantidade de prestações vencidas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
+          description: Quantidade de prestações vencidas.
           example: 73
         balloonPayments:
           type: array
           items:
             $ref: '#/components/schemas/LoansBalloonPayment'
-          minItems: 1
+          minItems: 0
+          nullable: true
         typeContractRemaining:
           type: string
           enum:
@@ -1054,6 +1048,7 @@ components:
             Valor do pagamento referente ao  contrato da modalidade de crédito consultada.
             Expresso em valor monetário com até 4 casas decimais.
         overParcel:
+          nullable: true
           type: object
           description: Objeto das tarifas e encargos que foram pagos fora da parcela.
           required:
