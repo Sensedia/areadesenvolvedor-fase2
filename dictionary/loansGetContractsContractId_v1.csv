@@ -107,7 +107,7 @@ p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venh
 (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)";Número;19;Obrigatório;;;1;1;"";Não permitido;number;0.6
 /data/interestRates/postFixedRate;postFixedRate;"Taxa pós fixada aplicada sob o contrato da modalidade crédito.
 p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
-(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)";Número;19;Obrigatório;;;1;1;"";Não permitido;number;0.55
+(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)";Número;19;Obrigatório;;;1;1;"";Permitido;number;0.55
 /data/interestRates/additionalInfo;additionalInfo;Texto com informações adicionais sobre a composição das taxas de juros pactuadas;Texto;1200;Obrigatório;\w*\W*;;1;1;"";Não permitido;string;""
 /data/contractedFees;contractedFees;"";Lista;;Obrigatório;;;1;N;"";Não permitido;array;
 /data/contractedFees/feeName;feeName;Denominação da Tarifa pactuada;Texto;140;Obrigatório;\w*\W*;;1;1;"";Não permitido;string;Renovação de cadastro
@@ -123,8 +123,8 @@ MAXIMO
 FIXO 
 PERCENTUAL";1;1;"";Não permitido;string;MINIMO
 /data/contractedFees/feeAmount;feeAmount;Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.;Número;19;Obrigatório;;;1;1;"";Permitido;number;50
-/data/contractedFees/feeRate;feeRate;Percentual que representa o valor da tarifa pactuada para o contrato.;Número;19;Opcional;;;0;1;" Preenchimento obrigatório quando a forma de cobrança por Percentual.
-";Não permitido;number;50
+/data/contractedFees/feeRate;feeRate;Percentual que representa o valor da tarifa pactuada para o contrato.;Número;19;Obrigatório;;;1;1;" Preenchimento obrigatório quando a forma de cobrança por Percentual.
+";Permitido;number;50
 /data/contractedFinanceCharges;contractedFinanceCharges;Lista que traz os encargos pactuados no contrato;Lista;;Obrigatório;;;1;N;"";Não permitido;array;
 /data/contractedFinanceCharges/chargeType;chargeType;Tipo de encargo pactuado no contrato.;Texto;31;Obrigatório;;"JUROS_REMUNERATORIOS_POR_ATRASO 
 MULTA_ATRASO_PAGAMENTO 
@@ -132,5 +132,6 @@ JUROS_MORA_ATRASO
 IOF_CONTRATACAO 
 IOF_POR_ATRASO 
 OUTROS";1;1;"";Não permitido;string;JUROS_REMUNERATORIOS_POR_ATRASO
-/data/contractedFinanceCharges/chargeAdditionalInfo;chargeAdditionalInfo;Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato;Texto;;Opcional;\w*\W*;;0;1;"";Não permitido;string;
+/data/contractedFinanceCharges/chargeAdditionalInfo;chargeAdditionalInfo;Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.;Texto;;Obrigatório;\w*\W*$|^NA$;;1;1;" Pode ser retornado Na caso a instituição não tenha a informação.
+";Não permitido;string;
 /data/contractedFinanceCharges/chargeRate;chargeRate;Representa o valor do encargo em percentual pactuado no contrato. Exemplo: 0.0210 (=2.1%). Deve-se preencher as 4 casas decimais obrigatoriamente.;Número;19;Opcional;;;0;1;"";Não permitido;number;0.07

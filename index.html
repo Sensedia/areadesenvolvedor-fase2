@@ -25816,8 +25816,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>feeRate</td>
-<td>number</td>
-<td>false</td>
+<td>number(double)¦null</td>
+<td>true</td>
 <td>Percentual que representa o valor da tarifa pactuada para o contrato. <br>[Restrição] Preenchimento obrigatório quando a forma de cobrança por Percentual.</td>
 </tr>
 </tbody></table>
@@ -25922,7 +25922,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>postFixedRate</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>Taxa pós fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -25970,8 +25970,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>chargeAdditionalInfo</td>
 <td>string</td>
-<td>false</td>
-<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato</td>
+<td>true</td>
+<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.<br>[Restrição] Pode ser retornado Na caso a instituição não tenha a informação.</td>
 </tr>
 <tr>
 <td>chargeRate</td>
@@ -26043,8 +26043,8 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>typeContractRemaining</td>
 <td>string</td>
-<td>false</td>
-<td>Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.</td>
+<td>true</td>
+<td>Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.<br>[Restrição] Pode ser retornado NA caso a instituição não possua a informação.</td>
 </tr>
 </tbody></table>
 
@@ -26071,6 +26071,10 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <tr>
 <td>typeContractRemaining</td>
 <td>ANO</td>
+</tr>
+<tr>
+<td>typeContractRemaining</td>
+<td>NA</td>
 </tr>
 </tbody></table>
 
