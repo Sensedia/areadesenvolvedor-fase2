@@ -10489,7 +10489,6 @@ This operation does not require authentication
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"interestRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -25539,7 +25538,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
   </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"interestRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -25634,7 +25632,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>settlementDate</td>
 <td>string(date)</td>
 <td>false</td>
-<td>Data de liquidação da operação.</td>
+<td>Data de liquidação da operação.<br>[Restrição] Deve aceitar NA caso não seja retornado pela instituição.</td>
 </tr>
 <tr>
 <td>contractAmount</td>
@@ -25695,12 +25693,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td><a href="#schemaenumcontractamortizationscheduled">EnumContractAmortizationScheduled</a></td>
 <td>true</td>
 <td>Sistema de amortização (Vide Enum):<br>- SAC (Sistema de Amortização Constante) - É aquele em que o valor da amortização permanece igual até o final. Os juros cobrados sobre o parcelamento não entram nesta conta.<br>- PRICE (Sistema Francês de Amortização) - As parcelas são fixas do início ao fim do contrato. Ou seja, todas as parcelas terão o mesmo valor, desde a primeira até a última. Nos primeiros pagamentos, a maior parte do valor da prestação corresponde aos juros. Ao longo do tempo, a taxa de juros vai decrescendo. Como o valor da prestação é fixo, com o passar das parcelas, o valor de amortização vai aumentando.<br>- SAM (Sistema de Amortização Misto) - Cada prestação (pagamento) é a média aritmética das prestações respectivas no Sistemas Price e no Sistema de Amortização Constante (SAC).<br>- SEM SISTEMA DE AMORTIZAÇÃO</td>
-</tr>
-<tr>
-<td>liquidationDate</td>
-<td>string(date)</td>
-<td>true</td>
-<td>Data de liquidação da operação. <br>[Restrição] Deve aceitar NA caso não seja retornado pela instituição.</td>
 </tr>
 <tr>
 <td>cnpjConsignee</td>
@@ -29043,7 +29035,6 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amortizationScheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"liquidationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"cnpjConsignee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"interestRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
