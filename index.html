@@ -5541,7 +5541,16 @@ This operation does not require authentication
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karinafernandes-81@br.inter.net"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"compeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6272"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24550245"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16813,7 +16822,16 @@ This operation does not require authentication
         </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karinafernandes-81@br.inter.net"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"compeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6272"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24550245"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -16895,6 +16913,42 @@ This operation does not require authentication
 <td><a href="#schemabusinesscontacts">BusinessContacts</a></td>
 <td>true</td>
 <td>Conjunto de informações referentes às formas para contatar o cliente.</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>[object]</td>
+<td>true</td>
+<td>Lista de contas do cliente</td>
+</tr>
+<tr>
+<td>» compeCode</td>
+<td>string</td>
+<td>true</td>
+<td>Código identificador atribuído pelo Banco Central do Brasil às instituições participantes do STR (Sistema de Transferência de reservas).O Compe (Sistema de Compensação de Cheques e Outros Papéis) é um sistema que identifica e processa as compensações bancárias. Ele é representado por um código de três dígitos que serve como identificador de bancos, sendo assim, cada instituição bancária possui um número exclusivo</td>
+</tr>
+<tr>
+<td>» branchCode</td>
+<td>string</td>
+<td>true</td>
+<td>Código da Agência detentora da conta. (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, no exercício de atividades da instituição, não podendo ser móvel ou transitória)</td>
+</tr>
+<tr>
+<td>» number</td>
+<td>string</td>
+<td>true</td>
+<td>Número da conta</td>
+</tr>
+<tr>
+<td>» checkDigit</td>
+<td>string</td>
+<td>true</td>
+<td>Dígito da conta</td>
+</tr>
+<tr>
+<td>» type</td>
+<td><a href="#schemaenumaccounttype">EnumAccountType</a></td>
+<td>true</td>
+<td>Tipos de contas. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica. Vide Enum<br>Conta de depósito à vista ou Conta corrente - é o tipo mais comum. Nela, o dinheiro fica à sua disposição para ser sacado a qualquer momento. Essa conta não gera rendimentos para o depositante<br>Conta poupança - foi criada para estimular as pessoas a pouparem. O dinheiro que ficar na conta por trinta dias passa a gerar rendimentos, com isenção de imposto de renda para quem declara. Ou seja, o dinheiro “cresce” (rende) enquanto ficar guardado na conta. Cada depósito terá rendimentos de mês em mês, sempre no dia do mês em que o dinheiro tiver sido depositado<br>Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#39;destinada à execução de transações de pagamento em moeda eletrônica realizadas com base em fundos denominados em reais previamente aportados&#39;</td>
 </tr>
 </tbody></table>
 
@@ -27758,7 +27812,16 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karinafernandes-81@br.inter.net"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"compeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6272"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24550245"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
