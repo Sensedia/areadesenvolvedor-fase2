@@ -577,6 +577,7 @@ components:
         - productSubType
         - contractDate
         - contractAmount
+        - settlementDate
         - currency
         - dueDate
         - instalmentPeriodicity
