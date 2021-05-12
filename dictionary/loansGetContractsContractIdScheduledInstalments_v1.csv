@@ -11,6 +11,4 @@ Todos os valores monetários informados estão representados com a moeda vigente
 /data/typeContractRemaining;typeContractRemaining;Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.;Texto;6;Obrigatório;;"DIA 
 SEMANA 
 MES 
-ANO 
-NA";1;1;" Pode ser retornado NA caso a instituição não possua a informação.
-";Não permitido;string;
+ANO";1;1;"";Não permitido;string;

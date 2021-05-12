@@ -7317,11 +7317,11 @@ components:
           type: number
           format: double
           description: |
-            Percentual que representa o valor da tarifa pactuada para o contrato. 
-            [Restrição] Preenchimento obrigatório quando a forma de cobrança por Percentual.
+            É o valor da tarifa em percentual pactuada no contrato. 
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
           maxLength: 19
           nullable: true
-          example: 50
+          example: 0.2
       additionalProperties: false
     LoansContractedWarranty:
       $ref: '#/components/schemas/LoansWarranties'
@@ -7443,11 +7443,9 @@ components:
             - SEMANA
             - MES
             - ANO
-            - NA
           maxLength: 6
           description: |
             Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.
-            [Restrição] Pode ser retornado NA caso a instituição não possua a informação.
       additionalProperties: false
     LoansPayments:
       type: object
