@@ -420,7 +420,6 @@ components:
       type: object
       description: Conjunto de informações das Contas de pagamento pós paga
       required:
-        - brandId
         - brandName
         - companyCnpj
         - name
@@ -432,13 +431,8 @@ components:
           type: string
           description: 'Identifica de forma única a conta pagamento pós-paga do cliente, mantendo as regras de imutabilidade dentro da instituição transmissora.'
           maxLength: 100
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
           example: XXZTR3459087
-        brandId:
-          type: string
-          description: 'Identifica a Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
-          maxLength: 100
-          pattern: \w*\W*
-          example: '29698749425984912674'
         brandName:
           type: string
           description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes'
@@ -475,7 +469,7 @@ components:
       additionalProperties: false
     CreditCardAccountsLimitsData:
       type: object
-      description: Conjunto de informações referentes aos limites da conta de pagamento pós-paga
+      description: Conjunto de informações referentes aos limites da conta de pagamento pós-paga.
       required:
         - currency
         - creditLineLimitType
@@ -498,14 +492,15 @@ components:
           description: |
             Número de identificação do cartão: corresponde aos 4 últimos dígitos do cartão para PF, ou então, preencher com um identificador para PJ, com as caracteristicas definidas para os IDs no Open Banking.
           maxLength: 100
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
           example: '4453'
         lineName:
           $ref: '#/components/schemas/EnumCreditCardAccountsLineName'
         lineNameAdditionalInfo:
           type: string
           pattern: \w*\W*
-          example: ''
-          description: Campo de preenchimento obrigatório se selecionada a opção 'OUTRAS' em lineName
+          example: Informações adicionais e complementares.
+          description: Campo de preenchimento obrigatório se selecionada a opção 'OUTRAS' em lineName.
         isLimitFlexible:
           type: boolean
           description: 'Indica se a operação de crédito é: com limite flexível (true) ou com limite (false).'
@@ -513,16 +508,16 @@ components:
         limitAmountCurrency:
           type: string
           maxLength: 3
-          pattern: '^(\w{3}){1}$'
+          pattern: '^(\w{3}){1}$|^NA$'
           example: BRL
           description: |
-            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
-            Todos os saldos informados estão representados com a moeda vigente do 
+            Moeda referente ao limite informado, segundo modelo ISO-4217. p.ex. 'BRL.'
+            Todos os limite informados estão representados com a moeda vigente do do Brasil.
         limitAmount:
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
-          description: Valor total do limite informado Expresso em valor monetário com 4 casas decimais
+          description: Valor total do limite informado Expresso em valor monetário com 4 casas decimais.
           maxLength: 19
           minLength: 0
           example: 100000.0001
@@ -530,16 +525,16 @@ components:
         usedAmountCurrency:
           type: string
           maxLength: 3
-          pattern: '^(\w{3}){1}$'
+          pattern: '^(\w{3}){1}$|^NA$'
           example: BRL
           description: |
-            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
-            Todos os saldos informados estão representados com a moeda vigente do Brasil
+            Moeda referente ao limite informado, segundo modelo ISO-4217. p.ex. 'BRL.'
+            Todos os saldos informados estão representados com a moeda vigente do Brasil.
         usedAmount:
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
-          description: Valor utilizado do limite informado Expresso em valor monetário com 4 casas decimais
+          description: Valor utilizado do limite informado Expresso em valor monetário com 4 casas decimais.
           maxLength: 19
           minLength: 0
           example: 7500.05
@@ -547,18 +542,19 @@ components:
         availableAmountCurrency:
           type: string
           maxLength: 3
-          pattern: '^(\w{3}){1}$'
+          pattern: '^(\w{3}){1}$|^NA$'
           example: BRL
           description: |
-            Moeda referente ao saldo informado, segundo modelo ISO-4217. p.ex. 'BRL.'
-            Todos os saldos informados estão representados com a moeda vigente do Brasil
+            Moeda referente ao limite informado, segundo modelo ISO-4217. p.ex. 'BRL.'
+            Todos os saldos informados estão representados com a moeda vigente do Brasil.
         availableAmount:
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
-          description: Valor disponível do limite informado Expresso em valor monetário com 4 casas decimais
+          description: Valor disponível do limite informado Expresso em valor monetário com 4 casas decimais.
           maxLength: 19
           minLength: 0
+          nullable: true
           example: 2499.95
       additionalProperties: false
     CreditCardsAccountPaymentMethod:
@@ -573,6 +569,7 @@ components:
           description: |
             Número de identificação do cartão: corresponde aos 4 últimos dígitos do cartão para PF, ou então, preencher com um identificador para PJ, com as caracteristicas definidas para os IDs no Open Banking.
           maxLength: 100
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
           example: '4453'
         isMultipleCreditCard:
           type: boolean
@@ -601,12 +598,14 @@ components:
           type: string
           maxLength: 100
           description: Código ou identificador único prestado pela instituição que mantém a conta para representar a transação individual.
-          example: MzQ1OTA4N1hYWlRSQTk2R09QQ0FY
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
+          example: TXpRMU9UQTROMWhZV2xSU1FUazJSMDl
         identificationNumber:
           type: string
           description: |
             Número de identificação do cartão: corresponde aos 4 últimos dígitos do cartão para PF, ou então, preencher com um identificador para PJ, com as caracteristicas definidas para os IDs no Open Banking.
           maxLength: 100
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
           example: '4453'
         lineName:
           $ref: '#/components/schemas/EnumCreditCardAccountsLineName'
@@ -619,14 +618,15 @@ components:
           type: string
           maxLength: 100
           description: Informação que identifica a fatura onde consta a transação informada.
-          example: 3459087XXZTR
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
+          example: MTU0OTU1NjI2NTk4OTRmc2ZhZDRmc2Q1NmZkM
         creditDebitType:
           $ref: '#/components/schemas/EnumCreditDebitIndicator'
         transactionType:
           $ref: '#/components/schemas/EnumCreditCardTransactionType'
         transactionalAdditionalInfo:
           type: string
-          description: 'Campo livre, de preenchimento obrigatório quando selecionado tipo de transação ''OUTROS'''
+          description: 'Campo livre, de preenchimento obrigatório quando selecionado tipo de transação "OUTROS"'
           maxLength: 140
         paymentType:
           $ref: '#/components/schemas/EnumCreditCardAccountsPaymentType'
@@ -635,13 +635,13 @@ components:
         feeTypeAdditionalInfo:
           type: string
           maxLength: 140
-          description: 'Campo livre, de preenchimento obrigatório quando selecionada tipo de tarifa ''OUTRA'''
+          description: 'Campo livre, de preenchimento obrigatório quando selecionada tipo de tarifa "OUTRA"'
         otherCreditsType:
           $ref: '#/components/schemas/EnumCreditCardAccountsOtherCreditType'
         otherCreditsAdditionalInfo:
           type: string
           maxLength: 50
-          description: 'Campo livre, de preenchimento obrigatório quando selecionado tipo de crédito ''OUTROS'''
+          description: 'Campo livre, de preenchimento obrigatório quando selecionado tipo de crédito "OUTROS"'
         chargeIdentificator:
           type: string
           description: Identificador da parcela que está sendo informada. Campo de livre preenchimento
