@@ -3736,8 +3736,6 @@ components:
           type: array
           items:
             type: object
-            description: |
-              Conjunto dos atributos que caracterizam as Contas de: depósito à vista, poupança e de pagamento pré-paga
             required:
               - compeCode
               - branchCode
@@ -3775,7 +3773,7 @@ components:
               type:
                 $ref: '#/components/schemas/EnumAccountType'
             additionalProperties: false
-          description: Lista de contas do cliente
+          description: Lista de contas depósito à vista
     BusinessOtherDocument:
       type: object
       required:
@@ -8039,7 +8037,7 @@ components:
           items:
             type: object
             description: |
-              Conjunto dos atributos que caracterizam as Contas de: depósito à vista, poupança e de pagamento pré-paga
+              Lista de contas depósito à vista, poupança e pagamento pré-pagas mantidas pelo cliente na instituição transmissora e para as quais ele tenha fornecido consentimento
             required:
               - compeCode
               - branchCode
@@ -8080,7 +8078,7 @@ components:
               subtype:
                 $ref: '#/components/schemas/EnumAccountSubType'
             additionalProperties: false
-          description: Lista de contas do cliente
+          description: Lista de contas depósito à vista
       additionalProperties: false
     PersonalOtherDocument:
       type: object
