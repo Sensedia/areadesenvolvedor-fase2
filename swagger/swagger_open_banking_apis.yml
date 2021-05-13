@@ -7496,11 +7496,11 @@ components:
           type: number
           format: double
           description: |
-            Percentual que representa o valor da tarifa pactuada para o contrato. 
-            [Restrição] Preenchimento obrigatório quando a forma de cobrança por Percentual.
+            É o valor da tarifa em percentual pactuada no contrato. 
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
           maxLength: 19
           nullable: true
-          example: 50
+          example: 0.25
       additionalProperties: false
     LoansContractedWarranty:
       $ref: '#/components/schemas/LoansWarranties'
@@ -7589,6 +7589,7 @@ components:
         - dueInstalments
         - pastDueInstalments
         - balloonPayments
+        - typeContractRemaining
       properties:
         contractRemainingDays:
           type: number
