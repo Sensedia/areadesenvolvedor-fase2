@@ -554,7 +554,7 @@ components:
           description: |
             Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. 'BRL' 
             Todos os valores monetários informados estão representados com a moeda vigente do Brasil
-          pattern: '^(\w{3}){1}$'
+          pattern: '^(\w{3}){1}$|^NA$'
           maxLength: 3
           example: BRL
         amount:
@@ -770,11 +770,11 @@ components:
           type: number
           format: double
           description: |
-            É o valor da tarifa em percentual pactuada no contrato. 
-            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
+            Percentual que representa o valor da tarifa pactuada para o contrato. 
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança por Percentual.
           maxLength: 19
           nullable: true
-          example: 0.2
+          example: 50
       additionalProperties: false
     LoansContractInterestRate:
       type: object
@@ -806,7 +806,7 @@ components:
           description: 'Campo livre de preenchimento obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO'
           maxLength: 140
           pattern: \w*\W*
-          example: ''
+          example: Informações adicionais
         preFixedRate:
           type: number
           description: |
@@ -829,7 +829,7 @@ components:
           maxLength: 1200
           description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
           pattern: \w*\W*
-          example: ''
+          example: Informações adicionais
       additionalProperties: false
     LoansChargeOverParcel:
       type: object
@@ -872,6 +872,7 @@ components:
             Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.
             [Restrição] Pode ser retornado Na caso a instituição não tenha a informação.
           pattern: \w*\W*$|^NA$
+          example: Informações adicionais sobre encargos.
         chargeRate:
           type: number
           description: |
@@ -883,13 +884,11 @@ components:
       type: object
       description: Conjunto de informações referentes ao prazo remanescente e às parcelas de uma operação de crédito de empréstimos
       required:
-        - contractRemainingNumber
         - dueInstalments
         - pastDueInstalments
         - balloonPayments
-        - typeContractRemaining
       properties:
-        contractRemainingNumber:
+        contractRemainingDays:
           type: number
           maxLength: 6
           description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
@@ -1013,7 +1012,8 @@ components:
         paymentId:
           type: string
           maxLength: 100
-          example: Parcela regular
+          example: XlthLXpBLVowLTldW2EtekEtWjAtOVwtXXswLDk5fSQ
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
           description: Identificador de pagamento de responsabilidade de cada Instituição transmissora.
         isOverParcelPayment:
           type: boolean
@@ -1022,7 +1022,8 @@ components:
         instalmentId:
           type: string
           maxLength: 100
-          example: '15'
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
+          example: WGx0aExYcEJMVm93TFRsZFcyRXRla0V0V2pBdE9Wd3RYWH
           description: 'Identificador de parcela, de responsabilidade de cada Instituição transmissora.'
         paidDate:
           type: string
