@@ -8115,24 +8115,27 @@ This operation does not require authentication
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billTotalAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billMinimumAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billMinimumAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_FATURA_PARCELADO"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -17277,31 +17280,34 @@ This operation does not require authentication
 <a id="tocscreditcardaccountsbillsdata"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billTotalAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billMinimumAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.04</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billMinimumAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_FATURA_PARCELADO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 
-<p>Conjunto das informações referentes a fatura associada à conta de pagamento pós-paga</p>
+<p>Conjunto das informações referentes a lista de faturas associadas à conta de pagamento pós-paga</p>
 
 <h3 id='propriedades-18'>Propriedades</h3>
 
@@ -17321,9 +17327,45 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>dueDate</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>true</td>
 <td>Data de vencimento da Fatura, que aparece para pagamento pelo cliente</td>
+</tr>
+<tr>
+<td>billTotalAmount</td>
+<td>number(double)</td>
+<td>true</td>
+<td>Valor total da fatura</td>
+</tr>
+<tr>
+<td>billTotalAmountCurrency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao valor de pagamento total da fatura, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; Todos os valores informados estão representados com a moeda vigente do Brasil</td>
+</tr>
+<tr>
+<td>billMinimumAmount</td>
+<td>number(double)</td>
+<td>true</td>
+<td>Valor do pagamento minimo da fatura</td>
+</tr>
+<tr>
+<td>billMinimumAmountCurrency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao valor de pagamento minimo da fatura, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; Todos os valores informados estão representados com a moeda vigente do Brasil</td>
+</tr>
+<tr>
+<td>isInstalment</td>
+<td>boolean</td>
+<td>true</td>
+<td>Indica se a fatura permite parcelamento (true) ou não (false).</td>
+</tr>
+<tr>
+<td>financeCharges</td>
+<td>[<a href="#schemacreditcardaccountsbillsfinancecharge">CreditCardAccountsBillsFinanceCharge</a>]</td>
+<td>true</td>
+<td>Lista dos encargos cobrados na fatura</td>
 </tr>
 <tr>
 <td>payments</td>
@@ -17389,21 +17431,11 @@ This operation does not require authentication
 <a id="tocScreditcardaccountsbillspayment"></a>
 <a id="tocscreditcardaccountsbillspayment"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_FATURA_PARCELADO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='propriedades-20'>Propriedades</h3>
@@ -17416,14 +17448,14 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>transactionName</td>
-<td>string</td>
+<td>valueType</td>
+<td><a href="#schemaenumcreditcardaccountsbillingvaluetype">EnumCreditCardAccountsBillingValueType</a></td>
 <td>true</td>
-<td>Campo de livre preenchimento. Literal usada na instituição financeira para identificar a transação</td>
+<td>Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga: (Vide Enum)<br> - Valor de pagamento da fatura com parcelamento<br> - Valor pagamento da fatura realizado<br> - Outro Valor pago na fatura</td>
 </tr>
 <tr>
 <td>paymentDate</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>true</td>
 <td>Data efetiva de quando o Pagamento da fatura foi realizado</td>
 </tr>
@@ -17431,37 +17463,19 @@ This operation does not require authentication
 <td>paymentMode</td>
 <td><a href="#schemaenumcreditcardaccountspaymentmode">EnumCreditCardAccountsPaymentMode</a></td>
 <td>true</td>
-<td>Traz as formas de efetivação do pagamento realizado: <br>- Débito em conta corrente<br>- Boleto bancário<br>- Averbação em folha<br>- PIX</td>
-</tr>
-<tr>
-<td>valueType</td>
-<td><a href="#schemaenumcreditcardaccountsbillingvaluetype">EnumCreditCardAccountsBillingValueType</a></td>
-<td>true</td>
-<td>Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga:<br>- Valor de pagamento mínimo da fatura<br>- Valor de pagamento total da fatura <br>- Valor de pagamento da fatura com parcelamento<br>- Outro Valor pago na fatura</td>
+<td>Traz as formas de efetivação do pagamento realizado: (Vide Enum)<br>- Débito em conta corrente<br>- Boleto bancário<br>- Averbação em folha<br>- PIX</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Valor da transação. Expresso em valor monetário com 4 casas decimais</td>
+<td>Valor pagamento segundo o valueType.  Expresso em valor monetário com 4 casas decimais</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string</td>
 <td>true</td>
-<td>Moeda referente ao valor da transação relacionada com fatura da conta de pagamento pós-paga, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os saldos informados estão representados com a moeda vigente do Brasil.</td>
-</tr>
-<tr>
-<td>isInstalment</td>
-<td>boolean</td>
-<td>true</td>
-<td>Indica se o pagamento da fatura foi parcelado (true) ou não (false). <br>[Restrição] Deverá ser informado como true apenas se valueType for VALOR_PAGAMENTO_FATURA_PARCELADO, para os demais casos informar false.</td>
-</tr>
-<tr>
-<td>financeCharges</td>
-<td>[<a href="#schemacreditcardaccountsbillsfinancecharge">CreditCardAccountsBillsFinanceCharge</a>]</td>
-<td>true</td>
-<td>Lista dos encargos cobrados na fatura</td>
+<td>Moeda referente ao valor de pagamento da fatura, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; Todos os valores informados estão representados com a moeda vigente do Brasil</td>
 </tr>
 </tbody></table>
 
@@ -21336,15 +21350,14 @@ Bandeira é a detentora de todos os direitos e deveres da utilização da marca 
 <a id="tocSenumcreditcardaccountsbillingvaluetype"></a>
 <a id="tocsenumcreditcardaccountsbillingvaluetype"></a></p>
 
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"VALOR_PAGAMENTO_FATURA_PARCELADO"</span><span class="w">
 
 </span></code></pre></div>
 
-<p>Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga:
-- Valor de pagamento mínimo da fatura
-- Valor de pagamento total da fatura 
-- Valor de pagamento da fatura com parcelamento
-- Outro Valor pago na fatura</p>
+<p>Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga: (Vide Enum)
+ - Valor de pagamento da fatura com parcelamento
+ - Valor pagamento da fatura realizado
+ - Outro Valor pago na fatura</p>
 
 <h3 id='propriedades-71'>Propriedades</h3>
 
@@ -21360,7 +21373,7 @@ Bandeira é a detentora de todos os direitos e deveres da utilização da marca 
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga:<br>- Valor de pagamento mínimo da fatura<br>- Valor de pagamento total da fatura <br>- Valor de pagamento da fatura com parcelamento<br>- Outro Valor pago na fatura</td>
+<td>Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga: (Vide Enum)<br> - Valor de pagamento da fatura com parcelamento<br> - Valor pagamento da fatura realizado<br> - Outro Valor pago na fatura</td>
 </tr>
 </tbody></table>
 
@@ -21374,15 +21387,11 @@ Bandeira é a detentora de todos os direitos e deveres da utilização da marca 
 </thead><tbody>
 <tr>
 <td>**</td>
-<td>VALOR_PAGAMENTO_MINIMO_FATURA</td>
-</tr>
-<tr>
-<td>**</td>
-<td>VALOR_PAGAMENTO_TOTAL_FATURA</td>
-</tr>
-<tr>
-<td>**</td>
 <td>VALOR_PAGAMENTO_FATURA_PARCELADO</td>
+</tr>
+<tr>
+<td>**</td>
+<td>VALOR_PAGAMENTO_FATURA_REALIZADO</td>
 </tr>
 <tr>
 <td>**</td>
@@ -22106,7 +22115,7 @@ Crédito (no extrato) Em um extrato bancário, os créditos, marcados com a letr
 
 </span></code></pre></div>
 
-<p>Traz as formas de efetivação do pagamento realizado: 
+<p>Traz as formas de efetivação do pagamento realizado: (Vide Enum)
 - Débito em conta corrente
 - Boleto bancário
 - Averbação em folha
@@ -22126,7 +22135,7 @@ Crédito (no extrato) Em um extrato bancário, os créditos, marcados com a letr
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Traz as formas de efetivação do pagamento realizado: <br>- Débito em conta corrente<br>- Boleto bancário<br>- Averbação em folha<br>- PIX</td>
+<td>Traz as formas de efetivação do pagamento realizado: (Vide Enum)<br>- Débito em conta corrente<br>- Boleto bancário<br>- Averbação em folha<br>- PIX</td>
 </tr>
 </tbody></table>
 
@@ -28300,24 +28309,27 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"billId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3459087XXZTR"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billTotalAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billMinimumAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billMinimumAmountCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"transactionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_FATURA_PARCELADO"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBITO_CONTA_CORRENTE"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"valueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_PAGAMENTO_MINIMO_FATURA"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"isInstalment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"financeCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_ATRASO_PAGAMENTO_FATURA"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -28349,7 +28361,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <td>data</td>
 <td>[<a href="#schemacreditcardaccountsbillsdata">CreditCardAccountsBillsData</a>]</td>
 <td>true</td>
-<td>[Conjunto das informações referentes a fatura associada à conta de pagamento pós-paga]</td>
+<td>[Conjunto das informações referentes a lista de faturas associadas à conta de pagamento pós-paga]</td>
 </tr>
 <tr>
 <td>links</td>

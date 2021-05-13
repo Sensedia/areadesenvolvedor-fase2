@@ -3988,11 +3988,17 @@ components:
       additionalProperties: false
     CreditCardAccountsBillsData:
       type: object
-      description: Conjunto das informações referentes a fatura associada à conta de pagamento pós-paga
+      description: Conjunto das informações referentes a lista de faturas associadas à conta de pagamento pós-paga
       required:
-        - dueDate
-        - payments
         - billId
+        - dueDate
+        - billTotalAmount
+        - billTotalAmountCurrency
+        - billMinimumAmount
+        - billMinimumAmountCurrency
+        - isInstalment
+        - financeCharges
+        - payments
       properties:
         billId:
           description: Informação que identifica a fatura
@@ -4002,15 +4008,51 @@ components:
         dueDate:
           description: 'Data de vencimento da Fatura, que aparece para pagamento pelo cliente'
           type: string
-          maxLength: 20
-          format: date-time
-          example: '2021-05-21T08:30:00Z'
+          format: date
+          maxLength: 10
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+          example: '2021-05-21'
+        billTotalAmount:
+          type: number
+          format: double
+          pattern: '(-?\d{15}(.\d{4}?))$'
+          maxLength: 19
+          minLength: 0
+          description: Valor total da fatura
+          example: 100000.04
+        billTotalAmountCurrency:
+          type: string
+          maxLength: 3
+          description: 'Moeda referente ao valor de pagamento total da fatura, segundo modelo ISO-4217. p.ex. ''BRL'' Todos os valores informados estão representados com a moeda vigente do Brasil'
+          example: BRL
+        billMinimumAmount:
+          type: number
+          format: double
+          pattern: '(-?\d{15}(.\d{4}?))$'
+          maxLength: 19
+          minLength: 0
+          description: Valor do pagamento minimo da fatura
+          example: 1000.04
+        billMinimumAmountCurrency:
+          type: string
+          maxLength: 3
+          description: 'Moeda referente ao valor de pagamento minimo da fatura, segundo modelo ISO-4217. p.ex. ''BRL'' Todos os valores informados estão representados com a moeda vigente do Brasil'
+          example: BRL
+        isInstalment:
+          type: boolean
+          description: Indica se a fatura permite parcelamento (true) ou não (false).
+          example: false
+        financeCharges:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditCardAccountsBillsFinanceCharge'
+          minItems: 1
+          description: Lista dos encargos cobrados na fatura
         payments:
           type: array
           items:
             $ref: '#/components/schemas/CreditCardAccountsBillsPayment'
           minItems: 1
-          maxItems: 2
           description: Lista que traz os valores relativos aos pagamentos da Fatura da conta de pagamento pós-paga
       additionalProperties: false
     CreditCardAccountsBillsFinanceCharge:
@@ -4023,7 +4065,7 @@ components:
           $ref: '#/components/schemas/EnumCreditCardAccountsFinanceChargeType'
         additionalInfo:
           type: string
-          maxLength: 44
+          maxLength: 140
           pattern: \w*\W*
           description: 'Campo livre, de preenchimento obrigatório se selecionado tipo de encargo ''OUTROS'''
         amount:
@@ -4047,30 +4089,23 @@ components:
     CreditCardAccountsBillsPayment:
       type: object
       required:
-        - transactionName
+        - valueType
         - paymentDate
         - paymentMode
-        - valueType
         - amount
         - currency
-        - isInstalment
-        - financeCharges
       properties:
-        transactionName:
-          type: string
-          maxLength: 100
-          pattern: \w*\W*
-          description: Campo de livre preenchimento. Literal usada na instituição financeira para identificar a transação
+        valueType:
+          $ref: '#/components/schemas/EnumCreditCardAccountsBillingValueType'
         paymentDate:
           description: Data efetiva de quando o Pagamento da fatura foi realizado
           type: string
-          maxLength: 20
-          format: date-time
-          example: '2021-05-21T08:30:00Z'
+          format: date
+          maxLength: 10
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+          example: '2021-05-21'
         paymentMode:
           $ref: '#/components/schemas/EnumCreditCardAccountsPaymentMode'
-        valueType:
-          $ref: '#/components/schemas/EnumCreditCardAccountsBillingValueType'
         amount:
           type: number
           format: double
@@ -4078,27 +4113,14 @@ components:
           maxLength: 19
           minLength: 0
           example: 100000.04
-          description: Valor da transação. Expresso em valor monetário com 4 casas decimais
+          description: Valor pagamento segundo o valueType.  Expresso em valor monetário com 4 casas decimais
         currency:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
           description: |
-            Moeda referente ao valor da transação relacionada com fatura da conta de pagamento pós-paga, segundo modelo ISO-4217. p.ex. 'BRL' 
-            Todos os saldos informados estão representados com a moeda vigente do Brasil.
+            Moeda referente ao valor de pagamento da fatura, segundo modelo ISO-4217. p.ex. 'BRL' Todos os valores informados estão representados com a moeda vigente do Brasil
           example: BRL
-        isInstalment:
-          type: boolean
-          example: true
-          description: |
-            Indica se o pagamento da fatura foi parcelado (true) ou não (false). 
-            [Restrição] Deverá ser informado como true apenas se valueType for VALOR_PAGAMENTO_FATURA_PARCELADO, para os demais casos informar false.
-        financeCharges:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditCardAccountsBillsFinanceCharge'
-          minItems: 1
-          description: Lista dos encargos cobrados na fatura
       additionalProperties: false
     CreditCardAccountsData:
       type: object
@@ -5278,15 +5300,13 @@ components:
     EnumCreditCardAccountsBillingValueType:
       type: string
       description: |
-        Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga:
-        - Valor de pagamento mínimo da fatura
-        - Valor de pagamento total da fatura 
-        - Valor de pagamento da fatura com parcelamento
-        - Outro Valor pago na fatura
+        Traz os tipos dos valores relativos aos pagamentos da fatura da conta de pagamento pós-paga: (Vide Enum)
+         - Valor de pagamento da fatura com parcelamento
+         - Valor pagamento da fatura realizado
+         - Outro Valor pago na fatura
       enum:
-        - VALOR_PAGAMENTO_MINIMO_FATURA
-        - VALOR_PAGAMENTO_TOTAL_FATURA
         - VALOR_PAGAMENTO_FATURA_PARCELADO
+        - VALOR_PAGAMENTO_FATURA_REALIZADO
         - OUTRO_VALOR_PAGO_FATURA
     EnumCreditCardAccountsConsolidationType:
       type: string
@@ -5422,7 +5442,7 @@ components:
     EnumCreditCardAccountsPaymentMode:
       type: string
       description: |
-        Traz as formas de efetivação do pagamento realizado: 
+        Traz as formas de efetivação do pagamento realizado: (Vide Enum)
         - Débito em conta corrente
         - Boleto bancário
         - Averbação em folha
