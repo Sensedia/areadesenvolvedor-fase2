@@ -48,7 +48,7 @@ paths:
         - Invoice Financings
       summary: Obtém a lista de contratos de antecipação de recebíveis consentidos pelo cliente.
       description: Método para obter a lista de contratos de antecipação de recebíveis mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento.
-      operationId: getContracts
+      operationId: invoiceFinancingsGetContracts
       parameters:
         - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/xFapiAuthDate'
@@ -88,7 +88,7 @@ paths:
         - Invoice Financings
       summary: Obtém os dados do contrato de antecipação de recebíveis identificado por contractId
       description: Método para obter os dados do contrato de antecipação de recebíveis identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractId
+      operationId: invoiceFinancingsGetContractsContractId
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/Authorization'
@@ -127,7 +127,7 @@ paths:
         - Invoice Financings
       summary: Obtém a lista de garantias vinculadas ao contrato de antecipação de recebíveis identificado por contractId
       description: Método para obter a lista de garantias vinculadas ao contrato de antecipação de recebíveis identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractIdWarranties
+      operationId: invoiceFinancingsGetContractsContractIdWarranties
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/page'
@@ -168,7 +168,7 @@ paths:
         - Invoice Financings
       summary: Obtém os dados do cronograma de parcelas do contrato de antecipação de recebíveis identificado por contractId
       description: Método para obter os dados do cronograma de parcelas do contrato de antecipação de recebíveis identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractIdScheduledInstalments
+      operationId: invoiceFinancingsGetContractsContractIdScheduledInstalments
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/page'
@@ -209,7 +209,7 @@ paths:
         - Invoice Financings
       summary: Obtém os dados de pagamentos do contrato de antecipação de recebíveis identificado por contractId
       description: Método para obter os dados de pagamentos do contrato de antecipação de recebíveis identificado por contractId mantido pelo cliente na instituição transmissora
-      operationId: getContractsContractIdPayments
+      operationId: invoiceFinancingsGetContractsContractIdPayments
       parameters:
         - $ref: '#/components/parameters/contractId'
         - $ref: '#/components/parameters/page'
