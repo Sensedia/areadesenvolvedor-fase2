@@ -3773,7 +3773,8 @@ components:
               type:
                 $ref: '#/components/schemas/EnumAccountType'
             additionalProperties: false
-          description: 'Lista de contas depósito à vista, poupança e pagamento pré-pagas mantidas pelo cliente na instituição transmissora e para as quais ele tenha fornecido consentimento.'
+          description: |
+            Lista de contas depósito à vista, poupança e pagamento pré-pagas mantidas pelo cliente na instituição transmissora e para as quais ele tenha fornecido consentimento.
     BusinessOtherDocument:
       type: object
       required:
@@ -4580,7 +4581,7 @@ components:
           maxLength: 150
           pattern: \w*\W*
           example: 'Av Naburo Ykesaki, 1270'
-          description: Corresponde ao endereço comercial.
+          description: Corresponde ao endereço comercial do cliente
         additionalInfo:
           type: string
           maxLength: 30
