@@ -889,6 +889,7 @@ components:
         - pastDueInstalments
         - balloonPayments
         - typeContractRemaining
+        - paidInstalments
       properties:
         contractRemainingNumber:
           type: number
@@ -897,6 +898,11 @@ components:
           example: 14600
         typeNumberOfInstalments:
           $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
+        paidInstalments:
+          type: number
+          description: 'Quantidade de prestações pagas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
+          maxLength: 3
+          example: 73
         dueInstalments:
           type: number
           maxLength: 3

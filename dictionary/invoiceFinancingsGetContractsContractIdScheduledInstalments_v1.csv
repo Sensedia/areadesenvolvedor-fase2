@@ -5,6 +5,7 @@
 SEMANA 
 MES 
 ANO";0;1;"";Não permitido;string;MES
+/data/paidInstalments;paidInstalments;Quantidade de prestações pagas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero);Número;3;Obrigatório;;;1;1;"";Não permitido;number;73
 /data/dueInstalments;dueInstalments;Quantidade de prestações a vencer. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero);Número;3;Obrigatório;;;1;1;"";Permitido;number;57
 /data/pastDueInstalments;pastDueInstalments;Quantidade de prestações vencidas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero);Número;3;Obrigatório;;;1;1;"";Permitido;number;73
 /data/balloonPayments;balloonPayments;"";Lista;;Obrigatório;;;1;N;"";Não permitido;array;
