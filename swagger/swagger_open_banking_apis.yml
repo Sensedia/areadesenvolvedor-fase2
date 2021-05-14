@@ -6418,7 +6418,6 @@ components:
       additionalProperties: false
     InvoiceFinancingsContract:
       type: object
-      description: Conjunto de informações referentes à identificação da operação de crédito de direitos creditórios descontados
       required:
         - contractNumber
         - ipocCode
@@ -6582,21 +6581,20 @@ components:
       additionalProperties: false
     InvoiceFinancingsContractData:
       type: object
+      description: Conjunto de informações de antecipação de recebíveis mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento
       required:
-        - brandID
+        - contractId
         - brandName
         - companyCnpj
         - productType
         - productSubType
         - ipocCode
-        - contractId
       properties:
-        brandID:
+        contractId:
           type: string
-          description: 'Identifica a Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
           maxLength: 100
-          pattern: \w*\W*
-          example: '29698749425984912674'
+          example: '92792126019929279212650822221989319252576'
+          description: 'Identifica de forma única o contrato da operação de crédito do cliente, mantendo as regras de imutabilidade dentro da instituição transmissora.'
         brandName:
           type: string
           description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes'
@@ -6626,11 +6624,6 @@ components:
               2. Para clientes pessoa jurídica com CNPJ (tipo de cliente = 2), informar as 8 (oito) posições iniciais do CNPJ;
               3. Para os demais clientes (tipos de cliente 3, 4, 5 e 6), informar 14 (catorze) posições com complemento de zeros à esquerda se a identificação tiver tamanho inferior;
             - **Código do contrato:** 1 (uma) até 40 (quarenta) posições, sem complemento de caracteres.
-          example: '92792126019929279212650822221989319252576'
-        contractId:
-          type: string
-          description: 'Identifica de forma única o contrato da operação de crédito do cliente, mantendo as regras de imutabilidade dentro da instituição transmissora.'
-          maxLength: 100
           example: '92792126019929279212650822221989319252576'
       additionalProperties: false
     InvoiceFinancingsContractedFee:
@@ -6684,7 +6677,6 @@ components:
         - currency
         - warrantyType
         - warrantySubType
-        - warrantyAmount
       properties:
         currency:
           type: string
@@ -6786,18 +6778,11 @@ components:
       type: object
       description: Conjunto de informações referentes às parcelas / prestações da operação de crédito contratada
       required:
-        - contractRemainingNumber
         - dueInstalments
         - pastDueInstalments
         - balloonPayments
         - typeContractRemaining
       properties:
-        contractRemainingNumber:
-          type: number
-          maxLength: 6
-          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
-          example: 14600
-          nullable: true
         dueInstalments:
           type: number
           maxLength: 3
@@ -6860,13 +6845,14 @@ components:
         releases:
           type: array
           items:
-            $ref: '#/components/schemas/InvoiceFinancingsTaxesOverParcel'
+            $ref: '#/components/schemas/InvoiceFinancingsReleases'
           description: Lista dos pagamentos realizados no período.
       additionalProperties: false
     InvoiceFinancingsReleases:
       type: object
       description: Lista dos pagamentos realizados no período
       required:
+        - isOverParcelPayment
         - instalmentId
         - paidDate
         - currency
@@ -6900,7 +6886,7 @@ components:
           pattern: '^(\w{3}){1}$'
           example: BRL
           description: |
-            Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. 'BRL'.
+            Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. ''BRL'''.
             Todos os valores monetários informados estão representados com a moeda vigente do Brasil.
         paidAmount:
           type: number
@@ -6956,7 +6942,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/InvoiceFinancingsChargeOverParcel'
-                description: Lista dos encargos que foram pagos fora da parcela.
+              description: Lista dos encargos que foram pagos fora da parcela.
           additionalProperties: false
       additionalProperties: false
     InvoiceFinancingsTaxesOverParcel:
