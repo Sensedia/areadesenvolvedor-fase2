@@ -17828,37 +17828,37 @@ This operation does not require authentication
 <tr>
 <td>transactionalAdditionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Campo livre, de preenchimento obrigatório quando selecionado tipo de transação &quot;OUTROS&quot;</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td><a href="#schemaenumcreditcardaccountspaymenttype">EnumCreditCardAccountsPaymentType</a></td>
-<td>false</td>
+<td>true</td>
 <td>Traz os tipos de pagamento. Preenchimento obrigatório se selecionado tipo de transação PAGAMENTO.</td>
 </tr>
 <tr>
 <td>feeType</td>
 <td><a href="#schemaenumcreditcardaccountfee">EnumCreditCardAccountFee</a></td>
-<td>false</td>
+<td>true</td>
 <td>Traz os tipos de Tarifas: (Vide Enum)<br>Anuidade, Saque com cartão no Brasil, Saque com cartão no exterior, Avaliação emergencial de crédito, Emissão segunda via, Tarifa pagamento de contas, SMS, OUTRA. <br>[Restrição] Preenchimento obrigatório se Tipo de Transação selecionada for &#39;TARIFA&#39;</td>
 </tr>
 <tr>
 <td>feeTypeAdditionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Campo livre, de preenchimento obrigatório quando selecionada tipo de tarifa &quot;OUTRA&quot;</td>
 </tr>
 <tr>
 <td>otherCreditsType</td>
 <td><a href="#schemaenumcreditcardaccountsothercredittype">EnumCreditCardAccountsOtherCreditType</a></td>
-<td>false</td>
+<td>true</td>
 <td>Traz outros tipos de crédito contratados no cartão.<br>[Restrição] Preenchimento obrigatório se o tipo transação selecionado for &#39;OPERACOES_CREDITO_CONTRATADAS_CARTAO&#39;</td>
 </tr>
 <tr>
 <td>otherCreditsAdditionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Campo livre, de preenchimento obrigatório quando selecionado tipo de crédito &quot;OUTROS&quot;</td>
 </tr>
 <tr>
