@@ -5687,31 +5687,22 @@ components:
     FinancingsChargeOverParcel:
       type: object
       required:
-        - feeName
-        - feeCode
-        - feePaidDate
-        - feeAmount
+        - chargeType
+        - chargeAdditionalInfo
+        - chargeAmount
       properties:
-        feeName:
+        chargeType:
+          $ref: '#/components/schemas/EnumContractFinanceChargeType'
+        chargeAdditionalInfo:
           type: string
-          description: Denominação da Tarifa avulsa paga fora da parcela
-          maxLength: 250
           pattern: \w*\W*
-          example: Reavaliação Periódica do Bem
-        feeCode:
-          type: string
-          description: Sigla identificadora da tarifa avulsa fora da parcela
           maxLength: 140
-          pattern: \w*\W*
-          example: avaliação do bem
-        feePaidDate:
-          type: string
-          description: Data efetiva do pagamento da tarifa  conforme especificação RFC-3339. p.ex. 2014-03-19
-          maxLength: 10
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          example: '2020-01-10'
-        feeAmount:
-          description: Traz o valor do pagamento da tarifa avulsa fora da parcela. Expresso em valor monetário com 4 casas decimais
+          example: Informações adicionais
+          description: |
+            Campo livre para preenchimento das informações adicionais referente ao encargo.
+            [Restrição] Obrigatório quando chargeType for igual 'OUTROS'.
+        chargeAmount:
+          description: Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
@@ -6208,17 +6199,16 @@ components:
             Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. 'BRL'.
             Todos os valores monetários informados estão representados com a moeda vigente do Brasil.
         paidAmount:
-          description: |
-            Valor do pagamento referente ao  contrato da modalidade de crédito consultada.
-            Expresso em valor monetário com até 4 casas decimais.
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
           maxLength: 19
           minLength: 0
           example: 100000.04
+          description: |
+            Valor do pagamento referente ao  contrato da modalidade de crédito consultada.
+            Expresso em valor monetário com até 4 casas decimais.
         overParcel:
-          nullable: true
           type: object
           description: Objeto das tarifas e encargos que foram pagos fora da parcela.
           required:

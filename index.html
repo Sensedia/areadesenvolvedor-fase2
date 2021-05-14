@@ -12528,10 +12528,9 @@ This operation does not require authentication
           </span><span class="p">],</span><span class="w">
           </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reavaliação Periódica do Bem"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avaliação do bem"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+              </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -23116,10 +23115,9 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 <a id="tocsfinancingschargeoverparcel"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reavaliação Periódica do Bem"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avaliação do bem"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+  </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='propriedades-100'>Propriedades</h3>
@@ -23132,28 +23130,22 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 </thead><tbody>
 <tr>
-<td>feeName</td>
-<td>string</td>
+<td>chargeType</td>
+<td><a href="#schemaenumcontractfinancechargetype">EnumContractFinanceChargeType</a></td>
 <td>true</td>
-<td>Denominação da Tarifa avulsa paga fora da parcela</td>
+<td>Tipo de encargo pactuado no contrato.</td>
 </tr>
 <tr>
-<td>feeCode</td>
+<td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Sigla identificadora da tarifa avulsa fora da parcela</td>
+<td>Campo livre para preenchimento das informações adicionais referente ao encargo.<br>[Restrição] Obrigatório quando chargeType for igual &#39;OUTROS&#39;.</td>
 </tr>
 <tr>
-<td>feePaidDate</td>
-<td>string</td>
-<td>true</td>
-<td>Data efetiva do pagamento da tarifa  conforme especificação RFC-3339. p.ex. 2014-03-19</td>
-</tr>
-<tr>
-<td>feeAmount</td>
+<td>chargeAmount</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Traz o valor do pagamento da tarifa avulsa fora da parcela. Expresso em valor monetário com 4 casas decimais</td>
+<td>Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
 </tbody></table>
 
@@ -23852,10 +23844,9 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reavaliação Periódica do Bem"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avaliação do bem"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+            </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -23921,10 +23912,9 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reavaliação Periódica do Bem"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avaliação do bem"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+        </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -23982,7 +23972,7 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </tr>
 <tr>
 <td>overParcel</td>
-<td>object¦null</td>
+<td>object</td>
 <td>true</td>
 <td>Objeto das tarifas e encargos que foram pagos fora da parcela.</td>
 </tr>
@@ -29119,10 +29109,9 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
           </span><span class="p">],</span><span class="w">
           </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reavaliação Periódica do Bem"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avaliação do bem"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
+              </span><span class="nl">"chargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JUROS_REMUNERATORIOS_POR_ATRASO"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"chargeAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"chargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
