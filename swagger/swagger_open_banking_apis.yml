@@ -5751,7 +5751,7 @@ components:
         - cnpjConsignee
         - interestRates
         - contractedFees
-        - contractedFinanceCharges
+        - contractedFinancesCharges
       properties:
         contractNumber:
           type: string
@@ -6282,7 +6282,7 @@ components:
       additionalProperties: false
     FinancingsWarranties:
       type: object
-      description: Conjunto de informações referentes à identificação da operação de crédito de empréstimo
+      description: Conjunto de informações referentes à identificação da operação de crédito de financiamento.
       required:
         - currency
         - warrantyType
@@ -7487,9 +7487,8 @@ components:
           type: number
           format: double
           description: |
-            É o valor da tarifa em percentual pactuada no contrato. 
-            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%. 
-            Deve-se informar 4 casas decimais, mesmo que preenchidas com zeros. Exemplo: 0.2000
+            É o valor da tarifa em percentual pactuada no contrato. Deve-se informar 4 casas decimais, mesmo que preenchidas com zeros. Exemplo: 0.2000
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
           maxLength: 19
           nullable: true
           example: 0.25
