@@ -302,6 +302,41 @@ paths:
             - credit-card-accounts
 components:
   schemas:
+    CreditCardsAccountsIdentificationData:
+      type: object
+      description: Conjunto de informações referentes à identificação da conta de pagamento pós-paga.
+      required:
+        - name
+        - productType
+        - creditCardNetwork
+        - paymentMethod
+      properties:
+        name:
+          type: string
+          pattern: \w*\W*
+          description: |
+            Denominação/Identificação do nome da conta de pagamento pós-paga (cartão). Conforme CIRCULAR Nº 3.680,BCB, 2013: 'conta de pagamento pós-paga: destinada à execução de transações de pagamento que independem do aporte prévio de recursos'.
+          maxLength: 50
+          example: Cartão Universitário
+        productType:
+          $ref: '#/components/schemas/EnumCreditCardAccountsProductType'
+        productAdditionalInfo:
+          type: string
+          pattern: \w*\W*
+          description: Informações complementares se tipo de Cartão 'OUTROS'
+          maxLength: 50
+          example: OURO_INTERNACIONAL
+        creditCardNetwork:
+          $ref: '#/components/schemas/EnumCreditCardAccountNetwork'
+        networkAdditionalInfo:
+          type: string
+          pattern: \w*\W*
+          description: Texto livre para especificar categoria de bandeira marcada como 'OUTRAS'.
+          maxLength: 50
+          example: NA
+        paymentMethod:
+          $ref: '#/components/schemas/CreditCardsAccountPaymentMethod'
+      additionalProperties: false
     CreditCardAccountsBillsData:
       type: object
       description: Conjunto das informações referentes a lista de faturas associadas à conta de pagamento pós-paga
@@ -998,40 +1033,7 @@ components:
         - meta
       properties:
         data:
-          type: object
-          description: Conjunto de informações referentes à identificação da conta de pagamento pós-paga.
-          required:
-            - name
-            - productType
-            - creditCardNetwork
-            - paymentMethod
-          properties:
-            name:
-              type: string
-              pattern: \w*\W*
-              description: |
-                Denominação/Identificação do nome da conta de pagamento pós-paga (cartão). Conforme CIRCULAR Nº 3.680,BCB, 2013: 'conta de pagamento pós-paga: destinada à execução de transações de pagamento que independem do aporte prévio de recursos'.
-              maxLength: 50
-              example: Cartão Universitário
-            productType:
-              $ref: '#/components/schemas/EnumCreditCardAccountsProductType'
-            productAdditionalInfo:
-              type: string
-              pattern: \w*\W*
-              description: Informações complementares se tipo de Cartão 'OUTROS'
-              maxLength: 50
-              example: OURO_INTERNACIONAL
-            creditCardNetwork:
-              $ref: '#/components/schemas/EnumCreditCardAccountNetwork'
-            networkAdditionalInfo:
-              type: string
-              pattern: \w*\W*
-              description: Texto livre para especificar categoria de bandeira marcada como 'OUTRAS'.
-              maxLength: 50
-              example: NA
-            paymentMethod:
-              $ref: '#/components/schemas/CreditCardsAccountPaymentMethod'
-          additionalProperties: false
+          $ref: '#/components/schemas/CreditCardsAccountsIdentificationData'
         links:
           $ref: '#/components/schemas/Links'
         meta:
