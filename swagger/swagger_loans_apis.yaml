@@ -558,7 +558,7 @@ components:
           maxLength: 3
           example: BRL
         amount:
-          description: Valor monetário da parcela não regular a vencer.  Expresso em valor monetário com 4 casas decimais.
+          description: Valor monetário da parcela não regular a vencer. Expresso em valor monetário com 4 casas decimais.
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
@@ -926,7 +926,7 @@ components:
       additionalProperties: false
     LoansListContract:
       type: object
-      description: Conjunto de informações  de contratos de empréstimo mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento
+      description: Conjunto de informações de contratos de empréstimo mantidos pelo cliente na instituição transmissora e para os quais ele tenha fornecido consentimento
       required:
         - contractId
         - brandName
