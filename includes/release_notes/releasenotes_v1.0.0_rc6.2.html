@@ -230,6 +230,15 @@
                   <li>
                     <a href="#implementacoes-na-api-loans" class="toc-h2 toc-link" data-title="Implementações na API Loans">Implementações na API Loans</a>
                   </li>
+                  <li>
+                    <a href="#implementacoes-na-api-financings" class="toc-h2 toc-link" data-title="Implementações na API Financings">Implementações na API Financings</a>
+                  </li>
+                  <li>
+                    <a href="#implementacoes-na-api-invoice-financings" class="toc-h2 toc-link" data-title="Implementações na API Invoice Financings">Implementações na API Invoice Financings</a>
+                  </li>
+                  <li>
+                    <a href="#implementacoes-na-api-unarranged-accounts-overdraft" class="toc-h2 toc-link" data-title="Implementações na API Unarranged Accounts Overdraft">Implementações na API Unarranged Accounts Overdraft</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1442,6 +1451,963 @@
 <td>[GET] /contracts/{contractId}/payments</td>
 <td>Atualização da Descrição do Campo data/paidInstalments</td>
 <td><a href="../../#emprestimos-pagamentos-do-contrato">Pagamentos do Empréstimo</a></td>
+</tr>
+</tbody></table>
+<h2 id='implementacoes-na-api-financings'>Implementações na API Financings</h2>
+<table><thead>
+<tr>
+<th>Mudança</th>
+<th>Descrição</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Todas as Operações.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>[GET] /contracts</td>
+<td>Atualização de Itens no Enum data/productType</td>
+<td><a href="../../#financiamentos">Lista de Financiamentos</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts</td>
+<td>Atualização da Descrição do Campo data/contractId</td>
+<td><a href="../../#financiamentos">Lista de Financiamentos</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/currency</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/contractNumber</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/settlementDate</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/typeNumberOfInstalments</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/totalNumberOfInstalments</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/instalmentPeriodicityAdditionalInfo</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Exclusão do Campo data/contractId</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/feeAmount Será &#39;obrigatório&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/cnpjConsignee Será &#39;obrigatório&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/settlementDate Será &#39;obrigatório&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/disbursementDate Será &#39;opcional&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/cnpjConsignee Aceitará &#39;NA&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/settlementDate Aceitará &#39;NA&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFinanceCharges/chargeAdditionalInfo Aceitará &#39;NA&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFees/feeRate Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFees/feeAmount Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/interestRates/postFixedRate Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Inclusão de Restrição no Campo data/contractedFees/feeRate</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Inclusão de Itens no Enum data/instalmentPeriodicity</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/productType</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/calculation</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/referentialRateIndexerType</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/referentialRateIndexerSubType</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/typeNumberOfInstalments</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/interestRates/referentialRateIndexerType</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/contractedFees/feeRate</td>
+<td><a href="../../#financiamentos-contrato">Detalhes do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Exclusão do Campo data/contractId</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Exclusão do Campo data/requestDateTime</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantyType Para data/warrantyType</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantySubType Para data/warrantySubType</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantyAmount Para data/warrantyAmount</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Campo data/warrantyAmount Será &#39;opcional&#39;</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Campo data/warrantySubType Será &#39;obrigatório&#39;</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Inclusão de Restrição no Campo data/warrantyAmount</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Atualização da Descrição do Campo data/warrantySubType</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Atualização da Descrição do Campo data/warrantyAmount</td>
+<td><a href="../../#financiamentos-garantias-do-contrato">Garantias do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Criação do Campo data/typeContractRemaining</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Criação do Objeto data/releases/overParcel</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Exclusão do Campo data/currency</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/dueInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/pastDueInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/balloonPayments/amount Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Atualização da Descrição do Campo data/dueInstalments</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Atualização da Descrição do Campo data/balloonPayments/currency</td>
+<td><a href="../../#financiamentos-parcelas-do-contrato">Parcelas do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Criação do Campo data/releases/isOverParcelPayment</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/currency Para data/releases/currency</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel Para data/releases/overParcel</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeName Para data/releases/overParcel/fees/feeName</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeCode Para data/releases/overParcel/fees/feeCode</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeAmount Para data/releases/overParcel/fees/feeAmount</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel Para data/releases/overParcel/charges</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxType Para data/releases/overParcel/charges/chargeType</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxAdditionalInfo Para data/releases/overParcel/charges/chargeAdditionalInfo</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxAmount Para data/releases/overParcel/charges/chargeAmount</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Objeto De data/releases/overParcel/fee Para data/releases/overParcel/fees</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Objeto De data/releases/overParcel/charge Para data/releases/overParcel/charges</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Campo data/paidInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Campo data/releases/paymentId Será &#39;opcional&#39;</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Atualização da Descrição do Campo data/paidInstalments</td>
+<td><a href="../../#financiamentos-pagamentos-do-contrato">Pagamentos do Financiamento</a></td>
+</tr>
+</tbody></table>
+<h2 id='implementacoes-na-api-invoice-financings'>Implementações na API Invoice Financings</h2>
+<table><thead>
+<tr>
+<th>Mudança</th>
+<th>Descrição</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Todas as Operações.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>[GET] /contracts</td>
+<td>Atualização de Itens no Enum data/productType</td>
+<td><a href="../../#direitos-creditorios-descontados">Lista de Direitos Créditórios Descontados</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts</td>
+<td>Atualização da Descrição do Campo data/contractId</td>
+<td><a href="../../#direitos-creditorios-descontados">Lista de Direitos Créditórios Descontados</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/currency</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/contractNumber</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/settlementDate</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/typeNumberOfInstalments</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/totalNumberOfInstalments</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/instalmentPeriodicityAdditionalInfo</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Exclusão do Campo data/contractId</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/feeAmount Será &#39;obrigatório&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/cnpjConsignee Será &#39;obrigatório&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/settlementDate Será &#39;obrigatório&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/disbursementDate Será &#39;opcional&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/cnpjConsignee Aceitará &#39;NA&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/settlementDate Aceitará &#39;NA&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFinanceCharges/chargeAdditionalInfo Aceitará &#39;NA&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFees/feeRate Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFees/feeAmount Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/interestRates/postFixedRate Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Inclusão de Restrição no Campo data/contractedFees/feeRate</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Inclusão de Itens no Enum data/instalmentPeriodicity</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/productType</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/calculation</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/referentialRateIndexerType</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/referentialRateIndexerSubType</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/typeNumberOfInstalments</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/interestRates/referentialRateIndexerType</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/contractedFees/feeRate</td>
+<td><a href="../../#direitos-creditorios-descontados-contrato">Detalhes do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Exclusão do Campo data/contractId</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Exclusão do Campo data/requestDateTime</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantyType Para data/warrantyType</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantySubType Para data/warrantySubType</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantyAmount Para data/warrantyAmount</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Campo data/warrantyAmount Será &#39;opcional&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Campo data/warrantySubType Será &#39;obrigatório&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Inclusão de Restrição no Campo data/warrantyAmount</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Atualização da Descrição do Campo data/warrantySubType</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Atualização da Descrição do Campo data/warrantyAmount</td>
+<td><a href="../../#direitos-creditorios-descontados-garantias-do-contrato">Garantias do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Criação do Campo data/typeContractRemaining</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Criação do Objeto data/releases/overParcel</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Exclusão do Campo data/currency</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/dueInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/pastDueInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/balloonPayments/amount Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Atualização da Descrição do Campo data/dueInstalments</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Atualização da Descrição do Campo data/balloonPayments/currency</td>
+<td><a href="../../#direitos-creditorios-descontados-parcelas-do-contrato">Parcelas do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Criação do Campo data/releases/isOverParcelPayment</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/currency Para data/releases/currency</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel Para data/releases/overParcel</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeName Para data/releases/overParcel/fees/feeName</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeCode Para data/releases/overParcel/fees/feeCode</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeAmount Para data/releases/overParcel/fees/feeAmount</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel Para data/releases/overParcel/charges</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxType Para data/releases/overParcel/charges/chargeType</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxAdditionalInfo Para data/releases/overParcel/charges/chargeAdditionalInfo</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxAmount Para data/releases/overParcel/charges/chargeAmount</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Objeto De data/releases/overParcel/fee Para data/releases/overParcel/fees</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Objeto De data/releases/overParcel/charge Para data/releases/overParcel/charges</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Campo data/paidInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Campo data/releases/paymentId Será &#39;opcional&#39;</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Atualização da Descrição do Campo data/paidInstalments</td>
+<td><a href="../../#direitos-creditorios-descontados-pagamentos-do-contrato">Pagamentos do Direito Créditório Descontado</a></td>
+</tr>
+</tbody></table>
+<h2 id='implementacoes-na-api-unarranged-accounts-overdraft'>Implementações na API Unarranged Accounts Overdraft</h2>
+<table><thead>
+<tr>
+<th>Mudança</th>
+<th>Descrição</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Todas as Operações.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>[GET] /contracts</td>
+<td>Atualização de Itens no Enum data/productType</td>
+<td><a href="../../#adiantamento-a-depositantes">Lista de Adiantamentos a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts</td>
+<td>Atualização da Descrição do Campo data/contractId</td>
+<td><a href="../../#adiantamento-a-depositantes">Lista de Adiantamentos a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/currency</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/contractNumber</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/settlementDate</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/typeNumberOfInstalments</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/totalNumberOfInstalments</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Criação do Campo data/instalmentPeriodicityAdditionalInfo</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Exclusão do Campo data/contractId</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/feeAmount Será &#39;obrigatório&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/cnpjConsignee Será &#39;obrigatório&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/settlementDate Será &#39;obrigatório&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/disbursementDate Será &#39;opcional&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/cnpjConsignee Aceitará &#39;NA&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/settlementDate Aceitará &#39;NA&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFinanceCharges/chargeAdditionalInfo Aceitará &#39;NA&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFees/feeRate Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/contractedFees/feeAmount Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Campo data/interestRates/postFixedRate Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Inclusão de Restrição no Campo data/contractedFees/feeRate</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Inclusão de Itens no Enum data/instalmentPeriodicity</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/productType</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/calculation</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/referentialRateIndexerType</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização de Itens no Enum data/interestRates/referentialRateIndexerSubType</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/typeNumberOfInstalments</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/interestRates/referentialRateIndexerType</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}</td>
+<td>Atualização da Descrição do Campo data/contractedFees/feeRate</td>
+<td><a href="../../#adiantamento-a-depositantes-contrato">Detalhes do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Exclusão do Campo data/contractId</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Exclusão do Campo data/requestDateTime</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantyType Para data/warrantyType</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantySubType Para data/warrantySubType</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Mudança do Campo De data/warranties/warrantyAmount Para data/warrantyAmount</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Campo data/warrantyAmount Será &#39;opcional&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Campo data/warrantySubType Será &#39;obrigatório&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Inclusão de Restrição no Campo data/warrantyAmount</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Atualização da Descrição do Campo data/warrantySubType</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/warranties</td>
+<td>Atualização da Descrição do Campo data/warrantyAmount</td>
+<td><a href="../../#adiantamento-a-depositantes-garantias-do-contrato">Garantias do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Criação do Campo data/typeContractRemaining</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Criação do Objeto data/releases/overParcel</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Exclusão do Campo data/currency</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/dueInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/pastDueInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Campo data/balloonPayments/amount Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Atualização da Descrição do Campo data/dueInstalments</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/scheduled-instalments</td>
+<td>Atualização da Descrição do Campo data/balloonPayments/currency</td>
+<td><a href="../../#adiantamento-a-depositantes-parcelas-do-contrato">Parcelas do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Criação do Campo data/releases/isOverParcelPayment</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/currency Para data/releases/currency</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel Para data/releases/overParcel</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeName Para data/releases/overParcel/fees/feeName</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeCode Para data/releases/overParcel/fees/feeCode</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/chargesOverParcel/feeAmount Para data/releases/overParcel/fees/feeAmount</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel Para data/releases/overParcel/charges</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxType Para data/releases/overParcel/charges/chargeType</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxAdditionalInfo Para data/releases/overParcel/charges/chargeAdditionalInfo</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Campo De data/taxesOverParcel/taxAmount Para data/releases/overParcel/charges/chargeAmount</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Objeto De data/releases/overParcel/fee Para data/releases/overParcel/fees</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Mudança do Objeto De data/releases/overParcel/charge Para data/releases/overParcel/charges</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Campo data/paidInstalments Aceitará &#39;null&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Campo data/releases/paymentId Será &#39;opcional&#39;</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
+</tr>
+<tr>
+<td>[GET] /contracts/{contractId}/payments</td>
+<td>Atualização da Descrição do Campo data/paidInstalments</td>
+<td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
 </tr>
 </tbody></table>
 
