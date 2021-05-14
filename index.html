@@ -7205,12 +7205,10 @@ This operation does not require authentication
     </span><span class="nl">"productAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OURO_INTERNACIONAL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditCardNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"networkAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4453"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isMultipleCreditCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4453"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isMultipleCreditCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
@@ -28203,12 +28201,10 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
     </span><span class="nl">"productAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OURO_INTERNACIONAL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditCardNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"networkAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4453"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isMultipleCreditCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4453"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isMultipleCreditCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
@@ -28235,45 +28231,9 @@ Comercialização, Financiamento habitacional SFH e Financiamento habitacional e
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>object</td>
+<td><a href="#schemacreditcardsaccountsidentificationdata">CreditCardsAccountsIdentificationData</a></td>
 <td>true</td>
 <td>Conjunto de informações referentes à identificação da conta de pagamento pós-paga.</td>
-</tr>
-<tr>
-<td>» name</td>
-<td>string</td>
-<td>true</td>
-<td>Denominação/Identificação do nome da conta de pagamento pós-paga (cartão). Conforme CIRCULAR Nº 3.680,BCB, 2013: &#39;conta de pagamento pós-paga: destinada à execução de transações de pagamento que independem do aporte prévio de recursos&#39;.</td>
-</tr>
-<tr>
-<td>» productType</td>
-<td><a href="#schemaenumcreditcardaccountsproducttype">EnumCreditCardAccountsProductType</a></td>
-<td>true</td>
-<td>Categoria atribuída a um cartão de pagamento, sob uma certa denominação, que lhe agrega um conjunto de vantagens, diferenciando-o de acordo com o perfil do portador.</td>
-</tr>
-<tr>
-<td>» productAdditionalInfo</td>
-<td>string</td>
-<td>false</td>
-<td>Informações complementares se tipo de Cartão &#39;OUTROS&#39;</td>
-</tr>
-<tr>
-<td>» creditCardNetwork</td>
-<td><a href="#schemaenumcreditcardaccountnetwork">EnumCreditCardAccountNetwork</a></td>
-<td>true</td>
-<td>Categoria de Bandeiras de Cartões de Crédito (Instituidor do arranjo de pagamento).<br>Bandeira é a detentora de todos os direitos e deveres da utilização da marca estampada no cartão, inclusive as bandeiras pertencentes aos emissores.</td>
-</tr>
-<tr>
-<td>» networkAdditionalInfo</td>
-<td>string</td>
-<td>false</td>
-<td>Texto livre para especificar categoria de bandeira marcada como &#39;OUTRAS&#39;.</td>
-</tr>
-<tr>
-<td>» paymentMethod</td>
-<td>[<a href="#schemacreditcardsaccountpaymentmethod">CreditCardsAccountPaymentMethod</a>]</td>
-<td>true</td>
-<td>[Conjunto de informações relativas aos Meios de Pagamento da Conta de pagamento pós-paga]</td>
 </tr>
 <tr>
 <td>links</td>
