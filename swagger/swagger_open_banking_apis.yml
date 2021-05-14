@@ -4970,7 +4970,7 @@ components:
       example: EFETIVA
     EnumWarrantySubType:
       type: string
-      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de ''SEM_TIPO_GARANTIA''.'
+      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12).'
       maxLength: 100
       enum:
         - ACOES_DEBENTURES
@@ -6045,13 +6045,15 @@ components:
         - dueInstalments
         - pastDueInstalments
         - balloonPayments
+        - typeContractRemaining
       properties:
-        contractRemainingDays:
+        contractRemainingNumber:
           type: number
           maxLength: 6
-          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada
+          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
-          nullable: true
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3
@@ -6427,7 +6429,6 @@ components:
         - instalmentPeriodicity
         - firstInstalmentDueDate
         - totalNumberOfInstalments
-        - paidInstalments
         - typeNumberOfInstalments
         - CET
         - amortizationScheduled
@@ -6523,7 +6524,7 @@ components:
           example: ''
           description: |
             Campo livre para complementar a informação relativa à periodicidade de parcelamento.
-            [Condicional] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
+            [Restrição] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
         firstInstalmentDueDate:
           type: string
           format: date
@@ -6536,11 +6537,6 @@ components:
           maxLength: 6
           example: 130632
           description: 'Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
-        paidInstalments:
-          type: number
-          description: 'Quantidade de prestações pagas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
-          maxLength: 3
-          example: 73
         CET:
           type: number
           maxLength: 19
@@ -6778,6 +6774,13 @@ components:
         - balloonPayments
         - typeContractRemaining
       properties:
+        contractRemainingNumber:
+          type: number
+          maxLength: 6
+          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
+          example: 14600
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3
@@ -7376,6 +7379,7 @@ components:
         typeNumberOfInstalments:
           type: string
           description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
+          maxLength: 6
           enum:
             - DIA
             - SEMANA
@@ -7389,7 +7393,7 @@ components:
           example: ''
           description: |
             Campo livre para complementar a informação relativa à periodicidade de parcelamento.
-            [Condicional] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
+            [Restrição] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
         firstInstalmentDueDate:
           type: string
           format: date
@@ -7568,12 +7572,13 @@ components:
         - balloonPayments
         - typeContractRemaining
       properties:
-        contractRemainingDays:
+        contractRemainingNumber:
           type: number
           maxLength: 6
           description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
-          nullable: true
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3
@@ -9438,12 +9443,13 @@ components:
         - balloonPayments
         - typeContractRemaining
       properties:
-        contractRemainingDays:
+        contractRemainingNumber:
           type: number
           maxLength: 6
           description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
-          nullable: true
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3

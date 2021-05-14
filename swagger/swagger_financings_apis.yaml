@@ -650,6 +650,7 @@ components:
         typeNumberOfInstalments:
           type: string
           description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
+          maxLength: 6
           enum:
             - DIA
             - SEMANA
@@ -858,13 +859,15 @@ components:
         - dueInstalments
         - pastDueInstalments
         - balloonPayments
+        - typeContractRemaining
       properties:
-        contractRemainingDays:
+        contractRemainingNumber:
           type: number
           maxLength: 6
-          description: Prazo Remanescente em dias do contrato referente à Modalidade de Crédito informada
+          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
-          nullable: true
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/FinancingsContract/properties/typeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3
@@ -1078,7 +1081,7 @@ components:
           example: CESSAO_DIREITOS_CREDITORIOS
         warrantySubType:
           type: string
-          description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de ''SEM_TIPO_GARANTIA''.'
+          description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12).'
           maxLength: 100
           enum:
             - ACOES_DEBENTURES

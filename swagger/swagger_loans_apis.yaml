@@ -418,7 +418,7 @@ components:
       example: EMPRESTIMOS
     EnumWarrantySubType:
       type: string
-      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de ''SEM_TIPO_GARANTIA''.'
+      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12).'
       maxLength: 100
       enum:
         - ACOES_DEBENTURES
@@ -673,6 +673,7 @@ components:
         typeNumberOfInstalments:
           type: string
           description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
+          maxLength: 6
           enum:
             - DIA
             - SEMANA
@@ -686,7 +687,7 @@ components:
           example: ''
           description: |
             Campo livre para complementar a informação relativa à periodicidade de parcelamento.
-            [Condicional] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
+            [Restrição] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
         firstInstalmentDueDate:
           type: string
           format: date
@@ -889,12 +890,13 @@ components:
         - balloonPayments
         - typeContractRemaining
       properties:
-        contractRemainingDays:
+        contractRemainingNumber:
           type: number
           maxLength: 6
           description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
-          nullable: true
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3

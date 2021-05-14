@@ -485,7 +485,7 @@ components:
       example: EFETIVA
     EnumWarrantySubType:
       type: string
-      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12). [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de ''SEM_TIPO_GARANTIA''.'
+      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12).'
       maxLength: 100
       enum:
         - ACOES_DEBENTURES
@@ -635,12 +635,13 @@ components:
         - balloonPayments
         - typeContractRemaining
       properties:
-        contractRemainingDays:
+        contractRemainingNumber:
           type: number
           maxLength: 6
           description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
           example: 14600
-          nullable: true
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/EnumTypeNumberOfInstalments'
         dueInstalments:
           type: number
           maxLength: 3
@@ -1008,14 +1009,7 @@ components:
         instalmentPeriodicity:
           $ref: '#/components/schemas/EnumContractInstalmentPeriodicity'
         typeNumberOfInstalments:
-          type: string
-          description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
-          enum:
-            - DIA
-            - SEMANA
-            - MES
-            - ANO
-          example: MES
+          $ref: '#/components/schemas/EnumTypeNumberOfInstalments'
         instalmentPeriodicityAdditionalInfo:
           type: string
           pattern: \w*\W*
@@ -1160,6 +1154,16 @@ components:
       enum:
         - ADIANTAMENTO_A_DEPOSITANTES
       example: ADIANTAMENTO_A_DEPOSITANTES
+    EnumTypeNumberOfInstalments:
+      type: string
+      description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
+      maxLength: 6
+      enum:
+        - DIA
+        - SEMANA
+        - MES
+        - ANO
+      example: MES
     Links:
       type: object
       description: Referências para outros recusos da API requisitada.
