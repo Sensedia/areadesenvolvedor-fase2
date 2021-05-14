@@ -13071,12 +13071,12 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xcjklompowsa279212650822221989319aadrtjk"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000144"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADIANTAMENTO_A_DEPOSITANTES"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"productSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADIANTAMENTO_A_DEPOSITANTES"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ipocCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92792126019929279212650822221989319252576"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xcjklompowsa279212650822221989319aadrtjk"</span><span class="w">
+      </span><span class="nl">"ipocCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92792126019929279212650822221989319252576"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13373,7 +13373,7 @@ This operation does not require authentication
         </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXCESSO_CONTA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeChargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNICA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeCharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINIMO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -13945,8 +13945,7 @@ This operation does not require authentication
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque a descoberto"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque descoberto"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+              </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
           </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -24115,7 +24114,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>warrantyAmount</td>
-<td>number(double)¦null</td>
+<td>number(double)</td>
 <td>false</td>
 <td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.<br>[Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;</td>
 </tr>
@@ -24703,7 +24702,7 @@ Adiantamento a depositantes</p>
 <td>warrantyAmount</td>
 <td>number(double)</td>
 <td>false</td>
-<td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.</td>
+<td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.<br>[Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;</td>
 </tr>
 </tbody></table>
 
@@ -26557,7 +26556,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>warrantyAmount</td>
-<td>number(double)¦null</td>
+<td>number(double)</td>
 <td>false</td>
 <td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.<br>[Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;</td>
 </tr>
@@ -29992,7 +29991,7 @@ Adiantamento a depositantes</p>
         </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXCESSO_CONTA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeChargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNICA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeCharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINIMO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -30056,12 +30055,12 @@ Adiantamento a depositantes</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xcjklompowsa279212650822221989319aadrtjk"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000144"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADIANTAMENTO_A_DEPOSITANTES"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"productSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADIANTAMENTO_A_DEPOSITANTES"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ipocCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92792126019929279212650822221989319252576"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xcjklompowsa279212650822221989319aadrtjk"</span><span class="w">
+      </span><span class="nl">"ipocCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92792126019929279212650822221989319252576"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -30195,8 +30194,7 @@ Adiantamento a depositantes</p>
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque a descoberto"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque descoberto"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+              </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
           </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -30318,8 +30316,8 @@ Adiantamento a depositantes</p>
 <tr>
 <td>» warrantyAmount</td>
 <td>number(double)</td>
-<td>true</td>
-<td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.</td>
+<td>false</td>
+<td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.<br>[Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;.</td>
 </tr>
 <tr>
 <td>links</td>
@@ -30509,7 +30507,7 @@ Adiantamento a depositantes</p>
       </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXCESSO_CONTA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"feeChargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNICA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"feeCharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINIMO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
       </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -30682,7 +30680,7 @@ Adiantamento a depositantes</p>
   </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXCESSO_CONTA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"feeChargeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNICA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"feeCharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINIMO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
   </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -30721,9 +30719,9 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>feeAmount</td>
-<td>number(double)¦null</td>
+<td>number</td>
 <td>true</td>
-<td>&quot;Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo&quot;</td>
+<td>Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.</td>
 </tr>
 <tr>
 <td>feeRate</td>
@@ -30836,12 +30834,12 @@ Adiantamento a depositantes</p>
 <a id="tocsunarrangedaccountoverdraftcontractlistdata"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xcjklompowsa279212650822221989319aadrtjk"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60500998000144"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADIANTAMENTO_A_DEPOSITANTES"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"productSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADIANTAMENTO_A_DEPOSITANTES"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ipocCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92792126019929279212650822221989319252576"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xcjklompowsa279212650822221989319aadrtjk"</span><span class="w">
+  </span><span class="nl">"ipocCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92792126019929279212650822221989319252576"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -30858,6 +30856,12 @@ Adiantamento a depositantes</p>
 <th>Descrição</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>contractId</td>
+<td>string</td>
+<td>true</td>
+<td>Um identificador único e imutável usado para identificar o contrato de uma operação de crédito. Este identificador não tem significado para o tomador do crédito</td>
+</tr>
 <tr>
 <td>brandName</td>
 <td>string</td>
@@ -30887,12 +30891,6 @@ Adiantamento a depositantes</p>
 <td>string</td>
 <td>true</td>
 <td>&quot;Número padronizado do contrato - IPOC (Identificação Padronizada da Operação de Crédito). Segundo DOC 3040, composta por:<br>- <strong>CNPJ da instituição:</strong> 8 (oito) posições iniciais;<br>- <strong>Modalidade da operação:</strong> 4 (quatro) posições;<br>- <strong>Tipo do cliente:</strong> 1 (uma) posição( 1 = pessoa natural - CPF, 2= pessoa jurídica – CNPJ, 3 = pessoa física no exterior, 4 = pessoa jurídica no exterior, 5 = pessoa natural sem CPF e 6 = pessoa jurídica sem CNPJ);<br>- <strong>Código do cliente:</strong> O número de posições varia conforme o tipo do cliente:<br>  1. Para clientes pessoa física com CPF (tipo de cliente = 1), informar as 11 (onze) posições do CPF;<br>  2. Para clientes pessoa jurídica com CNPJ (tipo de cliente = 2), informar as 8 (oito) posições iniciais do CNPJ;<br>  3. Para os demais clientes (tipos de cliente 3, 4, 5 e 6), informar 14 (catorze) posições com complemento de zeros à esquerda se a identificação tiver tamanho inferior;<br>- <strong>Código do contrato:</strong> 1 (uma) até 40 (quarenta) posições, sem complemento de caracteres.&quot;</td>
-</tr>
-<tr>
-<td>contractId</td>
-<td>string</td>
-<td>true</td>
-<td>Um identificador único e imutável usado para identificar o contrato de uma operação de crédito. Este identificador não tem significado para o tomador do crédito</td>
 </tr>
 </tbody></table>
 
@@ -31008,7 +31006,7 @@ Adiantamento a depositantes</p>
 <td>balloonPayments</td>
 <td>[<a href="#schemaunarrangedaccountoverdraftballoonpayment">UnarrangedAccountOverdraftBalloonPayment</a>]¦null</td>
 <td>true</td>
-<td>Lista que traz as datas de vencimento e valor das parcelas não regulares  do contrato da modalidade de crédito consultada</td>
+<td>Lista que traz as datas de vencimento e valor das parcelas não regulares do contrato da modalidade de crédito consultada</td>
 </tr>
 <tr>
 <td>typeContractRemaining</td>
@@ -31067,8 +31065,7 @@ Adiantamento a depositantes</p>
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque a descoberto"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque descoberto"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+            </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -31136,8 +31133,7 @@ Adiantamento a depositantes</p>
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"feeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque a descoberto"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"feeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saque descoberto"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feePaidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-10"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+        </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -31216,7 +31212,7 @@ Adiantamento a depositantes</p>
 <td>»» feeName</td>
 <td>string</td>
 <td>true</td>
-<td>Denominação da Tarifa avulsa paga fora da parcela</td>
+<td>Denominação da Tarifa pactuada</td>
 </tr>
 <tr>
 <td>»» feeCode</td>
@@ -31225,16 +31221,10 @@ Adiantamento a depositantes</p>
 <td>Sigla identificadora da tarifa avulsa fora da parcela</td>
 </tr>
 <tr>
-<td>»» feePaidDate</td>
-<td>string</td>
-<td>true</td>
-<td>Data efetiva do pagamento da tarifa  conforme especificação RFC-3339. p.ex. 2014-03-19</td>
-</tr>
-<tr>
 <td>»» feeAmount</td>
-<td>number</td>
+<td>number(double)</td>
 <td>true</td>
-<td>Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.</td>
+<td>Valor monetário da tarifa pactuada no contrato.<br>[Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
 <tr>
 <td>» charges</td>

@@ -6310,7 +6310,6 @@ components:
           type: number
           format: double
           maxLength: 19
-          nullable: true
           description: |
             Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
             [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
@@ -6686,7 +6685,9 @@ components:
         warrantySubType:
           $ref: '#/components/schemas/EnumWarrantySubType'
         warrantyAmount:
-          description: 'Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.'
+          description: |
+            Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
+            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
@@ -7778,7 +7779,7 @@ components:
           type: number
           format: double
           maxLength: 19
-          nullable: true
+          pattern: '(-?\d{15}(.\d{4}?))$'
           description: |
             Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
             [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
@@ -9020,7 +9021,6 @@ components:
               - currency
               - warrantyType
               - warrantySubType
-              - warrantyAmount
             properties:
               currency:
                 type: string
@@ -9033,7 +9033,9 @@ components:
               warrantySubType:
                 $ref: '#/components/schemas/EnumWarrantySubType'
               warrantyAmount:
-                description: 'Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.'
+                description: |
+                  Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
+                  [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'.
                 type: number
                 format: double
                 pattern: '(-?\d{15}(.\d{4}?))$'
@@ -9311,14 +9313,10 @@ components:
           $ref: '#/components/schemas/EnumContractFeeCharge'
         feeAmount:
           description: |
-            "Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo"
-          type: number
-          format: double
-          pattern: '(-?\d{15}(.\d{4}?))$'
-          nullable: true
+            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
           maxLength: 19
-          minLength: 0
-          example: 100000.04
+          nullable: true
+          example: 50
         feeRate:
           type: number
           format: double
@@ -9394,6 +9392,11 @@ components:
         - ipocCode
         - contractId
       properties:
+        contractId:
+          type: string
+          maxLength: 100
+          description: Um identificador único e imutável usado para identificar o contrato de uma operação de crédito. Este identificador não tem significado para o tomador do crédito
+          example: xcjklompowsa279212650822221989319aadrtjk
         brandName:
           type: string
           maxLength: 80
@@ -9424,11 +9427,6 @@ components:
               3. Para os demais clientes (tipos de cliente 3, 4, 5 e 6), informar 14 (catorze) posições com complemento de zeros à esquerda se a identificação tiver tamanho inferior;
             - **Código do contrato:** 1 (uma) até 40 (quarenta) posições, sem complemento de caracteres."
           example: '92792126019929279212650822221989319252576'
-        contractId:
-          type: string
-          maxLength: 100
-          description: Um identificador único e imutável usado para identificar o contrato de uma operação de crédito. Este identificador não tem significado para o tomador do crédito
-          example: xcjklompowsa279212650822221989319aadrtjk
       additionalProperties: false
     UnarrangedAccountOverdraftFinanceCharge:
       type: object
@@ -9491,7 +9489,7 @@ components:
           items:
             $ref: '#/components/schemas/UnarrangedAccountOverdraftBalloonPayment'
           minItems: 0
-          description: Lista que traz as datas de vencimento e valor das parcelas não regulares  do contrato da modalidade de crédito consultada
+          description: Lista que traz as datas de vencimento e valor das parcelas não regulares do contrato da modalidade de crédito consultada
           nullable: true
         typeContractRemaining:
           type: string
@@ -9595,17 +9593,15 @@ components:
               type: array
               items:
                 type: object
-                description: 'Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.'
                 required:
                   - feeName
                   - feeCode
-                  - feePaidDate
                   - feeAmount
                 properties:
                   feeName:
                     type: string
-                    description: Denominação da Tarifa avulsa paga fora da parcela
-                    maxLength: 250
+                    description: Denominação da Tarifa pactuada
+                    maxLength: 140
                     pattern: \w*\W*
                     example: Saque a descoberto
                   feeCode:
@@ -9614,17 +9610,16 @@ components:
                     maxLength: 140
                     pattern: \w*\W*
                     example: Saque descoberto
-                  feePaidDate:
-                    type: string
-                    description: Data efetiva do pagamento da tarifa  conforme especificação RFC-3339. p.ex. 2014-03-19
-                    maxLength: 10
-                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-                    example: '2020-01-10'
                   feeAmount:
                     type: number
-                    description: Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.
+                    format: double
+                    pattern: '(-?\d{15}(.\d{4}?))$'
                     maxLength: 19
-                    example: 200
+                    minLength: 0
+                    example: 100000.04
+                    description: |
+                      Valor monetário da tarifa pactuada no contrato.
+                      [Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo
                 additionalProperties: false
               description: 'Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.'
             charges:
