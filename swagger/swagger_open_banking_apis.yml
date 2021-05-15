@@ -5084,7 +5084,7 @@ components:
       enum:
         - MAE
         - PAI
-        - NA
+        - SEM_FILIACAO
       example: PAI
       description: Tipo de filiação.
     EnumInformedIncomeFrequency:
@@ -8112,6 +8112,7 @@ components:
       description: Conjunto de informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa natural através de seus dados cadastrais.
       required:
         - updateDateTime
+        - personalId
         - brandName
         - civilName
         - socialName
@@ -8131,6 +8132,12 @@ components:
           maxLength: 20
           format: date-time
           example: '2021-05-21T08:30:00Z'
+        personalId:
+          type: string
+          pattern: \w*\W*
+          maxLength: 100
+          description: Um identificador único e imutável usado para identificar o recurso cliente pessoa natural. Este identificador não tem significado para o cliente que deu o consentimento
+          example: 578-psd-71md6971kjh-2d414
         brandName:
           type: string
           maxLength: 80
@@ -8200,6 +8207,7 @@ components:
             type: object
             required:
               - type
+              - civilName
             properties:
               type:
                 $ref: '#/components/schemas/EnumFiliationType'
@@ -8382,6 +8390,7 @@ components:
         informedIncome:
           type: object
           required:
+            - frequency
             - amount
             - currency
             - date
