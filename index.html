@@ -7823,8 +7823,8 @@ This operation does not require authentication
       </span><span class="nl">"brazilianAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"payeeMCC"</span><span class="p">:</span><span class="w"> </span><span class="mi">5137</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -8481,8 +8481,8 @@ This operation does not require authentication
       </span><span class="nl">"brazilianAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"payeeMCC"</span><span class="p">:</span><span class="w"> </span><span class="mi">5137</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -17774,8 +17774,8 @@ This operation does not require authentication
   </span><span class="nl">"brazilianAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payeeMCC"</span><span class="p">:</span><span class="w"> </span><span class="mi">5137</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -17879,19 +17879,19 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>chargeNumber</td>
-<td>number</td>
+<td>number(integer)¦null</td>
 <td>true</td>
 <td>Quantidade de parcelas</td>
 </tr>
 <tr>
 <td>brazilianAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor da transação expresso em valor monetário com 4 casas decimais, em moeda corrente do Brasil</td>
 </tr>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor da transação efetuada no exterior e convertida em moeda nacional com 4 casas decimais. Expresso em valor monetário com 4 casas decimais</td>
 </tr>
@@ -17903,19 +17903,19 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>transactionDate</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>true</td>
 <td>Data original da transação</td>
 </tr>
 <tr>
 <td>billPostDate</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>true</td>
 <td>Data na que a transação foi inserida na fatura</td>
 </tr>
 <tr>
 <td>payeeMCC</td>
-<td>number</td>
+<td>number(integer)¦null</td>
 <td>false</td>
 <td>O MCC ou o código da categoria do estabelecimento comercial. Os MCCs são agrupados segundo suas similaridades. O MCC é usado para classificar o negócio pelo tipo fornecido de bens ou serviços. Os MCCs são atribuídos por tipo de comerciante (por exemplo, um para hotéis, um para lojas de materiais de escritório, etc.) ou por nome de comerciante (por exemplo, 3000 para a United Airlines).</td>
 </tr>
@@ -17948,8 +17948,8 @@ This operation does not require authentication
     </span><span class="nl">"brazilianAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payeeMCC"</span><span class="p">:</span><span class="w"> </span><span class="mi">5137</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -28454,8 +28454,8 @@ Adiantamento a depositantes</p>
       </span><span class="nl">"brazilianAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.04</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billPostDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"payeeMCC"</span><span class="p">:</span><span class="w"> </span><span class="mi">5137</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
