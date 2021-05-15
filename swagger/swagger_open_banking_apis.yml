@@ -4970,7 +4970,9 @@ components:
       example: EFETIVA
     EnumWarrantySubType:
       type: string
-      description: 'Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12).'
+      description: |
+        Denominação/Identificação do sub tipo da garantia que avaliza a Modalidade da Operação de Crédito contratada (Doc 3040, Anexo 12)."
+        [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'.
       maxLength: 100
       enum:
         - ACOES_DEBENTURES
@@ -5952,7 +5954,9 @@ components:
         warrantySubType:
           $ref: '#/components/schemas/EnumWarrantySubType'
         warrantyAmount:
-          description: 'Valor original da garantia. Valor monetário, expresso com 4 casas decimais'
+          description: |
+            Valor original da garantia. Valor monetário, expresso com 4 casas decimais'
+            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'.
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
