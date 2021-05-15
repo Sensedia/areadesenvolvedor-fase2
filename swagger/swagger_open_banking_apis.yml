@@ -5968,7 +5968,6 @@ components:
         warrantyAmount:
           description: |
             Valor original da garantia. Valor monetário, expresso com 4 casas decimais'
-            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'.
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
@@ -6328,7 +6327,6 @@ components:
           maxLength: 19
           description: |
             Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
-            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
           example: 200.0001
       additionalProperties: false
     GeographicCoordinates:
@@ -6703,7 +6701,6 @@ components:
         warrantyAmount:
           description: |
             Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
-            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
           type: number
           format: double
           pattern: '(-?\d{15}(.\d{4}?))$'
@@ -7123,7 +7120,6 @@ components:
           nullable: true
           description: |
             Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
-            [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'
           example: 200.0001
       additionalProperties: false
     Links:
@@ -9051,7 +9047,6 @@ components:
               warrantyAmount:
                 description: |
                   Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
-                  [Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de 'SEM_TIPO_GARANTIA'.
                 type: number
                 format: double
                 pattern: '(-?\d{15}(.\d{4}?))$'
