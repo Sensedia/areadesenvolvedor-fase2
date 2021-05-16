@@ -57,7 +57,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/xJwsSignature'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/pageSize'
         - $ref: '#/components/parameters/accountType'
@@ -99,7 +98,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/xJwsSignature'
         - $ref: '#/components/parameters/accountId'
       responses:
         '200':
@@ -139,7 +137,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/xJwsSignature'
         - $ref: '#/components/parameters/accountId'
       responses:
         '200':
@@ -179,7 +176,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/xJwsSignature'
         - $ref: '#/components/parameters/accountId'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/pageSize'
@@ -224,7 +220,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/xJwsSignature'
         - $ref: '#/components/parameters/accountId'
       responses:
         '200':
@@ -981,15 +976,6 @@ components:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
         minLength: 1
         maxLength: 100
-    xJwsSignature:
-      name: x-jws-signature
-      in: header
-      description: Cabeçalho contendo uma assinatura JWS separada do corpo do payload.
-      required: true
-      schema:
-        type: string
-        pattern: \w*\W*
-        maxLength: 2048
   securitySchemes:
     OpenId:
       type: openIdConnect

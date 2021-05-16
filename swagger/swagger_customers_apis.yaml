@@ -300,6 +300,8 @@ components:
           description: Data de início de relacionamento com a Instituição Financeira. Deve trazer o menor valor entre a informação reportada ao BACEN pelo DOC 3040 e CCS.
         productsServicesType:
           type: array
+          minItems: 1
+          maxItems: 12
           items:
             $ref: '#/components/schemas/EnumProductServiceType'
         procurators:
@@ -1188,8 +1190,6 @@ components:
     EnumProductServiceType:
       type: string
       maxLength: 24
-      minimum: 0
-      maximum: 12
       enum:
         - CONTA_DEPOSITO_A_VISTA
         - CONTA_POUPANCA
