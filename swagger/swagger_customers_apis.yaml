@@ -281,6 +281,7 @@ components:
       required:
         - updateDateTime
         - startDate
+        - productsServicesType
         - procurators
       properties:
         updateDateTime:
@@ -479,10 +480,10 @@ components:
               example: 100000.04
               description: |
                 Valor do patrimônio informado. Expresso em valor monetário com 4 casas decimais.
-                "Patrimônio é o conjunto de bens vinculado a uma pessoa ou a uma entidade".
+                Patrimônio é o conjunto de bens vinculado a uma pessoa ou a uma entidade.
             currency:
               type: string
-              pattern: '^(\w{3}){1}$'
+              pattern: '^(\w{3}){1}$|^NA$'
               maxLength: 3
               example: BRL
               description: 'Moeda referente ao valor do patrimônio, segundo modelo ISO-4217.'
@@ -726,7 +727,7 @@ components:
         address:
           type: string
           maxLength: 150
-          pattern: \w*\W*
+          pattern: \w*\W*|^NA$
           example: 'Av Naburo Ykesaki, 1270'
           description: Corresponde ao endereço comercial do cliente
         additionalInfo:
@@ -738,14 +739,13 @@ components:
         districtName:
           type: string
           maxLength: 50
-          nullable: true
-          pattern: \w*\W*
+          pattern: \w*\W*|^NA$
           example: Centro
           description: Bairro é uma comunidade ou região localizada em uma cidade ou município de acordo com as suas subdivisões geográficas.
         townName:
           type: string
           maxLength: 50
-          pattern: \w*\W*
+          pattern: \w*\W*|^NA$
           example: Marília
           description: |
             Localidade: O nome da localidade corresponde à designação da cidade ou município no qual o endereço está localizado.
@@ -767,7 +767,7 @@ components:
         country:
           type: string
           maxLength: 80
-          pattern: \w*\W*
+          pattern: \w*\W*|^NA$
           example: Brasil
           description: Nome do país
         countryCode:
@@ -1454,16 +1454,14 @@ components:
         documentCountry:
           type: string
           maxLength: 3
-          nullable: true
           example: CAN
-          description: País de emissão do documento. Código do pais de acordo com o código “alpha3” do ISO-3166.
+          description: País de emissão do documento. Código do pais de acordo com o código alpha3 do ISO-3166.
         documentExpirationDate:
           type: string
           format: date
           maxLength: 10
-          nullable: true
           example: '2021-05-21'
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])|^NA$'
           description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
         documentIssueDate:
           type: string
