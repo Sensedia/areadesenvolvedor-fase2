@@ -347,6 +347,7 @@ components:
         - JUROS_MORA_ATRASO
         - IOF_CONTRATACAO
         - IOF_POR_ATRASO
+        - SEM_ENCARGO
         - OUTROS
       example: JUROS_REMUNERATORIOS_POR_ATRASO
     EnumContractInterestRateType:
@@ -640,10 +641,10 @@ components:
           type: string
           pattern: \w*\W*
           maxLength: 50
-          example: ''
+          example: Informações adicionais sobre periodicidade
           description: |
             Campo livre para complementar a informação relativa à periodicidade de parcelamento.
-            [Restrição] Obrigatório quando instalmentPeriodicity for igual 'OUTROS'.
+            [Restrição] Campo de preenchimento obrigatório quando em typeNumberOfInstalments for informada a opção OUTROS.
         firstInstalmentDueDate:
           type: string
           format: date
@@ -753,7 +754,9 @@ components:
           $ref: '#/components/schemas/EnumContractReferentialRateIndexerSubType'
         referentialRateIndexerAdditionalInfo:
           type: string
-          description: 'Campo livre de preenchimento obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO'
+          description: |
+            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
+            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
           maxLength: 140
           pattern: \w*\W*
           example: ''
@@ -793,8 +796,8 @@ components:
         chargeAdditionalInfo:
           type: string
           description: |
-            Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.
-            [Restrição] Pode ser retornado Na caso a instituição não tenha a informação.
+            Campos para informações adicionais.
+            [Restrição] Obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.
           pattern: \w*\W*$|^NA$
         chargeRate:
           type: number
@@ -846,6 +849,7 @@ components:
         - typeContractRemaining
         - contractRemainingNumber
         - paidInstalments
+        - typeNumberOfInstalments
       properties:
         contractRemainingNumber:
           type: number
@@ -954,7 +958,7 @@ components:
           maxLength: 19
           pattern: '(-?\d{15}(.\d{4}?))$'
           example: 100000.04
-          description: 'Saldo devedor Remanescente, divulgado nos canais eletrônicos, do contrato referente à Modalidade de Crédito informada. Expresso em valor monetário com 4 casas decimais.'
+          description: Valor necessario para o cliente liquidar a dívida.
         releases:
           type: array
           items:
@@ -1058,6 +1062,7 @@ components:
           pattern: '(-?\d{15}(.\d{4}?))$'
           maxLength: 19
           minLength: 0
+          nullable: true
           example: 100000.04
       additionalProperties: false
     InvoiceFinancingsChargeOverParcel:
@@ -1077,6 +1082,7 @@ components:
             - JUROS_MORA_ATRASO
             - IOF_CONTRATACAO
             - IOF_POR_ATRASO
+            - SEM_ENCARGO
             - OUTROS
           example: JUROS_REMUNERATORIOS_POR_ATRASO
         chargeAdditionalInfo:
@@ -1088,6 +1094,7 @@ components:
           description: Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.
           type: number
           format: double
+          nullable: true
           pattern: '(-?\d{15}(.\d{4}?))$'
           maxLength: 19
           minLength: 0

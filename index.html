@@ -10504,7 +10504,7 @@ This operation does not require authentication
     </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais sobre periodicidade"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
@@ -14770,7 +14770,7 @@ This operation does not require authentication
     </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais sobre periodicidade"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
@@ -19222,6 +19222,10 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 <tr>
 <td>**</td>
+<td>SEM_ENCARGO</td>
+</tr>
+<tr>
+<td>**</td>
 <td>OUTROS</td>
 </tr>
 </tbody></table>
@@ -23147,7 +23151,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>chargeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -23342,7 +23346,7 @@ Adiantamento a depositantes</p>
 <td>instalmentPeriodicityAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Restrição] Obrigatório quando instalmentPeriodicity for igual &#39;OUTROS&#39;.</td>
+<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Restrição] Campo de preenchimento obrigatório quando em typeNumberOfInstalments for informada a opção OUTROS.</td>
 </tr>
 <tr>
 <td>firstInstalmentDueDate</td>
@@ -23590,7 +23594,7 @@ Adiantamento a depositantes</p>
 <td>referentialRateIndexerAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre de preenchimento obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO</td>
+<td>Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.<br>[Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.</td>
 </tr>
 <tr>
 <td>preFixedRate</td>
@@ -23649,7 +23653,7 @@ Adiantamento a depositantes</p>
 <td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.<br>[Restrição] Pode ser retornado Na caso a instituição não tenha a informação.</td>
+<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.<br>[Restrição] Obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.</td>
 </tr>
 <tr>
 <td>chargeRate</td>
@@ -23705,7 +23709,7 @@ Adiantamento a depositantes</p>
 <tr>
 <td>typeNumberOfInstalments</td>
 <td><a href="#schemaloanscontract/properties/typenumberofinstalments">LoansContract/properties/typeNumberOfInstalments</a></td>
-<td>false</td>
+<td>true</td>
 <td>Tipo de prazo total do contrato referente à modalidade de crédito informada.</td>
 </tr>
 <tr>
@@ -23896,7 +23900,7 @@ Adiantamento a depositantes</p>
 <td>contractOutstandingBalance</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Saldo devedor Remanescente, divulgado nos canais eletrônicos, do contrato referente à Modalidade de Crédito informada. Expresso em valor monetário com 4 casas decimais</td>
+<td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
@@ -24014,7 +24018,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>»» feeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor monetário da tarifa pactuada no contrato.<br>[Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
@@ -24244,7 +24248,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>chargeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -24275,6 +24279,10 @@ Adiantamento a depositantes</p>
 <tr>
 <td>chargeType</td>
 <td>IOF_POR_ATRASO</td>
+</tr>
+<tr>
+<td>chargeType</td>
+<td>SEM_ENCARGO</td>
 </tr>
 <tr>
 <td>chargeType</td>
@@ -24336,7 +24344,7 @@ Adiantamento a depositantes</p>
   </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais sobre periodicidade"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
   </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
@@ -24466,7 +24474,7 @@ Adiantamento a depositantes</p>
 <td>instalmentPeriodicityAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Restrição] Obrigatório quando instalmentPeriodicity for igual &#39;OUTROS&#39;.</td>
+<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Restrição] Campo de preenchimento obrigatório quando em typeNumberOfInstalments for informada a opção OUTROS.</td>
 </tr>
 <tr>
 <td>firstInstalmentDueDate</td>
@@ -24781,7 +24789,7 @@ Adiantamento a depositantes</p>
 <td>referentialRateIndexerAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre de preenchimento obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO</td>
+<td>Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.<br>[Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.</td>
 </tr>
 <tr>
 <td>preFixedRate</td>
@@ -24840,7 +24848,7 @@ Adiantamento a depositantes</p>
 <td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.<br>[Restrição] Pode ser retornado Na caso a instituição não tenha a informação.</td>
+<td>Campos para informações adicionais.<br>[Restrição] Obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.</td>
 </tr>
 <tr>
 <td>chargeRate</td>
@@ -24896,7 +24904,7 @@ Adiantamento a depositantes</p>
 <tr>
 <td>typeNumberOfInstalments</td>
 <td><a href="#schemaloanscontract/properties/typenumberofinstalments">LoansContract/properties/typeNumberOfInstalments</a></td>
-<td>false</td>
+<td>true</td>
 <td>Tipo de prazo total do contrato referente à modalidade de crédito informada.</td>
 </tr>
 <tr>
@@ -25081,7 +25089,7 @@ Adiantamento a depositantes</p>
 <td>contractOutstandingBalance</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Saldo devedor Remanescente, divulgado nos canais eletrônicos, do contrato referente à Modalidade de Crédito informada. Expresso em valor monetário com 4 casas decimais.</td>
+<td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
@@ -25199,7 +25207,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>»» feeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
@@ -25687,7 +25695,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>chargeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -25747,7 +25755,7 @@ Adiantamento a depositantes</p>
   </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais sobre periodicidade"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
   </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
@@ -25882,7 +25890,7 @@ Adiantamento a depositantes</p>
 <td>instalmentPeriodicityAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Restrição] Obrigatório quando instalmentPeriodicity for igual &#39;OUTROS&#39;.</td>
+<td>Campo livre para complementar a informação relativa à periodicidade de parcelamento.<br>[Restrição] Campo de preenchimento obrigatório quando em typeNumberOfInstalments for informada a opção OUTROS.</td>
 </tr>
 <tr>
 <td>firstInstalmentDueDate</td>
@@ -26118,7 +26126,7 @@ Adiantamento a depositantes</p>
 <td>referentialRateIndexerAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre de preenchimento obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO</td>
+<td>Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.<br>[Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.</td>
 </tr>
 <tr>
 <td>preFixedRate</td>
@@ -26177,7 +26185,7 @@ Adiantamento a depositantes</p>
 <td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.<br>[Restrição] Pode ser retornado Na caso a instituição não tenha a informação.</td>
+<td>Campos para informações adicionais.<br>[Restrição] Obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.</td>
 </tr>
 <tr>
 <td>chargeRate</td>
@@ -26233,7 +26241,7 @@ Adiantamento a depositantes</p>
 <tr>
 <td>typeNumberOfInstalments</td>
 <td><a href="#schemaloanscontract/properties/typenumberofinstalments">LoansContract/properties/typeNumberOfInstalments</a></td>
-<td>false</td>
+<td>true</td>
 <td>Tipo de prazo total do contrato referente à modalidade de crédito informada.</td>
 </tr>
 <tr>
@@ -26356,7 +26364,7 @@ Adiantamento a depositantes</p>
 <td>contractOutstandingBalance</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Saldo devedor Remanescente, divulgado nos canais eletrônicos, do contrato referente à Modalidade de Crédito informada. Expresso em valor monetário com 4 casas decimais.</td>
+<td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
@@ -26504,7 +26512,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>feeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor monetário da tarifa pactuada no contrato.<br>[Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
@@ -29304,7 +29312,7 @@ Adiantamento a depositantes</p>
     </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais sobre periodicidade"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
@@ -29609,7 +29617,7 @@ Adiantamento a depositantes</p>
     </span><span class="nl">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-01-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instalmentPeriodicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEMANAL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"typeNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instalmentPeriodicityAdditionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informações adicionais sobre periodicidade"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"firstInstalmentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalNumberOfInstalments"</span><span class="p">:</span><span class="w"> </span><span class="mi">130632</span><span class="p">,</span><span class="w">
     </span><span class="nl">"CET"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="p">,</span><span class="w">
@@ -30429,7 +30437,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>chargeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -30813,7 +30821,7 @@ Adiantamento a depositantes</p>
 <td>referentialRateIndexerAdditionalInfo</td>
 <td>string</td>
 <td>false</td>
-<td>Campo livre de preenchimento obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO</td>
+<td>Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.<br>[Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.</td>
 </tr>
 <tr>
 <td>preFixedRate</td>
@@ -30935,7 +30943,7 @@ Adiantamento a depositantes</p>
 <td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Campo de preenchimento obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.<br>[Restrição] Pode ser retornado Na caso a instituição não tenha a informação.</td>
+<td>Campo para informações adicionais.<br>[Restrição] Obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.</td>
 </tr>
 <tr>
 <td>chargeRate</td>
@@ -30990,7 +30998,7 @@ Adiantamento a depositantes</p>
 <tr>
 <td>typeNumberOfInstalments</td>
 <td><a href="#schemaloanscontract/properties/typenumberofinstalments">LoansContract/properties/typeNumberOfInstalments</a></td>
-<td>false</td>
+<td>true</td>
 <td>Tipo de prazo total do contrato referente à modalidade de crédito informada.</td>
 </tr>
 <tr>
@@ -31113,7 +31121,7 @@ Adiantamento a depositantes</p>
 <td>contractOutstandingBalance</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Saldo devedor Remanescente, divulgado nos canais eletrônicos, do contrato referente à Modalidade de Crédito informada. Expresso em valor monetário com 4 casas decimais.</td>
+<td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
@@ -31231,7 +31239,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>»» feeAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor monetário da tarifa pactuada no contrato.<br>[Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo</td>
 </tr>
