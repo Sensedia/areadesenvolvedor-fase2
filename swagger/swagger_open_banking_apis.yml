@@ -1506,7 +1506,7 @@ paths:
 
         ### Visão Geral
 
-        Obtem a lista de contratos de empréstimos mantidos pelos clientes da instituição transmisorra.
+        Obtém a lista de contratos de empréstimos mantidos pelos clientes da instituição transmissora.
 
         Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Custo Efetivo Total (CET)](#glossarioCET), [Empréstimo (Loan)](#glossarioEmprestimo), [Encargo (Charge)](#glossarioEncargo), [Ente Consignante (CnpjConsignee)](#glossarioEnteConsignante), [Identificador padronizado da operação de crédito – Ipoc Code](#glossarioIPOC), [Indexador (Indexer)](#glossarioIndexador), [Sistema de Amortização Constante (SAC)](#glossarioSAC), [Sistema Francês de Amortização (Price)](#glossarioPrice), [Tarifa (Fee)](#glossarioTarifa), [Taxa Efetiva (EffectiveTax)](#glossarioTaxaEfetiva) e [Taxa nominal (NominalTax)](#glossarioTaxaNominal).
 
@@ -4328,6 +4328,7 @@ components:
         - currency
         - transactionDate
         - billPostDate
+        - payeeMCC
       properties:
         transactionId:
           type: string
@@ -5838,6 +5839,7 @@ components:
             Todos os valores monetários informados estão representados com a moeda vigente do Brasil
           example: BRL
         dueDate:
+          type: string
           format: date
           maxLength: 10
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
@@ -9829,9 +9831,9 @@ components:
       in: query
       schema:
         type: string
-        maxLength: 20
-        format: date-time
-        example: '2021-05-21T08:30:00Z'
+        maxLength: 10
+        format: date
+        example: '2021-05-21'
     fromDueDate:
       name: fromDueDate
       description: Data inicial de filtragem.
@@ -9839,9 +9841,9 @@ components:
       in: query
       schema:
         type: string
-        maxLength: 20
-        format: date-time
-        example: '2021-05-21T08:30:00Z'
+        maxLength: 10
+        format: date
+        example: '2021-05-21'
     fromTransactionDate:
       name: fromTransactionDate
       description: Data inicial de filtragem.
@@ -9849,9 +9851,9 @@ components:
       in: query
       schema:
         type: string
-        maxLength: 20
-        format: date-time
-        example: '2021-05-21T08:30:00Z'
+        maxLength: 10
+        format: date
+        example: '2021-05-21'
     page:
       name: page
       in: query
@@ -9878,9 +9880,9 @@ components:
       in: query
       schema:
         type: string
-        maxLength: 20
-        format: date-time
-        example: '2021-05-21T08:30:00Z'
+        maxLength: 10
+        format: date
+        example: '2021-05-21'
     toDueDate:
       name: toDueDate
       description: Data final de filtragem.
@@ -9888,9 +9890,9 @@ components:
       in: query
       schema:
         type: string
-        maxLength: 20
-        format: date-time
-        example: '2021-05-21T08:30:00Z'
+        maxLength: 10
+        format: date
+        example: '2021-05-21'
     toTransactionDate:
       name: toTransactionDate
       description: Data final de filtragem.
@@ -9898,9 +9900,9 @@ components:
       in: query
       schema:
         type: string
-        maxLength: 20
-        format: date-time
-        example: '2021-05-21T08:30:00Z'
+        maxLength: 10
+        format: date
+        example: '2021-05-21'
     xCustomerUserAgent:
       name: x-customer-user-agent
       in: header

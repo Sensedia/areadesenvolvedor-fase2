@@ -225,6 +225,17 @@
             <a href="#introducao" class="toc-h1 toc-link" data-title="Introdução">Introdução</a>
           </li>
           <li>
+            <a href="#notificacoes" class="toc-h1 toc-link" data-title="Notificações">Notificações</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#atualizacao-das-apis-no-diretorio" class="toc-h2 toc-link" data-title="Atualização das APIs no diretório">Atualização das APIs no diretório</a>
+                  </li>
+                  <li>
+                    <a href="#como-realizar-a-publicacao-das-apis-da-fase-1-do-open-banking" class="toc-h2 toc-link" data-title="Como realizar a publicação das APIs da Fase 1 do Open Banking">Como realizar a publicação das APIs da Fase 1 do Open Banking</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#padroes" class="toc-h1 toc-link" data-title="Padrões">Padrões</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1247,6 +1258,36 @@
 <p>Nessa área os desenvolvedores encontrarão informações para observância obrigatória de todos os participantes, sejam eles obrigatórios ou voluntários, incluindo padrões técnicos de interfaces, glossário de termos técnicos, especificações dos diferentes tipos de APIs - incluindo seu versionamento, requisitos não funcionais como SLAs e limites de tráfego de requisições, informações de desempenho e disponibilidade, FAQ com diversas orientações aos desenvolvedores, entre outros elementos necessários à implementação do Sistema Financeiro Aberto.  Todas as informações foram definidas de acordo com a regulamentação vigente no País, respeitando instruções normativas e resoluções do Banco Central do Brasil e do Conselho Monetário Nacional.</p>
 
 <p>Este sítio eletrônico e seu conteúdo foram criados e são mantidos pela Estrutura responsável pela Governança do Open Banking Brasil, formada por integrantes de múltiplas associações: Febraban, ABBC, ACREFI, ABBI, OCB, Abecs, Abipag, Abranet, Câmara e-net, ABCD e ABFintechs.</p>
+<h1 id='notificacoes'>Notificações</h1><h2 id='atualizacao-das-apis-no-diretorio'>Atualização das APIs no diretório</h2>
+<p>Seguindo determinação do Banco Central do Brasil, todas as instituições financeiras vinculadas à Fase 1 do Open Banking deverão especificar todas as ramificações (endpoints) de suas famílias de APIs no diretório de <a target="_blank" href="https://auth.directory.openbankingbrasil.org.br/interaction/asl3sZulHvQW1SjMnXLtu">participantes do Open Banking</a>. Essa atualização deverá ser feita em até 15 dias a partir da data de envio deste documento.</p>
+
+<p>Na prática, as instituições deverão excluir a entrada que já existe no diretório de participantes e incluir cada uma das ramificações que entenda serem válidas para o seu próprio caso.</p>
+
+<p>Tratam-se de 4 famílias de APIs, com até 20 ramificações no total. Essa atualização proporcionará mais transparência ao consumidor, que terá mais facilidade para localizar as informações das instituições. A ação também evitará distorções nas métricas de disponibilidade de interfaces, já que as instituições não deverão cadastrar endpoints relativos a dependências ou a produtos e serviços que não tenham, não ofertem ou não distribuam.</p>
+
+<p>Dessa maneira, a mensagem de erro 404 não será mais exibida nestes casos. Até o dia 16 de abril de 2021, uma <a target="_blank" href="https://ob-public-files.s3.amazonaws.com/faq_atualizacao_diretorio_v3.pdf?cookie=true">FAQ com as principais dúvidas</a> será disponibilizada, assim como um <a target="_blank" href="https://ob-public-files.s3.amazonaws.com/open_banking_endpoints.pdf?cookie=true">manual com passo a passo</a> para a atualização das APIs.</p>
+
+<p>São Paulo, 14 de abril de 2021</p>
+
+<p>Grupo de Trabalho de Infraestrutura do Open Banking Brasil</p>
+<h2 id='como-realizar-a-publicacao-das-apis-da-fase-1-do-open-banking'>Como realizar a publicação das APIs da Fase 1 do Open Banking</h2>
+<p>Para a primeira fase do Open Banking Brasil, conhecida como Open Data, as instituições registradas no ecossistema com o papel “instituição transmissora e receptora de dados” deverão realizar a publicação das suas APIs no diretório de participantes.</p>
+
+<p>O papel “instituição transmissora e receptora de dados”, abreviada por DADOS no diretório de participantes, é destinado a todas as instituições dos agrupamentos S1 e S2, em caráter obrigatório, e a qualquer outra instituição regulada pelo Banco Central do Brasil, em caráter voluntário.</p>
+
+<p>Para publicar as APIs da fase 1 descritas no <a target="_blank" href="hyperlink: https://openbanking-brasil.github.io/areadesenvolvedor/#fase-1-apis-do-open-banking-brasil">Portal do Desenvolvedor do Open Banking</a> o administrador da instituição no diretório de participantes com papel “DADOS” deve seguir as instruções contidas no <a target="_blank" href="https://openbanking-brasil.github.io/areadesenvolvedor/#guias-de-implementacao">Guia do diretório</a>.</p>
+
+<p>Caso a publicação tenha sido realizada de forma correta os endpoints das APIs poderão ser consultados através do JSON retornado pela API de participantes do diretório: https://data.directory.openbankingbrasil.org.br/participants. O acesso a essa API é livre e seu conteúdo é atualizado a cada 15 minutos.</p>
+
+<p>Qualquer dúvida em relação ao processo de cadastro deverá ser enviado ao <a target="_blank" href="https://servicedesk.openbankingbrasil.org.br/Login.jsp?navLanguage=pt-BR">service desk do Open Banking</a>.</p>
+
+<p>Materiais adicionais:</p>
+
+<p><a target="_blank" href="https://openbankingbrasil.org.br/2021/05/03/atualizacao-das-apis-no-diretorio/?cookie=true">Comunicado atualização do diretório</a></p>
+
+<p><a target="_blank" href="https://ob-public-files.s3.amazonaws.com/faq_atualizacao_diretorio_v3.pdf?cookie=true">FAQ Diretório atualizado</a></p>
+
+<p><a target="_blank" href="https://ob-public-files.s3.amazonaws.com/open_banking_endpoints.pdf?cookie=true">Cadastro endpoints</a></p>
 <h1 id='padroes'>Padrões</h1>
 <p>Estes padrões representam a versão 1.0.0, a qual fornece uma visão alto nível dos padrões. Consulte a seção <a href="#guia-de-versionamento">versionamento</a> para obter mais informações sobre como as versões são gerenciadas com o padrão.</p>
 
@@ -1282,7 +1323,8 @@
 
 <h3 id='principio-7-identificadores-unicos'>Princípio 7: Identificadores únicos</h3>
 
-<p>Um recurso REST deverá ter um identificador exclusivo que possa ser usado para identificar o recurso, com formato e padrão a ser definido a partir da Fase 2 do Open Banking no Brasil.</p>
+<p>Um recurso REST deverá ter um identificador exclusivo que possa ser usado para identificar o recurso alvo da API. 
+Este identificador será usado para criar URLs que permitam endereçar recursos específicos, obedecendo aos padrões definidos nesta documentação, no item Formação e estabilidade do ID.</p>
 
 <h3 id='principio-8-categorizacao-dos-requisitos-de-implementacao'>Princípio 8: Categorização dos requisitos de implementação</h3>
 
@@ -1291,6 +1333,11 @@
 <h3 id='principio-9-agnosticas'>Princípio 9: Agnósticas</h3>
 
 <p>As APIs serão agnósticas à implementação onde elas poderão ser consumidas independente das tecnologias adotadas no ecossistema, porém com aderência aos princípios contidos nesta documentação.</p>
+
+<h3 id='principio-10-idempotencia'>Princípio 10: Idempotência</h3>
+
+<p>As APIs serão definidas como idempotentes para não causar uma experiência ruim ao consumidor ou aumentar os indicadores de risco falso positivo.
+Trata-se de recurso necessário para garantir que não haja duplicidade em caso de perda de comunicação e não deve se limitar aos verbos HTTP, devendo ser aplicado ao design completo da API.</p>
 
 <h2 id='versionamento'>Versionamento</h2>
 
@@ -1455,7 +1502,7 @@ prazos definidos para lançamento e implementação de novas versões <em>major<
 </tr>
 <tr>
 <td style="text-align: left"><strong>x-v</strong></td>
-<td style="text-align: left">Cabeçalho que indica a versão implementada da API pela instituição financeira. Deve ser preenchido com um número positivo, exemplo: <code>x-v : 2</code></td>
+<td style="text-align: left">Cabeçalho que indica a versão implementada da API pela instituição financeira. Deve ser preenchido de forma completa, por exemplo: <code>x-v : 1.0.2</code></td>
 <td style="text-align: left">Sim</td>
 </tr>
 <tr>
@@ -1497,7 +1544,9 @@ prazos definidos para lançamento e implementação de novas versões <em>major<
 
 <h2 id='codigos-de-resposta-http'>Códigos de resposta HTTP</h2>
 
-<p>Os códigos de resposta HTTP devem ser utilizados conforme tabela abaixo.</p>
+<p>Os códigos de resposta HTTP devem ser utilizados conforme tabela mais abaixo.
+Observação: com a implementação do cadastro por <em>endpoint</em> no diretório de participantes e conforme orientação do regulador, as instituições participantes NÃO DEVEM cadastrar endpoints de produtos ou serviços que não ofertem.
+Neste caso específico - a consulta em um endpoint não cadastrado - o status code esperado na resposta é o <em>404 - NOT FOUND</em>.</p>
 
 <h3 id='codigos'>Códigos</h3>
 
@@ -1950,7 +1999,7 @@ O valor padrão será assumido sempre que o parâmetro não estiver preenchido o
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
-<p>Além dos dados requisitados, as respostas paginadas também terão em sua estrutura dois objetos adicionais que incluirão parâmetros para facilitar a nagevação das páginas:</p>
+<p>Além dos dados requisitados, as respostas paginadas também terão em sua estrutura dois objetos adicionais que incluirão parâmetros para facilitar a navegação das páginas:</p>
 
 <h3 id='links'>Links</h3>
 
@@ -2033,15 +2082,15 @@ Para cada um desses atributos o tamanho da página especificado na requisição 
 <li>Nos <em>payloads</em> o nome de campo &quot;id&quot; nunca deverá ser utilizado. Cada campo ID deverá ter um nome significativo, dessa forma independentemente de onde o ID for utilizado entre múltiplos <em>endpoints</em>, ele sempre irá se referir ao seu objeto principal. Por exemplo, IDs para conta deverão ser representados no JSON como &quot;accountId&quot;.</li>
 </ul>
 
-<h3 id='idempotencia-principio-adicional'>Idempotência (princípio adicional)</h3>
+<h3 id='principios-para-a-formacao-de-ids-identificadores-de-recursos-nas-apis'>Princípios para a formação de IDs (identificadores) de recursos nas APIs</h3>
 
-<p>APIs serão definidas como idempotentes para não causar uma experiência ruim ao consumidor ou aumentar os indicadores de risco falso positivo.
-Trata-se de recurso necessário para garantir que não haja duplicidade em caso deperda de comunicação e não deve se limitar aos verbos HTTP, devendo ser aplicado ao design completo da API.</p>
-
-<h3 id='identificadores-unicos-principio-ja-existente'>Identificadores únicos (princípio já existente)</h3>
-
-<p>Um recurso REST deverá ter um identificador exclusivo que possa ser usado para identificar o recurso alvoda API.
-Este identificador será usado para criar URLs que permitam endereçar recursos específicos,obedecendo aos padrões definidos nesta documentação,no item Formação e estabilidade do ID.</p>
+<ul>
+<li>O ID DEVE ser uma string com limitação de 100 caracteres - limite que poderá ser revisitado em caso de necessidade apresentada por quaisquer dos participantes do Open Banking Brasil e - aderente aos padrões apresentados na seção 2.1 da RFC 2141;</li>
+<li>Uma vez que será trafegado nas chamadas de interface, o ID NÃO DEVE conter dados classificados como PII - Personally identifiable information (Informação Pessoalmente Identificável) ou Informação de Identificação Pessoal;</li>
+<li>DEVE ser garantida a unicidade do ID dentro do contexto da API assim como a estabilidade do mesmo, sendo a estabilidade condicionada à manutenção das características de identificação natural do recurso em questão (por exemplo, as informações de banco, agência e conta na API de Contas).
+A alteração das características de identificação natural implica na geração de um novo identificador associado ao recurso;</li>
+<li>A utilização de meios técnicos razoáveis e disponíveis para a formação do ID é de livre implementação por parte da instituição transmissora dos dados, de forma que apenas a aderência aos princípios elencados nesta documentação é mandatória.</li>
+</ul>
 
 <h2 id='extensibilidade'>Extensibilidade</h2>
 
@@ -7743,14 +7792,14 @@ This operation does not require authentication
 <tr>
 <td>fromTransactionDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data inicial de filtragem.</td>
 </tr>
 <tr>
 <td>toTransactionDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data final de filtragem.</td>
 </tr>
@@ -8091,14 +8140,14 @@ This operation does not require authentication
 <tr>
 <td>fromDueDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data inicial de filtragem.</td>
 </tr>
 <tr>
 <td>toDueDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data final de filtragem.</td>
 </tr>
@@ -8401,14 +8450,14 @@ This operation does not require authentication
 <tr>
 <td>fromTransactionDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data inicial de filtragem.</td>
 </tr>
 <tr>
 <td>toTransactionDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data final de filtragem.</td>
 </tr>
@@ -9625,14 +9674,14 @@ This operation does not require authentication
 <tr>
 <td>fromBookingDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data inicial de filtragem.</td>
 </tr>
 <tr>
 <td>toBookingDate</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string(date)</td>
 <td>false</td>
 <td>Data final de filtragem.</td>
 </tr>
@@ -10135,7 +10184,7 @@ This operation does not require authentication
 
 <h3 id='visao-geral-20'>Visão Geral</h3>
 
-<p>Obtem a lista de contratos de empréstimos mantidos pelos clientes da instituição transmisorra.</p>
+<p>Obtém a lista de contratos de empréstimos mantidos pelos clientes da instituição transmissora.</p>
 
 <p>Tags: <a href="#glossarioCNPJ">CNPJ (CNPJ Number)</a>, <a href="#glossarioCET">Custo Efetivo Total (CET)</a>, <a href="#glossarioEmprestimo">Empréstimo (Loan)</a>, <a href="#glossarioEncargo">Encargo (Charge)</a>, <a href="#glossarioEnteConsignante">Ente Consignante (CnpjConsignee)</a>, <a href="#glossarioIPOC">Identificador padronizado da operação de crédito – Ipoc Code</a>, <a href="#glossarioIndexador">Indexador (Indexer)</a>, <a href="#glossarioSAC">Sistema de Amortização Constante (SAC)</a>, <a href="#glossarioPrice">Sistema Francês de Amortização (Price)</a>, <a href="#glossarioTarifa">Tarifa (Fee)</a>, <a href="#glossarioTaxaEfetiva">Taxa Efetiva (EffectiveTax)</a> e <a href="#glossarioTaxaNominal">Taxa nominal (NominalTax)</a>.</p>
 
@@ -17917,7 +17966,7 @@ This operation does not require authentication
 <tr>
 <td>payeeMCC</td>
 <td>number(integer)¦null</td>
-<td>false</td>
+<td>true</td>
 <td>O MCC ou o código da categoria do estabelecimento comercial. Os MCCs são agrupados segundo suas similaridades. O MCC é usado para classificar o negócio pelo tipo fornecido de bens ou serviços. Os MCCs são atribuídos por tipo de comerciante (por exemplo, um para hotéis, um para lojas de materiais de escritório, etc.) ou por nome de comerciante (por exemplo, 3000 para a United Airlines).</td>
 </tr>
 </tbody></table>
@@ -23326,7 +23375,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>dueDate</td>
-<td>number</td>
+<td>string(date)</td>
 <td>true</td>
 <td>Data de vencimento Final da operação. Especificação RFC-3339</td>
 </tr>
@@ -31481,7 +31530,7 @@ Espera-se que o detentor dos dados garanta que a medição do tempo de resposta 
 </tr>
 </thead><tbody>
 <tr>
-<td>03/05/2021</td>
+<td>17/05/2021</td>
 <td>v1.0.0-rc6.2</td>
 <td>Revisão Fase 2.</td>
 <td>Consulte o <a href="includes/release_notes/releasenotes_v1.0.0_rc6.2.html">Release Notes</a>.</td>
