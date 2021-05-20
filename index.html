@@ -31696,6 +31696,12 @@ Adiantamento a depositantes</p>
 <td><a href="#schemaresponseerror">ResponseError</a></td>
 </tr>
 <tr>
+<td>422</td>
+<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
+<td>A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
 <td>429</td>
 <td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
 <td>A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido</td>
@@ -31957,6 +31963,18 @@ None ( Scopes: openId payments-initiation )
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
+<td>O formato do payload não é um formato suportado.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>422</td>
+<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
+<td>A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.</td>
 <td><a href="#schemaresponseerror">ResponseError</a></td>
 </tr>
 <tr>
