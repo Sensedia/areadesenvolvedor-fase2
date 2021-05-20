@@ -37,7 +37,7 @@ properties:
       Dígito da conta
     example: '4'
   type:
-    $ref: ../enum/EnumAccountTypeCustomers.yaml
+    $ref: ../enum/EnumAccountType.yaml
   subtype:
-    $ref: ../enum/EnumAccountSubTypeCustomers.yaml
+    $ref: ../enum/EnumAccountSubType.yaml
 additionalProperties: false

@@ -6,7 +6,7 @@ required:
   - socialName
 properties:
   type:
-    $ref: ../enum/EnumProcuratorsTypeBusiness.yaml
+    $ref: ../enum/EnumProcuratorsType.yaml
   cnpjCpfNumber:
     type: string
     maxLength: 14

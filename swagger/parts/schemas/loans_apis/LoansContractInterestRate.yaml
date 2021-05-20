@@ -6,7 +6,6 @@ required:
   - taxPeriodicity
   - calculation
   - referentialRateIndexerType
-  - referentialRateIndexerAdditionalInfo
   - preFixedRate
   - postFixedRate
   - additionalInfo

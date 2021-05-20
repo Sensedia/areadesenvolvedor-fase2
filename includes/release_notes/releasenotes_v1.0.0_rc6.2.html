@@ -239,9 +239,6 @@
                   <li>
                     <a href="#implementacoes-na-api-unarranged-accounts-overdraft" class="toc-h2 toc-link" data-title="Implementações na API Unarranged Accounts Overdraft">Implementações na API Unarranged Accounts Overdraft</a>
                   </li>
-                  <li>
-                    <a href="#correcoes-e-ajustes-implementados-nos-dias-17-e-18-05-2021-gt-especificacoes" class="toc-h2 toc-link" data-title="Correções e ajustes implementados nos dias 17 e 18/05/2021 - GT Especificações">Correções e ajustes implementados nos dias 17 e 18/05/2021 - GT Especificações</a>
-                  </li>
               </ul>
           </li>
       </ul>
@@ -370,6 +367,16 @@
 <td><a href="../../#notificacoes">Página</a></td>
 </tr>
 <tr>
+<td>Inclusão de Item de Menu.</td>
+<td>Criação de Seção &quot;Dynamic Client Registration&quot;.</td>
+<td><a href="../../#dynamic-client-registration">Página</a></td>
+</tr>
+<tr>
+<td>Inclusão de Item de Menu.</td>
+<td>Criação de Seção &quot;FAPI Security Profile 1.0&quot;.</td>
+<td><a href="../../#fapi-security-profile-1-0">Página</a></td>
+</tr>
+<tr>
 <td>Atualização de Descrição.</td>
 <td>Atualização da Descrição do Texto sobre Cabeçalho HTTP item &quot;x-v&quot;.</td>
 <td><a href="../../#cabecalhos-http">Página</a></td>
@@ -395,9 +402,79 @@
 <td><a href="../../#principios">Página</a></td>
 </tr>
 <tr>
-<td>Publicação de Notificação.</td>
-<td>Open ID Instruction.</td>
-<td><a href="../../#notificacoes">Página</a></td>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Perfil de Segurança</td>
+<td><a href="../../#em-revisao-perfil-de-seguranca">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] OpenID Connect (OIDC)</td>
+<td><a href="../../#em-revisao-openid-connect-oidc">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] JWT</td>
+<td><a href="../../#em-revisao-jwt">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Fluxo OpenID Connect (OIDC)</td>
+<td><a href="../../#em-revisao-fluxo-openid-connect-oidc">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Financial-Grade API (FAPI)</td>
+<td><a href="../../#em-revisao-financial-grade-api-fapi">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Fluxos de Autenticação e Autorização</td>
+<td><a href="../../#em-revisao-fluxos-de-autenticacao-e-autorizacao">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Fluxo de Consentimento</td>
+<td><a href="../../#em-revisao-fluxo-de-consentimento">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Assinatura de Mensagens</td>
+<td><a href="../../#em-revisao-assinatura-de-mensagens">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Certificados</td>
+<td><a href="../../#em-revisao-certificados">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] CSR</td>
+<td><a href="../../#em-revisao-csr">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Diretório de Participantes</td>
+<td><a href="../../#em-revisao-diretorio-de-participantes">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Registro de Client Dinâmico</td>
+<td><a href="../../#em-revisao-registro-de-client-dinamico">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Teste e Homologação</td>
+<td><a href="../../#em-revisao-teste-e-homologacao">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] CORS</td>
+<td><a href="../../#em-revisao-cors">Página</a></td>
+</tr>
+<tr>
+<td>Item de Menu em Revisão.</td>
+<td>[Em Revisão] Endpoints</td>
+<td><a href="../../#em-revisao-endpoints">Página</a></td>
 </tr>
 </tbody></table>
 <h2 id='implementacoes-na-api-accounts'>Implementações na API Accounts</h2>
@@ -2561,386 +2638,6 @@
 <td>[GET] /contracts/{contractId}/payments</td>
 <td>Atualização da Descrição do Campo data/paidInstalments</td>
 <td><a href="../../#adiantamento-a-depositantes-pagamentos-do-contrato">Pagamentos do Adiantamento a Depositantes</a></td>
-</tr>
-</tbody></table>
-<h2 id='correcoes-e-ajustes-implementados-nos-dias-17-e-18-05-2021-gt-especificacoes'>Correções e ajustes implementados nos dias 17 e 18/05/2021 - GT Especificações</h2>
-<table><thead>
-<tr>
-<th>Mudança</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>[GET] /accounts/v1/accounts/{accountId}/balances</td>
-<td>Corrige typo: avaiableAmount e avaiableAmountCurrency por availableAmount e availableAmountCurrency.</td>
-</tr>
-<tr>
-<td>[GET] /credit-cards-accounts/v1/accounts/{creditCardAccountId}/limits</td>
-<td>Reorganização dos itens no dicionário/schema/swagger de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /credit-cards-accounts/v1/accounts/{creditCardAccountId}/transactions</td>
-<td>Campo payeeMCC passa a aceitar null.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/financial-relations</td>
-<td>Correção no ENUM com os tipo de procuradores.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/financial-relations</td>
-<td>Campo data/otherDocuments/country passa a ser obrigatório e aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/financial-relations</td>
-<td>Inclusão das listas de contas dos clientes(estiveram erroneamente no endpoint /customers/v1/personal/identifications e</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/financial-relations</td>
-<td>Campo data/accounts passa a ser obrigatório e não aceita null.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/financial-relations</td>
-<td>Campo data/accounts/type inclusão no ENUM do item SEM_TIPO_CONTA</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/financial-relations</td>
-<td>Correção no ENUM com os tipo de procuradores.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/financial-relations</td>
-<td>Inclusão das listas de contas dos clientes(estiveram erroneamente no endpoint /customers/v1/personal/identifications e</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/financial-relations</td>
-<td>Campo data/accounts</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/financial-relations</td>
-<td>Campo data/accounts/type incluindo a opção SEM_TIPO_CONTA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/financial-relations</td>
-<td>Campo data/accounts/subtype incluindo a opção SEM_SUB_TIPO_CONTA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/identifications</td>
-<td>Inclusão e posterior remoção da lista de contas dos clientes.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/identifications</td>
-<td>Campo data/contacts/phones/number passa a aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/identifications</td>
-<td>Campo data/nationality/Documents/expirationDate passa a aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/identifications</td>
-<td>Campo data/nationality/Documents/issueDate passa a aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/identifications</td>
-<td>Campo data/documents/passportIssueDate passa a aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/identifications</td>
-<td>Campo  data/otherDocuments/expirationDate</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/identifications</td>
-<td>Inclusão e posterior remoção da lista de contas dos clientes.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/identifications</td>
-<td>Campo data/otherDocuments/country passa a ser obrigatório e aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/identifications</td>
-<td>Campo data/otherDocuments/expirationDate passa a aceitar NA e ser condicional.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/identifications</td>
-<td>Campo data/parties/companyName ajuste nos dados do campo no dicionário.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/identifications</td>
-<td>Campo data/parties/tradeName ajuste nos dados do campo no dicionário.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/identifications</td>
-<td>Campo data/contacts/phones/number passa a aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/qualifications</td>
-<td>Campo data/informedPatrimony/currency correção typo &quot;durrency&quot;.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/qualifications</td>
-<td>Campo currency passa a aceitar NA.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/business/qualifications</td>
-<td>Campo data/informedRevenue/frequency passa a contemplar a opção SEM_FREQUENCIA_FATURAMENTO_INFORMADO.</td>
-</tr>
-<tr>
-<td>[GET] /customers/v1/personal/qualifications</td>
-<td>Campo data/informedIncome/frequency passa a incluir a opção SEM_FREQUENCIA_RENDA_INFORMADA.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Campos typeNumberOfInstalments e totalNumberOfInstalments movidos para o dicionário de instalments de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Ajuste na descrição do campo chargeRate.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Reorganização dos itens no schema/swagger.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Campo referentialRateIndexerAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Inclusão do atributo nullable: true no campo contractAmount.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Campos typeNumberOfInstalments e totalNumberOfInstalments movidos para o dicionário de instalments de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Ajuste na descrição do campo chargeRate.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Reorganização dos itens no schema/swagger.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Campo referentialRateIndexerAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Inclusão do atributo nullable: true no campo contractAmount.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Campos typeNumberOfInstalments e totalNumberOfInstalments movidos para o dicionário de instalments de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Ajuste na descrição do campo chargeRate.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Reorganização dos itens no schema/swagger.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Campo referentialRateIndexerAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Inclusão do atributo nullable: true no campo contractAmount.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Campos typeNumberOfInstalments e totalNumberOfInstalments movidos para o dicionário de instalments de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Ajuste na descrição do campo chargeRate.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Reorganização dos itens no schema/swagger.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Campo referentialRateIndexerAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Inclusão do atributo nullable: true no campo contractAmount.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}</td>
-<td>Atualiza descrição do campo additionalInfo.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do campo totalNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_REMANESCENTE nos campo typeContractRemaining.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Ajuste descrição dos campos paidInstalments, dueInstalments e pastDueInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Reorganização dos itens dos schemas/dicionários de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do atributo nullable: true no campo contractRemainingNumber.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório, ajuste na descrição.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_TOTAL no campo typeNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do campo totalNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_REMANESCENTE nos campo typeContractRemaining.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Ajuste descrição dos campos paidInstalments, dueInstalments e pastDueInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Reorganização dos itens dos schemas/dicionários de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do atributo nullable: true no campo contractRemainingNumber.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório, ajuste na descrição.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_TOTAL no campo typeNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do campo totalNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_REMANESCENTE nos campo typeContractRemaining.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Ajuste descrição dos campos paidInstalments, dueInstalments e pastDueInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Reorganização dos itens dos schemas/dicionários de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do atributo nullable: true no campo contractRemainingNumber.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório, ajuste na descrição.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_TOTAL no campo typeNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do campo totalNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_REMANESCENTE nos campo typeContractRemaining.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Ajuste descrição dos campos paidInstalments, dueInstalments e pastDueInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Reorganização dos itens dos schemas/dicionários de acordo com a IN 96.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão do atributo nullable: true no campo contractRemainingNumber.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Campo instalmentPeriodicityAdditionalInfo passa a ser obrigatório, ajuste na descrição.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/scheduled-instalments</td>
-<td>Inclusão da opção SEM_PRAZO_TOTAL no campo typeNumberOfInstalments.</td>
-</tr>
-<tr>
-<td>[GET] /financings/v1/contracts/{contractId}/payments</td>
-<td>Item overParcel não deve aceitar null.</td>
-</tr>
-<tr>
-<td>[GET] /invoice-financings/v1/contracts/{contractId}/payments</td>
-<td>Item overParcel não deve aceitar null.</td>
-</tr>
-<tr>
-<td>[GET] /loans/v1/contracts/{contractId}/payments</td>
-<td>Item overParcel não deve aceitar null.</td>
-</tr>
-<tr>
-<td>[GET] /unarranged-accounts-overdraft/v1/contracts/{contractId}/payments</td>
-<td>Item overParcel não deve aceitar null.</td>
 </tr>
 </tbody></table>
 
