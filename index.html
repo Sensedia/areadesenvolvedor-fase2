@@ -31445,9 +31445,6 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
   <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="dl">"</span><span class="s2">additionalInfo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Descrição da Transação</span><span class="dl">"</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">qrCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="dl">"</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">pixKey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345678901</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
       <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mf">100000.12</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BRL</span><span class="dl">"</span>
@@ -31458,7 +31455,10 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
       <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">accountType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CONTA_DEPOSITO_A_VISTA</span><span class="dl">"</span>
-    <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">additionalInfo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Descrição da Transação</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">qrCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">pixKey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345678901</span><span class="dl">"</span>
   <span class="p">}</span>
 <span class="p">});</span>
 
@@ -31479,13 +31479,15 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-customer-ip-address</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-interaction-id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-customer-user-agent</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-idempotency-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-jws-signature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">additionalInfo</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Descrição da Transação</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">qrCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">pixKey</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">accountPayee</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:12345678,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CONTA_DEPOSITO_A_VISTA</span><span class="se">\"</span><span class="s">}}}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">accountPayee</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:12345678,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CONTA_DEPOSITO_A_VISTA</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">additionalInfo</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Descrição da Transação</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">qrCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">pixKey</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901</span><span class="se">\"</span><span class="s">}}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -31494,7 +31496,9 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
     <span class="s">'x-fapi-auth-date'</span><span class="p">:</span> <span class="s">"stringstringstringstringstrin"</span><span class="p">,</span>
     <span class="s">'x-fapi-customer-ip-address'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
     <span class="s">'x-fapi-interaction-id'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span>
+    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-idempotency-key'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
     <span class="p">}</span>
 
 <span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/payments-initiation/v1/pix/payments"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
@@ -31511,7 +31515,9 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-customer-ip-address"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-interaction-id"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"additionalInfo\":\"Descrição da Transação\",\"qrCode\":\"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76\",\"pixKey\":\"12345678901\",\"payment\":{\"amount\":100000.12,\"currency\":\"BRL\"},\"accountPayee\":{\"ispb\":12345678,\"branchCode\":\"1234\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CONTA_DEPOSITO_A_VISTA\"}}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"payment\":{\"amount\":100000.12,\"currency\":\"BRL\"},\"accountPayee\":{\"ispb\":12345678,\"branchCode\":\"1234\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CONTA_DEPOSITO_A_VISTA\"},\"additionalInfo\":\"Descrição da Transação\",\"qrCode\":\"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76\",\"pixKey\":\"12345678901\"}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
@@ -31533,9 +31539,6 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"qrCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
@@ -31546,7 +31549,10 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qrCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -31596,6 +31602,20 @@ A detentora pode usar a assinatura da mensagem, junto com a chave de idempotênc
 <td>string</td>
 <td>false</td>
 <td>Indica o user-agent que o usuário utiliza.</td>
+</tr>
+<tr>
+<td>x-idempotency-key</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho HTTP personalizado. Identificador de solicitação exclusivo para suportar a idempotência.</td>
+</tr>
+<tr>
+<td>x-jws-signature</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho contendo uma assinatura JWS separada do corpo do payload.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -31784,6 +31804,7 @@ None ( Scopes: openId payments-initiation )
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-customer-ip-address</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-interaction-id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-customer-user-agent</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-jws-signature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
@@ -31796,7 +31817,8 @@ None ( Scopes: openId payments-initiation )
     <span class="s">'x-fapi-auth-date'</span><span class="p">:</span> <span class="s">"stringstringstringstringstrin"</span><span class="p">,</span>
     <span class="s">'x-fapi-customer-ip-address'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
     <span class="s">'x-fapi-interaction-id'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span>
+    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
     <span class="p">}</span>
 
 <span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/payments-initiation/v1/pix/payments/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -31812,6 +31834,7 @@ None ( Scopes: openId payments-initiation )
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-customer-ip-address"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-interaction-id"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
@@ -31879,6 +31902,13 @@ None ( Scopes: openId payments-initiation )
 <td>string</td>
 <td>false</td>
 <td>Indica o user-agent que o usuário utiliza.</td>
+</tr>
+<tr>
+<td>x-jws-signature</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho contendo uma assinatura JWS separada do corpo do payload.</td>
 </tr>
 </tbody></table>
 
@@ -32045,9 +32075,6 @@ None ( Scopes: openId payments-initiation )
 
 <p><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">&quot;additionalInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Descrição da Transação&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;qrCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;pixKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nl">&quot;payment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
       </span><span class="nl">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BRL&quot;</span><span class="w">
@@ -32058,7 +32085,10 @@ None ( Scopes: openId payments-initiation )
       </span><span class="nl">&quot;number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567890&quot;</span><span class="p">,</span><span class="w">
       </span><span class="nl">&quot;checkDigit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">,</span><span class="w">
       </span><span class="nl">&quot;accountType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTA_DEPOSITO_A_VISTA&quot;</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">&quot;additionalInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Descrição da Transação&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;qrCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;pixKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
@@ -32076,24 +32106,6 @@ None ( Scopes: openId payments-initiation )
 <td>object</td>
 <td>true</td>
 <td></td>
-</tr>
-<tr>
-<td>» additionalInfo</td>
-<td>string</td>
-<td>false</td>
-<td>Determina um texto a ser apresentado ao pagador para que ele possa digitar uma informação correlata, <br>em formato livre, a ser enviada ao recebedor</td>
-</tr>
-<tr>
-<td>» qrCode</td>
-<td>string</td>
-<td>false</td>
-<td>QR Code no momento da leitura do QR Code em questão. Essa funcionalidade é possível tanto para o<br>QR Code Estático quanto para o QR Code Dinâmico. Texto do QR Code copia e cola.</td>
-</tr>
-<tr>
-<td>» pixKey</td>
-<td>string</td>
-<td>false</td>
-<td>Chave DICT do recebedor. Os tipos de chave podem ser: telefone, e-mail, cpf/cnpj ou EVP. <br>O telefone celular usará o padrão E.1641. O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e nomáximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave</td>
 </tr>
 <tr>
 <td>» payment</td>
@@ -32148,6 +32160,24 @@ None ( Scopes: openId payments-initiation )
 <td>string</td>
 <td>true</td>
 <td>Tipos de contas.Vide ENUM.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
+</tr>
+<tr>
+<td>» additionalInfo</td>
+<td>string</td>
+<td>false</td>
+<td>Determina um texto a ser apresentado ao pagador para que ele possa digitar uma informação correlata, <br>em formato livre, a ser enviada ao recebedor</td>
+</tr>
+<tr>
+<td>» qrCode</td>
+<td>string</td>
+<td>false</td>
+<td>QR Code no momento da leitura do QR Code em questão. Essa funcionalidade é possível tanto para o<br>QR Code Estático quanto para o QR Code Dinâmico. Texto do QR Code copia e cola.</td>
+</tr>
+<tr>
+<td>» pixKey</td>
+<td>string</td>
+<td>false</td>
+<td>Chave DICT do recebedor. Os tipos de chave podem ser: telefone, e-mail, cpf/cnpj ou EVP. <br>O telefone celular usará o padrão E.1641. O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e nomáximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
