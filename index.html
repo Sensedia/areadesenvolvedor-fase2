@@ -1785,6 +1785,24 @@
                     <a href="#tocS_ResponsePixPayment" class="toc-h2 toc-link" data-title="ResponsePixPayment">ResponsePixPayment</a>
                   </li>
                   <li>
+                    <a href="#tocS_Account" class="toc-h2 toc-link" data-title="Account">Account</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ResponsePixPaymentData" class="toc-h2 toc-link" data-title="ResponsePixPaymentData">ResponsePixPaymentData</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_CreatePixPaymentData" class="toc-h2 toc-link" data-title="CreatePixPaymentData">CreatePixPaymentData</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Payment" class="toc-h2 toc-link" data-title="Payment">Payment</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Links" class="toc-h2 toc-link" data-title="Links">Links</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Meta" class="toc-h2 toc-link" data-title="Meta">Meta</a>
+                  </li>
+                  <li>
                     <a href="#tocS_ResponseError" class="toc-h2 toc-link" data-title="ResponseError">ResponseError</a>
                   </li>
               </ul>
@@ -54008,26 +54026,26 @@ None ( Scopes: openId payments-initiation )
 <a id="tocScreatepixpayment"></a>
 <a id="tocscreatepixpayment"></a></p>
 
-<p><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">&quot;payment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BRL&quot;</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">&quot;creditor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">&quot;ispb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;branchCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567890&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;checkDigit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;accountType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CURRENT&quot;</span><span class="w">
+    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">&quot;additionalInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Descrição da Transação&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;qrCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;pixKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="w">
+    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qrCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w"></p>
+</span><span class="p">}</span><span class="w">
 
-<p></span></code></pre></div><h3 id='propriedades'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -54038,81 +54056,135 @@ None ( Scopes: openId payments-initiation )
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>object</td>
+<td><a href="#schemacreatepixpaymentdata">CreatePixPaymentData</a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ResponsePixPayment">ResponsePixPayment</h2>
+
+<p><a id="schemaresponsepixpayment"></a>
+<a id="schema_ResponsePixPayment"></a>
+<a id="tocSresponsepixpayment"></a>
+<a id="tocsresponsepixpayment"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f800dc8-bc8a-4c0e-b5e6-3c6801cfe135"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9ae654d-e531-4a8b-a926-952d664de203"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a782761-9573-4e1f-b4d1-4c798955c0b8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED_SETTLEMENT_COMPLETED_DEBITOR_ACCOUNT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rejectionReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WRONG_AMOUNT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='propriedades-2'>Propriedades</h3>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td><a href="#schemaresponsepixpaymentdata">ResponsePixPaymentData</a></td>
 <td>true</td>
 <td></td>
 </tr>
 <tr>
-<td>» payment</td>
-<td>object</td>
+<td>links</td>
+<td><a href="#schemalinks">Links</a></td>
 <td>true</td>
-<td></td>
+<td>Referências para outros recusos da API requisitada.</td>
 </tr>
 <tr>
-<td>»» amount</td>
-<td>number(double)</td>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
 <td>true</td>
-<td>Valor da transação efetuada e convertida em moeda nacional com 4 casas decimais.</td>
+<td>Meta informações referente a API requisitada.</td>
 </tr>
+</tbody></table>
+
+<h2 id="tocS_Account">Account</h2>
+
+<p><a id="schemaaccount"></a>
+<a id="schema_Account"></a>
+<a id="tocSaccount"></a>
+<a id="tocsaccount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='propriedades-3'>Propriedades</h3>
+<table><thead>
 <tr>
-<td>»» currency</td>
-<td>string</td>
-<td>true</td>
-<td>Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os valores monetários informados estão representados com a moeda vigente do Brasil</td>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>» creditor</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»» ispb</td>
+<td>ispb</td>
 <td>number</td>
 <td>true</td>
 <td>Identificador do Sistema de Pagamentos Brasileiros.<br>Código que define instituições participantes do Sistema de Transferência de Reservas (STR).</td>
 </tr>
 <tr>
-<td>»» branchCode</td>
+<td>branchCode</td>
 <td>string</td>
 <td>false</td>
 <td>Código da Agência detentora da conta.<br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.</td>
 </tr>
 <tr>
-<td>»» number</td>
+<td>number</td>
 <td>string</td>
 <td>true</td>
 <td>Número da conta.</td>
 </tr>
 <tr>
-<td>»» checkDigit</td>
+<td>checkDigit</td>
 <td>string</td>
 <td>true</td>
 <td>Dígito da conta.</td>
 </tr>
 <tr>
-<td>»» accountType</td>
+<td>accountType</td>
 <td>string</td>
 <td>true</td>
 <td>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
-</tr>
-<tr>
-<td>» additionalInfo</td>
-<td>string</td>
-<td>false</td>
-<td>Determina um texto a ser apresentado ao pagador para que ele possa digitar uma informação correlata, <br>em formato livre, a ser enviada ao recebedor</td>
-</tr>
-<tr>
-<td>» qrCode</td>
-<td>string</td>
-<td>false</td>
-<td>QR Code contendo os dados de pagamento no momento da leitura. O usuário recebedor deve poder oferecer ao pagador<br>uma maneira de copiar a sequência de caracteres que representa o BR Code. É a sequência de caracteres que seria <br>lida pelo leitor de QR Code. <br>Essa funcionalidade é possível tanto para o QR Code Estático quanto para o QR Code Dinâmico.</td>
-</tr>
-<tr>
-<td>» pixKey</td>
-<td>string</td>
-<td>false</td>
-<td>Chave DICT do recebedor. Os tipos de chave podem ser: telefone, e-mail, cpf/cnpj ou Chave Aleatória. <br>O telefone celular usará o padrão E.1641. O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e nomáximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -54138,52 +54210,37 @@ None ( Scopes: openId payments-initiation )
 <td>accountType</td>
 <td>TRANSACTING_ACCOUNT</td>
 </tr>
-</tbody></table></p>
+</tbody></table>
 
-<h2 id="tocS_ResponsePixPayment">ResponsePixPayment</h2>
+<h2 id="tocS_ResponsePixPaymentData">ResponsePixPaymentData</h2>
 
-<p><a id="schemaresponsepixpayment"></a>
-<a id="schema_ResponsePixPayment"></a>
-<a id="tocSresponsepixpayment"></a>
-<a id="tocsresponsepixpayment"></a></p>
-
-<p><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">&quot;paymentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8f800dc8-bc8a-4c0e-b5e6-3c6801cfe135&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;endToEndId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a9ae654d-e531-4a8b-a926-952d664de203&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;consentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3a782761-9573-4e1f-b4d1-4c798955c0b8&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;creationDateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-21T08:30:00Z&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;updatedDateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-21T08:30:00Z&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;pixKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCEPTED_SETTLEMENT_COMPLETED_DEBITOR_ACCOUNT&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;rejectionReason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WRONG_AMOUNT&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;payment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BRL&quot;</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">&quot;creditor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">&quot;ispb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;branchCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567890&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;checkDigit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="nl">&quot;accountType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CURRENT&quot;</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+<p><a id="schemaresponsepixpaymentdata"></a>
+<a id="schema_ResponsePixPaymentData"></a>
+<a id="tocSresponsepixpaymentdata"></a>
+<a id="tocsresponsepixpaymentdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"paymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f800dc8-bc8a-4c0e-b5e6-3c6801cfe135"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9ae654d-e531-4a8b-a926-952d664de203"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a782761-9573-4e1f-b4d1-4c798955c0b8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED_SETTLEMENT_COMPLETED_DEBITOR_ACCOUNT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rejectionReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WRONG_AMOUNT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.banco.com.br/open-banking/api/v1/resource&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;first&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.banco.com.br/open-banking/api/v1/resource&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;prev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.banco.com.br/open-banking/api/v1/resource&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.banco.com.br/open-banking/api/v1/resource&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;last&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.banco.com.br/open-banking/api/v1/resource&quot;</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">&quot;totalRecords&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;totalPages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">&quot;requestDateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-05-21T08:30:00Z&quot;</span><span class="w">
+  </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w"></p>
+</span><span class="p">}</span><span class="w">
 
-<p></span></code></pre></div><h3 id='propriedades-2'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-4'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -54193,112 +54250,64 @@ None ( Scopes: openId payments-initiation )
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>» paymentId</td>
+<td>paymentId</td>
 <td>string</td>
 <td>true</td>
 <td>Código ou identificador único informado pela instituição que mantém a conta para representar o pagamento individual.</td>
 </tr>
 <tr>
-<td>» endToEndId</td>
+<td>endToEndId</td>
 <td>string</td>
 <td>false</td>
 <td>Id fim a fim da transação. O termo &quot;E2E&quot; que identifica a transação no arranjo.<br>Esse Id deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.<br>[Restrição] É obrigatório o retorno após o status &quot;ACCEPTED_SETTLEMENT_IN_PROCESS&quot;.</td>
 </tr>
 <tr>
-<td>» consentId</td>
+<td>consentId</td>
 <td>string</td>
 <td>true</td>
 <td>Identificador único do consentimento.</td>
 </tr>
 <tr>
-<td>» creationDateTime</td>
+<td>creationDateTime</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>Data e hora em que o recurso foi criado. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
 </tr>
 <tr>
-<td>» updatedDateTime</td>
+<td>updatedDateTime</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>Data e hora da ultima atualização da iniciação de pagamento. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
 </tr>
 <tr>
-<td>» pixKey</td>
+<td>pixKey</td>
 <td>string</td>
 <td>false</td>
 <td>Chave DICT do recebedor. Os tipos de chave podem ser: telefone, e-mail, cpf/cnpj ou Chave Aleatória. <br>O telefone celular usará o padrão E.1641. O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e nomáximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave</td>
 </tr>
 <tr>
-<td>» status</td>
+<td>status</td>
 <td>string</td>
 <td>true</td>
 <td>Estado atual da iniciação de pagamento criada. <br>Elemento que fornece informações sobre o status, caso o status não seja positivo.<br>ACCEPTED_SETTLEMENT_COMPLETED - Notificação do SPI da conclusão da transação ao participante do usuário recebedor.<br>ACCEPTED_SETTLEMENT_COMPLETED_DEBITOR_ACCOUNT - Notificação do SPI da conclusão da transação ao participante do usuário pagador. <br>ACCEPTED_SETTLEMENT_IN_PROCESS - Prosseguimento de instrução de pagamento após as validação realizadas pelo participante do usuário recebedor.<br>REJECTED - Instrução de pagamento rejeitada pelo SPI / participante do usuário recebedor por erro de negócio.</td>
 </tr>
 <tr>
-<td>» rejectionReason</td>
+<td>rejectionReason</td>
 <td>string</td>
 <td>false</td>
 <td>Motivo da rejeição do pagamento. Informações complementares sobre o motivo do status.<br>[Restrição] Deve ser enviado quando o status é &quot;REJEITADO&quot;.</td>
 </tr>
 <tr>
-<td>» payment</td>
-<td><a href="#schema#/paths/~1payments~1v1~1pix~1payments/post/requestbody/content/application~1json/schema/properties/data/properties/payment">#/paths/~1payments~1v1~1pix~1payments/post/requestBody/content/application~1json/schema/properties/data/properties/payment</a></td>
+<td>payment</td>
+<td><a href="#schemapayment">Payment</a></td>
 <td>true</td>
 <td></td>
 </tr>
 <tr>
-<td>» creditor</td>
-<td><a href="#schema#/paths/~1payments~1v1~1pix~1payments/post/requestbody/content/application~1json/schema/properties/data/properties/creditor">#/paths/~1payments~1v1~1pix~1payments/post/requestBody/content/application~1json/schema/properties/data/properties/creditor</a></td>
+<td>creditor</td>
+<td><a href="#schemaaccount">Account</a></td>
 <td>true</td>
 <td></td>
-</tr>
-<tr>
-<td>links</td>
-<td>object</td>
-<td>true</td>
-<td>Referências para outros recusos da API requisitada.</td>
-</tr>
-<tr>
-<td>» self</td>
-<td>string(uri)</td>
-<td>true</td>
-<td>URI completo que gerou a resposta atual.</td>
-</tr>
-<tr>
-<td>» first</td>
-<td>string(uri)</td>
-<td>false</td>
-<td>URI da primeira página que originou essa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta</td>
-</tr>
-<tr>
-<td>» prev</td>
-<td>string(uri)</td>
-<td>false</td>
-<td>URI da página anterior dessa lista de resultados. Restrição -     Obrigatório quando não for a primeira página da resposta</td>
-</tr>
-<tr>
-<td>» next</td>
-<td>string(uri)</td>
-<td>false</td>
-<td>URI da próxima página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta</td>
-</tr>
-<tr>
-<td>» last</td>
-<td>string(uri)</td>
-<td>false</td>
-<td>URI da última página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta</td>
-</tr>
-<tr>
-<td>meta</td>
-<td><a href="#schemaresponseerror/properties/meta">ResponseError/properties/meta</a></td>
-<td>true</td>
-<td>Meta informações referente a API requisitada.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -54464,7 +54473,212 @@ None ( Scopes: openId payments-initiation )
 <td>rejectionReason</td>
 <td>SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT</td>
 </tr>
-</tbody></table></p>
+</tbody></table>
+
+<h2 id="tocS_CreatePixPaymentData">CreatePixPaymentData</h2>
+
+<p><a id="schemacreatepixpaymentdata"></a>
+<a id="schema_CreatePixPaymentData"></a>
+<a id="tocScreatepixpaymentdata"></a>
+<a id="tocscreatepixpaymentdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"qrCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='propriedades-5'>Propriedades</h3>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payment</td>
+<td><a href="#schemapayment">Payment</a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>creditor</td>
+<td><a href="#schemaaccount">Account</a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>false</td>
+<td>Determina um texto a ser apresentado ao pagador para que ele possa digitar uma informação correlata, <br>em formato livre, a ser enviada ao recebedor</td>
+</tr>
+<tr>
+<td>qrCode</td>
+<td>string</td>
+<td>false</td>
+<td>QR Code contendo os dados de pagamento no momento da leitura. O usuário recebedor deve poder oferecer ao pagador<br>uma maneira de copiar a sequência de caracteres que representa o BR Code. É a sequência de caracteres que seria <br>lida pelo leitor de QR Code. <br>Essa funcionalidade é possível tanto para o QR Code Estático quanto para o QR Code Dinâmico.</td>
+</tr>
+<tr>
+<td>pixKey</td>
+<td>string</td>
+<td>false</td>
+<td>Chave DICT do recebedor. Os tipos de chave podem ser: telefone, e-mail, cpf/cnpj ou Chave Aleatória. <br>O telefone celular usará o padrão E.1641. O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e nomáximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Payment">Payment</h2>
+
+<p><a id="schemapayment"></a>
+<a id="schema_Payment"></a>
+<a id="tocSpayment"></a>
+<a id="tocspayment"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='propriedades-6'>Propriedades</h3>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>number(double)</td>
+<td>true</td>
+<td>Valor da transação efetuada e convertida em moeda nacional com 4 casas decimais.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os valores monetários informados estão representados com a moeda vigente do Brasil</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Links">Links</h2>
+
+<p><a id="schemalinks"></a>
+<a id="schema_Links"></a>
+<a id="tocSlinks"></a>
+<a id="tocslinks"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Referências para outros recusos da API requisitada.</p>
+
+<h3 id='propriedades-7'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>self</td>
+<td>string(uri)</td>
+<td>true</td>
+<td>URI completo que gerou a resposta atual.</td>
+</tr>
+<tr>
+<td>first</td>
+<td>string(uri)</td>
+<td>false</td>
+<td>URI da primeira página que originou essa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>string(uri)</td>
+<td>false</td>
+<td>URI da página anterior dessa lista de resultados. Restrição -    Obrigatório quando não for a primeira página da resposta</td>
+</tr>
+<tr>
+<td>next</td>
+<td>string(uri)</td>
+<td>false</td>
+<td>URI da próxima página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta</td>
+</tr>
+<tr>
+<td>last</td>
+<td>string(uri)</td>
+<td>false</td>
+<td>URI da última página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Meta">Meta</h2>
+
+<p><a id="schemameta"></a>
+<a id="schema_Meta"></a>
+<a id="tocSmeta"></a>
+<a id="tocsmeta"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Meta informações referente a API requisitada.</p>
+
+<h3 id='propriedades-8'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalRecords</td>
+<td>integer(int32)</td>
+<td>true</td>
+<td>Número total de registros no resultado</td>
+</tr>
+<tr>
+<td>totalPages</td>
+<td>integer(int32)</td>
+<td>true</td>
+<td>Número total de páginas no resultado</td>
+</tr>
+<tr>
+<td>requestDateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Data e hora da consulta, conforme especificação RFC-3339, formato UTC.</td>
+</tr>
+</tbody></table>
 
 <h2 id="tocS_ResponseError">ResponseError</h2>
 
@@ -54488,7 +54702,7 @@ None ( Scopes: openId payments-initiation )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre></div><h3 id='propriedades-3'>Propriedades</h3>
+<p></span></code></pre></div><h3 id='propriedades-9'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -54523,27 +54737,9 @@ None ( Scopes: openId payments-initiation )
 </tr>
 <tr>
 <td>meta</td>
-<td>object</td>
+<td><a href="#schemameta">Meta</a></td>
 <td>false</td>
 <td>Meta informações referente a API requisitada.</td>
-</tr>
-<tr>
-<td>» totalRecords</td>
-<td>integer(int32)</td>
-<td>true</td>
-<td>Número total de registros no resultado</td>
-</tr>
-<tr>
-<td>» totalPages</td>
-<td>integer(int32)</td>
-<td>true</td>
-<td>Número total de páginas no resultado</td>
-</tr>
-<tr>
-<td>» requestDateTime</td>
-<td>string(date-time)</td>
-<td>true</td>
-<td>Data e hora da consulta, conforme especificação RFC-3339, formato UTC.</td>
 </tr>
 </tbody></table></p>
 <h1 id='requisitos-nao-funcionais'>Requisitos não funcionais</h1>
