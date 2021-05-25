@@ -200,10 +200,10 @@ components:
         - accountType
       properties:
         ispb:
-          type: number
+          type: string
           maxLength: 8
           pattern: '^[0-9]{1,8}$'
-          example: 12345678
+          example: '68900810'
           description: |
             Identificador do Sistema de Pagamentos Brasileiros.
             Código que define instituições participantes do Sistema de Transferência de Reservas (STR).
@@ -391,7 +391,7 @@ components:
             em formato livre, a ser enviada ao recebedor
         qrCode:
           type: string
-          maxLength: 500
+          maxLength: 512
           pattern: \w*\W*
           example: 00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76
           description: |
