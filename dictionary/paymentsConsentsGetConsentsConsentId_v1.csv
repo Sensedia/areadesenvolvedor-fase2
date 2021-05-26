@@ -31,7 +31,7 @@ Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
 CACC - Current (CONTA_DEPOSITO_A_VISTA)
 SLRY - Salary (CONTA_SALARIO)
 SVGS - Savings (CONTA_POUPANCA)
-TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)";Texto;19;Obrigatório;;"CURRENT 
-SALARY 
-SAVINGS 
-TRANSACTING_ACCOUNT";1;1;"";Não permitido;string;CURRENT
+TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)";Texto;4;Obrigatório;;"CACC 
+SLRY 
+SVGS 
+TRAN";1;1;"";Não permitido;string;CACC
