@@ -29,41 +29,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada pelo SPI ou Instituição d
 ACSC 
 ACSP 
 RJCT";1;1;"";Não permitido;string;RJCT
-/data/rejectionReason;rejectionReason;Motivo da rejeição do pagamento. Informações complementares sobre o motivo do status.;Texto;4;Opcional;;"AB03 
-AB09 
-AB11 
-AC03 
-AC06 
-AC07 
-AC14 
-AG03 
-AG12 
-AG13 
-AGNT 
-AM01 
-AM02 
-AM04 
-AM09 
-AM12 
-AM18 
-BE01 
-BE15 
-BE17 
-CH11 
-CH16 
-DS04 
-DS0G 
-DS0H 
-DS27 
-DT02 
-DT05 
-ED05 
-FF07 
-FF08 
-RC09 
-RC10 
-RR4 
-SL02";0;1;" Deve ser enviado quando o status é RJCT (REJECTED).
+/data/rejectionReason;rejectionReason;"Motivo da rejeição do pagamento. Informações complementares sobre o motivo do status.
 AB03 (ABORTED_SETTLEMENT_TIMEOUT) - Liquidação da transação interrompida devido a timeout no SPI.											
 AB09 (ERROR_CREDITOR_AGENT) - Transação interrompida devido a erro no participante do usuário recebedor.
 AB11 (TIMEOUT_DEBTOR_AGENT) - Timeout do participante emissor da ordem de pagamento.
@@ -98,7 +64,41 @@ FF08 (INVALID_END_TO_END_ID) - Identificador da operação mal formatado.
 RC09 (INVALID_DEBTOR_CLEARING_SYSTEM_MEMBER_IDENTIFIER) - ISPB do participante do usuário pagador inválido ou inexistente.
 RC10 (INVALID_CREDITOR_CLEARING_SYSTEM_MEMBER_IDENTIFIER) - ISPB do participante do usuário recebedor inválido ou inexistente.
 RR4  (REGULATORY_REASON) - Ordem de pagamento em que o usuário pagador é sancionado por resolução do Conselho de Segurança das Nações Unidas (CSNU). Nos casos em que o usuário recebedor for o sancionado, a ordem de pagamento não deve ser rejeitada.
-SL02 (SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT) - A transação original não está relacionada ao serviço de Saque Pix.
+SL02 (SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT) - A transação original não está relacionada ao serviço de Saque Pix.";Texto;4;Opcional;;"AB03 
+AB09 
+AB11 
+AC03 
+AC06 
+AC07 
+AC14 
+AG03 
+AG12 
+AG13 
+AGNT 
+AM01 
+AM02 
+AM04 
+AM09 
+AM12 
+AM18 
+BE01 
+BE15 
+BE17 
+CH11 
+CH16 
+DS04 
+DS0G 
+DS0H 
+DS27 
+DT02 
+DT05 
+ED05 
+FF07 
+FF08 
+RC09 
+RC10 
+RR4 
+SL02";0;1;" Deve ser enviado quando o status é RJCT (REJECTED).
 ";Não permitido;string;DS27
 /data/payment;payment;Objeto contendo dados do pagameto como moeda e valor.;Objeto;;Obrigatório;;;1;1;"";Não permitido;object;
 /data/payment/amount;amount;Valor da transação efetuada e convertida em moeda nacional com 2 casas decimais.;Número;19;Obrigatório;^((\d{1,16}\.\d{2}))$;;1;1;"";Não permitido;number;100000.12
