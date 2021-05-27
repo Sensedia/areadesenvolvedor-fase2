@@ -15,7 +15,7 @@ info:
     ### /pix/payments/{paymentId}
       - permissions:
         - GET: **PAYMENTS_INITIATION_PIX_READ**
-  version: 1.0.0
+  version: 1.0.0-rc1.0
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0'
@@ -210,6 +210,7 @@ components:
       additionalProperties: false
     Account:
       type: object
+      description: Objeto que contém os dados da conta que devem ser usados para a iniciação de pagamento.
       required:
         - ispb
         - number
@@ -217,10 +218,10 @@ components:
         - accountType
       properties:
         ispb:
-          type: string
+          type: number
           maxLength: 8
           pattern: '^[0-9]{1,8}$'
-          example: '68900810'
+          example: 12345678
           description: |
             Identificador do Sistema de Pagamentos Brasileiros.
             Código que define instituições participantes do Sistema de Transferência de Reservas (STR).
@@ -228,11 +229,12 @@ components:
           type: string
           maxLength: 4
           pattern: '^(\w{4}){1}$'
-          example: '1234'
+          example: '1774'
           description: |
             Código da Agência detentora da conta.
             Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, 
             no exercício de atividades da instituição, não podendo ser móvel ou transitória.
+            [Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
         number:
           type: string
           maxLength: 20
@@ -246,24 +248,11 @@ components:
           example: '1234'
           description: Dígito da conta.
         accountType:
-          type: string
-          maxLength: 4
-          enum:
-            - CACC
-            - SLRY
-            - SVGS
-            - TRAN
-          description: |
-            Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.
-            Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
-            CACC - Current (CONTA_DEPOSITO_A_VISTA)
-            SLRY - Salary (CONTA_SALARIO)
-            SVGS - Savings (CONTA_POUPANCA)
-            TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)
-          example: CACC
+          $ref: '#/components/schemas/EnumAccountPaymentsType'
       additionalProperties: false
     ResponsePixPaymentData:
       type: object
+      description: Objeto contendo as informações da resposta da iniciação de pagamento individual.
       required:
         - paymentId
         - consentId
@@ -393,7 +382,7 @@ components:
             - SL02
           example: DS27
         payment:
-          $ref: '#/components/schemas/Payment'
+          $ref: '#/components/schemas/PaymentPix'
         additionalInfo:
           type: string
           maxLength: 140
@@ -407,12 +396,13 @@ components:
       additionalProperties: false
     CreatePixPaymentData:
       type: object
+      description: Objeto contendo dados do pagamento e do recebedor (creditor).
       required:
         - payment
         - creditor
       properties:
         payment:
-          $ref: '#/components/schemas/Payment'
+          $ref: '#/components/schemas/PaymentPix'
         creditor:
           $ref: '#/components/schemas/Account'
         additionalInfo:
@@ -447,8 +437,9 @@ components:
             A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.
             [Restrição] Obrigatório para pagamentos via Chave.
       additionalProperties: false
-    Payment:
+    PaymentPix:
       type: object
+      description: Objeto contendo dados do pagameto como moeda e valor.
       required:
         - amount
         - currency
@@ -469,6 +460,22 @@ components:
             Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. 'BRL' 
             Todos os valores monetários informados estão representados com a moeda vigente do Brasil
       additionalProperties: false
+    EnumAccountPaymentsType:
+      type: string
+      maxLength: 4
+      enum:
+        - CACC
+        - SLRY
+        - SVGS
+        - TRAN
+      description: |
+        Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.
+        Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
+        CACC - Current (CONTA_DEPOSITO_A_VISTA)
+        SLRY - Salary (CONTA_SALARIO)
+        SVGS - Savings (CONTA_POUPANCA)
+        TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)
+      example: CACC
   parameters:
     paymentId:
       name: paymentId

@@ -1816,6 +1816,17 @@
               </ul>
           </li>
           <li>
+            <a href="#fase-3-apis-do-open-banking-brasil-api-consentimento-de-inicia-o-de-pagamentos" class="toc-h1 toc-link" data-title="API - Consentimento de Iniciação de Pagamentos">API - Consentimento de Iniciação de Pagamentos</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#em-revisao-criar-consentimento-para-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Criar consentimento para iniciação de pagamento.">[Em Revisão] Criar consentimento para iniciação de pagamento.</a>
+                  </li>
+                  <li>
+                    <a href="#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Consultar consentimento para iniciação de pagamento.">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#fase-3-apis-do-open-banking-brasil-api-inicia-o-de-pagamentos" class="toc-h1 toc-link" data-title="API - Iniciação de Pagamentos">API - Iniciação de Pagamentos</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1823,17 +1834,6 @@
                   </li>
                   <li>
                     <a href="#em-revisao-pix-consultar-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] PIX - Consultar iniciação de pagamento.">[Em Revisão] PIX - Consultar iniciação de pagamento.</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#fase-3-apis-do-open-banking-brasil-api-payments-consents" class="toc-h1 toc-link" data-title="API - Payments Consents">API - Payments Consents</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#em-revisao-criar-consentimento-para-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Criar consentimento para iniciação de pagamento.">[Em Revisão] Criar consentimento para iniciação de pagamento.</a>
-                  </li>
-                  <li>
-                    <a href="#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Consultar consentimento para iniciação de pagamento.">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a>
                   </li>
               </ul>
           </li>
@@ -1862,7 +1862,16 @@
                     <a href="#tocS_CreatePixPaymentData" class="toc-h2 toc-link" data-title="CreatePixPaymentData">CreatePixPaymentData</a>
                   </li>
                   <li>
-                    <a href="#tocS_Payment" class="toc-h2 toc-link" data-title="Payment">Payment</a>
+                    <a href="#tocS_PaymentConsent" class="toc-h2 toc-link" data-title="PaymentConsent">PaymentConsent</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_PaymentPix" class="toc-h2 toc-link" data-title="PaymentPix">PaymentPix</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Creditor" class="toc-h2 toc-link" data-title="Creditor">Creditor</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EnumAccountPaymentsType" class="toc-h2 toc-link" data-title="EnumAccountPaymentsType">EnumAccountPaymentsType</a>
                   </li>
                   <li>
                     <a href="#tocS_Links" class="toc-h2 toc-link" data-title="Links">Links</a>
@@ -50531,7 +50540,7 @@ Adiantamento a depositantes</p>
 <td>personType</td>
 <td>string</td>
 <td>true</td>
-<td>Indica se a pessoa da parte envolvida é uma pessoa natural ou juridica</td>
+<td>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</td>
 </tr>
 <tr>
 <td>type</td>
@@ -55034,7 +55043,7 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 
 <p>Importante reforçar que cada nova transação com POST deverá ter um novo GUID de Idempotência.</p>
 
-<h1 id="fase-3-apis-do-open-banking-brasil-api-inicia-o-de-pagamentos">API - Iniciação de Pagamentos</h1>
+<h1 id="fase-3-apis-do-open-banking-brasil-api-consentimento-de-inicia-o-de-pagamentos">API - Consentimento de Iniciação de Pagamentos</h1>
 
 <table><thead>
 <tr>
@@ -55046,17 +55055,638 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 </tr>
 </tbody></table>
 <h4 id='visao-geral'>Visão Geral</h4>
+<p>A API tem como objetivo coletar o consentimento para iniciação de pagamento entre bancos e instituições financeiras e acessível também à estabelecimentos comerciais participantes do Open Banking Brasil.</p>
+
+<p>É possível realizar a coleta do consentimento para iniciação de pagamento (não possuindo restrição de uso entre pessoa física e pessoa jurídica) mediante a integração entre as instituições autorizadas.</p>
+<h4 id='especificacao-em-oas-3-0'>Especificação em OAS 3.0</h4>
+<p><a href="swagger/swagger_payments_consents_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
+<h2 id='em-revisao-criar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Criar consentimento para iniciação de pagamento.</h2>
+<p><a id="opIdpaymentsConsentsPostConsents"></a></p>
+
+<blockquote>
+<p>Exemplo de código</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">creditor</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">personType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PESSOA_NATURAL</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">cpfCnpj</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">58764789000137</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Marco Antonio de Brito</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PIX</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">dateTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-01-01T00:00:00Z</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BRL</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mf">100000.12</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">debtor</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">ispb</span><span class="dl">"</span><span class="p">:</span> <span class="mi">12345678</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">branchCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1774</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">accountType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CACC</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments-consents/v1/consents</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-auth-date</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">stringstringstringstringstrin</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-customer-ip-address</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-interaction-id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-customer-user-agent</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-idempotency-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-jws-signature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12},</span><span class="se">\"</span><span class="s">debtor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:12345678,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-fapi-auth-date'</span><span class="p">:</span> <span class="s">"stringstringstringstringstrin"</span><span class="p">,</span>
+    <span class="s">'x-fapi-customer-ip-address'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-fapi-interaction-id'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-idempotency-key'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/payments-consents/v1/consents"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://example.com/payments-consents/v1/consents"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-auth-date"</span><span class="o">,</span> <span class="s">"stringstringstringstringstrin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-customer-ip-address"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-interaction-id"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":100000.12},\"debtor\":{\"ispb\":12345678,\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div>
+
+<p><code>POST /payments-consents/v1/consents</code></p>
+
+<p>Método para a criação do consentimento para iniciação de pagamento.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="[em-revisão]-criar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Origem</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho HTTP padrão. Permite que as credenciais sejam fornecidas dependendo do tipo de recurso solicitado</td>
+</tr>
+<tr>
+<td>x-fapi-auth-date</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Data em que o usuário logou pela última vez com o receptor. Representada de acordo com a <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.Exemplo: Sun, 10 Sep 2017 19:43:31 UTC</td>
+</tr>
+<tr>
+<td>x-fapi-customer-ip-address</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>O endereço IP do usuário se estiver atualmente logado com o receptor.</td>
+</tr>
+<tr>
+<td>x-fapi-interaction-id</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Um UID <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> usado como um ID de correlação. Se fornecido, o transmissor deve &quot;reproduzir&quot; esse valor no cabeçalho de resposta.</td>
+</tr>
+<tr>
+<td>x-customer-user-agent</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Indica o user-agent que o usuário utiliza.</td>
+</tr>
+<tr>
+<td>x-idempotency-key</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho HTTP personalizado. Identificador de solicitação exclusivo para suportar a idempotência.</td>
+</tr>
+<tr>
+<td>x-jws-signature</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho contendo uma assinatura JWS separada do corpo do payload.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemacreatepaymentconsent">CreatePaymentConsent</a></td>
+<td>true</td>
+<td>Payload para criação do consentimento para iniciação do pagamento PIX.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>O comando acima retorna uma estrutura json como essa:</p>
+
+<p>201 Response</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTHORISED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="[em-revisão]-criar-consentimento-para-iniciação-de-pagamento.-responses">Resposta</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Descrição</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
+<td>Consentimento de pagamento criado com sucesso.</td>
+<td><a href="#schemaresponsepaymentconsent">ResponsePaymentConsent</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Cabeçalho de autenticação ausente/inválido ou token inválido</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>O token tem escopo incorreto ou uma política de segurança foi violada</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>O recurso solicitado não existe ou não foi implementado</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>O consumidor tentou acessar o recurso com um método não suportado</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
+<td>O formato do payload não é um formato suportado.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>422</td>
+<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
+<td>A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Ocorreu um erro no gateway da API ou no microsserviço</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>Erro inesperado.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+</tbody></table>
+
+<h3 id='response-headers'>Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
+None ( Scopes: openId payments-consents )
+</aside>
+
+<h2 id='em-revisao-consultar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Consultar consentimento para iniciação de pagamento.</h2>
+
+<p><a id="opIdpaymentsConsentsGetConsentsConsentId"></a></p>
+
+<blockquote>
+<p>Exemplo de código</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments-consents/v1/consents/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-auth-date</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">stringstringstringstringstrin</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-customer-ip-address</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-interaction-id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-customer-user-agent</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-jws-signature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-fapi-auth-date'</span><span class="p">:</span> <span class="s">"stringstringstringstringstrin"</span><span class="p">,</span>
+    <span class="s">'x-fapi-customer-ip-address'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-fapi-interaction-id'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/payments-consents/v1/consents/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://example.com/payments-consents/v1/consents/string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-auth-date"</span><span class="o">,</span> <span class="s">"stringstringstringstringstrin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-customer-ip-address"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-interaction-id"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div>
+
+<p><code>GET /payments-consents/v1/consents/{consentId}</code></p>
+
+<p>Método para consultar o consentimento para iniciação de pagamento.</p>
+
+<h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Origem</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>consentId</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Identificador do consentimento.</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho HTTP padrão. Permite que as credenciais sejam fornecidas dependendo do tipo de recurso solicitado</td>
+</tr>
+<tr>
+<td>x-fapi-auth-date</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Data em que o usuário logou pela última vez com o receptor. Representada de acordo com a <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.Exemplo: Sun, 10 Sep 2017 19:43:31 UTC</td>
+</tr>
+<tr>
+<td>x-fapi-customer-ip-address</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>O endereço IP do usuário se estiver atualmente logado com o receptor.</td>
+</tr>
+<tr>
+<td>x-fapi-interaction-id</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Um UID <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> usado como um ID de correlação. Se fornecido, o transmissor deve &quot;reproduzir&quot; esse valor no cabeçalho de resposta.</td>
+</tr>
+<tr>
+<td>x-customer-user-agent</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Indica o user-agent que o usuário utiliza.</td>
+</tr>
+<tr>
+<td>x-jws-signature</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Cabeçalho contendo uma assinatura JWS separada do corpo do payload.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>O comando acima retorna uma estrutura json como essa:</p>
+
+<p>200 Response</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTHORISED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-responses">Resposta</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Descrição</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Dados do consentimento de pagamento obtidos com sucesso.</td>
+<td><a href="#schemaresponsepaymentconsent">ResponsePaymentConsent</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Cabeçalho de autenticação ausente/inválido ou token inválido</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>O token tem escopo incorreto ou uma política de segurança foi violada</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>O recurso solicitado não existe ou não foi implementado</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>O consumidor tentou acessar o recurso com um método não suportado</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
+<td>O formato do payload não é um formato suportado.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>422</td>
+<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
+<td>A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Ocorreu um erro no gateway da API ou no microsserviço</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>Erro inesperado.</td>
+<td><a href="#schemaresponseerror">ResponseError</a></td>
+</tr>
+</tbody></table>
+
+<h3 id='response-headers-2'>Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
+None ( Scopes: openId payments-consents )
+</aside>
+
+<h1 id="fase-3-apis-do-open-banking-brasil-api-inicia-o-de-pagamentos">API - Iniciação de Pagamentos</h1>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Versão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">1</td>
+</tr>
+</tbody></table>
+
+<h4 id='visao-geral-2'>Visão Geral</h4>
+
 <p>A API tem como objetivo realizar a iniciação de pagamento entre bancos e instituições financeiras e acessível também à estabelecimentos comerciais participantes do Open Banking Brasil.</p>
 
 <p>É possível realizar a iniciação de pagamento (não possuindo restrição de uso entre pessoa física e pessoa jurídica) mediante a integração entre as instituições autorizadas.</p>
-<h4 id='especificacao-em-oas-3-0'>Especificação em OAS 3.0</h4>
+
+<h4 id='especificacao-em-oas-3-0-2'>Especificação em OAS 3.0</h4>
+
 <p><a href="swagger/swagger_payments_initiation_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
+
 <h2 id='em-revisao-pix-criar-iniciacao-de-pagamento'>[Em Revisão] PIX - Criar iniciação de pagamento.</h2>
+
 <p><a id="opIdpaymentsInitiationPostPixPayments"></a></p>
 
 <blockquote>
 <p>Exemplo de código</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
   <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
     <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
@@ -55064,8 +55694,8 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
       <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BRL</span><span class="dl">"</span>
     <span class="p">},</span>
     <span class="dl">"</span><span class="s2">creditor</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">"</span><span class="s2">ispb</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">68900810</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">branchCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">ispb</span><span class="dl">"</span><span class="p">:</span> <span class="mi">12345678</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">branchCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1774</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">accountType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CACC</span><span class="dl">"</span>
@@ -55101,7 +55731,7 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">68900810</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">additionalInfo</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Descrição da Transação</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">qrCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">pixKey</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901</span><span class="se">\"</span><span class="s">}}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:12345678,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">additionalInfo</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Descrição da Transação</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">qrCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">pixKey</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901</span><span class="se">\"</span><span class="s">}}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -55131,21 +55761,13 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"payment\":{\"amount\":100000.12,\"currency\":\"BRL\"},\"creditor\":{\"ispb\":\"68900810\",\"branchCode\":\"1234\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CACC\"},\"additionalInfo\":\"Descrição da Transação\",\"qrCode\":\"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76\",\"pixKey\":\"12345678901\"}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"payment\":{\"amount\":100000.12,\"currency\":\"BRL\"},\"creditor\":{\"ispb\":12345678,\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CACC\"},\"additionalInfo\":\"Descrição da Transação\",\"qrCode\":\"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123ABCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76\",\"pixKey\":\"12345678901\"}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
 <p><code>POST /payments/v1/pix/payments</code></p>
 
 <p>Método para a criação de uma iniciação de pagamento.</p>
-
-<h3 id='dicionario-de-dados'>Dicionário de dados</h3>
-
-<p><a href='dictionary/paymentsInitiationPostPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
-
-<h3 id='especificacao-em-oas-3-0-2'>Especificação em OAS 3.0</h3>
-
-<p><a href="swagger/swagger_payments_initiation_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -55158,8 +55780,8 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
@@ -55263,8 +55885,8 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
@@ -55357,7 +55979,7 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 </tr>
 </tbody></table>
 
-<h3 id='response-headers'>Response Headers</h3>
+<h3 id='response-headers-3'>Response Headers</h3>
 
 <table><thead>
 <tr>
@@ -55446,14 +56068,6 @@ None ( Scopes: openId payments-initiation )
 
 <p>Método para consultar uma iniciação de pagamento.</p>
 
-<h3 id='dicionario-de-dados-2'>Dicionário de dados</h3>
-
-<p><a href='dictionary/paymentsInitiationGetPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
-
-<h3 id='especificacao-em-oas-3-0-3'>Especificação em OAS 3.0</h3>
-
-<p><a href="swagger/swagger_payments_initiation_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
-
 <h3 id="[em-revisão]-pix---consultar-iniciação-de-pagamento.-parameters">Parâmetros</h3>
 
 <table><thead>
@@ -55539,8 +56153,8 @@ None ( Scopes: openId payments-initiation )
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
@@ -55633,7 +56247,7 @@ None ( Scopes: openId payments-initiation )
 </tr>
 </tbody></table>
 
-<h3 id='response-headers-2'>Response Headers</h3>
+<h3 id='response-headers-4'>Response Headers</h3>
 
 <table><thead>
 <tr>
@@ -55658,631 +56272,6 @@ Para realizar esta operação, você deve ser autenticado por meio de um dos seg
 None ( Scopes: openId payments-initiation )
 </aside>
 
-<h1 id="fase-3-apis-do-open-banking-brasil-api-payments-consents">API - Payments Consents</h1>
-
-<h2 id='em-revisao-criar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Criar consentimento para iniciação de pagamento.</h2>
-
-<p><a id="opIdpaymentsConsentsPostConsents"></a></p>
-
-<blockquote>
-<p>Exemplo de código</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="dl">"</span><span class="s2">creditor</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PESSOA_NATURAL</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">cpfCnpj</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345678901234</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Marco Antonio de Brito</span><span class="dl">"</span>
-    <span class="p">},</span>
-    <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PIX</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">dateTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-01-01T00:00:00Z</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BRL</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mf">100000.12</span>
-    <span class="p">},</span>
-    <span class="dl">"</span><span class="s2">debtor</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">"</span><span class="s2">account</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">ispb</span><span class="dl">"</span><span class="p">:</span> <span class="mi">12345678</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">branchCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">accountType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CACC</span><span class="dl">"</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments-consents/v1/consents</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-auth-date</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">stringstringstringstringstrin</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-customer-ip-address</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-interaction-id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-customer-user-agent</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-idempotency-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-jws-signature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12},</span><span class="se">\"</span><span class="s">debtor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">account</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:12345678,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}}"</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-fapi-auth-date'</span><span class="p">:</span> <span class="s">"stringstringstringstringstrin"</span><span class="p">,</span>
-    <span class="s">'x-fapi-customer-ip-address'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-fapi-interaction-id'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-idempotency-key'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
-    <span class="p">}</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/payments-consents/v1/consents"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://example.com/payments-consents/v1/consents"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-auth-date"</span><span class="o">,</span> <span class="s">"stringstringstringstringstrin"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-customer-ip-address"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-interaction-id"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"creditor\":{\"type\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"12345678901234\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":100000.12},\"debtor\":{\"account\":{\"ispb\":12345678,\"branchCode\":\"1234\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CACC\"}}}}"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
-</code></pre></div>
-
-<p><code>POST /payments-consents/v1/consents</code></p>
-
-<p>Método para a criação do consentimento para iniciação de pagamento.</p>
-
-<h3 id='dicionario-de-dados-3'>Dicionário de dados</h3>
-
-<p><a href='dictionary/paymentsConsentsPostConsents_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
-
-<h3 id='especificacao-em-oas-3-0-4'>Especificação em OAS 3.0</h3>
-
-<p><a href="swagger/swagger_payments_consents_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<h3 id="[em-revisão]-criar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
-
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Origem</th>
-<th>Tipo</th>
-<th>Obrigatório</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Cabeçalho HTTP padrão. Permite que as credenciais sejam fornecidas dependendo do tipo de recurso solicitado</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>Data em que o usuário logou pela última vez com o receptor. Representada de acordo com a <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.Exemplo: Sun, 10 Sep 2017 19:43:31 UTC</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>O endereço IP do usuário se estiver atualmente logado com o receptor.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>Um UID <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> usado como um ID de correlação. Se fornecido, o transmissor deve &quot;reproduzir&quot; esse valor no cabeçalho de resposta.</td>
-</tr>
-<tr>
-<td>x-customer-user-agent</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>Indica o user-agent que o usuário utiliza.</td>
-</tr>
-<tr>
-<td>x-idempotency-key</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Cabeçalho HTTP personalizado. Identificador de solicitação exclusivo para suportar a idempotência.</td>
-</tr>
-<tr>
-<td>x-jws-signature</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Cabeçalho contendo uma assinatura JWS separada do corpo do payload.</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td><a href="#schemacreatepaymentconsent">CreatePaymentConsent</a></td>
-<td>true</td>
-<td>Payload para criação do consentimento para iniciação do pagamento PIX.</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>O comando acima retorna uma estrutura json como essa:</p>
-
-<p>201 Response</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APROVADO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<h3 id="[em-revisão]-criar-consentimento-para-iniciação-de-pagamento.-responses">Resposta</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Significado</th>
-<th>Descrição</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>201</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
-<td>Consentimento de pagamento criado com sucesso.</td>
-<td><a href="#schemaresponsepaymentconsent">ResponsePaymentConsent</a></td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Cabeçalho de autenticação ausente/inválido ou token inválido</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>O token tem escopo incorreto ou uma política de segurança foi violada</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>O recurso solicitado não existe ou não foi implementado</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>O consumidor tentou acessar o recurso com um método não suportado</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>406</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
-<td>A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>O formato do payload não é um formato suportado.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
-<td>A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>Ocorreu um erro no gateway da API ou no microsserviço</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>default</td>
-<td>Default</td>
-<td>Erro inesperado.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-</tbody></table>
-
-<h3 id='response-headers-3'>Response Headers</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>201</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: openId payments-consents )
-</aside>
-
-<h2 id='em-revisao-consultar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Consultar consentimento para iniciação de pagamento.</h2>
-
-<p><a id="opIdpaymentsConsentsGetConsentsConsentId"></a></p>
-
-<blockquote>
-<p>Exemplo de código</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments-consents/v1/consents/string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-auth-date</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">stringstringstringstringstrin</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-customer-ip-address</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-interaction-id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-customer-user-agent</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-jws-signature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-fapi-auth-date'</span><span class="p">:</span> <span class="s">"stringstringstringstringstrin"</span><span class="p">,</span>
-    <span class="s">'x-fapi-customer-ip-address'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-fapi-interaction-id'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-customer-user-agent'</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-    <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
-    <span class="p">}</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/payments-consents/v1/consents/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://example.com/payments-consents/v1/consents/string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-auth-date"</span><span class="o">,</span> <span class="s">"stringstringstringstringstrin"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-customer-ip-address"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-interaction-id"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
-</code></pre></div>
-
-<p><code>GET /payments-consents/v1/consents/{consentId}</code></p>
-
-<p>Método para consultar o consentimento para iniciação de pagamento.</p>
-
-<h3 id='dicionario-de-dados-4'>Dicionário de dados</h3>
-
-<p><a href='dictionary/paymentsConsentsGetConsentsConsentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
-
-<h3 id='especificacao-em-oas-3-0-5'>Especificação em OAS 3.0</h3>
-
-<p><a href="swagger/swagger_payments_consents_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
-
-<h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
-
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Origem</th>
-<th>Tipo</th>
-<th>Obrigatório</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>consentId</td>
-<td>path</td>
-<td>string</td>
-<td>true</td>
-<td>Identificador do consentimento.</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Cabeçalho HTTP padrão. Permite que as credenciais sejam fornecidas dependendo do tipo de recurso solicitado</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>Data em que o usuário logou pela última vez com o receptor. Representada de acordo com a <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.Exemplo: Sun, 10 Sep 2017 19:43:31 UTC</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>O endereço IP do usuário se estiver atualmente logado com o receptor.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>Um UID <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> usado como um ID de correlação. Se fornecido, o transmissor deve &quot;reproduzir&quot; esse valor no cabeçalho de resposta.</td>
-</tr>
-<tr>
-<td>x-customer-user-agent</td>
-<td>header</td>
-<td>string</td>
-<td>false</td>
-<td>Indica o user-agent que o usuário utiliza.</td>
-</tr>
-<tr>
-<td>x-jws-signature</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Cabeçalho contendo uma assinatura JWS separada do corpo do payload.</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>O comando acima retorna uma estrutura json como essa:</p>
-
-<p>200 Response</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APROVADO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-responses">Resposta</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Significado</th>
-<th>Descrição</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Dados do consentimento de pagamento obtidos com sucesso.</td>
-<td><a href="#schemaresponsepaymentconsent">ResponsePaymentConsent</a></td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Cabeçalho de autenticação ausente/inválido ou token inválido</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>O token tem escopo incorreto ou uma política de segurança foi violada</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>O recurso solicitado não existe ou não foi implementado</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>O consumidor tentou acessar o recurso com um método não suportado</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>406</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
-<td>A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>O formato do payload não é um formato suportado.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
-<td>A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>Ocorreu um erro no gateway da API ou no microsserviço</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>default</td>
-<td>Default</td>
-<td>Erro inesperado.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-</tbody></table>
-
-<h3 id='response-headers-4'>Response Headers</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: openId payments-consents )
-</aside>
-
 <h1 id='schemas'>Schemas</h1>
 
 <h2 id="tocS_CreatePaymentConsent">CreatePaymentConsent</h2>
@@ -56295,8 +56284,8 @@ None ( Scopes: openId payments-consents )
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -56306,13 +56295,11 @@ None ( Scopes: openId payments-consents )
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -56330,131 +56317,25 @@ None ( Scopes: openId payments-consents )
 <td>data</td>
 <td>object</td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo as informações de consentimento para a iniciação de pagamento individual.</td>
 </tr>
 <tr>
 <td>» creditor</td>
-<td>object</td>
+<td><a href="#schemacreditor">Creditor</a></td>
 <td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»» type</td>
-<td>string</td>
-<td>true</td>
-<td>Indica se a pessoa da parte envolvida é uma pessoa natural ou juridica</td>
-</tr>
-<tr>
-<td>»» cpfCnpj</td>
-<td>string</td>
-<td>true</td>
-<td>Identificação da pessoa envolvida na transação recebedor (Preencher com o CPF ou CNPJ, sem formatação)</td>
-</tr>
-<tr>
-<td>»» name</td>
-<td>string</td>
-<td>true</td>
-<td>Nome relacionado à identificação, pode ser Pessoa Natural ou Pessoa jurídica.</td>
+<td>Objeto contendo os dados do recebedor (creditor).</td>
 </tr>
 <tr>
 <td>» payment</td>
-<td>object</td>
+<td><a href="#schemapaymentconsent">PaymentConsent</a></td>
 <td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»» type</td>
-<td>string</td>
-<td>true</td>
-<td>Conjunto de tipos de pagamentos.</td>
-</tr>
-<tr>
-<td>»» dateTime</td>
-<td>string(date-time)</td>
-<td>true</td>
-<td>Data e hora do consentimento. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
-</tr>
-<tr>
-<td>»» currency</td>
-<td>string</td>
-<td>true</td>
-<td>Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os valores monetários informados estão representados com a moeda vigente do Brasil</td>
-</tr>
-<tr>
-<td>»» amount</td>
-<td>number(double)</td>
-<td>true</td>
-<td>Valor da transação efetuada e convertida em moeda nacional com 4 casas decimais.</td>
+<td>Objeto contendo os dados de pagamento para consentimento.</td>
 </tr>
 <tr>
 <td>» debtor</td>
-<td>object</td>
+<td><a href="#schemaaccount">Account</a></td>
 <td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»» account</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»»» ispb</td>
-<td>number</td>
-<td>true</td>
-<td>Identificador do Sistema de Pagamentos Brasileiros.<br>Código que define instituições participantes do Sistema de Transferência de Reservas (STR).</td>
-</tr>
-<tr>
-<td>»»» branchCode</td>
-<td>string</td>
-<td>false</td>
-<td>Código da Agência detentora da conta.<br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.</td>
-</tr>
-<tr>
-<td>»»» number</td>
-<td>string</td>
-<td>true</td>
-<td>Número da conta.</td>
-</tr>
-<tr>
-<td>»»» checkDigit</td>
-<td>string</td>
-<td>true</td>
-<td>Dígito da conta.</td>
-</tr>
-<tr>
-<td>»»» accountType</td>
-<td><a href="#schemaaccount/properties/accounttype">Account/properties/accountType</a></td>
-<td>true</td>
-<td>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Código</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>PESSOA_NATURAL</td>
-</tr>
-<tr>
-<td>type</td>
-<td>PESSOA_JURIDICA</td>
-</tr>
-<tr>
-<td>type</td>
-<td>PIX</td>
-</tr>
-<tr>
-<td>type</td>
-<td>TED</td>
-</tr>
-<tr>
-<td>type</td>
-<td>BOLETO</td>
+<td>Objeto que contém os dados da conta que devem ser usados para a iniciação de pagamento.</td>
 </tr>
 </tbody></table>
 
@@ -56467,10 +56348,10 @@ None ( Scopes: openId payments-consents )
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APROVADO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTHORISED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -56480,13 +56361,11 @@ None ( Scopes: openId payments-consents )
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"debtor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -56504,40 +56383,40 @@ None ( Scopes: openId payments-consents )
 <td>data</td>
 <td>object</td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo as informações de resposta do consentimento para a iniciação de pagamento individual.</td>
 </tr>
 <tr>
 <td>» consentId</td>
 <td>string</td>
-<td>false</td>
-<td>Identificador do consentimento.</td>
+<td>true</td>
+<td>Identificador único do consentimento.</td>
 </tr>
 <tr>
 <td>» status</td>
 <td>string</td>
-<td>false</td>
-<td>Status do Consentimento de Pagamento</td>
+<td>true</td>
+<td>Status do Consentimento para iniciação de pagamento.</td>
 </tr>
 <tr>
 <td>» creditor</td>
-<td><a href="#schema#/paths/~1payments-consents~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/creditor">#/paths/~1payments-consents~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/creditor</a></td>
+<td><a href="#schemacreditor">Creditor</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo os dados do recebedor (creditor).</td>
 </tr>
 <tr>
 <td>» payment</td>
-<td><a href="#schema#/paths/~1payments-consents~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/payment">#/paths/~1payments-consents~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/payment</a></td>
+<td><a href="#schemapaymentconsent">PaymentConsent</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo os dados de pagamento para consentimento.</td>
 </tr>
 <tr>
 <td>» debtor</td>
-<td><a href="#schema#/paths/~1payments-consents~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/debtor">#/paths/~1payments-consents~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/debtor</a></td>
+<td><a href="#schemaaccount">Account</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto que contém os dados da conta que devem ser usados para a iniciação de pagamento.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -56546,11 +56425,19 @@ None ( Scopes: openId payments-consents )
 </thead><tbody>
 <tr>
 <td>status</td>
-<td>APROVADO</td>
+<td>AUTHORISED</td>
 </tr>
 <tr>
 <td>status</td>
-<td>PENDENTE_APROVACAO</td>
+<td>AWAITING_AUTHORISATION</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REJECTED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REVOKED</td>
 </tr>
 </tbody></table>
 
@@ -56567,8 +56454,8 @@ None ( Scopes: openId payments-consents )
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
@@ -56592,7 +56479,7 @@ None ( Scopes: openId payments-consents )
 <td>data</td>
 <td><a href="#schemacreatepixpaymentdata">CreatePixPaymentData</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo dados do pagamento e do recebedor (creditor).</td>
 </tr>
 </tbody></table>
 
@@ -56619,8 +56506,8 @@ None ( Scopes: openId payments-consents )
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
@@ -56641,7 +56528,7 @@ None ( Scopes: openId payments-consents )
 <td>data</td>
 <td><a href="#schemaresponsepixpaymentdata">ResponsePixPaymentData</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo as informações da resposta da iniciação de pagamento individual.</td>
 </tr>
 </tbody></table>
 
@@ -56652,14 +56539,19 @@ None ( Scopes: openId payments-consents )
 <a id="tocSaccount"></a>
 <a id="tocsaccount"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-5'>Propriedades</h3>
+</span></code></pre></div>
+
+<p>Objeto que contém os dados da conta que devem ser usados para a iniciação de pagamento.</p>
+
+<h3 id='propriedades-5'>Propriedades</h3>
+
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -56670,7 +56562,7 @@ None ( Scopes: openId payments-consents )
 </thead><tbody>
 <tr>
 <td>ispb</td>
-<td>string</td>
+<td>number</td>
 <td>true</td>
 <td>Identificador do Sistema de Pagamentos Brasileiros.<br>Código que define instituições participantes do Sistema de Transferência de Reservas (STR).</td>
 </tr>
@@ -56678,7 +56570,7 @@ None ( Scopes: openId payments-consents )
 <td>branchCode</td>
 <td>string</td>
 <td>false</td>
-<td>Código da Agência detentora da conta.<br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.</td>
+<td>Código da Agência detentora da conta.<br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.<br>[Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).</td>
 </tr>
 <tr>
 <td>number</td>
@@ -56694,33 +56586,9 @@ None ( Scopes: openId payments-consents )
 </tr>
 <tr>
 <td>accountType</td>
-<td>string</td>
+<td><a href="#schemaenumaccountpaymentstype">EnumAccountPaymentsType</a></td>
 <td>true</td>
 <td>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Código</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountType</td>
-<td>CACC</td>
-</tr>
-<tr>
-<td>accountType</td>
-<td>SLRY</td>
-</tr>
-<tr>
-<td>accountType</td>
-<td>SVGS</td>
-</tr>
-<tr>
-<td>accountType</td>
-<td>TRAN</td>
 </tr>
 </tbody></table>
 
@@ -56730,6 +56598,7 @@ None ( Scopes: openId payments-consents )
 <a id="schema_ResponsePixPaymentData"></a>
 <a id="tocSresponsepixpaymentdata"></a>
 <a id="tocsresponsepixpaymentdata"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"paymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f800dc8-bc8a-4c0e-b5e6-3c6801cfe135"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9ae654d-e531-4a8b-a926-952d664de203"</span><span class="p">,</span><span class="w">
@@ -56746,15 +56615,20 @@ None ( Scopes: openId payments-consents )
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-6'>Propriedades</h3>
+</span></code></pre></div>
+
+<p>Objeto contendo as informações da resposta da iniciação de pagamento individual.</p>
+
+<h3 id='propriedades-6'>Propriedades</h3>
+
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -56819,9 +56693,9 @@ None ( Scopes: openId payments-consents )
 </tr>
 <tr>
 <td>payment</td>
-<td><a href="#schemapayment">Payment</a></td>
+<td><a href="#schemapaymentpix">PaymentPix</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo dados do pagameto como moeda e valor.</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -56833,10 +56707,12 @@ None ( Scopes: openId payments-consents )
 <td>creditor</td>
 <td><a href="#schemaaccount">Account</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto que contém os dados da conta que devem ser usados para a iniciação de pagamento.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57007,14 +56883,15 @@ None ( Scopes: openId payments-consents )
 <a id="schema_CreatePixPaymentData"></a>
 <a id="tocScreatepixpaymentdata"></a>
 <a id="tocscreatepixpaymentdata"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68900810"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345678</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
@@ -57024,7 +56901,12 @@ None ( Scopes: openId payments-consents )
   </span><span class="nl">"pixKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-7'>Propriedades</h3>
+</span></code></pre></div>
+
+<p>Objeto contendo dados do pagamento e do recebedor (creditor).</p>
+
+<h3 id='propriedades-7'>Propriedades</h3>
+
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57035,15 +56917,15 @@ None ( Scopes: openId payments-consents )
 </thead><tbody>
 <tr>
 <td>payment</td>
-<td><a href="#schemapayment">Payment</a></td>
+<td><a href="#schemapaymentpix">PaymentPix</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto contendo dados do pagameto como moeda e valor.</td>
 </tr>
 <tr>
 <td>creditor</td>
 <td><a href="#schemaaccount">Account</a></td>
 <td>true</td>
-<td></td>
+<td>Objeto que contém os dados da conta que devem ser usados para a iniciação de pagamento.</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -57065,18 +56947,92 @@ None ( Scopes: openId payments-consents )
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Payment">Payment</h2>
+<h2 id="tocS_PaymentConsent">PaymentConsent</h2>
 
-<p><a id="schemapayment"></a>
-<a id="schema_Payment"></a>
-<a id="tocSpayment"></a>
-<a id="tocspayment"></a></p>
+<p><a id="schemapaymentconsent"></a>
+<a id="schema_PaymentConsent"></a>
+<a id="tocSpaymentconsent"></a>
+<a id="tocspaymentconsent"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Objeto contendo os dados de pagamento para consentimento.</p>
+
+<h3 id='propriedades-8'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>true</td>
+<td>Tipos de pagamentos permitidos pelo Open Banking Brasil.</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Data e hora do consentimento. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>true</td>
+<td>Moeda referente ao valor monetário informado, segundo modelo ISO-4217. p.ex. &#39;BRL&#39; <br>Todos os valores monetários informados estão representados com a moeda vigente do Brasil.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number(double)</td>
+<td>true</td>
+<td>Valor da transação efetuada e convertida em moeda nacional com 2 casas decimais.</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>PIX</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_PaymentPix">PaymentPix</h2>
+
+<p><a id="schemapaymentpix"></a>
+<a id="schema_PaymentPix"></a>
+<a id="tocSpaymentpix"></a>
+<a id="tocspaymentpix"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.12</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-8'>Propriedades</h3>
+</span></code></pre></div>
+
+<p>Objeto contendo dados do pagameto como moeda e valor.</p>
+
+<h3 id='propriedades-9'>Propriedades</h3>
+
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57099,12 +57055,140 @@ None ( Scopes: openId payments-consents )
 </tr>
 </tbody></table>
 
+<h2 id="tocS_Creditor">Creditor</h2>
+
+<p><a id="schemacreditor"></a>
+<a id="schema_Creditor"></a>
+<a id="tocScreditor"></a>
+<a id="tocscreditor"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Objeto contendo os dados do recebedor (creditor).</p>
+
+<h3 id='propriedades-10'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>personType</td>
+<td>string</td>
+<td>true</td>
+<td>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</td>
+</tr>
+<tr>
+<td>cpfCnpj</td>
+<td>string</td>
+<td>true</td>
+<td>Identificação da pessoa envolvida na transação. <br>Preencher com o CPF ou CNPJ, de acordo com o valor escolhido no campo type.<br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Nome relacionado à Pessoa Natural ou Pessoa jurídica.</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>personType</td>
+<td>PESSOA_NATURAL</td>
+</tr>
+<tr>
+<td>personType</td>
+<td>PESSOA_JURIDICA</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EnumAccountPaymentsType">EnumAccountPaymentsType</h2>
+
+<p><a id="schemaenumaccountpaymentstype"></a>
+<a id="schema_EnumAccountPaymentsType"></a>
+<a id="tocSenumaccountpaymentstype"></a>
+<a id="tocsenumaccountpaymentstype"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"CACC"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.
+Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
+CACC - Current (CONTA_DEPOSITO_A_VISTA)
+SLRY - Salary (CONTA_SALARIO)
+SVGS - Savings (CONTA_POUPANCA)
+TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</p>
+
+<h3 id='propriedades-11'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>string</td>
+<td>false</td>
+<td>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>CACC</td>
+</tr>
+<tr>
+<td>**</td>
+<td>SLRY</td>
+</tr>
+<tr>
+<td>**</td>
+<td>SVGS</td>
+</tr>
+<tr>
+<td>**</td>
+<td>TRAN</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_Links">Links</h2>
 
 <p><a id="schemalinks"></a>
 <a id="schema_Links"></a>
 <a id="tocSlinks"></a>
 <a id="tocslinks"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/api/v1/resource"</span><span class="p">,</span><span class="w">
@@ -57117,7 +57201,7 @@ None ( Scopes: openId payments-consents )
 
 <p>Referências para outros recusos da API requisitada.</p>
 
-<h3 id='propriedades-9'>Propriedades</h3>
+<h3 id='propriedades-12'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57176,7 +57260,7 @@ None ( Scopes: openId payments-consents )
 
 <p>Meta informações referente a API requisitada.</p>
 
-<h3 id='propriedades-10'>Propriedades</h3>
+<h3 id='propriedades-13'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57228,7 +57312,7 @@ None ( Scopes: openId payments-consents )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre></div><h3 id='propriedades-11'>Propriedades</h3>
+<p></span></code></pre></div><h3 id='propriedades-14'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
