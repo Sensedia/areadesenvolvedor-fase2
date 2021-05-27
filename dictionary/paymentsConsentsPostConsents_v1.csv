@@ -23,18 +23,18 @@ Todos os valores monetários informados estão representados com a moeda vigente
 /data/debtor;debtor;Objeto que contém os dados da conta utilizada para a iniciação de pagamento.;Objeto;;Obrigatório;;;1;1;"";Não permitido;object;
 /data/debtor/ispb;ispb;"Identificador do Sistema de Pagamentos Brasileiros.
 Código que define instituições participantes do Sistema de Transferência de Reservas (STR).";Número;8;Obrigatório;^[0-9]{1,8}$;;1;1;"";Não permitido;number;12345678
-/data/debtor/branchCode;branchCode;"Código da Agência detentora da conta.
+/data/debtor/branchCode;branchCode;"Código da Agência detentora da conta sem digito.
 Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, 
 no exercício de atividades da instituição, não podendo ser móvel ou transitória.";Texto;4;Opcional;^(\w{4}){1}$;;0;1;" Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
 ";Não permitido;string;1774
 /data/debtor/number;number;Número da conta.;Texto;20;Obrigatório;^\d{8,20}$;;1;1;"";Não permitido;string;1234567890
 /data/debtor/checkDigit;checkDigit;Dígito da conta.;Texto;4;Obrigatório;^(\w{4}){1}$;;1;1;"";Não permitido;string;1234
-/data/debtor/accountType;accountType;"Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.
+/data/debtor/accountType;accountType;"Tipos de contas usadas para pagamento via PIX.
 Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
-CACC - Current (CONTA_DEPOSITO_A_VISTA)
-SLRY - Salary (CONTA_SALARIO)
-SVGS - Savings (CONTA_POUPANCA)
-TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)";Texto;4;Obrigatório;;"CACC 
+CACC - Current - Conta Corrente.
+SLRY - Salary - Conta-Salário.
+SVGS - Savings - Conta de Poupança.
+TRAN - TransactingAccount - Conta de Pagamento";Texto;4;Obrigatório;;"CACC 
 SLRY 
 SVGS 
 TRAN";1;1;"";Não permitido;string;CACC

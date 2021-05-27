@@ -264,7 +264,7 @@ components:
           pattern: '^(\w{4}){1}$'
           example: '1774'
           description: |
-            Código da Agência detentora da conta.
+            Código da Agência detentora da conta sem digito.
             Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, 
             no exercício de atividades da instituição, não podendo ser móvel ou transitória.
             [Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
@@ -382,12 +382,12 @@ components:
         - SVGS
         - TRAN
       description: |
-        Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.
+        Tipos de contas usadas para pagamento via PIX.
         Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
-        CACC - Current (CONTA_DEPOSITO_A_VISTA)
-        SLRY - Salary (CONTA_SALARIO)
-        SVGS - Savings (CONTA_POUPANCA)
-        TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)
+        CACC - Current - Conta Corrente.
+        SLRY - Salary - Conta-Salário.
+        SVGS - Savings - Conta de Poupança.
+        TRAN - TransactingAccount - Conta de Pagamento
       example: CACC
   parameters:
     consentId:

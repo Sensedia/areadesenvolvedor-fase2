@@ -55043,6 +55043,8 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 
 <p>Importante reforçar que cada nova transação com POST deverá ter um novo GUID de Idempotência.</p>
 
+<p>A iniciadora não deve usar comportamento idempotente do POST para pesquisar o status dos recursos.</p>
+
 <h1 id="fase-3-apis-do-open-banking-brasil-api-consentimento-de-inicia-o-de-pagamentos">API - Consentimento de Iniciação de Pagamentos</h1>
 
 <table><thead>
@@ -56329,7 +56331,7 @@ None ( Scopes: openId payments-initiation )
 <td>branchCode</td>
 <td>string</td>
 <td>false</td>
-<td>Código da Agência detentora da conta.<br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.<br>[Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).</td>
+<td>Código da Agência detentora da conta sem digito.<br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.<br>[Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).</td>
 </tr>
 <tr>
 <td>number</td>
@@ -56347,7 +56349,7 @@ None ( Scopes: openId payments-initiation )
 <td>accountType</td>
 <td><a href="#schemaenumaccountpaymentstype">EnumAccountPaymentsType</a></td>
 <td>true</td>
-<td>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
+<td>Tipos de contas usadas para pagamento via PIX.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current - Conta Corrente.<br>SLRY - Salary - Conta-Salário.<br>SVGS - Savings - Conta de Poupança.<br>TRAN - TransactingAccount - Conta de Pagamento</td>
 </tr>
 </tbody></table>
 
@@ -56588,7 +56590,7 @@ None ( Scopes: openId payments-initiation )
 <td>pixKey</td>
 <td>string</td>
 <td>false</td>
-<td>Chave DICT do recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória. <br>O telefone celular usará o padrão E.1641. <br>O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave.</td>
+<td>Chave DICT do recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória. <br>O telefone celular é no padrão E.1641. <br>O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres. <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços. <br>A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.<br>[Restrição] Obrigatório para pagamentos via Chave.</td>
 </tr>
 </tbody></table>
 
@@ -56603,12 +56605,12 @@ None ( Scopes: openId payments-initiation )
 
 </span></code></pre></div>
 
-<p>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.
+<p>Tipos de contas usadas para pagamento via PIX.
 Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
-CACC - Current (CONTA_DEPOSITO_A_VISTA)
-SLRY - Salary (CONTA_SALARIO)
-SVGS - Savings (CONTA_POUPANCA)
-TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</p>
+CACC - Current - Conta Corrente.
+SLRY - Salary - Conta-Salário.
+SVGS - Savings - Conta de Poupança.
+TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <h3 id='propriedades-6'>Propriedades</h3>
 
@@ -56624,7 +56626,7 @@ TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</p>
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Tipos de contas usadas para pagamento via PIX. Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas, conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current (CONTA_DEPOSITO_A_VISTA)<br>SLRY - Salary (CONTA_SALARIO)<br>SVGS - Savings (CONTA_POUPANCA)<br>TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</td>
+<td>Tipos de contas usadas para pagamento via PIX.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current - Conta Corrente.<br>SLRY - Salary - Conta-Salário.<br>SVGS - Savings - Conta de Poupança.<br>TRAN - TransactingAccount - Conta de Pagamento</td>
 </tr>
 </tbody></table>
 
@@ -57024,13 +57026,13 @@ TRAN - TransactingAccount (CONTA_PAGAMENTO_PRE_PAGA)</p>
 <td>paymentId</td>
 <td>string</td>
 <td>true</td>
-<td>Código ou identificador único informado pela instituição que mantém a conta para representar a iniciação de pagamento individual.</td>
+<td>Código ou identificador único informado pela instituição que mantém a conta para representar a iniciação de pagamento individual. <br>Esse identificador deve ser usado para consultar o status da iniciação de pagamento.</td>
 </tr>
 <tr>
 <td>endToEndId</td>
 <td>string</td>
 <td>false</td>
-<td>Id fim a fim da transação. O termo &quot;E2E&quot; que identifica a transação no arranjo.<br>Esse Id deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.<br>[Restrição] É obrigatório o retorno após o status &quot;ACCEPTED_SETTLEMENT_IN_PROCESS&quot;.</td>
+<td>Identificador fim a fim da transação. O termo &quot;E2E&quot; que identifica a transação de forma única dentro do arranjo.<br>Esse identificador deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.<br>[Restrição] É obrigatório o retorno após o status &quot;ACCEPTED_SETTLEMENT_IN_PROCESS&quot;.</td>
 </tr>
 <tr>
 <td>consentId</td>
