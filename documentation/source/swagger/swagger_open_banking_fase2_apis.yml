@@ -4849,6 +4849,7 @@ components:
         - PRICE
         - SAM
         - SEM_SISTEMA_AMORTIZACAO
+        - OUTROS
       example: SAC
     EnumContractCalculation:
       type: string

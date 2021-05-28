@@ -17,6 +17,7 @@ required:
   - typeNumberOfInstalments
   - CET
   - amortizationScheduled
+  - amortizationScheduledAdditionalInfo
   - cnpjConsignee
   - interestRates
   - contractedFees
