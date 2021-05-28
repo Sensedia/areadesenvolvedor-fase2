@@ -270,7 +270,6 @@ components:
         - PRICE
         - SAM
         - SEM_SISTEMA_AMORTIZACAO
-        - OUTROS
       example: SAC
     EnumContractCalculation:
       type: string
@@ -595,11 +594,11 @@ components:
         - currency
         - dueDate
         - instalmentPeriodicity
-        - instalmentPeriodicityAdditionalInfo
         - firstInstalmentDueDate
+        - totalNumberOfInstalments
+        - typeNumberOfInstalments
         - CET
         - amortizationScheduled
-        - amortizationScheduledAdditionalInfo
         - cnpjConsignee
         - interestRates
         - contractedFees
@@ -665,7 +664,6 @@ components:
           maxLength: 19
           pattern: '(-?\d{15}(.\d{4}?))$'
           example: 100000.04
-          nullable: true
           description: Valor contratado da operação. Expresso em valor monetário com até 4 casas decimais
         currency:
           type: string
@@ -684,14 +682,24 @@ components:
           description: Data de vencimento Final da operação. Especificação RFC-3339
         instalmentPeriodicity:
           $ref: '#/components/schemas/EnumContractInstalmentPeriodicity'
+        typeNumberOfInstalments:
+          type: string
+          description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
+          maxLength: 6
+          enum:
+            - DIA
+            - SEMANA
+            - MES
+            - ANO
+          example: MES
         instalmentPeriodicityAdditionalInfo:
           type: string
           pattern: \w*\W*
           maxLength: 50
           example: Informações adicionais sobre periodicidade
           description: |
-            Campo obrigatório para complementar a informação relativa à periodicidade de pagamento regular quando tiver a opção OUTROS.
-            [Restrição] Obrigatório para complementar a informação relativa da periodicidade de pagamento regular, quando selecionada o tipo ou subtipo OUTRO.       
+            Campo livre para complementar a informação relativa à periodicidade de parcelamento.
+            [Restrição] Campo de preenchimento obrigatório quando em typeNumberOfInstalments for informada a opção OUTROS.
         firstInstalmentDueDate:
           type: string
           format: date
@@ -699,6 +707,11 @@ components:
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
           example: '2018-02-15'
           description: Data de vencimento primeira parcela do principal
+        totalNumberOfInstalments:
+          type: number
+          maxLength: 6
+          example: 130632
+          description: 'Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
         CET:
           type: number
           maxLength: 19
@@ -709,14 +722,6 @@ components:
             (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
         amortizationScheduled:
           $ref: '#/components/schemas/EnumContractAmortizationScheduled'
-        amortizationScheduledAdditionalInfo:
-          type: string
-          pattern: \w*\W*
-          maxLength: 50
-          example: NA
-          description: |
-            Campo obrigatório para complementar a informação relativa à amortização quando selecionada a opção OUTROS.
-            [Restrição] Obrigatório para complementar a informação relativa à amortização quando selecionada a opção OUTROS, para os demais casos informar "NA".       
         cnpjConsignee:
           type: string
           maxLength: 14
@@ -837,11 +842,9 @@ components:
         additionalInfo:
           type: string
           maxLength: 1200
+          description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
           pattern: \w*\W*
           example: Informações adicionais
-          description: |
-            Texto com informações adicionais sobre a composição das taxas de juros pactuadas.
-            [Restrição] Caso a instituição não possua a informação para compartilhamento, informar NA.       
       additionalProperties: false
     LoansChargeOverParcel:
       type: object
@@ -882,14 +885,14 @@ components:
         chargeAdditionalInfo:
           type: string
           description: |
-            Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.
+            Campos para informações adicionais.
             [Restrição] Obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.
           pattern: \w*\W*$|^NA$
           example: Informações adicionais sobre encargos.
         chargeRate:
           type: number
           description: |
-            Representa o valor do encargo em percentual pactuado no contrato. Exemplo: 0.0210 (=2.1%).
+            Representa o valor do encargo em percentual pactuado no contrato. Exemplo: 0.0210 (=2.1%). Deve-se preencher as 4 casas decimais obrigatoriamente.
           maxLength: 19
           example: 0.07
       additionalProperties: false
@@ -903,26 +906,38 @@ components:
         - typeContractRemaining
         - contractRemainingNumber
         - typeNumberOfInstalments
-        - totalNumberOfInstalments
         - paidInstalments
       properties:
-        typeNumberOfInstalments:
-          type: string
-          description: Tipo de prazo total do contrato referente à modalidade de crédito informada.
-          maxLength: 6
-          enum:
-            - DIA
-            - SEMANA
-            - MES
-            - ANO
-            - SEM_PRAZO_TOTAL
-          example: MES
-        totalNumberOfInstalments:
+        contractRemainingNumber:
           type: number
           maxLength: 6
-          example: 130632
+          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
+          example: 14600
+        typeNumberOfInstalments:
+          $ref: '#/components/schemas/LoansContract/properties/typeNumberOfInstalments'
+        paidInstalments:
+          type: number
+          description: 'Quantidade de prestações pagas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
+          maxLength: 3
+          example: 73
+        dueInstalments:
+          type: number
+          maxLength: 3
+          description: Quantidade de prestações a vencer.
           nullable: true
-          description: 'Prazo Total segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
+          example: 57
+        pastDueInstalments:
+          type: number
+          maxLength: 3
+          nullable: true
+          description: Quantidade de prestações vencidas.
+          example: 73
+        balloonPayments:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoansBalloonPayment'
+          minItems: 0
+          nullable: true
         typeContractRemaining:
           type: string
           enum:
@@ -930,41 +945,9 @@ components:
             - SEMANA
             - MES
             - ANO
-            - SEM_PRAZO_REMANESCENTE
           maxLength: 6
           description: |
-            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.   
-        contractRemainingNumber:
-          type: number
-          maxLength: 6
-          description: 'Prazo Remanescente segundo o tipo (dia, semana, mês, ano) referente à Modalidade de Crédito informada.'
-          nullable: true
-          example: 14600
-        paidInstalments:
-          type: number
-          description: 'Quantidade de prestações pagas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
-          maxLength: 3
-          nullable: true
-          example: 73
-        dueInstalments:
-          type: number
-          maxLength: 3
-          description: 'Quantidade de prestações a vencer.(No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
-          nullable: true
-          example: 57
-        pastDueInstalments:
-          type: number
-          maxLength: 3
-          nullable: true
-          description: 'Quantidade de prestações vencidas. (No caso de modalidades que não possuam parcelas, o número de prestações é igual a zero)'
-          example: 73
-        balloonPayments:
-          type: array
-          items:
-            $ref: '#/components/schemas/LoansBalloonPayment'
-          minItems: 0
-          description: Lista que traz as datas de vencimento e valor das parcelas não regulares do contrato da modalidade de crédito consultada
-          nullable: true
+            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.
       additionalProperties: false
     LoansListContract:
       type: object
@@ -1034,7 +1017,7 @@ components:
           maxLength: 19
           pattern: '(-?\d{15}(.\d{4}?))$'
           example: 100000.04
-          description: Valor necessário para o cliente liquidar a dívida.
+          description: Valor necessario para o cliente liquidar a dívida.
         releases:
           type: array
           items:
@@ -1094,6 +1077,7 @@ components:
             Valor do pagamento referente ao  contrato da modalidade de crédito consultada.
             Expresso em valor monetário com até 4 casas decimais.
         overParcel:
+          nullable: true
           type: object
           description: Objeto das tarifas e encargos que foram pagos fora da parcela.
           required:

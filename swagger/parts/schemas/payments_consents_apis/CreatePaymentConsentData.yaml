@@ -1,0 +1,14 @@
+type: object
+description: Objeto contendo as informações de consentimento para a iniciação de pagamento individual.
+required:
+  - creditor
+  - payment
+  - debtor
+properties:
+  creditor:
+    $ref: ./Creditor.yaml
+  payment:
+    $ref: ./PaymentConsent.yaml
+  debtor:
+    $ref: ../business_commons/Account.yaml
+additionalProperties: false

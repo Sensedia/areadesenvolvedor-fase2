@@ -1,0 +1,9 @@
+type: string
+maxLength: 22
+enum:
+  - AUTHORISED
+  - AWAITING_AUTHORISATION
+  - REJECTED
+  - REVOKED
+example: AUTHORISED
+description: Status do Consentimento para iniciação de pagamento.
