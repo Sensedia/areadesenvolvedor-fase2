@@ -1862,6 +1862,12 @@
                     <a href="#tocS_EnumAccountPaymentsType" class="toc-h2 toc-link" data-title="EnumAccountPaymentsType">EnumAccountPaymentsType</a>
                   </li>
                   <li>
+                    <a href="#tocS_EnumPersonType" class="toc-h2 toc-link" data-title="EnumPersonType">EnumPersonType</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EnumPaymentType" class="toc-h2 toc-link" data-title="EnumPaymentType">EnumPaymentType</a>
+                  </li>
+                  <li>
                     <a href="#tocS_Identification" class="toc-h2 toc-link" data-title="Identification">Identification</a>
                   </li>
                   <li>
@@ -56916,6 +56922,100 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 </tr>
 </tbody></table>
 
+<h2 id="tocS_EnumPersonType">EnumPersonType</h2>
+
+<p><a id="schemaenumpersontype"></a>
+<a id="schema_EnumPersonType"></a>
+<a id="tocSenumpersontype"></a>
+<a id="tocsenumpersontype"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"PESSOA_NATURAL"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</p>
+
+<h3 id='propriedades-6'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>string</td>
+<td>false</td>
+<td>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>PESSOA_NATURAL</td>
+</tr>
+<tr>
+<td>**</td>
+<td>PESSOA_JURIDICA</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EnumPaymentType">EnumPaymentType</h2>
+
+<p><a id="schemaenumpaymenttype"></a>
+<a id="schema_EnumPaymentType"></a>
+<a id="tocSenumpaymenttype"></a>
+<a id="tocsenumpaymenttype"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"PIX"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Tipos de pagamentos permitidos pelo Open Banking Brasil.</p>
+
+<h3 id='propriedades-7'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>string</td>
+<td>false</td>
+<td>Tipos de pagamentos permitidos pelo Open Banking Brasil.</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>PIX</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_Identification">Identification</h2>
 
 <p><a id="schemaidentification"></a>
@@ -56933,7 +57033,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <p>Objeto contendo os dados do recebedor (creditor).</p>
 
-<h3 id='propriedades-6'>Propriedades</h3>
+<h3 id='propriedades-8'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56945,7 +57045,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 </thead><tbody>
 <tr>
 <td>personType</td>
-<td>string</td>
+<td><a href="#schemaenumpersontype">EnumPersonType</a></td>
 <td>true</td>
 <td>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</td>
 </tr>
@@ -56960,24 +57060,6 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>string</td>
 <td>true</td>
 <td>Em caso de pessoa física, nome completo do titular da conta do recebedor.  <br>Em caso de pessoa jurídica, razão social da conta do recebedor.</td>
-</tr>
-</tbody></table>
-
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
-
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Código</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>personType</td>
-<td>PESSOA_NATURAL</td>
-</tr>
-<tr>
-<td>personType</td>
-<td>PESSOA_JURIDICA</td>
 </tr>
 </tbody></table>
 
@@ -56999,7 +57081,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <p>Objeto contendo dados de pagamento para consentimento.</p>
 
-<h3 id='propriedades-7'>Propriedades</h3>
+<h3 id='propriedades-9'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57011,7 +57093,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#schemaenumpaymenttype">EnumPaymentType</a></td>
 <td>true</td>
 <td>Tipos de pagamentos permitidos pelo Open Banking Brasil.</td>
 </tr>
@@ -57035,20 +57117,6 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
-
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Código</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>PIX</td>
-</tr>
-</tbody></table>
-
 <h2 id="tocS_PaymentPix">PaymentPix</h2>
 
 <p><a id="schemapaymentpix"></a>
@@ -57065,7 +57133,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <p>Objeto contendo dados do pagameto como moeda e valor.</p>
 
-<h3 id='propriedades-8'>Propriedades</h3>
+<h3 id='propriedades-10'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57111,7 +57179,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-9'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-11'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57183,7 +57251,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-10'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-12'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57286,7 +57354,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-11'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-13'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57337,7 +57405,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <p>Objeto contendo dados do pagamento e da conta do recebedor (creditor).</p>
 
-<h3 id='propriedades-12'>Propriedades</h3>
+<h3 id='propriedades-14'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57614,7 +57682,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <p>Referências para outros recusos da API requisitada.</p>
 
-<h3 id='propriedades-13'>Propriedades</h3>
+<h3 id='propriedades-15'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57673,7 +57741,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 <p>Meta informações referente a API requisitada.</p>
 
-<h3 id='propriedades-14'>Propriedades</h3>
+<h3 id='propriedades-16'>Propriedades</h3>
 
 <table><thead>
 <tr>
