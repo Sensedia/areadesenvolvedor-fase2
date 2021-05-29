@@ -30,19 +30,19 @@ Todos os valores monetários informados estão representados com a moeda vigente
 /data/debtorAccount;debtorAccount;Objeto que contém os dados da conta utilizada para a iniciação de pagamento.;Objeto;;Opcional;;;0;1;"";Não permitido;object;
 /data/debtorAccount/ispb;ispb;"Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI,  
 no qual o usuário pagador/ recebedor detém a conta transacional.";Texto;8;Obrigatório;^[0-9]{1,8}$;;1;1;"";Não permitido;string;12345678
-/data/debtorAccount/branchCode;branchCode;"Código da Agência detentora da conta sem digito.
-Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito, 
+/data/debtorAccount/branchCode;branchCode;"Código da Agência detentora da conta sem digito.  
+Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
 no exercício de atividades da instituição, não podendo ser móvel ou transitória.";Texto;4;Opcional;^(\w{4}){1}$;;0;1;" Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
 ";Não permitido;string;1774
-/data/debtorAccount/number;number;Número da conta.;Texto;20;Obrigatório;^\d{8,20}$;;1;1;"";Não permitido;string;1234567890
-/data/debtorAccount/checkDigit;checkDigit;Dígito da conta.;Texto;4;Obrigatório;^(\w{4}){1}$;;1;1;"";Não permitido;string;1234
-/data/debtorAccount/accountType;accountType;"Tipos de contas usadas para pagamento via Pix.
+/data/debtorAccount/number;number;Número da conta do recebedor da iniciação de pagamento, sem o dígito.;Texto;20;Obrigatório;^\d{8,20}$;;1;1;"";Não permitido;string;1234567890
+/data/debtorAccount/checkDigit;checkDigit;Dígito da conta do recebedor da iniciação de pagamento.;Texto;4;Obrigatório;^(\w{4}){1}$;;1;1;"";Não permitido;string;1234
+/data/debtorAccount/accountType;accountType;"Tipos de contas usadas para pagamento via Pix.  
 Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas,  
 conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.  
-Segue descrição de cada valor do ENUM para o escopo do Pix.
-CACC - Current - Conta Corrente.
-SLRY - Salary - Conta-Salário.
-SVGS - Savings - Conta de Poupança.
+Segue descrição de cada valor do ENUM para o escopo do Pix.  
+CACC - Current - Conta Corrente.  
+SLRY - Salary - Conta-Salário.  
+SVGS - Savings - Conta de Poupança.  
 TRAN - TransactingAccount - Conta de Pagamento";Texto;4;Obrigatório;;"CACC 
 SLRY 
 SVGS 
