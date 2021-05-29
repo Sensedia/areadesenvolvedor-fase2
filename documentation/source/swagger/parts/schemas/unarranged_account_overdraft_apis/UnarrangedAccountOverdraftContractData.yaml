@@ -17,6 +17,7 @@ required:
   - typeNumberOfInstalments
   - CET
   - amortizationScheduled
+  - amortizationScheduledAdditionalInfo
   - cnpjConsignee
   - interestRates
   - contractedFees
@@ -132,6 +133,12 @@ properties:
     example: 0.2900
   amortizationScheduled:
     $ref: ../enum/EnumContractAmortizationScheduled.yaml
+  amortizationScheduledAdditionalInfo:
+    type: string
+    pattern: \w*\W*$|^NA$
+    example: 'Informações adicionais'
+    description: |
+      Campo para informações adicionais. 
   cnpjConsignee:
     type: string
     maxLength: 14

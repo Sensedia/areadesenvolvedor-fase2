@@ -132,7 +132,13 @@ properties:
       O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
       (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
   amortizationScheduled:
-    $ref: ../enum/EnumContractAmortizationScheduled.yaml      
+    $ref: ../enum/EnumContractAmortizationScheduled.yaml  
+  amortizationScheduledAdditionalInfo:
+    type: string
+    pattern: \w*\W*$|^NA$
+    example: 'Informações adicionais'
+    description: |
+      Campo para informações adicionais.    
   cnpjConsignee:
     type: string
     maxLength: 14
