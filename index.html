@@ -1836,10 +1836,10 @@
             <a href="#fase-3-apis-do-open-banking-brasil-api-inicia-o-de-pagamentos" class="toc-h1 toc-link" data-title="API - Iniciação de Pagamentos">API - Iniciação de Pagamentos</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#em-revisao-pix-criar-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] PIX - Criar iniciação de pagamento.">[Em Revisão] PIX - Criar iniciação de pagamento.</a>
+                    <a href="#em-revisao-pix-criar-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Pix - Criar iniciação de pagamento.">[Em Revisão] Pix - Criar iniciação de pagamento.</a>
                   </li>
                   <li>
-                    <a href="#em-revisao-pix-consultar-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] PIX - Consultar iniciação de pagamento.">[Em Revisão] PIX - Consultar iniciação de pagamento.</a>
+                    <a href="#em-revisao-pix-consultar-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Pix - Consultar iniciação de pagamento.">[Em Revisão] Pix - Consultar iniciação de pagamento.</a>
                   </li>
               </ul>
           </li>
@@ -3285,7 +3285,7 @@ A informação de quais possibilidades estarão disponíveis (<em>query paramete
 
 <h3 id='transacao-agendada-scheduled-payment'><a id="glossarioTransacaoAgendada">Transação Agendada (Scheduled Payment)</a></h3>
 
-<p>O usuário poderá agendar uma transação de DOC, TED, PIX ou boleto bancário para uma determinada data futura</p>
+<p>O usuário poderá agendar uma transação de DOC, TED, Pix ou boleto bancário para uma determinada data futura</p>
 
 <p><em>Fontes: <a href="https://www.bcb.gov.br/detalhenoticia/327/noticia">link 1</a> e <a href="https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cartilha_Migrantes_Refugiados/cartilhaBC-Port_v3.pdf">link 2</a></em></p>
 
@@ -55032,7 +55032,7 @@ Adiantamento a depositantes</p>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
 </blockquote>
 
-<p>Clientes poderão solicitar e realizar operações de pagamento PIX em instituições participantes, ou contratantes, da Fase 3 do Open Banking Brasil. 
+<p>Clientes poderão solicitar e realizar operações de pagamento Pix em instituições participantes, ou contratantes, da Fase 3 do Open Banking Brasil. 
 A operação de pagamento ocorre apenas se o cliente consentir través da API de Consentimento Fase 3 e na sequência autorizar o pagamento no ambiente do banco detentor da conta, por meio de autenticação com login e senha. Diferentemente da Fase 2, o consentimento é dado para cada transação e não perdura por um prazo, além de ser consumido no momento e sem a possibilidade de revogamento. Uma vez dada a autorização, esta não será possível de cancelamento pelo cliente. </p>
 <h3 id='idempotencia'>Idempotência</h3>
 <p>Segundo a W3C, &quot;um método HTTP idempotente é um método HTTP que pode ser chamado muitas vezes sem resultados diferentes ou efeitos colaterais. Não importa se o método é chamado apenas uma vez ou dez vezes. O resultado deve ser o mesmo. Essencialmente, significa que o resultado de uma solicitação executada com sucesso é independente do número de vezes que ela é executada. Por exemplo, na aritmética, adicionar zero a um número é uma operação idempotente.&quot;</p>
@@ -55051,10 +55051,12 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 
 <p>A iniciadora não deve usar comportamento idempotente do POST para pesquisar o status dos recursos.</p>
 <h3 id='diagrama-de-sequencia'>Diagrama de Sequência</h3>
-<p><a href="images/sequence-diagrams/Iniciacao_de_pagamento-210abcc8.png" target="_blank">Download do Diagrama de Sequência</a></p>
+<p><img src="images/images/sequence-diagrams/iniciacao_de_pagamento.png" alt="Iniciacao_de_Pagamento" />
+<a href="images/sequence-diagrams/iniciacao_de_pagamento.png" target="_blank">Download do Diagrama de Sequência</a></p>
 <h3 id='a-deliberar-cd-recomendacao-uso-de-pooling'>[A deliberar CD] Recomendação uso de pooling</h3>
-<p>Para verificar o processamento da transação, o recurso GET pode ser usado a qualquer momento desde que se respeite os requisitos não funcionais.
-300 TPS global, 50 TPS por instituição, 8 TPS por endereço IP.</p>
+<p>A consulta via GET, para verificar o processamento da transação, pode ser dado a qualquer momento desde que se respeite o rate limit, de:<br>
+- 300 TPS global, 50 TPS por instituição e 8 TPS por endereço IP (Internet Protocol)<br>
+Como sugestão, é indicado que a instituição iniciadora do pagamento implemente um retry exponencial.</p>
 
 <h1 id="fase-3-apis-do-open-banking-brasil-api-consentimento-de-inicia-o-de-pagamentos">API - Consentimento de Iniciação de Pagamentos</h1>
 
@@ -55262,7 +55264,7 @@ A operação de pagamento ocorre apenas se o cliente consentir través da API de
 <td>body</td>
 <td><a href="#schemacreatepaymentconsent">CreatePaymentConsent</a></td>
 <td>true</td>
-<td>Payload para criação do consentimento para iniciação do pagamento PIX.</td>
+<td>Payload para criação do consentimento para iniciação do pagamento Pix.</td>
 </tr>
 </tbody></table>
 
@@ -55700,7 +55702,7 @@ None ( Scopes: openId payments-consents )
 
 <p><a href="swagger/swagger_payments_initiation_apis.yaml" target="_blank">Download da Especificação (OAS 3.0)</a></p>
 
-<h2 id='em-revisao-pix-criar-iniciacao-de-pagamento'>[Em Revisão] PIX - Criar iniciação de pagamento.</h2>
+<h2 id='em-revisao-pix-criar-iniciacao-de-pagamento'>[Em Revisão] Pix - Criar iniciação de pagamento.</h2>
 
 <p><a id="opIdpaymentsInitiationPostPixPayments"></a></p>
 
@@ -55883,7 +55885,7 @@ None ( Scopes: openId payments-consents )
 <td>body</td>
 <td><a href="#schemacreatepixpayment">CreatePixPayment</a></td>
 <td>true</td>
-<td>Payload para criação da iniciação do pagamento PIX.</td>
+<td>Payload para criação da iniciação do pagamento Pix.</td>
 </tr>
 </tbody></table>
 
@@ -55933,7 +55935,7 @@ None ( Scopes: openId payments-consents )
 <tr>
 <td>201</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
-<td>Iniciação de pagamento PIX criada com sucesso.</td>
+<td>Iniciação de pagamento Pix criada com sucesso.</td>
 <td><a href="#schemaresponsepixpayment">ResponsePixPayment</a></td>
 </tr>
 <tr>
@@ -56029,7 +56031,7 @@ Para realizar esta operação, você deve ser autenticado por meio de um dos seg
 None ( Scopes: openId payments-initiation )
 </aside>
 
-<h2 id='em-revisao-pix-consultar-iniciacao-de-pagamento'>[Em Revisão] PIX - Consultar iniciação de pagamento.</h2>
+<h2 id='em-revisao-pix-consultar-iniciacao-de-pagamento'>[Em Revisão] Pix - Consultar iniciação de pagamento.</h2>
 
 <p><a id="opIdpaymentsInitiationGetPixPayments"></a></p>
 
@@ -56205,7 +56207,7 @@ None ( Scopes: openId payments-initiation )
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Dados de iniciação de pagamento PIX obtidos com sucesso.</td>
+<td>Dados de iniciação de pagamento Pix obtidos com sucesso.</td>
 <td><a href="#schemaresponsepixpayment">ResponsePixPayment</a></td>
 </tr>
 <tr>
@@ -56336,7 +56338,7 @@ None ( Scopes: openId payments-initiation )
 <td>ispb</td>
 <td>string</td>
 <td>true</td>
-<td>Elementos usado para identificar o participante do usuário recebedor- participante no qual o usuário recebedor detém a conta transacional. <br>Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI, no qual o usuário recebedor detém a conta transacional.</td>
+<td>Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI,  <br>no qual o usuário pagador/ recebedor detém a conta transacional.</td>
 </tr>
 <tr>
 <td>branchCode</td>
@@ -56360,7 +56362,7 @@ None ( Scopes: openId payments-initiation )
 <td>accountType</td>
 <td><a href="#schemaenumaccountpaymentstype">EnumAccountPaymentsType</a></td>
 <td>true</td>
-<td>Tipos de contas usadas para pagamento via Pix.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current - Conta Corrente.<br>SLRY - Salary - Conta-Salário.<br>SVGS - Savings - Conta de Poupança.<br>TRAN - TransactingAccount - Conta de Pagamento</td>
+<td>Tipos de contas usadas para pagamento via Pix.<br>Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas,  <br>conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.  <br>Segue descrição de cada valor do ENUM para o escopo do Pix.<br>CACC - Current - Conta Corrente.<br>SLRY - Salary - Conta-Salário.<br>SVGS - Savings - Conta de Poupança.<br>TRAN - TransactingAccount - Conta de Pagamento</td>
 </tr>
 </tbody></table>
 
@@ -56552,7 +56554,9 @@ None ( Scopes: openId payments-initiation )
 </span></code></pre></div>
 
 <p>Tipos de contas usadas para pagamento via Pix.
-Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.
+Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas,<br>
+conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.<br>
+Segue descrição de cada valor do ENUM para o escopo do Pix.
 CACC - Current - Conta Corrente.
 SLRY - Salary - Conta-Salário.
 SVGS - Savings - Conta de Poupança.
@@ -56572,7 +56576,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Tipos de contas usadas para pagamento via Pix.<br>Segue descrição de cada valor do ENUM para o escopo do Open Banking Brasil.<br>CACC - Current - Conta Corrente.<br>SLRY - Salary - Conta-Salário.<br>SVGS - Savings - Conta de Poupança.<br>TRAN - TransactingAccount - Conta de Pagamento</td>
+<td>Tipos de contas usadas para pagamento via Pix.<br>Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas,  <br>conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.  <br>Segue descrição de cada valor do ENUM para o escopo do Pix.<br>CACC - Current - Conta Corrente.<br>SLRY - Salary - Conta-Salário.<br>SVGS - Savings - Conta de Poupança.<br>TRAN - TransactingAccount - Conta de Pagamento</td>
 </tr>
 </tbody></table>
 
@@ -56639,13 +56643,13 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>cpfCnpj</td>
 <td>string</td>
 <td>true</td>
-<td>Identificação da pessoa envolvida na transação. <br>Preencher com o CPF ou CNPJ, de acordo com o valor escolhido no campo type.<br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços. <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.</td>
+<td>Identificação da pessoa envolvida na transação.  <br>Preencher com o CPF ou CNPJ, de acordo com o valor escolhido no campo type.  <br>O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços.  <br>O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>true</td>
-<td>Em caso de pessoa Natural, nome completo do titular da conta do recebedor.<br>Em caso de pessoa Jurídica, razão social da conta do recebedor.</td>
+<td>Em caso de pessoa física, nome completo do titular da conta do recebedor.  <br>Em caso de pessoa jurídica, razão social da conta do recebedor.</td>
 </tr>
 </tbody></table>
 
@@ -56894,7 +56898,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>» status</td>
 <td>string</td>
 <td>true</td>
-<td>Retorna o stado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION. <br>Este estado será alterado depois da autorização do consentimento na detentora da conta do pagador (Debtor) e pode assumir os seguintes estados:<br>1. AWAITING_AUTHORISATION - Aguardando autorização<br>2. AUTHORISED - Autorizado<br>3. REJECTED - Rejeitado<br>4. REVOKED - Revogado</td>
+<td>Retorna o estado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION. <br>Este estado será alterado depois da autorização do consentimento na detentora da conta  <br>do pagador (Debtor) e pode assumir os seguintes estados:<br>1. AWAITING_AUTHORISATION - Aguardando autorização<br>2. AUTHORISED - Autorizado<br>3. REJECTED - Rejeitado<br>4. REVOKED - Revogado</td>
 </tr>
 <tr>
 <td>» creditor</td>
