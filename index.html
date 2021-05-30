@@ -55106,7 +55106,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
       <span class="dl">"</span><span class="s2">ispb</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345678</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">branchCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1774</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">accountType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CACC</span><span class="dl">"</span>
     <span class="p">}</span>
   <span class="p">}</span>
@@ -55137,7 +55137,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12},</span><span class="se">\"</span><span class="s">debtorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12},</span><span class="se">\"</span><span class="s">debtorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">4</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -55167,7 +55167,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":100000.12},\"debtorAccount\":{\"ispb\":\"12345678\",\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":100000.12},\"debtorAccount\":{\"ispb\":\"12345678\",\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"4\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
@@ -55200,7 +55200,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -55285,6 +55285,8 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTHORISED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
@@ -55301,7 +55303,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -55688,6 +55690,8 @@ None ( Scopes: openId payments-consents )
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTHORISED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
@@ -55704,7 +55708,7 @@ None ( Scopes: openId payments-consents )
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -55854,7 +55858,7 @@ None ( Scopes: openId payments-consents )
       <span class="dl">"</span><span class="s2">ispb</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345678</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">branchCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1774</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">checkDigit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">accountType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CACC</span><span class="dl">"</span>
     <span class="p">},</span>
     <span class="dl">"</span><span class="s2">additionalInfo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Descrição da Transação</span><span class="dl">"</span><span class="p">,</span>
@@ -55888,7 +55892,7 @@ None ( Scopes: openId payments-consents )
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">creditorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">additionalInfo</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Descrição da Transação</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">qrCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012  </span><span class="se">\\</span><span class="s">nBR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062  </span><span class="se">\\</span><span class="s">n530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123AB  </span><span class="se">\\</span><span class="s">nCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="se">\\</span><span class="s">n</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">pixKey</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901</span><span class="se">\"</span><span class="s">}}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">creditorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">4</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">additionalInfo</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Descrição da Transação</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">qrCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012  </span><span class="se">\\</span><span class="s">nBR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062  </span><span class="se">\\</span><span class="s">n530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123AB  </span><span class="se">\\</span><span class="s">nCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76</span><span class="se">\\</span><span class="s">n</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">pixKey</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678901</span><span class="se">\"</span><span class="s">}}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -55918,7 +55922,7 @@ None ( Scopes: openId payments-consents )
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"payment\":{\"amount\":100000.12,\"currency\":\"BRL\"},\"creditorAccount\":{\"ispb\":\"12345678\",\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"1234\",\"accountType\":\"CACC\"},\"additionalInfo\":\"Descrição da Transação\",\"qrCode\":\"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012  \\nBR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062  \\n530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123AB  \\nCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76\\n\",\"pixKey\":\"12345678901\"}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"payment\":{\"amount\":100000.12,\"currency\":\"BRL\"},\"creditorAccount\":{\"ispb\":\"12345678\",\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"4\",\"accountType\":\"CACC\"},\"additionalInfo\":\"Descrição da Transação\",\"qrCode\":\"00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012  \\nBR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062  \\n530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123AB  \\nCD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76\\n\",\"pixKey\":\"12345678901\"}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
@@ -56000,7 +56004,7 @@ None ( Scopes: openId payments-consents )
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
@@ -56105,7 +56109,7 @@ None ( Scopes: openId payments-consents )
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -56509,7 +56513,7 @@ None ( Scopes: openId payments-initiation )
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -56632,7 +56636,7 @@ None ( Scopes: openId payments-initiation )
   </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -56654,25 +56658,25 @@ None ( Scopes: openId payments-initiation )
 <td>ispb</td>
 <td>string</td>
 <td>true</td>
-<td>Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI,  <br>no qual o usuário pagador/ recebedor detém a conta transacional.</td>
+<td>Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI somente com números.</td>
 </tr>
 <tr>
 <td>branchCode</td>
 <td>string</td>
 <td>false</td>
-<td>Código da Agência detentora da conta sem digito.  <br>Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória.  <br>[Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).</td>
+<td>Código da Agência detentora da conta sem digito.  <br>(Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  <br>no exercício de atividades da instituição, não podendo ser móvel ou transitória).  <br>[Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).</td>
 </tr>
 <tr>
 <td>number</td>
 <td>string</td>
 <td>true</td>
-<td>Número da conta do recebedor da iniciação de pagamento, sem o dígito.</td>
+<td>Número da conta da iniciação de pagamento, sem o dígito.</td>
 </tr>
 <tr>
 <td>checkDigit</td>
 <td>string</td>
 <td>true</td>
-<td>Dígito da conta do recebedor da iniciação de pagamento.</td>
+<td>Dígito da conta da iniciação de pagamento.</td>
 </tr>
 <tr>
 <td>accountType</td>
@@ -56706,7 +56710,7 @@ None ( Scopes: openId payments-initiation )
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -56763,7 +56767,7 @@ None ( Scopes: openId payments-initiation )
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
@@ -56804,7 +56808,7 @@ None ( Scopes: openId payments-initiation )
     </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição da Transação"</span><span class="p">,</span><span class="w">
@@ -56982,7 +56986,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 
 </span></code></pre></div>
 
-<p>Tipos de pagamentos permitidos pelo Open Banking Brasil.</p>
+<p>Este campo define o tipo de pagamento que será iniciado após a autorização do consentimento.</p>
 
 <h3 id='propriedades-7'>Propriedades</h3>
 
@@ -56998,7 +57002,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>**</td>
 <td>string</td>
 <td>false</td>
-<td>Tipos de pagamentos permitidos pelo Open Banking Brasil.</td>
+<td>Este campo define o tipo de pagamento que será iniciado após a autorização do consentimento.</td>
 </tr>
 </tbody></table>
 
@@ -57095,13 +57099,13 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>type</td>
 <td><a href="#schemaenumpaymenttype">EnumPaymentType</a></td>
 <td>true</td>
-<td>Tipos de pagamentos permitidos pelo Open Banking Brasil.</td>
+<td>Este campo define o tipo de pagamento que será iniciado após a autorização do consentimento.</td>
 </tr>
 <tr>
 <td>dateTime</td>
 <td>string(date-time)</td>
 <td>true</td>
-<td>Data e hora do consentimento. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
+<td>Data e hora do pagamento. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -57113,7 +57117,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>amount</td>
 <td>number(double)</td>
 <td>true</td>
-<td>Valor da transação efetuada e convertida em moeda nacional com 2 casas decimais.</td>
+<td>Ajustar para: Valor da transação a ser efetuada com 2 casas decimais.</td>
 </tr>
 </tbody></table>
 
@@ -57229,6 +57233,8 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d886d81-3a1f-48d2-bc15-a19f1f777867"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTHORISED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
@@ -57245,7 +57251,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -57273,10 +57279,22 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>Identificador único do consentimento criado para a iniciação de pagamento solicitada.</td>
 </tr>
 <tr>
+<td>» creationDateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Data e hora em que o consentimento foi criado. Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
+</tr>
+<tr>
+<td>» statusUpdateDateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Data e hora em que o recurso foi atualizado. Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
+</tr>
+<tr>
 <td>» status</td>
 <td>string</td>
 <td>true</td>
-<td>Retorna o estado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION. <br>Este estado será alterado depois da autorização do consentimento na detentora da conta  <br>do pagador (Debtor) e pode assumir os seguintes estados:<br>1. AWAITING_AUTHORISATION - Aguardando autorização<br>2. AUTHORISED - Autorizado<br>3. REJECTED - Rejeitado<br>4. REVOKED - Revogado</td>
+<td>Retorna o estado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION.<br>Este estado será alterado depois da autorização do consentimento na detentora da conta do pagador (Debtor) para AUTHORISED ou REJECTED. <br>O consentimento fica no estado CONSUMED após ocorrer a iniciação do pagamento referente ao consentimento.<br>1. AWAITING_AUTHORISATION - Aguardando autorização<br>2. AUTHORISED - Autorizado<br>3. REJECTED - Rejeitado<br>4. CONSUMED - Consumido</td>
 </tr>
 <tr>
 <td>» creditor</td>
@@ -57318,7 +57336,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 </tr>
 <tr>
 <td>status</td>
-<td>REVOKED</td>
+<td>CONSUMED</td>
 </tr>
 </tbody></table>
 
@@ -57348,7 +57366,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
       </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -57396,7 +57414,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
     </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">

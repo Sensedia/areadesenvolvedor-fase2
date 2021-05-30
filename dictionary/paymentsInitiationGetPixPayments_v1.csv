@@ -119,14 +119,13 @@ SL02";0;1;" Esse motivo deverá ser enviado quando o campo /data/status
 Todos os valores monetários informados estão representados com a moeda vigente do Brasil.";Texto;3;Obrigatório;^(\w{3}){1}$;;1;1;"";Não permitido;string;BRL
 /data/additionalInfo;additionalInfo;Descrição do pagamento, em formato livre, feito pelo pagador.;Texto;140;Opcional;\w*\W*;;0;1;"";Não permitido;string;Descrição da Transação
 /data/creditorAccount;creditorAccount;Objeto que contém os dados da conta utilizada para a iniciação de pagamento.;Objeto;;Opcional;;;0;1;"";Não permitido;object;
-/data/creditorAccount/ispb;ispb;"Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI,  
-no qual o usuário pagador/ recebedor detém a conta transacional.";Texto;8;Obrigatório;^[0-9]{1,8}$;;1;1;"";Não permitido;string;12345678
+/data/creditorAccount/ispb;ispb;Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI somente com números.;Texto;8;Obrigatório;^[0-9]{1,8}$;;1;1;"";Não permitido;string;12345678
 /data/creditorAccount/branchCode;branchCode;"Código da Agência detentora da conta sem digito.  
-Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
-no exercício de atividades da instituição, não podendo ser móvel ou transitória.";Texto;4;Opcional;^(\w{4}){1}$;;0;1;" Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
+(Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
+no exercício de atividades da instituição, não podendo ser móvel ou transitória).";Texto;4;Opcional;^\d{4}$;;0;1;" Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
 ";Não permitido;string;1774
-/data/creditorAccount/number;number;Número da conta do recebedor da iniciação de pagamento, sem o dígito.;Texto;20;Obrigatório;^\d{8,20}$;;1;1;"";Não permitido;string;1234567890
-/data/creditorAccount/checkDigit;checkDigit;Dígito da conta do recebedor da iniciação de pagamento.;Texto;4;Obrigatório;^(\w{4}){1}$;;1;1;"";Não permitido;string;1234
+/data/creditorAccount/number;number;Número da conta da iniciação de pagamento, sem o dígito.;Texto;20;Obrigatório;^\d{8,20}$;;1;1;"";Não permitido;string;1234567890
+/data/creditorAccount/checkDigit;checkDigit;Dígito da conta da iniciação de pagamento.;Texto;1;Obrigatório;\w*\W*;;1;1;"";Não permitido;string;4
 /data/creditorAccount/accountType;accountType;"Tipos de contas usadas para pagamento via Pix.  
 Modalidades tradicionais previstas pela Resolução 4.753, não contemplando contas vinculadas,  
 conta de domiciliados no exterior, contas em moedas estrangeiras e conta correspondente moeda eletrônica.  
