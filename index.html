@@ -1822,7 +1822,7 @@
               </ul>
           </li>
           <li>
-            <a href="#fase-3-apis-do-open-banking-brasil-api-consentimento-de-inicia-o-de-pagamentos" class="toc-h1 toc-link" data-title="API - Consentimento de Iniciação de Pagamentos">API - Consentimento de Iniciação de Pagamentos</a>
+            <a href="#fase-3-apis-do-open-banking-brasil-api-pagamentos" class="toc-h1 toc-link" data-title="API - Pagamentos">API - Pagamentos</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#em-revisao-criar-consentimento-para-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Criar consentimento para iniciação de pagamento.">[Em Revisão] Criar consentimento para iniciação de pagamento.</a>
@@ -1830,11 +1830,6 @@
                   <li>
                     <a href="#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Consultar consentimento para iniciação de pagamento.">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#fase-3-apis-do-open-banking-brasil-api-inicia-o-de-pagamentos" class="toc-h1 toc-link" data-title="API - Iniciação de Pagamentos">API - Iniciação de Pagamentos</a>
-              <ul class="toc-list-h2">
                   <li>
                     <a href="#em-revisao-pix-criar-iniciacao-de-pagamento" class="toc-h2 toc-link" data-title="[Em Revisão] Pix - Criar iniciação de pagamento.">[Em Revisão] Pix - Criar iniciação de pagamento.</a>
                   </li>
@@ -55074,11 +55069,11 @@ Adiantamento a depositantes</p>
 <a href="images/sequence-diagrams/iniciacao_de_pagamento-210abcc8.png" target="_blank">Download do Diagrama de Sequência</a></p>
 <h3 id='a-deliberar-cd-recomendacao-uso-de-pooling'>[A deliberar CD] Recomendação uso de pooling</h3><h4 id='a-consulta-via-get-para-verificar-o-processamento-da-transacao-pode-ser-dado-a-qualquer-momento-desde-que-se-respeite-o-rate-limit-de'>A consulta via GET, para verificar o processamento da transação, pode ser dado a qualquer momento desde que se respeite o rate limit de:</h4>
 <ul>
-<li>300 TPS global, 50 TPS por instituição e 8 TPS por endereço IP (Internet Protocol).<br></li>
-<li>Como sugestão, é indicado que a instituição iniciadora do pagamento implemente um retry exponencial.<br></li>
+<li>300 TPS global, 50 TPS por instituição e 8 TPS por endereço IP (Internet Protocol).<br>
+Como sugestão, é indicado que a instituição iniciadora do pagamento implemente um retry exponencial.<br></li>
 </ul>
 
-<h1 id="fase-3-apis-do-open-banking-brasil-api-consentimento-de-inicia-o-de-pagamentos">API - Consentimento de Iniciação de Pagamentos</h1>
+<h1 id="fase-3-apis-do-open-banking-brasil-api-pagamentos">API - Pagamentos</h1>
 
 <table><thead>
 <tr>
@@ -55086,17 +55081,17 @@ Adiantamento a depositantes</p>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">1</td>
+<td style="text-align: left">1.0.0-rc1.0</td>
 </tr>
 </tbody></table>
 <h4 id='visao-geral'>Visão Geral</h4>
-<p>A API tem como objetivo coletar o consentimento para iniciação de pagamento entre bancos e instituições financeiras e acessível também à estabelecimentos comerciais participantes do Open Banking Brasil.</p>
+<p>A API tem como objetivo coletar o consentimento e ralizar a iniciação de pagamento entre bancos e instituições financeiras e acessível também à estabelecimentos comerciais participantes do Open Banking Brasil.</p>
 
-<p>É possível realizar a coleta do consentimento para iniciação de pagamento (não possuindo restrição de uso entre pessoa física e pessoa jurídica) mediante a integração entre as instituições autorizadas.</p>
+<p>Os recursos estão disponíveis para pagadores que possuem vínculo com uma instituição detentora de conta participante do Open Banking, independentemente de serem pessoa física ou jurídica.</p>
 <h4 id='especificacao-em-oas-3-0'>Especificação em OAS 3.0</h4>
-<p><a href="swagger/swagger_payments_consents_apis.yaml" target="_blank">Download da Especificação (OAS 3.0)</a>  </p>
+<p><a href="swagger/swagger_payments_apis.yaml" target="_blank">Download da Especificação (OAS 3.0)</a>  </p>
 <h2 id='em-revisao-criar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Criar consentimento para iniciação de pagamento.</h2>
-<p><a id="opIdpaymentsConsentsPostConsents"></a></p>
+<p><a id="opIdpaymentsPostConsents"></a></p>
 
 <blockquote>
 <p>Exemplo de código</p>
@@ -55133,7 +55128,7 @@ Adiantamento a depositantes</p>
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments-consents/v1/consents</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments/v1/consents</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
@@ -55163,13 +55158,13 @@ Adiantamento a depositantes</p>
     <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/payments-consents/v1/consents"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/payments/v1/consents"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://example.com/payments-consents/v1/consents"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://example.com/payments/v1/consents"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
@@ -55183,13 +55178,13 @@ Adiantamento a depositantes</p>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
-<p><code>POST /payments-consents/v1/consents</code></p>
+<p><code>POST /payments/v1/consents</code></p>
 
 <p>Método para a criação do consentimento para iniciação de pagamento.</p>
 
 <h3 id='dicionario-de-dados'>Dicionário de dados</h3>
 
-<p><a href='dictionary/paymentsConsentsPostConsents_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+<p><a href='dictionary/paymentsPostConsents_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -55428,12 +55423,12 @@ Adiantamento a depositantes</p>
 
 <aside class="warning">
 Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: openId payments-consents )
+None ( Scopes: openId payments )
 </aside>
 
 <h2 id='em-revisao-consultar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Consultar consentimento para iniciação de pagamento.</h2>
 
-<p><a id="opIdpaymentsConsentsGetConsentsConsentId"></a></p>
+<p><a id="opIdpaymentsGetConsentsConsentId"></a></p>
 
 <blockquote>
 <p>Exemplo de código</p>
@@ -55450,7 +55445,7 @@ None ( Scopes: openId payments-consents )
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments-consents/v1/consents/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://example.com/payments/v1/consents/string</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-fapi-auth-date</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">stringstringstringstringstrin</span><span class="dl">"</span><span class="p">);</span>
@@ -55474,13 +55469,13 @@ None ( Scopes: openId payments-consents )
     <span class="s">'x-jws-signature'</span><span class="p">:</span> <span class="s">"string"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/payments-consents/v1/consents/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/payments/v1/consents/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://example.com/payments-consents/v1/consents/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://example.com/payments/v1/consents/string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-fapi-auth-date"</span><span class="o">,</span> <span class="s">"stringstringstringstringstrin"</span><span class="o">)</span>
@@ -55491,13 +55486,13 @@ None ( Scopes: openId payments-consents )
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
-<p><code>GET /payments-consents/v1/consents/{consentId}</code></p>
+<p><code>GET /payments/v1/consents/{consentId}</code></p>
 
 <p>Método para consultar o consentimento para iniciação de pagamento.</p>
 
 <h3 id='dicionario-de-dados-2'>Dicionário de dados</h3>
 
-<p><a href='dictionary/paymentsConsentsGetConsentsConsentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+<p><a href='dictionary/paymentsGetConsentsConsentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
 <h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
 
@@ -55695,34 +55690,12 @@ None ( Scopes: openId payments-consents )
 
 <aside class="warning">
 Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: openId payments-consents )
+None ( Scopes: openId payments )
 </aside>
-
-<h1 id="fase-3-apis-do-open-banking-brasil-api-inicia-o-de-pagamentos">API - Iniciação de Pagamentos</h1>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Versão</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">1</td>
-</tr>
-</tbody></table>
-
-<h4 id='visao-geral-2'>Visão Geral</h4>
-
-<p>A API tem como objetivo permitir a relação entre a iniciadora de transação de pagamento e a instituição detentora de conta para a solicitação de um pagamento pelo Open Banking Brasil.        </p>
-
-<p>O recurso está disponível para pagadores que possuem vínculo com uma instituição detentora de conta participante do Open Banking, independentemente de serem pessoa física ou jurídica.</p>
-
-<h4 id='especificacao-em-oas-3-0-2'>Especificação em OAS 3.0</h4>
-
-<p><a href="swagger/swagger_payments_initiation_apis.yaml" target="_blank">Download da Especificação (OAS 3.0)</a>  </p>
 
 <h2 id='em-revisao-pix-criar-iniciacao-de-pagamento'>[Em Revisão] Pix - Criar iniciação de pagamento.</h2>
 
-<p><a id="opIdpaymentsInitiationPostPixPayments"></a></p>
+<p><a id="opIdpaymentsPostPixPayments"></a></p>
 
 <blockquote>
 <p>Exemplo de código</p>
@@ -55824,7 +55797,7 @@ None ( Scopes: openId payments-consents )
 
 <h3 id='dicionario-de-dados-3'>Dicionário de dados</h3>
 
-<p><a href='dictionary/paymentsInitiationPostPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+<p><a href='dictionary/paymentsPostPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
 <h3 id='status-422-unprocessableentity-messages-pix'>Status 422 - UnprocessableEntity Messages Pix</h3>
 
@@ -56270,12 +56243,12 @@ None ( Scopes: openId payments-consents )
 
 <aside class="warning">
 Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: openId payments-initiation )
+None ( Scopes: openId payments )
 </aside>
 
 <h2 id='em-revisao-pix-consultar-iniciacao-de-pagamento'>[Em Revisão] Pix - Consultar iniciação de pagamento.</h2>
 
-<p><a id="opIdpaymentsInitiationGetPixPayments"></a></p>
+<p><a id="opIdpaymentsGetPixPaymentsPaymentId"></a></p>
 
 <blockquote>
 <p>Exemplo de código</p>
@@ -56339,7 +56312,7 @@ None ( Scopes: openId payments-initiation )
 
 <h3 id='dicionario-de-dados-4'>Dicionário de dados</h3>
 
-<p><a href='dictionary/paymentsInitiationGetPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+<p><a href='dictionary/paymentsGetPixPaymentsPaymentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
 <h3 id="[em-revisão]-pix---consultar-iniciação-de-pagamento.-parameters">Parâmetros</h3>
 
@@ -56548,7 +56521,7 @@ None ( Scopes: openId payments-initiation )
 
 <aside class="warning">
 Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: openId payments-initiation )
+None ( Scopes: openId payments )
 </aside>
 
 <h1 id='schemas'>Schemas</h1>
@@ -57270,7 +57243,7 @@ TRAN - TransactingAccount - Conta de Pagamento</p>
 <td>» status</td>
 <td>string</td>
 <td>true</td>
-<td>Retorna o estado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION.<br>Este estado será alterado depois da autorização do consentimento na detentora da conta do pagador (Debtor) para AUTHORISED ou REJECTED. <br>O consentimento fica no estado CONSUMED após ocorrer a iniciação do pagamento referente ao consentimento.<br>AUTHORISED - Autorizado <br>AWAITING_AUTHORISATION - Aguardando autorização<br>REJECTED - Rejeitado<br>CONSUMED - Consumido</td>
+<td>Retorna o estado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION.<br>Este estado será alterado depois da autorização do consentimento na detentora da conta do pagador (Debtor) para AUTHORISED ou REJECTED. <br>O consentimento fica no estado CONSUMED após ocorrer a iniciação do pagamento referente ao consentimento.  <br>Estados possíveis:  <br>AWAITING_AUTHORISATION - Aguardando autorização<br>AUTHORISED - Autorizado   <br>REJECTED - Rejeitado  <br>CONSUMED - Consumido</td>
 </tr>
 <tr>
 <td>» creditor</td>
