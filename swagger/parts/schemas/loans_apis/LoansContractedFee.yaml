@@ -29,6 +29,7 @@ properties:
       [Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
     type: number
     format: double
+    pattern: '(-?\d{15}(.\d{4}?))$'
     nullable: true
     maxLength: 19
     minLength: 0
@@ -36,8 +37,7 @@ properties:
   feeRate:
     type: number
     description: |
-      É o valor da tarifa em percentual pactuada no contrato.
-      [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
+      Percentual que representa o valor da tarifa pactuada para o contrato. Preenchimento obrigatório quando a forma de cobrança por Percentual
     maxLength: 19
-    example: 0.2500
+    example: 50
 additionalProperties: false

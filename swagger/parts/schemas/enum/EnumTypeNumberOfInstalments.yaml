@@ -6,5 +6,4 @@ enum:
   - SEMANA
   - MES
   - ANO
-  - SEM_PRAZO_TOTAL
 example: MES

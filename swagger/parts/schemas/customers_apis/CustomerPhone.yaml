@@ -30,7 +30,7 @@ properties:
   number:
     type: string
     maxLength: 11
-    pattern: ^([0-9]{8,11})|^NA$
+    pattern: ^([0-9]{8,11})
     example: "29875132"
     description: Número de telefone do cliente
   phoneExtension:
