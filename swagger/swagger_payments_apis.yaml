@@ -1,15 +1,22 @@
 ﻿openapi: 3.0.0
 info:
-  title: API de Pagamentos - Open Banking Brasil
+  title: API Payment Initiation - Open Banking Brasil
   description: |
-    API que trata das operações de pagamentos para o Open Banking Brasil.
-    Requer consentimento do cliente para todos os `endpoints`.
+    API de Iniciação de Pagamentos, reponsável por viabilizar as operações de iniciação de pagamentos para o Open Banking Brasil.  
+    Para cada uma das formas de pagamento previstas é necessário obter prévio consentimento do cliente através dos `endpoints` dedicados ao consentimento nesta API.
+
+    # Orientações
+    No diretório de participantes duas `Roles` estão relacionadas à presente API: 
+    - `CONTA`, referente às instituições detentoras de conta participantes do Open Banking Brasil;
+    - `PAGTO`, referente às instituições iniciadoras de transação de pagamento de conta participantes do Open Banking Brasil.   
+    Os tokens utilizados para consumo dos `endpoints` desta API devem possuir os `scopes` `openId` e `payments`.  
+    Esta API não requer a implementação de `permissions` para sua utilização.
   version: 1.0.0-rc1.0
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0'
   contact:
-    name: Governança do Open Banking Brasil – Interfaces
+    name: Governança do Open Banking Brasil – Especificações
     email: gt-interfaces@openbankingbr.org
     url: 'https://openbanking-brasil.github.io/areadesenvolvedor/'
 servers:
@@ -89,7 +96,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/XJwsSignature'
       responses:
         '200':
           $ref: '#/components/responses/200PaymentsConsentsConsentIdRead'
@@ -190,7 +196,6 @@ paths:
         - $ref: '#/components/parameters/xFapiCustomerIpAddress'
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
-        - $ref: '#/components/parameters/XJwsSignature'
       responses:
         '200':
           $ref: '#/components/responses/200PaymentsInitiationPixPaymentIdRead'
@@ -224,7 +229,8 @@ components:
   schemas:
     Account:
       type: object
-      description: Objeto que contém a identificação de uma conta.
+      description: |
+        Objeto que contém a identificação de uma conta. 
       required:
         - ispb
         - number
@@ -233,33 +239,81 @@ components:
       properties:
         ispb:
           type: string
+          minLength: 8
           maxLength: 8
-          pattern: '^[0-9]{1,8}$'
+          pattern: '^[0-9]{8}$'
           example: '12345678'
           description: |
-            Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI somente com números.
+            Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI (Sistema de pagamentos instantâneos) somente com números.
         branchCode:
           type: string
           maxLength: 4
           pattern: '^\d{4}$'
           example: '1774'
           description: |
-            Código da Agência detentora da conta sem digito.  
+            Código da Agência detentora da conta sem dígito.  
             (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
             no exercício de atividades da instituição, não podendo ser móvel ou transitória).  
-            [Restrição] Obrigatório quando tipo de conta for CACC (CONTA_DEPOSITO_A_VISTA) ou SVGS (CONTA_POUPANCA).
+            [Restrição] Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
         number:
           type: string
+          minLength: 1
           maxLength: 20
           pattern: '^\d{8,20}$'
           example: '1234567890'
-          description: 'Número da conta da iniciação de pagamento, sem o dígito.'
+          description: Número da conta sem o dígito.
         checkDigit:
           type: string
           pattern: \w*\W*
+          minLength: 1
           maxLength: 1
           example: '4'
-          description: Dígito da conta da iniciação de pagamento.
+          description: Dígito da conta.
+        accountType:
+          $ref: '#/components/schemas/EnumAccountPaymentsType'
+      additionalProperties: false
+    CreditorAccount:
+      type: object
+      description: |
+        Objeto que contém a identificação da conta de destino do beneficiário/recebedor.  
+      required:
+        - ispb
+        - number
+        - checkDigit
+        - accountType
+      properties:
+        ispb:
+          type: string
+          minLength: 8
+          maxLength: 8
+          pattern: '^[0-9]{8}$'
+          example: '12345678'
+          description: |
+            Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI (Sistema de pagamentos instantâneos) somente com números.
+        branchCode:
+          type: string
+          maxLength: 4
+          pattern: '^\d{4}$'
+          example: '1774'
+          description: |
+            Código da Agência detentora da conta sem dígito.  
+            (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
+            no exercício de atividades da instituição, não podendo ser móvel ou transitória).  
+            [Restrição] Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
+        number:
+          type: string
+          minLength: 1
+          maxLength: 20
+          pattern: '^\d{8,20}$'
+          example: '1234567890'
+          description: Número da conta sem o dígito.
+        checkDigit:
+          type: string
+          pattern: \w*\W*
+          minLength: 1
+          maxLength: 1
+          example: '4'
+          description: Dígito da conta.
         accountType:
           $ref: '#/components/schemas/EnumAccountPaymentsType'
       additionalProperties: false
@@ -291,7 +345,7 @@ components:
         payment:
           $ref: '#/components/schemas/PaymentConsent'
         debtorAccount:
-          $ref: '#/components/schemas/Account'
+          $ref: '#/components/schemas/DebtorAccount'
       additionalProperties: false
     CreatePixPaymentData:
       type: object
@@ -303,15 +357,14 @@ components:
         payment:
           $ref: '#/components/schemas/PaymentPix'
         creditorAccount:
-          $ref: '#/components/schemas/Account'
-        additionalInfo:
+          $ref: '#/components/schemas/CreditorAccount'
+        remittanceInformation:
           type: string
           maxLength: 140
           pattern: \w*\W*
-          example: Descrição da Transação
+          example: Pagamento da nota XPTO035-002.
           description: |
-            Determina um texto a ser apresentado ao pagador para que ele possa digitar uma informação correlata,  
-            em formato livre, a ser enviada ao recebedor.
+            Deve ser preenchido sempre que o usuário pagador inserir alguma informação adicional em um pagamento, a ser enviada ao recebedor.
         qrCode:
           type: string
           maxLength: 512
@@ -327,20 +380,65 @@ components:
             Essa funcionalidade é possível tanto para QR Code estático quanto para QR Code dinâmico.  
             No arranjo do Pix esta é a mesma sequência gerada e/ou lida pela funcionalidade Pix Copia e Cola.  
             Este campo deverá ser no formato UTF-8.  
-            [Restrição] Obrigatório se for um pagamento por QR Code.
+            [Restrição] Preenchimento obrigatório para pagamentos por QR Code, observado o tamanho máximo de 512 bytes.
         pixKey:
           type: string
           maxLength: 77
           pattern: \w*\W*
-          example: ''
           description: |
-            Chave DICT do recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  
-            O telefone celular é no padrão E.1641.  
-            O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  
-            O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços.  
-            O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.  
-            A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
-            [Restrição] Obrigatório para pagamentos via Chave.
+            Chave cadastrada no DICT pertencente ao recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  
+            No caso de telefone celular deve ser informado no padrão E.1641.  
+            Para e-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  
+            No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  
+            Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  
+            No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
+            [Restrição] Preenchimento obrigatório para pagamentos via Chave.
+      additionalProperties: false
+    DebtorAccount:
+      type: object
+      description: |
+        Objeto que contém a identificação da conta de origem do pagador.  
+        As informações quanto à conta de origem do pagador poderão ser trazidas no consentimento para a detentora, caso a iniciadora tenha coletado essas informações do cliente. Do contrário, será coletada na detentora e trazida para a iniciadora como resposta à criação do pagamento.
+      required:
+        - ispb
+        - number
+        - checkDigit
+        - accountType
+      properties:
+        ispb:
+          type: string
+          minLength: 8
+          maxLength: 8
+          pattern: '^[0-9]{8}$'
+          example: '12345678'
+          description: |
+            Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI (Sistema de pagamentos instantâneos) somente com números.
+        branchCode:
+          type: string
+          maxLength: 4
+          pattern: '^\d{4}$'
+          example: '1774'
+          description: |
+            Código da Agência detentora da conta sem dígito.  
+            (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
+            no exercício de atividades da instituição, não podendo ser móvel ou transitória).  
+            [Restrição] Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
+        number:
+          type: string
+          minLength: 1
+          maxLength: 20
+          pattern: '^\d{8,20}$'
+          example: '1234567890'
+          description: Número da conta sem o dígito.
+        checkDigit:
+          type: string
+          pattern: \w*\W*
+          minLength: 1
+          maxLength: 1
+          example: '4'
+          description: Dígito da conta.
+        accountType:
+          $ref: '#/components/schemas/EnumAccountPaymentsType'
       additionalProperties: false
     PaymentConsent:
       type: object
@@ -383,7 +481,7 @@ components:
           pattern: '^((\d{1,16}\.\d{2}))$'
           example: 100000.12
           description: |
-            Valor da transação a ser efetuada com 2 casas decimais.
+            Valor da transação com 2 casas decimais.
       additionalProperties: false
     ResponsePaymentConsent:
       type: object
@@ -436,22 +534,23 @@ components:
             - AUTHORISED
             - REJECTED
             - CONSUMED
-          example: AUTHORISED
+          example: AWAITING_AUTHORISATION
           description: |
-            Retorna o estado do consentimento que no momento de sua criação será AWAITING_AUTHORISATION.
+            Retorna o estado do consentimento, o qual no momento de sua criação será AWAITING_AUTHORISATION.
             Este estado será alterado depois da autorização do consentimento na detentora da conta do pagador (Debtor) para AUTHORISED ou REJECTED. 
             O consentimento fica no estado CONSUMED após ocorrer a iniciação do pagamento referente ao consentimento.  
+            Em caso de consentimento expirado a detentora deverá retornar o status REJECTED.  
             Estados possíveis:  
-            AWAITING_AUTHORISATION - Aguardando autorização
+            AWAITING_AUTHORISATION - Aguardando autorização  
             AUTHORISED - Autorizado   
             REJECTED - Rejeitado  
-            CONSUMED - Consumido  
+            CONSUMED - Consumido 
         creditor:
           $ref: '#/components/schemas/Identification'
         payment:
           $ref: '#/components/schemas/PaymentConsent'
         debtorAccount:
-          $ref: '#/components/schemas/Account'
+          $ref: '#/components/schemas/DebtorAccount'
       additionalProperties: false
     ResponsePixPayment:
       type: object
@@ -526,28 +625,36 @@ components:
         - paymentId
         - consentId
         - creationDateTime
-        - updatedDateTime
+        - statusUpdateDateTime
         - status
         - payment
         - creditor
       properties:
         paymentId:
           type: string
+          minLength: 1
           maxLength: 100
           pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
           example: TXpRMU9UQTROMWhZV2xSU1FUazJSMDl
           description: |
-            Código ou identificador único informado pela instituição que mantém a conta para representar  
-            a iniciação de pagamento individual.  
-            Esse identificador deve ser usado para consultar o status da iniciação de pagamento.
+            Código ou identificador único informado pela instituição detentora da conta para representar  
+            a iniciação de pagamento individual. O `paymentId` deve ser diferente do `endToEndId` retornado pela detentora.  
+            Este é o identificador que deverá ser utilizado na consulta ao status da iniciação de pagamento efetuada.
         endToEndId:
           type: string
+          minLength: 32
           maxLength: 32
           pattern: '^([E])([0-9]{8})([0-9]{4})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(2[0-3]|[01][0-9])([0-5][0-9])([a-zA-Z0-9]{11})$'
           example: E9040088820210128000800123873170
           description: |
-            Identificador fim a fim da transação. O termo "E2E" que identifica a transação de forma única dentro do arranjo.  
-            Esse identificador deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.  
+            Código de identificação único da transação no arranjo do Pix. É usado em toda a cadeia de mensagens de uma instrução de pagamento no SPI. É um código gerado pela instituição detentora da conta que está iniciando o pagamento.  
+            Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres), sendo:  
+            • “E” – fixo (1 caractere);  
+            • xxxxxxxx – identificação do agente que gerou o `endToEndId`, podendo ser: o ISPB do participante direto ou o ISPB do participante indireto (8 caracteres numéricos [0-9]);  
+            • yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. No caso de ordens prioritárias, aceita-se o preenchimento, pelo agente que gerou o <EndToEndId>, com uma tolerância máxima de 1 hora e 30 minutos, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI. Para ordens não prioritárias, a tolerância máxima é de 12 horas, para o futuro e para o passado;  
+            • kkkkkkkkkkk – sequencial criado pelo agente que gerou o `endToEndId` (11 caracteres alfanuméricos [a-z|A-Z|0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.  
+            Exemplo: E000000002020080120300000000001B  
+            O `endToEndId` é gerado pela detentora. Ele deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.  
             [Restrição] É obrigatório o retorno após o status "ACCEPTED_SETTLEMENT_IN_PROCESS".
         consentId:
           type: string
@@ -559,7 +666,7 @@ components:
         creationDateTime:
           type: string
           format: date-time
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$|^NA$'
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
           example: '2020-07-21T08:30:00Z'
           description: |
             Data e hora em que o recurso foi criado.  
@@ -568,10 +675,10 @@ components:
         statusUpdateDateTime:
           type: string
           format: date-time
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$|^NA$'
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
           example: '2020-07-21T08:30:00Z'
           description: |
-            Data e hora da ultima atualização da iniciação de pagamento.  
+            Data e hora da última atualização da iniciação de pagamento.  
             Uma string com data e hora conforme especificação RFC-3339,  
             sempre com a utilização de timezone UTC(UTC time format).
         pixKey:
@@ -580,29 +687,13 @@ components:
           pattern: \w*\W*
           example: '12345678901'
           description: |
-            Chave DICT do recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  
-            O telefone celular usará o padrão E.1641.  
-            O E-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  
-            O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços.  
-            O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.  
-            A chave aleatória deve ser UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
-            [Restrição] Obrigatório para pagamentos via Chave.
-        qrCode:
-          type: string
-          maxLength: 512
-          pattern: \w*\W*
-          example: |
-            00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012  
-            BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062  
-            530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123AB  
-            CD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76
-          description: |
-            Sequência de caracteres que corresponde ao QR Code disponibilizado para o pagador.  
-            É a sequência de caracteres que seria lida pelo leitor de QR Code, e deve propiciar o retorno dos dados do pagador após consulta na DICT.  
-            Essa funcionalidade é possível tanto para QR Code estático quanto para QR Code dinâmico.  
-            No arranjo do Pix esta é a mesma sequência gerada e/ou lida pela funcionalidade Pix Copia e Cola.  
-            Este campo deverá ser no formato UTF-8.  
-            [Restrição] Obrigatório se for um pagamento por QR Code.
+            Chave cadastrada no DICT pertencente ao recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  
+            No caso de telefone celular deve ser informado no padrão E.1641.  
+            Para e-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  
+            No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  
+            Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  
+            No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
+            [Restrição] Preenchimento obrigatório para pagamentos via Chave.
         status:
           type: string
           maxLength: 45
@@ -621,7 +712,6 @@ components:
             3. ACSP (ACCEPTED_SETTLEMENT_IN_PROCESS) - Iniciação de pagamento aceita e processamento do pagamento foi iniciado.  
             4. ACSC (ACCEPTED_SETTLEMENT_COMPLETED_DEBITOR_ACCOUNT) - Débito realizado na conta do pagador.  
             5. ACCC (ACCEPTED_SETTLEMENT_COMPLETED) - Crédito realizado na instituição de destino.  
-
             Em caso insucesso:  
             RJCT (REJECTED) - Instrução de pagamento rejeitada.
         rejectionReason:
@@ -664,18 +754,54 @@ components:
             - RR4
             - SL02
           example: DS27
-          description: "Motivo\_da\_rejeição\_do\_pagamento.\_Informações\_complementares\_sobre\_o\_motivo\_do\_status.  \nAB03\_(ABORTED_SETTLEMENT_TIMEOUT)\_-\_Liquidação\_da\_transação\_interrompida\_devido\_a\_timeout\_no\_SPI.\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  \nAB09\_(ERROR_CREDITOR_AGENT)\_-\_Transação\_interrompida\_devido\_a\_erro\_no\_participante\_do\_usuário\_recebedor.  \nAB11\_(TIMEOUT_DEBTOR_AGENT)\_-\_Timeout\_do\_participante\_emissor\_da\_ordem\_de\_pagamento.  \nAC03\_(INVALID_CREDITOR_ACCOUNT_NUMBER)\_-\_Número\_da\_conta\_transacional\_do\_usuário\_recebedor\_inexistente\_ou\_inválido.  \nAC06\_(BLOCKED_ACCOUNT)\_-\_Conta\_transacional\_do\_usuário\_recebedor\_encontra-se\_bloqueada.  \nAC07\_(CLOSED_CREDITOR_ACCOUNT_NUMBER)\_-\_Número\_da\_conta\_transacional\_do\_usuário\_recebedor\_encerrada.  \nAC14\_(INVALID_CREDITOR_ACCOUNTTYPE)\_-\_Tipo\_incorreto\_para\_a\_conta\_transacional\_do\_usuário\_recebedor.    AG03\_(TRANSACTION_NOT_SUPPORTED)\_-\_Tipo\_de\_transação\_não\_é\_suportado/autorizado\_na\_conta\_transacional\_do\_usuário\_recebedor.\_Exemplo:\_transferência\_para\_conta\_salário.  \nAG12\_(NOT_ALLOWED_BOOK_TRANSFER)\_-\_Não\_é\_permitida\_ordem\_de\_pagamento/devolução\_no\_SPI\_cujos\_recursos\_sejam\_transferidos\_de\_uma\_conta\_transacional\_para\_outra\_em\_uma\_mesma\_instituição\_participante\_ou\_entre\_participantes\_que\_utilizem\_o\_serviço\_de\_liquidação\_de\_um\_mesmo\_participante\_liquidante\_no\_SPI\_(booktransfer).  \nAG13\_(FORBIDDEN_RETURN_PAYMENT)\_-\_Não\_é\_permitido\_devolver\_a\_devolução\_de\_um\_pagamento\_instantâneo.  \nAGNT\_(INCORRECT_AGENT)\_-\_Participante\_direto\_não\_é\_liquidante\_do\_participante\_do\_usuário\_pagador\_/\_participante\_do\_usuário\_recebedor.  \nAM01\_(ZERO_AMOUNT)\_-\_Ordem\_de\_pagamento\_instantâneo\_com\_valor\_zero.  \nAM02\_(NOT_ALLOWED_AMOUNT)\_-\_Ordem\_de\_pagamento/devolução\_em\_valor\_que\_faz\_superar\_o\_limite\_permitido\_para\_o\_tipo\_de\_conta\_transacional\_creditada.  \nAM04\_(INSUFFICIENT_FUNDS)\_-\_Saldo\_insuficiente\_na\_conta\_PI\_do\_participante\_do\_usuário\_pagador.  \nAM09\_(WRONG_AMOUNT)\_-\_Devolução\_de\_pagamento\_em\_valor\_que\_faz\_superar\_o\_valor\_da\_ordem\_de\_pagamento\_instantâneo\_correspondente.  \nAM12\_(INVALID_AMOUNT)\_-\_Divergência\_entre\_a\_somatória\_dos\_valores\_do\_bloco\_‘valorDoDinheiroOuCompra’\_e\_o\_campo\_‘valor’.  \nAM18\_(INVALID_NUMBER_OF_TRANSACTIONS)\_-\_Quantidade\_de\_transações\_inválida.  \nBE01\_(INCONSISTENT_WITH_END_CUSTOMER)\_-\_CPF/CNPJ\_do\_usuário\_recebedor\_não\_é\_consistente\_com\_o\_titular\_da\_conta\_transacional\_especificada.  \nBE15\_(INVALID_IDENTIFICATION_CODE)\_-\_Código\_de\_situação\_de\_pagamento\_ou\_de\_erro\_inválido.  \nBE17\_(INVALID_CREDITOR_IDENTIFICATION_CODE)\_-\_QR\_Code\_rejeitado\_pelo\_participante\_do\_usuário\_recebedor.  \nCH11\_(CREDITOR_IDENTIFIER_INCORRECT)\_-\_CPF/CNPJ\_do\_usuário\_recebedor\_incorreto.  \nCH16\_(ELEMENT_CONTENT_FORMALLY_INCORRECT)\_-\_Elemento\_da\_mensagem\_incorreto.  \nDS04\_(ORDER_REJECTED)\_-\_Ordem\_rejeitada\_pelo\_participante\_do\_usuário\_recebedor.  \nDS0G\_(NOT_ALLOWED_PAYMENT)\_-\_Participante\_que\_assinou\_a\_mensagem\_não\_é\_autorizado\_a\_realizar\_a\_operação\_na\_conta\_PI\_debitada.\_No\_caso\_em\_que\_o\_participante\_que\_assinou\_a\_mensagem\_não\_é\_o\_titular\_da\_conta\_PI\_debitada\_nem\_é\_o\_liquidante\_no\_SPI\_do\_participante\_do\_usuário\_pagador.  \nDS0H\_(NOT_ALLOWED_ACCOUNT)\_-\_ISPB\_do\_participante\_que\_submeteu\_a\_resposta\_à\_ordem\_de\_pagamento/devolução\_diferente\_do\_ISPB\_do\_participante\_creditado\_pela\_ordem.  \nDS27\_(USER_NOT_YET_ACTIVATED)\_-\_Participante\_não\_se\_encontra\_cadastrado\_ou\_ainda\_não\_iniciou\_a\_operação\_no\_SPI.  \nDT02\_(INVALID_CREATION_DATE)\_-\_Data\_e\_Hora\_do\_envio\_da\_mensagem\_inválida.  \nDT05\_(INVALID_CUT_OFF_DATE)\_-\_Transação\_extrapola\_o\_prazo\_máximo\_para\_devolução\_de\_pagamento\_instantâneo\_regulamentado\_pelo\_Arranjo\_Pix.  \nED05\_(SETTLEMENT_FAILED)\_-\_Erro\_no\_processamento\_do\_pagamento\_instantâneo.  \nFF07\_(INVALID_PURPOSE)\_-\_Inconsistência\_entre\_a\_finalidade\_da\_transação\_e\_o\_preenchimento\_do\_bloco\_elementos\_Structured.  \nFF08\_(INVALID_END_TO_END_ID)\_-\_Identificador\_da\_operação\_mal\_formatado.  \nRC09\_(INVALID_DEBTOR_CLEARING_SYSTEM_MEMBER_IDENTIFIER)\_-\_ISPB\_do\_participante\_do\_usuário\_pagador\_inválido\_ou\_inexistente.  \nRC10\_(INVALID_CREDITOR_CLEARING_SYSTEM_MEMBER_IDENTIFIER)\_-\_ISPB\_do\_participante\_do\_usuário\_recebedor\_inválido\_ou\_inexistente.  \nRR4\_\_(REGULATORY_REASON)\_-\_Ordem\_de\_pagamento\_em\_que\_o\_usuário\_pagador\_é\_sancionado\_por\_resolução\_do\_Conselho\_de\_Segurança\_das\_Nações\_Unidas\_(CSNU).\_Nos\_casos\_em\_que\_o\_usuário\_recebedor\_for\_o\_sancionado,\_a\_ordem\_de\_pagamento\_não\_deve\_ser\_rejeitada.  \nSL02\_(SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT)\_-\_A\_transação\_original\_não\_está\_relacionada\_ao\_serviço\_de\_Saque\_Pix.  \n[Restrição]\_Esse\_motivo\_deverá\_ser\_enviado\_quando\_o\_campo\_/data/status\_for\_igual\_a\_RJCT\_(REJECTED).  \n"
+          description: |
+            Motivo da rejeição do pagamento. Informações complementares sobre o motivo do status.  
+            AB03 (ABORTED_SETTLEMENT_TIMEOUT) - Liquidação da transação interrompida devido a timeout no SPI.                       
+            AB09 (ERROR_CREDITOR_AGENT) - Transação interrompida devido a erro no participante do usuário recebedor.  
+            AB11 (TIMEOUT_DEBTOR_AGENT) - Timeout do participante emissor da ordem de pagamento.  
+            AC03 (INVALID_CREDITOR_ACCOUNT_NUMBER) - Número da conta transacional do usuário recebedor inexistente ou inválido.  
+            AC06 (BLOCKED_ACCOUNT) - Conta transacional do usuário recebedor encontra-se bloqueada.  
+            AC07 (CLOSED_CREDITOR_ACCOUNT_NUMBER) - Número da conta transacional do usuário recebedor encerrada.  
+            AC14 (INVALID_CREDITOR_ACCOUNTTYPE) - Tipo incorreto para a conta transacional do usuário recebedor.    AG03 (TRANSACTION_NOT_SUPPORTED) - Tipo de transação não é suportado/autorizado na conta transacional do usuário recebedor. Exemplo: transferência para conta salário.  
+            AG12 (NOT_ALLOWED_BOOK_TRANSFER) - Não é permitida ordem de pagamento/devolução no SPI cujos recursos sejam transferidos de uma conta transacional para outra em uma mesma instituição participante ou entre participantes que utilizem o serviço de liquidação de um mesmo participante liquidante no SPI (booktransfer).  
+            AG13 (FORBIDDEN_RETURN_PAYMENT) - Não é permitido devolver a devolução de um pagamento instantâneo.  
+            AGNT (INCORRECT_AGENT) - Participante direto não é liquidante do participante do usuário pagador / participante do usuário recebedor.  
+            AM01 (ZERO_AMOUNT) - Ordem de pagamento instantâneo com valor zero.  
+            AM02 (NOT_ALLOWED_AMOUNT) - Ordem de pagamento/devolução em valor que faz superar o limite permitido para o tipo de conta transacional creditada.  
+            AM04 (INSUFFICIENT_FUNDS) - Saldo insuficiente na conta PI do participante do usuário pagador.  
+            AM09 (WRONG_AMOUNT) - Devolução de pagamento em valor que faz superar o valor da ordem de pagamento instantâneo correspondente.  
+            AM12 (INVALID_AMOUNT) - Divergência entre a somatória dos valores do bloco ‘valorDoDinheiroOuCompra’ e o campo ‘valor’.  
+            AM18 (INVALID_NUMBER_OF_TRANSACTIONS) - Quantidade de transações inválida.  
+            BE01 (INCONSISTENT_WITH_END_CUSTOMER) - CPF/CNPJ do usuário recebedor não é consistente com o titular da conta transacional especificada.  
+            BE15 (INVALID_IDENTIFICATION_CODE) - Código de situação de pagamento ou de erro inválido.  
+            BE17 (INVALID_CREDITOR_IDENTIFICATION_CODE) - QR Code rejeitado pelo participante do usuário recebedor.  
+            CH11 (CREDITOR_IDENTIFIER_INCORRECT) - CPF/CNPJ do usuário recebedor incorreto.  
+            CH16 (ELEMENT_CONTENT_FORMALLY_INCORRECT) - Elemento da mensagem incorreto.  
+            DS04 (ORDER_REJECTED) - Ordem rejeitada pelo participante do usuário recebedor.  
+            DS0G (NOT_ALLOWED_PAYMENT) - Participante que assinou a mensagem não é autorizado a realizar a operação na conta PI debitada. No caso em que o participante que assinou a mensagem não é o titular da conta PI debitada nem é o liquidante no SPI do participante do usuário pagador.  
+            DS0H (NOT_ALLOWED_ACCOUNT) - ISPB do participante que submeteu a resposta à ordem de pagamento/devolução diferente do ISPB do participante creditado pela ordem.  
+            DS27 (USER_NOT_YET_ACTIVATED) - Participante não se encontra cadastrado ou ainda não iniciou a operação no SPI.  
+            DT02 (INVALID_CREATION_DATE) - Data e Hora do envio da mensagem inválida.  
+            DT05 (INVALID_CUT_OFF_DATE) - Transação extrapola o prazo máximo para devolução de pagamento instantâneo regulamentado pelo Arranjo Pix.  
+            ED05 (SETTLEMENT_FAILED) - Erro no processamento do pagamento instantâneo.  
+            FF07 (INVALID_PURPOSE) - Inconsistência entre a finalidade da transação e o preenchimento do bloco elementos Structured.  
+            FF08 (INVALID_END_TO_END_ID) - Identificador da operação mal formatado.  
+            RC09 (INVALID_DEBTOR_CLEARING_SYSTEM_MEMBER_IDENTIFIER) - ISPB do participante do usuário pagador inválido ou inexistente.  
+            RC10 (INVALID_CREDITOR_CLEARING_SYSTEM_MEMBER_IDENTIFIER) - ISPB do participante do usuário recebedor inválido ou inexistente.  
+            RR4  (REGULATORY_REASON) - Ordem de pagamento em que o usuário pagador é sancionado por resolução do Conselho de Segurança das Nações Unidas (CSNU). Nos casos em que o usuário recebedor for o sancionado, a ordem de pagamento não deve ser rejeitada.  
+            SL02 (SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT) - A transação original não está relacionada ao serviço de Saque Pix.  
+            [Restrição] Esse motivo deverá ser enviado quando o campo /data/status for igual a RJCT (REJECTED).  
         payment:
           $ref: '#/components/schemas/PaymentPix'
-        additionalInfo:
+        remittanceInformation:
           type: string
           maxLength: 140
           pattern: \w*\W*
-          example: Descrição da Transação
+          example: Pagamento da nota RSTO035-002.
           description: |
-            Descrição do pagamento, em formato livre, feito pelo pagador.
+            Deve ser preenchido sempre que o usuário pagador inserir alguma informação adicional em um pagamento, a ser enviada ao recebedor.
         creditorAccount:
-          $ref: '#/components/schemas/Account'
+          $ref: '#/components/schemas/CreditorAccount'
       additionalProperties: false
     PaymentPix:
       type: object
@@ -683,7 +809,6 @@ components:
       required:
         - amount
         - currency
-        - creditor
       properties:
         amount:
           type: number
@@ -701,10 +826,6 @@ components:
           description: |
             Código da moeda nacional segundo modelo ISO-4217, ou seja, 'BRL'.  
             Todos os valores monetários informados estão representados com a moeda vigente do Brasil.
-        debtorAccount:
-          $ref: '#/components/schemas/Account'
-        creditor:
-          $ref: '#/components/schemas/Identification'
       additionalProperties: false
     EnumAccountPaymentsType:
       type: string
@@ -723,7 +844,7 @@ components:
         CACC - Current - Conta Corrente.  
         SLRY - Salary - Conta-Salário.  
         SVGS - Savings - Conta de Poupança.  
-        TRAN - TransactingAccount - Conta de Pagamento
+        TRAN - TransactingAccount - Conta de Pagamento pré-paga.
     Identification:
       type: object
       description: Objeto contendo os dados do recebedor (creditor).
@@ -742,8 +863,9 @@ components:
             Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).
         cpfCnpj:
           type: string
+          minLength: 11
           maxLength: 14
-          pattern: '^\d{11,14}$'
+          pattern: '^\d{11}$|^\d{14}$'
           example: '58764789000137'
           description: |
             Identificação da pessoa envolvida na transação.  
@@ -756,8 +878,8 @@ components:
           pattern: \w*\W*
           example: Marco Antonio de Brito
           description: |
-            Em caso de pessoa física, nome completo do titular da conta do recebedor.  
-            Em caso de pessoa jurídica, razão social da conta do recebedor.
+            Em caso de pessoa natural deve ser informado o nome completo do titular da conta do recebedor.  
+            Em caso de pessoa jurídica deve ser informada a razão social ou o nome fantasia da conta do recebedor.
       additionalProperties: false
   parameters:
     consentId:
