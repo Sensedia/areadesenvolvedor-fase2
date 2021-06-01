@@ -5,9 +5,9 @@ required:
   - payment
 properties:
   creditor:
-    $ref: ../payments_apis/PaymentIdentification.yaml
+    $ref: ../business_commons/Identification.yaml
   payment:
     $ref: ./PaymentConsent.yaml
   debtorAccount:
-    $ref: ../business_commons/DebtorAccount.yaml
+    $ref: ../business_commons/Account.yaml
 additionalProperties: false

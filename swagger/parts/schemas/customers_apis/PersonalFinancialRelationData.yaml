@@ -5,7 +5,6 @@ required:
   - startDate
   - procurators
   - productsServicesType
-  - accounts
 properties:
   updateDateTime:
     type: string
@@ -41,11 +40,4 @@ properties:
       $ref: ./PersonalProcurator.yaml
     minItems: 1
     description: Lista dos representantes. De preenchimento obrigatório se houver representante.
-  accounts:
-    type: array
-    items:
-      $ref: ./PersonalAccount.yaml
-    minItems: 1
-    description: |
-      Lista de contas depósito à vista, poupança e pagamento pré-pagas mantidas pelo cliente na instituição transmissora e para as quais ele tenha fornecido consentimento.    
 additionalProperties: false

@@ -3,6 +3,7 @@ description: Objeto contendo dados do pagameto como moeda e valor.
 required:
   - amount
   - currency
+  - creditor
 properties:
   amount:
     type: number
@@ -20,4 +21,8 @@ properties:
     description: |
       Código da moeda nacional segundo modelo ISO-4217, ou seja, 'BRL'.  
       Todos os valores monetários informados estão representados com a moeda vigente do Brasil.
+  debtorAccount:
+    $ref: ../business_commons/Account.yaml
+  creditor:
+    $ref: ../business_commons/Identification.yaml
 additionalProperties: false
