@@ -35,9 +35,9 @@ properties:
   status:
     $ref: '../enum/EnumAuthorisationStatusType.yaml'
   creditor:
-    $ref: ../business_commons/Identification.yaml
+    $ref: ../payments_apis/PaymentIdentification.yaml
   payment:
     $ref: ./PaymentConsent.yaml
   debtorAccount:
-    $ref: ../business_commons/Account.yaml
+    $ref: ../business_commons/DebtorAccount.yaml
 additionalProperties: false
