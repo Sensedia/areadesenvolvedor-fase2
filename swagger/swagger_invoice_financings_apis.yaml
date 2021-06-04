@@ -272,7 +272,7 @@ components:
         - SEM_SISTEMA_AMORTIZACAO
         - OUTROS
       example: SAC
-    EnumContractCalculation:
+    EEnumContractCalculation:
       type: string
       description: Base de cálculo
       maxLength: 6
@@ -743,7 +743,7 @@ components:
         taxPeriodicity:
           $ref: '#/components/schemas/EnumContractTaxPeriodicity'
         calculation:
-          $ref: '#/components/schemas/EnumContractCalculation'
+          $ref: '#/components/schemas/EEnumContractCalculation'
         referentialRateIndexerType:
           $ref: '#/components/schemas/EnumContractReferentialRateIndexerType'
         referentialRateIndexerSubType:
