@@ -53,8 +53,6 @@ tags:
       #### Especificação em OAS 3.0
 
       <a href="swagger/swagger_payments_consents_apis.yaml" target="_blank">Download da Especificação (OAS 3.0)</a>  
-
-      <a href="https://editor.swagger.io/?url=swagger/swagger_payments_consents_apis.yaml" target="_blank">Abrir Especificação no Swagger Editor</a>
   - name: API - Iniciação de Pagamentos
     description: |
       |Versão|
@@ -64,13 +62,12 @@ tags:
       #### Visão Geral
 
       A API tem como objetivo permitir a relação entre a iniciadora de transação de pagamento e a instituição detentora de conta para a solicitação de um pagamento pelo Open Banking Brasil.        
+
       O recurso está disponível para pagadores que possuem vínculo com uma instituição detentora de conta participante do Open Banking, independentemente de serem pessoa física ou jurídica.
 
       #### Especificação em OAS 3.0
 
       <a href="swagger/swagger_payments_initiation_apis.yaml" target="_blank">Download da Especificação (OAS 3.0)</a>  
-
-      <a href="https://editor.swagger.io/?url=swagger/swagger_payments_initiation_apis.yaml" target="_blank">Abrir Especificação no Swagger Editor</a>
 paths:
   /payments-consents/v1/consents:
     post:
@@ -445,6 +442,21 @@ components:
         SLRY - Salary - Conta-Salário.  
         SVGS - Savings - Conta de Poupança.  
         TRAN - TransactingAccount - Conta de Pagamento
+    EnumPersonType:
+      type: string
+      enum:
+        - PESSOA_NATURAL
+        - PESSOA_JURIDICA
+      description: |
+        Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).
+    EnumPaymentType:
+      type: string
+      maxLength: 3
+      enum:
+        - PIX
+      example: PIX
+      description: |
+        Tipos de pagamentos permitidos pelo Open Banking Brasil.
     Identification:
       type: object
       description: Objeto contendo os dados do recebedor (creditor).
@@ -665,6 +677,7 @@ components:
         creationDateTime:
           type: string
           format: date-time
+          maxLength: 20
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$|^NA$'
           example: '2020-07-21T08:30:00Z'
           description: |
@@ -674,6 +687,7 @@ components:
         updatedDateTime:
           type: string
           format: date-time
+          maxLength: 20
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$|^NA$'
           example: '2020-07-21T08:30:00Z'
           description: |

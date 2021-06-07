@@ -22,7 +22,7 @@ obrigatório se o documento informado tiver data de vigência";;String
 data/companyName;companyName;Razão social da empresa consultada é o termo registrado sob o qual uma pessoa jurídica (PJ) se individualiza e exerce suas atividades. Também pode ser chamada por denominação social ou firma empresarial;Texto;70;Obrigatório;\w*\W*;;1;1;Não há restrição;;String
 data/tradeName;tradeName;Nome fantasia da pessoa jurídica, se houver. (é o nome popular da empresa, utilizado para divulgação da empresa e melhor fixação com o público). De preenchimento obrigatório se houver;Texto;70;Obrigatório;\w*\W*;;0;1;"De preenchimento 
 obrigatório, se houver";;String
-data/incorporationDate;incorporationDate;Data de constituição da empresa, conforme especificação RFC-3339. p.ex. 2014-03-19;Data;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;Não há restrição;;String
+data/incorporationDate;incorporationDate;Data de constituição da empresa, conforme especificação RFC-3339. p.ex. 2014-03-19;Data Hora;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;Não há restrição;;String
 data/parties/;;Lista relativa às informações das partes envolvidas, como: sócio e /ou administrador;Lista;;Obrigatório;;;1;N;Não há restrição;;Lista
 data/parties/personType;personType;Indica se a pessoa da parte envolvida é uma pessoa natural ou juridica;Texto;;Obrigatório;;"PESSOA_NATURAL
 PESSOA_JURIDICA";1;1;Não há restrição;;Enum
