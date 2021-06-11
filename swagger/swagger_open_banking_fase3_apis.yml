@@ -946,6 +946,7 @@ components:
             - statusUpdateDateTime
             - creationDateTime
             - status
+            - loggedUser
             - creditor
             - payment
             - debtor
@@ -975,6 +976,10 @@ components:
                 Data e hora em que o recurso foi atualizado. Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).
             status:
               $ref: '#/components/schemas/EnumAuthorisationStatusType'
+            loggedUser:
+              $ref: '#/paths/~1payments~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/loggedUser'
+            businessEntity:
+              $ref: '#/paths/~1payments~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/businessEntity'
             creditor:
               $ref: '#/components/schemas/Identification'
             payment:

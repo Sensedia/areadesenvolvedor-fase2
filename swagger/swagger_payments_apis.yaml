@@ -509,6 +509,7 @@ components:
         - statusUpdateDateTime
         - creationDateTime
         - status
+        - loggedUser
         - creditor
         - payment
         - debtor
@@ -555,6 +556,10 @@ components:
             AUTHORISED - Autorizado   
             REJECTED - Rejeitado  
             CONSUMED - Consumido 
+        loggedUser:
+          $ref: '#/components/schemas/LoggedUser'
+        businessEntity:
+          $ref: '#/components/schemas/BusinessEntity'
         creditor:
           $ref: '#/components/schemas/Identification'
         payment:
