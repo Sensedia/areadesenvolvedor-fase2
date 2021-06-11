@@ -36,7 +36,7 @@ As informações quanto à conta de origem do pagador poderão ser trazidas no c
 /data/debtorAccount/ispb;ispb;Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI (Sistema de pagamentos instantâneos) somente com números.;Texto;8;Obrigatório;^[0-9]{8}$;;1;1;"";Não permitido;string;12345678
 /data/debtorAccount/branchCode;branchCode;"Código da Agência detentora da conta sem dígito.  
 (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
-no exercício de atividades da instituição, não podendo ser móvel ou transitória).";Texto;4;Opcional;^\d{4}$;;0;1;" Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
+no exercício de atividades da instituição, não podendo ser móvel ou transitória).";Texto;4;Condicional;^\d{4}$;;0;1;" Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
 ";Não permitido;string;1774
 /data/debtorAccount/number;number;Número da conta sem o dígito.;Texto;20;Obrigatório;^\d{8,20}$;;1;1;"";Não permitido;string;1234567890
 /data/debtorAccount/checkDigit;checkDigit;Dígito da conta.;Texto;1;Obrigatório;\w*\W*;;1;1;"";Não permitido;string;4
