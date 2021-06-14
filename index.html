@@ -456,7 +456,7 @@
               </ul>
           </li>
           <li>
-            <a href="#fase-1-schemas" class="toc-h1 toc-link" data-title="Fase 1 - Schemas">Fase 1 - Schemas</a>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#responsebankingagentslist" class="toc-h2 toc-link" data-title="ResponseBankingAgentsList">ResponseBankingAgentsList</a>
@@ -3378,7 +3378,7 @@ A informação de quais possibilidades estarão disponíveis (<em>query paramete
 
 <h3 id='transacao-agendada-scheduled-payment'><a id="glossarioTransacaoAgendada">Transação Agendada (Scheduled Payment)</a></h3>
 
-<p>O usuário poderá agendar uma transação de DOC, TED, Pix ou boleto bancário para uma determinada data futura</p>
+<p>O usuário poderá agendar uma transação de DOC, TED, PIX ou boleto bancário para uma determinada data futura</p>
 
 <p><em>Fontes: <a href="https://www.bcb.gov.br/detalhenoticia/327/noticia">link 1</a> e <a href="https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cartilha_Migrantes_Refugiados/cartilhaBC-Port_v3.pdf">link 2</a></em></p>
 
@@ -10488,7 +10488,7 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 </tbody></table>
 
-<p><h1 id='fase-1-schemas'>Fase 1 - Schemas</h1>
+<p><h1 id='schemas'>Schemas</h1>
 <h2 id='responsebankingagentslist'>ResponseBankingAgentsList</h2></p>
 
 <p><a id="schemaResponseBankingAgentsList"></a></p>
@@ -38521,7 +38521,7 @@ This operation does not require authentication
 <td>» permissions</td>
 <td>[string]</td>
 <td>true</td>
-<td>Especifica os tipos de permissões de acesso às APIs no escopo do Open Banking Brasil - Fase 2, de acordo com os blocos de consentimento fornecidos pelo usuário e necessários ao acesso a cada endpoint das APIs.</td>
+<td></td>
 </tr>
 <tr>
 <td>» expirationDateTime</td>
@@ -53984,18 +53984,6 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
   <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="dl">"</span><span class="s2">loggedUser</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">"</span><span class="s2">document</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">identification</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">11111111111</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CPF</span><span class="dl">"</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="dl">"</span><span class="s2">businessEntity</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">"</span><span class="s2">document</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">identification</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">11111111111111</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CNPJ</span><span class="dl">"</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
     <span class="dl">"</span><span class="s2">creditor</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
       <span class="dl">"</span><span class="s2">personType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PESSOA_NATURAL</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">cpfCnpj</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">58764789000137</span><span class="dl">"</span><span class="p">,</span>
@@ -54042,7 +54030,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">loggedUser</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">identification</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">11111111111</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">rel</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CPF</span><span class="se">\"</span><span class="s">}},</span><span class="se">\"</span><span class="s">businessEntity</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">identification</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">11111111111111</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">rel</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CNPJ</span><span class="se">\"</span><span class="s">}},</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12},</span><span class="se">\"</span><span class="s">debtorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">4</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:100000.12},</span><span class="se">\"</span><span class="s">debtorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">branchCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">4</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -54072,7 +54060,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"loggedUser\":{\"document\":{\"identification\":\"11111111111\",\"rel\":\"CPF\"}},\"businessEntity\":{\"document\":{\"identification\":\"11111111111111\",\"rel\":\"CNPJ\"}},\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":100000.12},\"debtorAccount\":{\"ispb\":\"12345678\",\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"4\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":100000.12},\"debtorAccount\":{\"ispb\":\"12345678\",\"branchCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"4\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
@@ -54090,18 +54078,6 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"businessEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
@@ -54205,18 +54181,6 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
     </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWAITING_AUTHORISATION"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"businessEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
@@ -54544,18 +54508,6 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
     </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWAITING_AUTHORISATION"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"businessEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
@@ -55460,18 +55412,6 @@ None ( Scopes: payments )
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"businessEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
@@ -55507,54 +55447,6 @@ None ( Scopes: payments )
 <td>object</td>
 <td>true</td>
 <td>Objeto contendo as informações de consentimento para a iniciação de pagamento individual.</td>
-</tr>
-<tr>
-<td>» loggedUser</td>
-<td>object</td>
-<td>true</td>
-<td>Usuário (pessoa natural) que encontra-se logado na instituição Iniciadora de Pagamento.</td>
-</tr>
-<tr>
-<td>»» document</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»»» identification</td>
-<td>string</td>
-<td>true</td>
-<td>Número do documento de identificação oficial do usuário.</td>
-</tr>
-<tr>
-<td>»»» rel</td>
-<td>string</td>
-<td>true</td>
-<td>Tipo do documento de identificação oficial do usuário.</td>
-</tr>
-<tr>
-<td>» businessEntity</td>
-<td>object</td>
-<td>false</td>
-<td>Titular, pessoa jurídica a quem se referem os dados.</td>
-</tr>
-<tr>
-<td>»» document</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»»» identification</td>
-<td>string</td>
-<td>true</td>
-<td>Número do documento de identificação oficial do titular pessoa jurídica.</td>
-</tr>
-<tr>
-<td>»»» rel</td>
-<td>string</td>
-<td>true</td>
-<td>Tipo do documento de identificação oficial do titular pessoa jurídica.</td>
 </tr>
 <tr>
 <td>» creditor</td>
@@ -56803,18 +56695,6 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
     </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWAITING_AUTHORISATION"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"businessEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
@@ -56874,18 +56754,6 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 <td><a href="#schemaenumauthorisationstatustype">EnumAuthorisationStatusType</a></td>
 <td>true</td>
 <td>Retorna o estado do consentimento, o qual no momento de sua criação será AWAITING_AUTHORISATION.<br>Este estado será alterado depois da autorização do consentimento na detentora da conta do pagador (Debtor) para AUTHORISED ou REJECTED. <br>O consentimento fica no estado CONSUMED após ocorrer a iniciação do pagamento referente ao consentimento.  <br>Em caso de consentimento expirado a detentora deverá retornar o status REJECTED.  <br>Estados possíveis:  <br>AWAITING_AUTHORISATION - Aguardando autorização  <br>AUTHORISED - Autorizado   <br>REJECTED - Rejeitado  <br>CONSUMED - Consumido</td>
-</tr>
-<tr>
-<td>» loggedUser</td>
-<td><a href="#schema#/paths/~1payments~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/loggeduser">#/paths/~1payments~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/loggedUser</a></td>
-<td>true</td>
-<td>Usuário (pessoa natural) que encontra-se logado na instituição Iniciadora de Pagamento.</td>
-</tr>
-<tr>
-<td>» businessEntity</td>
-<td><a href="#schema#/paths/~1payments~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/businessentity">#/paths/~1payments~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/businessEntity</a></td>
-<td>false</td>
-<td>Titular, pessoa jurídica a quem se referem os dados.</td>
 </tr>
 <tr>
 <td>» creditor</td>
