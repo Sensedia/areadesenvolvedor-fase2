@@ -6685,7 +6685,7 @@ components:
             Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
           maxLength: 19
           nullable: true
-          example: 50
+          example: 100000.04
         feeRate:
           type: number
           format: double
@@ -7528,7 +7528,7 @@ components:
           description: |
             Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
           nullable: true
-          example: 50
+          example: 100000.04
         feeRate:
           type: number
           format: double
@@ -9419,7 +9419,7 @@ components:
           description: |
             Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
           nullable: true
-          example: 50
+          example: 100000.04
         feeRate:
           type: number
           format: double
