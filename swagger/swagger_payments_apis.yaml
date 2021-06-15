@@ -41,7 +41,6 @@ paths:
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
         - $ref: '#/components/parameters/XIdempotencyKey'
-        - $ref: '#/components/parameters/XJwsSignature'
       requestBody:
         content:
           application/json:
@@ -139,7 +138,6 @@ paths:
         - $ref: '#/components/parameters/xFapiInteractionId'
         - $ref: '#/components/parameters/xCustomerUserAgent'
         - $ref: '#/components/parameters/XIdempotencyKey'
-        - $ref: '#/components/parameters/XJwsSignature'
       requestBody:
         content:
           application/json:
@@ -269,13 +267,13 @@ components:
           example: '12345678'
           description: |
             Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI (Sistema de pagamentos instantâneos) somente com números.
-        branchCode:
+        issuerCode:
           type: string
           maxLength: 4
           pattern: '^\d{4}$'
           example: '1774'
           description: |
-            Código da Agência detentora da conta sem dígito.  
+            Código da Agência emissora da conta sem dígito.  
             (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
             no exercício de atividades da instituição, não podendo ser móvel ou transitória).  
             [Restrição] Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
@@ -342,6 +340,19 @@ components:
           $ref: '#/components/schemas/PaymentPix'
         creditorAccount:
           $ref: '#/components/schemas/CreditorAccount'
+        endToEndId:
+          type: string
+          minLength: 32
+          maxLength: 32
+          pattern: '^([E])([0-9]{8})([0-9]{4})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(2[0-3]|[01][0-9])([0-5][0-9])([a-zA-Z0-9]{11})$'
+          example: E9040088820210128000800123873170
+          description: |
+            Código de identificação único da transação no arranjo do Pix. É usado em toda a cadeia de mensagens de uma instrução de pagamento no SPI. É um código gerado pela instituição está iniciando o pagamento.  
+            Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres), sendo: 
+            • “E” – fixo (1 caractere);  
+            • xxxxxxxx – identificação do agente que gerou o `endToEndId`, podendo ser: o ISPB do participante direto ou o ISPB do participante indireto (8 caracteres numéricos [0-9]);  
+            • yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. No caso de ordens prioritárias, aceita-se o preenchimento, pelo agente que gerou o <EndToEndId>, com uma tolerância máxima de 1 hora e 30 minutos, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI. Para ordens não prioritárias, a tolerância máxima é de 12 horas, para o futuro e para o passado;  
+            • kkkkkkkkkkk – sequencial criado pelo agente que gerou o `endToEndId` (11 caracteres alfanuméricos [a-z|A-Z|0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.   
         remittanceInformation:
           type: string
           maxLength: 140
@@ -397,13 +408,13 @@ components:
           example: '12345678'
           description: |
             Deve ser preenchido com o ISPB (Identificador do Sistema de Pagamentos Brasileiros) do participante do SPI (Sistema de pagamentos instantâneos) somente com números.
-        branchCode:
+        issuerCode:
           type: string
           maxLength: 4
           pattern: '^\d{4}$'
           example: '1774'
           description: |
-            Código da Agência detentora da conta sem dígito.  
+            Código da Agência emissora da conta sem dígito.  
             (Agência é a dependência destinada ao atendimento aos clientes, ao público em geral e aos associados de cooperativas de crédito,  
             no exercício de atividades da instituição, não podendo ser móvel ou transitória).  
             [Restrição] Preenchimento obrigatório para os seguintes tipos de conta: CACC (CONTA_DEPOSITO_A_VISTA), SVGS (CONTA_POUPANCA) e SLRY (CONTA_SALARIO).
@@ -508,6 +519,7 @@ components:
         - consentId
         - statusUpdateDateTime
         - creationDateTime
+        - expirationDateTime
         - status
         - loggedUser
         - creditor
@@ -524,6 +536,16 @@ components:
             Identificador único do consentimento criado para a iniciação de pagamento solicitada.
         creationDateTime:
           description: 'Data e hora em que o consentimento foi criado. Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).'
+          type: string
+          format: date-time
+          example: '2021-05-21T08:30:00Z'
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+          maxLength: 20
+        expirationDateTime:
+          description: |
+            Data e hora em que o consentimento da iniciação de pagamento expira. 
+            O consentimento é criado com o status AWAITING_AUTHORISATION, e deve assumir o status AUTHORIZED ou CONSUMED antes do tempo expiração. Caso o tempo de expiração seja alcançado, o consentimento assumirá o status REJECTED.
+            Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).
           type: string
           format: date-time
           example: '2021-05-21T08:30:00Z'
@@ -653,24 +675,10 @@ components:
           example: TXpRMU9UQTROMWhZV2xSU1FUazJSMDl
           description: |
             Código ou identificador único informado pela instituição detentora da conta para representar  
-            a iniciação de pagamento individual. O `paymentId` deve ser diferente do `endToEndId` retornado pela detentora.  
+            a iniciação de pagamento individual. O `paymentId` deve ser diferente do `endToEndId`.  
             Este é o identificador que deverá ser utilizado na consulta ao status da iniciação de pagamento efetuada.
         endToEndId:
-          type: string
-          minLength: 32
-          maxLength: 32
-          pattern: '^([E])([0-9]{8})([0-9]{4})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(2[0-3]|[01][0-9])([0-5][0-9])([a-zA-Z0-9]{11})$'
-          example: E9040088820210128000800123873170
-          description: |
-            Código de identificação único da transação no arranjo do Pix. É usado em toda a cadeia de mensagens de uma instrução de pagamento no SPI. É um código gerado pela instituição detentora da conta que está iniciando o pagamento.  
-            Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres), sendo:  
-            • “E” – fixo (1 caractere);  
-            • xxxxxxxx – identificação do agente que gerou o `endToEndId`, podendo ser: o ISPB do participante direto ou o ISPB do participante indireto (8 caracteres numéricos [0-9]);  
-            • yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. No caso de ordens prioritárias, aceita-se o preenchimento, pelo agente que gerou o <EndToEndId>, com uma tolerância máxima de 1 hora e 30 minutos, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI. Para ordens não prioritárias, a tolerância máxima é de 12 horas, para o futuro e para o passado;  
-            • kkkkkkkkkkk – sequencial criado pelo agente que gerou o `endToEndId` (11 caracteres alfanuméricos [a-z|A-Z|0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.  
-            Exemplo: E000000002020080120300000000001B  
-            O `endToEndId` é gerado pela detentora. Ele deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.  
-            [Restrição] É obrigatório o retorno após o status "ACCEPTED_SETTLEMENT_IN_PROCESS".
+          $ref: '#/components/schemas/CreatePixPaymentData/properties/endToEndId'
         consentId:
           type: string
           maxLength: 100
@@ -982,15 +990,6 @@ components:
         type: string
         maxLength: 40
         pattern: ^(?!\s)(.*)(\S)$
-    XJwsSignature:
-      name: x-jws-signature
-      in: header
-      description: Cabeçalho contendo uma assinatura JWS separada do corpo do payload.
-      required: true
-      schema:
-        type: string
-        pattern: \w*\W*
-        maxLength: 2048
   securitySchemes:
     OpenId:
       type: openIdConnect
