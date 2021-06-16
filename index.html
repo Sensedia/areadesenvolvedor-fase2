@@ -2352,7 +2352,7 @@ prazos definidos para lançamento e implementação de novas versões <em>major<
 <td style="text-align: left">Sim</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Retry-After</strong></td>
+<td style="text-align: left"><span id="Retry-After"><strong>Retry-After</strong></span></td>
 <td style="text-align: left">Cabeçalho que indica o tempo (em segundos) que o cliente deverá aguardar para realizar uma nova tentativa de chamada. Este cabeçalho deverá estar presente quando o código HTTP de retorno for <code>429 Too many requests</code></td>
 <td style="text-align: left">Não</td>
 </tr>
@@ -2367,7 +2367,7 @@ prazos definidos para lançamento e implementação de novas versões <em>major<
 <td style="text-align: left">Condicional</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>x-fapi-interaction-id</strong></td>
+<td style="text-align: left"><span id="x-fapi-interaction-id"><strong>x-fapi-interaction-id</strong></span></td>
 <td style="text-align: left">Um UID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122</td>
 <td style="text-align: left">Não</td>
 </tr>
@@ -26968,16 +26968,14 @@ Caso haja mais de 1 evento por cliente, referente ao mesmo produto e/ou serviço
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>201</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -27239,16 +27237,14 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -27490,16 +27486,14 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>204</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -27764,23 +27758,20 @@ This operation does not require authentication
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 <tr>
 <td>default</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -54381,23 +54372,80 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>201</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Retry-After</td>
+<td>integer</td>
+<td><a href='#Retry-After'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -54674,16 +54722,74 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Retry-After</td>
+<td>integer</td>
+<td><a href='#Retry-After'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -55130,23 +55236,80 @@ None ( Scopes: payments )
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>201</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Retry-After</td>
+<td>integer</td>
+<td><a href='#Retry-After'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 
@@ -55396,16 +55559,74 @@ None ( Scopes: payments )
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
-<th>Description</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
-<td>none</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Retry-After</td>
+<td>integer</td>
+<td><a href='#Retry-After'>Consultar Padrões</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td><a href='#x-fapi-interaction-id'>Consultar Padrões</a></td>
 </tr>
 </tbody></table>
 

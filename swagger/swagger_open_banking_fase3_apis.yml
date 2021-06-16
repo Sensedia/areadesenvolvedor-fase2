@@ -1267,42 +1267,74 @@ components:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     Forbidden:
       description: O token tem escopo incorreto ou uma política de segurança foi violada
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     InternalServerError:
       description: Ocorreu um erro no gateway da API ou no microsserviço
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     MethodNotAllowed:
       description: O consumidor tentou acessar o recurso com um método não suportado
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     NotAcceptable:
       description: A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     NotFound:
       description: O recurso solicitado não existe ou não foi implementado
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     TooManyRequests:
       description: 'A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido'
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
+        Retry-After:
+          schema:
+            description: Número em segundos para esperar
+            type: integer
     UnprocessableEntityConsents:
       description: 'A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.'
       content:
@@ -1463,12 +1495,20 @@ components:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     UnsupportedMediaType:
       description: O formato do payload não é um formato suportado.
       content:
         application/json; charset=utf-8:
           schema:
             $ref: '#/components/schemas/ResponseError'
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     201PaymentsConsentsConsentCreated:
       description: Consentimento de pagamento criado com sucesso.
       headers:
