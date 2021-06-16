@@ -392,6 +392,7 @@ components:
       required:
         - payment
         - creditorAccount
+        - endToEndId
       properties:
         payment:
           $ref: '#/components/schemas/PaymentPix'
@@ -1029,6 +1030,7 @@ components:
         - status
         - payment
         - creditor
+        - endToEndId
       properties:
         paymentId:
           type: string

@@ -55698,7 +55698,7 @@ None ( Scopes: payments )
 <tr>
 <td>endToEndId</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Código de identificação único da transação no arranjo do Pix. É usado em toda a cadeia de mensagens de uma instrução de pagamento no SPI. É um código gerado pela instituição que está iniciando o pagamento.  <br>Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres), sendo: <br>• “E” – fixo (1 caractere);  <br>• xxxxxxxx – identificação do agente que gerou o <code>endToEndId</code>, podendo ser: o ISPB do participante direto ou o ISPB do participante indireto (8 caracteres numéricos);  <br>• yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. No caso de ordens prioritárias, aceita-se o preenchimento, pelo agente que gerou o <code>endToEndId</code>, com uma tolerância máxima de 1 hora e 30 minutos, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI. Para ordens não prioritárias, a tolerância máxima é de 12 horas, para o futuro e para o passado;  <br>• kkkkkkkkkkk – sequencial criado pelo agente que gerou o <code>endToEndId</code> (11 caracteres alfanuméricos). Deve ser único dentro de cada “yyyyMMddHHmm”.</td>
 </tr>
 <tr>
@@ -57048,7 +57048,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 <tr>
 <td>endToEndId</td>
 <td><a href="#schemacreatepixpaymentdata/properties/endtoendid">CreatePixPaymentData/properties/endToEndId</a></td>
-<td>false</td>
+<td>true</td>
 <td>Código de identificação único da transação no arranjo do Pix. É usado em toda a cadeia de mensagens de uma instrução de pagamento no SPI. É um código gerado pela instituição que está iniciando o pagamento.  <br>Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres), sendo: <br>• “E” – fixo (1 caractere);  <br>• xxxxxxxx – identificação do agente que gerou o <code>endToEndId</code>, podendo ser: o ISPB do participante direto ou o ISPB do participante indireto (8 caracteres numéricos);  <br>• yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. No caso de ordens prioritárias, aceita-se o preenchimento, pelo agente que gerou o <code>endToEndId</code>, com uma tolerância máxima de 1 hora e 30 minutos, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI. Para ordens não prioritárias, a tolerância máxima é de 12 horas, para o futuro e para o passado;  <br>• kkkkkkkkkkk – sequencial criado pelo agente que gerou o <code>endToEndId</code> (11 caracteres alfanuméricos). Deve ser único dentro de cada “yyyyMMddHHmm”.</td>
 </tr>
 <tr>
