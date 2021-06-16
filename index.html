@@ -1888,6 +1888,9 @@
                     <a href="#tocS_Account" class="toc-h2 toc-link" data-title="Account">Account</a>
                   </li>
                   <li>
+                    <a href="#tocS_BusinessEntity" class="toc-h2 toc-link" data-title="BusinessEntity">BusinessEntity</a>
+                  </li>
+                  <li>
                     <a href="#tocS_CreatePaymentConsent" class="toc-h2 toc-link" data-title="CreatePaymentConsent">CreatePaymentConsent</a>
                   </li>
                   <li>
@@ -1928,6 +1931,9 @@
                   </li>
                   <li>
                     <a href="#tocS_Identification" class="toc-h2 toc-link" data-title="Identification">Identification</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_LoggedUser" class="toc-h2 toc-link" data-title="LoggedUser">LoggedUser</a>
                   </li>
                   <li>
                     <a href="#tocS_PaymentConsent" class="toc-h2 toc-link" data-title="PaymentConsent">PaymentConsent</a>
@@ -55698,6 +55704,54 @@ None ( Scopes: payments )
 </tr>
 </tbody></table>
 
+<h2 id="tocS_BusinessEntity">BusinessEntity</h2>
+
+<p><a id="schemabusinessentity"></a>
+<a id="schema_BusinessEntity"></a>
+<a id="tocSbusinessentity"></a>
+<a id="tocsbusinessentity"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Titular, pessoa jurídica a quem se referem os dados.</p>
+
+<h3 id='propriedades-2'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>document</td>
+<td>object</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>» identification</td>
+<td>string</td>
+<td>true</td>
+<td>Número do documento de identificação oficial do titular pessoa jurídica.</td>
+</tr>
+<tr>
+<td>» rel</td>
+<td>string</td>
+<td>true</td>
+<td>Tipo do documento de identificação oficial do titular pessoa jurídica.</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_CreatePaymentConsent">CreatePaymentConsent</h2>
 
 <p><a id="schemacreatepaymentconsent"></a>
@@ -55740,7 +55794,7 @@ None ( Scopes: payments )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-2'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-3'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -55757,51 +55811,15 @@ None ( Scopes: payments )
 </tr>
 <tr>
 <td>» loggedUser</td>
-<td>object</td>
+<td><a href="#schemaloggeduser">LoggedUser</a></td>
 <td>true</td>
 <td>Usuário (pessoa natural) que encontra-se logado na instituição Iniciadora de Pagamento.</td>
 </tr>
 <tr>
-<td>»» document</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»»» identification</td>
-<td>string</td>
-<td>true</td>
-<td>Número do documento de identificação oficial do usuário.</td>
-</tr>
-<tr>
-<td>»»» rel</td>
-<td>string</td>
-<td>true</td>
-<td>Tipo do documento de identificação oficial do usuário.</td>
-</tr>
-<tr>
 <td>» businessEntity</td>
-<td>object</td>
+<td><a href="#schemabusinessentity">BusinessEntity</a></td>
 <td>false</td>
 <td>Titular, pessoa jurídica a quem se referem os dados.</td>
-</tr>
-<tr>
-<td>»» document</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»»» identification</td>
-<td>string</td>
-<td>true</td>
-<td>Número do documento de identificação oficial do titular pessoa jurídica.</td>
-</tr>
-<tr>
-<td>»»» rel</td>
-<td>string</td>
-<td>true</td>
-<td>Tipo do documento de identificação oficial do titular pessoa jurídica.</td>
 </tr>
 <tr>
 <td>» creditor</td>
@@ -55849,7 +55867,7 @@ None ( Scopes: payments )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-3'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-4'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -55894,7 +55912,7 @@ None ( Scopes: payments )
 
 <p>Objeto contendo dados do pagamento e do recebedor (creditor).</p>
 
-<h3 id='propriedades-4'>Propriedades</h3>
+<h3 id='propriedades-5'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -55962,7 +55980,7 @@ None ( Scopes: payments )
 <p>Objeto que contém a identificação da conta de origem do pagador.<br>
 As informações quanto à conta de origem do pagador poderão ser trazidas no consentimento para a detentora, caso a iniciadora tenha coletado essas informações do cliente. Do contrário, será coletada na detentora e trazida para a iniciadora como resposta à criação do pagamento.</p>
 
-<h3 id='propriedades-5'>Propriedades</h3>
+<h3 id='propriedades-6'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56024,7 +56042,7 @@ SLRY - Salary - Conta-Salário.<br>
 SVGS - Savings - Conta de Poupança.<br>
 TRAN - TransactingAccount - Conta de Pagamento pré-paga.</p>
 
-<h3 id='propriedades-6'>Propriedades</h3>
+<h3 id='propriedades-7'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56089,7 +56107,7 @@ AUTHORISED - Autorizado<br>
 REJECTED - Rejeitado<br>
 CONSUMED - Consumido </p>
 
-<h3 id='propriedades-7'>Propriedades</h3>
+<h3 id='propriedades-8'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56146,7 +56164,7 @@ CONSUMED - Consumido </p>
 
 <p>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</p>
 
-<h3 id='propriedades-8'>Propriedades</h3>
+<h3 id='propriedades-9'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56195,7 +56213,7 @@ CONSUMED - Consumido </p>
 
 <p>Este campo define o tipo de pagamento que será iniciado após a autorização do consentimento.</p>
 
-<h3 id='propriedades-9'>Propriedades</h3>
+<h3 id='propriedades-10'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56243,7 +56261,7 @@ CONSUMED - Consumido </p>
 • DATA_PGTO_INVALIDA: Data de pagamento inválida.<br>
 • NAO_INFORMADO: Não informado.  </p>
 
-<h3 id='propriedades-10'>Propriedades</h3>
+<h3 id='propriedades-11'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56305,7 +56323,7 @@ CONSUMED - Consumido </p>
 • JANELA_OPER_INVALIDA – Janela de operação inválida.<br>
 • NAO_INFORMADO – Não reportado/identificado pela instituição detentora de conta.  </p>
 
-<h3 id='propriedades-11'>Propriedades</h3>
+<h3 id='propriedades-12'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56417,7 +56435,7 @@ RR4  (REGULATORY_REASON) - Ordem de pagamento em que o usuário pagador é sanci
 SL02 (SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT) - A transação original não está relacionada ao serviço de Saque Pix.<br>
 [Restrição] Esse motivo deverá ser enviado quando o campo /data/status for igual a RJCT (REJECTED).  </p>
 
-<h3 id='propriedades-12'>Propriedades</h3>
+<h3 id='propriedades-13'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56605,7 +56623,7 @@ SL02 (SPECIFIC_SERVICE_OFFERED_BY_CREDITOR_AGENT) - A transação original não 
 Em caso insucesso:<br>
 RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
-<h3 id='propriedades-13'>Propriedades</h3>
+<h3 id='propriedades-14'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56676,7 +56694,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto que contém a identificação da conta de destino do beneficiário/recebedor.  </p>
 
-<h3 id='propriedades-14'>Propriedades</h3>
+<h3 id='propriedades-15'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56735,7 +56753,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo os dados do recebedor (creditor).</p>
 
-<h3 id='propriedades-15'>Propriedades</h3>
+<h3 id='propriedades-16'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56765,6 +56783,54 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 </tr>
 </tbody></table>
 
+<h2 id="tocS_LoggedUser">LoggedUser</h2>
+
+<p><a id="schemaloggeduser"></a>
+<a id="schema_LoggedUser"></a>
+<a id="tocSloggeduser"></a>
+<a id="tocsloggeduser"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Usuário (pessoa natural) que encontra-se logado na instituição Iniciadora de Pagamento.</p>
+
+<h3 id='propriedades-17'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>document</td>
+<td>object</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>» identification</td>
+<td>string</td>
+<td>true</td>
+<td>Número do documento de identificação oficial do usuário.</td>
+</tr>
+<tr>
+<td>» rel</td>
+<td>string</td>
+<td>true</td>
+<td>Tipo do documento de identificação oficial do usuário.</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_PaymentConsent">PaymentConsent</h2>
 
 <p><a id="schemapaymentconsent"></a>
@@ -56783,7 +56849,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo dados de pagamento para consentimento.</p>
 
-<h3 id='propriedades-16'>Propriedades</h3>
+<h3 id='propriedades-18'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56835,7 +56901,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo dados do pagameto como moeda e valor.</p>
 
-<h3 id='propriedades-17'>Propriedades</h3>
+<h3 id='propriedades-19'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56881,7 +56947,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-18'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-20'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -56943,7 +57009,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-19'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-21'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57005,7 +57071,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-20'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-22'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57092,7 +57158,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-21'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-23'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57139,13 +57205,13 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 </tr>
 <tr>
 <td>» loggedUser</td>
-<td><a href="#schema#/paths/~1payments~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/loggeduser">#/paths/~1payments~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/loggedUser</a></td>
+<td><a href="#schemaloggeduser">LoggedUser</a></td>
 <td>true</td>
 <td>Usuário (pessoa natural) que encontra-se logado na instituição Iniciadora de Pagamento.</td>
 </tr>
 <tr>
 <td>» businessEntity</td>
-<td><a href="#schema#/paths/~1payments~1v1~1consents/post/requestbody/content/application~1json/schema/properties/data/properties/businessentity">#/paths/~1payments~1v1~1consents/post/requestBody/content/application~1json/schema/properties/data/properties/businessEntity</a></td>
+<td><a href="#schemabusinessentity">BusinessEntity</a></td>
 <td>false</td>
 <td>Titular, pessoa jurídica a quem se referem os dados.</td>
 </tr>
@@ -57200,7 +57266,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-22'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-24'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57250,7 +57316,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo dados do pagamento e da conta do recebedor (creditor).</p>
 
-<h3 id='propriedades-23'>Propriedades</h3>
+<h3 id='propriedades-25'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57347,7 +57413,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Referências para outros recusos da API requisitada.</p>
 
-<h3 id='propriedades-24'>Propriedades</h3>
+<h3 id='propriedades-26'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57406,7 +57472,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Meta informações referente a API requisitada.</p>
 
-<h3 id='propriedades-25'>Propriedades</h3>
+<h3 id='propriedades-27'>Propriedades</h3>
 
 <table><thead>
 <tr>
