@@ -210,7 +210,7 @@
     </a>
     <div class="toc-wrapper">
       <img src="../../images/logo-7ed2e1f6.png" class="logo" alt="" />
-      <small style="padding: 23px; color: white">Versão: v1.0.0-rc6.8</small>
+      <small style="padding: 23px; color: white">Versão: v1.0.0-rc6.9</small>
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#v1-0-0-rc6-9-release-notes" class="toc-h1 toc-link" data-title="v1.0.0-rc6.9 Release Notes">v1.0.0-rc6.9 Release Notes</a>
@@ -244,11 +244,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Todas as Operações.</td>
-<td>Inclusão de informativo abaixo do titulo &quot;Dicionário de dados&quot;</td>
-<td></td>
-</tr>
-<tr>
 <td>Inclusão de Submenu de Segurança.</td>
 <td>Assinaturas</td>
 <td><a href="../../#signatures">Novo Submenu</a></td>
@@ -264,27 +259,135 @@
 </thead><tbody>
 <tr>
 <td>Todas as Operações.</td>
-<td>Versionamento da API para 1.0.1</td>
-<td><a href="../../#pagamentos">APIs comuns</a></td>
+<td>Inclusão de informativo abaixo do titulo &quot;Dicionário de dados&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td>Todas as Operações.</td>
+<td>Versionamento da API para 1.0.0-rc2.0</td>
+<td><a href="../../#fase-3-apis-do-open-banking-brasil-api-pagamentos">API - Pagamentos</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Alteração do campo &quot;endToEndId&quot; para obrigatório</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Inclusão do campo &quot;Retry-After&quot; no header da resposta do status 429</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Inclusão do campo &quot;x-fapi-interaction-id&quot; no header da resposta de todos os status</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Inclusão do &quot;minLength&quot; nos campos &quot;amount&quot;</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Alteração do campo &quot;issuerCode&quot; para &quot;issuer&quot;</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Alteração do campo &quot;pixKey&quot; para &quot;proxy&quot;</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Alteração dos itens do &quot;EnumErrorsCreatePayment&quot;</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>Alteração dos itens do &quot;EnumRejectionReasonType&quot;</td>
+<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Alteração do campo &quot;endToEndId&quot; para obrigatório</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Inclusão do campo &quot;Retry-After&quot; no header da resposta do status 429</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Inclusão do campo &quot;x-fapi-interaction-id&quot; no header da resposta de todos os status</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Inclusão do &quot;minLength&quot; nos campos &quot;amount&quot;</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Alteração do campo &quot;issuerCode&quot; para &quot;issuer&quot;</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Alteração do campo &quot;pixKey&quot; para &quot;proxy&quot;</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Alteração dos itens do &quot;EnumErrorsCreatePayment&quot;</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
+<td>Alteração dos itens do &quot;EnumRejectionReasonType&quot;</td>
+<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/consents/{consentId}</td>
+<td>Alteração da descrição do campo &quot;businessEntity&quot;</td>
+<td><a href="../../#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/consents/{consentId}</td>
+<td>Alteração do campo &quot;businessEntity&quot; para condicional</td>
+<td><a href="../../#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/consents/{consentId}</td>
+<td>Alteração do campo &quot;dateTime&quot; para &quot;date&quot;</td>
+<td><a href="../../#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[GET]  /payments/v1/consents/{consentId}</td>
+<td>Alteração da descrição do campo &quot;expirationDateTime&quot;</td>
+<td><a href="../../#em-revisao-consultar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Consultar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/consents</td>
+<td>Alteração da descrição do campo &quot;businessEntity&quot;</td>
+<td><a href="../../#em-revisao-criar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Criar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/consents</td>
+<td>Alteração do campo &quot;businessEntity&quot; para condicional</td>
+<td><a href="../../#em-revisao-criar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Criar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/consents</td>
+<td>Alteração do campo &quot;dateTime&quot; para &quot;date&quot;</td>
+<td><a href="../../#em-revisao-criar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Criar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/consents</td>
+<td>Alteração da descrição do campo &quot;expirationDateTime&quot;</td>
+<td><a href="../../#em-revisao-criar-consentimento-para-iniciacao-de-pagamento">[Em Revisão] Criar consentimento para iniciação de pagamento.</a></td>
 </tr>
 </tbody></table>
-
-<p>--pix/payments
-Alteração no campo endToEndId para Obrigatório
-Inclusão de descrição no campo Retry-After do headers
-Inclusão de descrição no campo headers x-fapi-interaction-id do headers
-Inclusão da propriedade minLength nos campos &quot;amount&quot;
-Correção do campo issuerCode para issuer
-Correção do campo pixKey para proxy
-Alteração dos itens do EnumErrorsCreatePayment, referente as descrição dos erros 422
-Alteração dos itens do EnumRejectionReasonType</p>
-
-<p>--Portal - payments</p>
-
-<p>Alteração da descrição do campo &quot;expirationDateTime&quot; no swagger - api /consents
-  Alteração do campo /paymentConsent/dateTime para /paymentConsent/date
-    Alterar o campo &quot;businessEntity&quot; para condicional
-    Alterar a descrição do campo &quot;businessEntity&quot; para &quot;Usuário (pessoa jurídica) que encontra-se logado na instituição Iniciadora de Pagamento.&quot;</p>
 
       </div>
       <div class="dark-box">
