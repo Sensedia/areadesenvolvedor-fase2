@@ -243,15 +243,48 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Todas as Operações.</td>
+<td>Inclusão de informativo abaixo do titulo &quot;Dicionário de dados&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td>Inclusão de Submenu de Segurança.</td>
+<td>Assinaturas</td>
+<td><a href="../../#signatures">Novo Submenu</a></td>
+</tr>
 </tbody></table>
 <h2 id='implementacoes-na-api-pagamentos'>Implementações na API - Pagamentos</h2>
 <table><thead>
 <tr>
 <th>Mudança</th>
 <th>Descrição</th>
+<th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Todas as Operações.</td>
+<td>Versionamento da API para 1.0.1</td>
+<td><a href="../../#pagamentos">APIs comuns</a></td>
+</tr>
 </tbody></table>
+
+<p>--pix/payments
+Alteração no campo endToEndId para Obrigatório
+Inclusão de descrição no campo Retry-After do headers
+Inclusão de descrição no campo headers x-fapi-interaction-id do headers
+Inclusão da propriedade minLength nos campos &quot;amount&quot;
+Correção do campo issuerCode para issuer
+Correção do campo pixKey para proxy
+Alteração dos itens do EnumErrorsCreatePayment, referente as descrição dos erros 422
+Alteração dos itens do EnumRejectionReasonType</p>
+
+<p>--Portal - payments</p>
+
+<p>Alteração da descrição do campo &quot;expirationDateTime&quot; no swagger - api /consents
+  Alteração do campo /paymentConsent/dateTime para /paymentConsent/date
+    Alterar o campo &quot;businessEntity&quot; para condicional
+    Alterar a descrição do campo &quot;businessEntity&quot; para &quot;Usuário (pessoa jurídica) que encontra-se logado na instituição Iniciadora de Pagamento.&quot;</p>
 
       </div>
       <div class="dark-box">
