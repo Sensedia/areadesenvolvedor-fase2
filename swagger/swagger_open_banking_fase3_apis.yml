@@ -799,7 +799,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/EnumPaymentType'
-        dateTime:
+        date:
           type: string
           format: date
           maxLength: 10

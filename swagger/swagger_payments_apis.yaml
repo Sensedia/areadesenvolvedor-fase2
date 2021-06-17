@@ -482,7 +482,7 @@ components:
           example: PIX
           description: |
             Este campo define o tipo de pagamento que será iniciado após a autorização do consentimento.
-        dateTime:
+        date:
           type: string
           format: date
           maxLength: 10
