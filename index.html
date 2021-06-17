@@ -312,6 +312,9 @@
                     <a href="#padrao-de-certificados" class="toc-h2 toc-link" data-title="Padrão de Certificados">Padrão de Certificados</a>
                   </li>
                   <li>
+                    <a href="#assinaturas" class="toc-h2 toc-link" data-title="Assinaturas">Assinaturas</a>
+                  </li>
+                  <li>
                     <a href="#casos-de-erro" class="toc-h2 toc-link" data-title="Casos de Erro">Casos de Erro</a>
                   </li>
                   <li>
@@ -3536,6 +3539,15 @@ Os detalhes deste guia podem ser consultados nos endereços:</p>
 <p>O padrão de certificados necessários para o Open Banking Brasil devem ser utilizados por seus participantes para garantir interoperabilidade para autenticação, confidencialidade, integridade e não repúdio entre as entidades participantes, bem como para os usuários e consumidores destas entidades.  </p>
 
 <p>Os detalhes das especificações devem ser consultadas no endereço <a href="https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-certificate-standards-1_ID1.html">https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-certificate-standards-1_ID1.html</a>.</p>
+
+<h2 id='assinaturas'>Assinaturas</h2>
+
+<p>Sobre os certificados exigidos para assinatura de mensagens - Padrões de certificados digitais Open Banking Brasil: 
+<a href="https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-certificate-standards-1_ID1.md#certificado-de-assinatura-certificadoassinatura" target="_blank">https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-certificate-standards-1_ID1.md#certificado-de-assinatura-certificadoassinatura</a></p>
+
+<p>Sobre os algoritmos usados para assinatura de mensagens JWS - Perfil de segurança FAPI - Open Banking Brasil: <a href="https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-financial-api-1_ID1.md#algorithm-considerations" target="_blank">https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-financial-api-1_ID1.md#algorithm-considerations</a></p>
+
+<p>Sobre mensagens assinadas, JWS e JWKS - Guia de usuário (Receptoras e iniciadoras de pagamento): <a href="https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/tpp-user-guide.md#143-what-is-a-jwt-jwe-jws-and-jwk" target="_blank">https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/tpp-user-guide.md#143-what-is-a-jwt-jwe-jws-and-jwk</a></p>
 
 <h2 id='casos-de-erro'>Casos de Erro</h2>
 
@@ -54008,7 +54020,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
     <span class="p">},</span>
     <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
       <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PIX</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">dateTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-01-01T00:00:00Z</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">dateTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-01-01</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BRL</span><span class="dl">"</span><span class="p">,</span>
       <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">100000.12</span><span class="dl">"</span>
     <span class="p">},</span>
@@ -54047,7 +54059,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">loggedUser</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">identification</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">11111111111</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">rel</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CPF</span><span class="se">\"</span><span class="s">}},</span><span class="se">\"</span><span class="s">businessEntity</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">identification</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">11111111111111</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">rel</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CNPJ</span><span class="se">\"</span><span class="s">}},</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01T00:00:00Z</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">100000.12</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">debtorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">issuerCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">4</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">loggedUser</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">identification</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">11111111111</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">rel</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CPF</span><span class="se">\"</span><span class="s">}},</span><span class="se">\"</span><span class="s">businessEntity</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">document</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">identification</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">11111111111111</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">rel</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CNPJ</span><span class="se">\"</span><span class="s">}},</span><span class="se">\"</span><span class="s">creditor</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">personType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PESSOA_NATURAL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">cpfCnpj</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">58764789000137</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Marco Antonio de Brito</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">payment</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">PIX</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">dateTime</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">2021-01-01</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">currency</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">BRL</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">100000.12</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">debtorAccount</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">ispb</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">12345678</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">issuerCode</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1774</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">number</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">1234567890</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">checkDigit</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">4</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">accountType</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">CACC</span><span class="se">\"</span><span class="s">}}}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -54077,7 +54089,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-customer-user-agent"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-idempotency-key"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"x-jws-signature"</span><span class="o">,</span> <span class="s">"string"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"loggedUser\":{\"document\":{\"identification\":\"11111111111\",\"rel\":\"CPF\"}},\"businessEntity\":{\"document\":{\"identification\":\"11111111111111\",\"rel\":\"CNPJ\"}},\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01T00:00:00Z\",\"currency\":\"BRL\",\"amount\":\"100000.12\"},\"debtorAccount\":{\"ispb\":\"12345678\",\"issuerCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"4\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"data\":{\"loggedUser\":{\"document\":{\"identification\":\"11111111111\",\"rel\":\"CPF\"}},\"businessEntity\":{\"document\":{\"identification\":\"11111111111111\",\"rel\":\"CNPJ\"}},\"creditor\":{\"personType\":\"PESSOA_NATURAL\",\"cpfCnpj\":\"58764789000137\",\"name\":\"Marco Antonio de Brito\"},\"payment\":{\"type\":\"PIX\",\"dateTime\":\"2021-01-01\",\"currency\":\"BRL\",\"amount\":\"100000.12\"},\"debtorAccount\":{\"ispb\":\"12345678\",\"issuerCode\":\"1774\",\"number\":\"1234567890\",\"checkDigit\":\"4\",\"accountType\":\"CACC\"}}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div>
 
@@ -54086,6 +54098,8 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 <p>Método para a criação do consentimento para iniciação de pagamento.</p>
 
 <h3 id='dicionario-de-dados'>Dicionário de dados</h3>
+
+<p>Campos do retorno do endpoint de <code>/consents</code></p>
 
 <p><a href='dictionary/paymentsPostConsents_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
@@ -54114,7 +54128,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -54230,7 +54244,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -54526,6 +54540,8 @@ None ( Scopes: payments )
 
 <h3 id='dicionario-de-dados-2'>Dicionário de dados</h3>
 
+<p>Campos do retorno do endpoint de <code>/consents</code></p>
+
 <p><a href='dictionary/paymentsGetConsentsConsentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
 <h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
@@ -54634,7 +54650,7 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -54896,6 +54912,8 @@ None ( Scopes: payments )
 <p>Método para a criação de uma iniciação de pagamento.</p>
 
 <h3 id='dicionario-de-dados-3'>Dicionário de dados</h3>
+
+<p>Campos do retorno do endpoint de <code>/pix/payments</code></p>
 
 <p><a href='dictionary/paymentsPostPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
@@ -55390,6 +55408,8 @@ None ( Scopes: payments )
 
 <h3 id='dicionario-de-dados-4'>Dicionário de dados</h3>
 
+<p>Campos do retorno do endpoint de <code>/pix/payments</code></p>
+
 <p><a href='dictionary/paymentsGetPixPaymentsPaymentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
 
 <h3 id="[em-revisão]-pix---consultar-iniciação-de-pagamento.-parameters">Parâmetros</h3>
@@ -55720,7 +55740,7 @@ None ( Scopes: payments )
 
 </span></code></pre></div>
 
-<p>Titular, pessoa jurídica a quem se referem os dados.</p>
+<p>Usuário (pessoa jurídica) que encontra-se logado na instituição Iniciadora de Pagamento. [Restrição] Preenchimento obrigatório se usuário logado na instituição Iniciadora de Pagamento for um CNPJ (pessoa jurídica).</p>
 
 <h3 id='propriedades-2'>Propriedades</h3>
 
@@ -55780,7 +55800,7 @@ None ( Scopes: payments )
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -55819,7 +55839,7 @@ None ( Scopes: payments )
 <td>» businessEntity</td>
 <td><a href="#schemabusinessentity">BusinessEntity</a></td>
 <td>false</td>
-<td>Titular, pessoa jurídica a quem se referem os dados.</td>
+<td>Usuário (pessoa jurídica) que encontra-se logado na instituição Iniciadora de Pagamento. [Restrição] Preenchimento obrigatório se usuário logado na instituição Iniciadora de Pagamento for um CNPJ (pessoa jurídica).</td>
 </tr>
 <tr>
 <td>» creditor</td>
@@ -56840,7 +56860,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -56867,9 +56887,9 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 </tr>
 <tr>
 <td>dateTime</td>
-<td>string(date-time)</td>
-<td>true</td>
-<td>Data e hora do pagamento. <br>Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Data do pagamento, conforme especificação RFC-3339.</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -57144,7 +57164,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -57189,7 +57209,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 <td>» expirationDateTime</td>
 <td>string(date-time)</td>
 <td>true</td>
-<td>Data e hora em que o consentimento da iniciação de pagamento expira. Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format).<br>O consentimento é criado com o status AWAITING_AUTHORISATION, e deve assumir o status AUTHORIZED ou CONSUMED antes do tempo de expiração. Caso o tempo de expiração seja atingido, o consentimento assumirá o status REJECTED.</td>
+<td>Data e hora em que o consentimento da iniciação de pagamento expira, devendo ser sempre o creationDateTime mais 5 minutos. Uma string com data e hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC (UTC time format). <br>O consentimento é criado com o status AWAITING_AUTHORISATION, e deve assumir o status AUTHORIZED, REJECTED ou CONSUMED antes do tempo de expiração.</td>
 </tr>
 <tr>
 <td>» statusUpdateDateTime</td>
@@ -57213,7 +57233,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 <td>» businessEntity</td>
 <td><a href="#schemabusinessentity">BusinessEntity</a></td>
 <td>false</td>
-<td>Titular, pessoa jurídica a quem se referem os dados.</td>
+<td>Usuário (pessoa jurídica) que encontra-se logado na instituição Iniciadora de Pagamento. [Restrição] Preenchimento obrigatório se usuário logado na instituição Iniciadora de Pagamento for um CNPJ (pessoa jurídica).</td>
 </tr>
 <tr>
 <td>» creditor</td>
