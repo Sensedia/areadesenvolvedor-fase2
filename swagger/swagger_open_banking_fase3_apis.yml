@@ -582,7 +582,7 @@ components:
         - BLOCKED_ACCOUNT
         - CLOSED_CREDITOR_ACCOUNT_NUMBER
         - INVALID_CREDITOR_ACCOUNTTYPE
-        - AGTRANSACTION_NOT_SUPPORTED03
+        - TRANSACTION_NOT_SUPPORTED
         - NOT_ALLOWED_BOOK_TRANSFER
         - FORBIDDEN_RETURN_PAYMENT
         - INCORRECT_AGENT
@@ -1313,6 +1313,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     Forbidden:
@@ -1323,6 +1325,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     InternalServerError:
@@ -1333,6 +1337,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     MethodNotAllowed:
@@ -1343,6 +1349,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     NotAcceptable:
@@ -1353,6 +1361,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     NotFound:
@@ -1363,6 +1373,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     TooManyRequests:
@@ -1426,6 +1438,8 @@ components:
                   requestDateTime: '2021-05-21T08:30:00Z'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     UnprocessableEntityPixPayments:
@@ -1536,6 +1550,8 @@ components:
                   requestDateTime: '2021-05-21T08:30:00Z'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     Unauthorized:
@@ -1546,6 +1562,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     UnsupportedMediaType:
@@ -1556,6 +1574,8 @@ components:
             $ref: '#/components/schemas/ResponseError'
       headers:
         x-fapi-interaction-id:
+          description: |
+            Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: '#/components/responses/200PaymentsConsentsConsentIdRead/headers/x-fapi-interaction-id/schema'
     201PaymentsConsentsConsentCreated:
