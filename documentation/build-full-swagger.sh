@@ -2,17 +2,17 @@
 
 chmod + source/scripts/dictionary_generator
 BUND_PATH=source/dictionary/bundles
-DICT_PATH=source/dictionary/fullswagger
+DICT_PATH=source/swagger/parts
 mkdir -p $BUND_PATH
 
 APIS=(
-  # "loans_apis"
-  # "financings_apis"
-  # "unarranged_accounts_overdraft_apis"
-  # "invoice_financings_apis"
-  # "resources_apis"
-  # "consents_apis"
-  "payments_apis"
+  "loans_apis"
+  "financings_apis"
+  "unarranged_accounts_overdraft_apis"
+  "invoice_financings_apis"
+  "resources_apis"
+  "consents_apis"
+  # "payments_apis"
 )
 
 APIS_CONDITIONAL=(
@@ -25,9 +25,6 @@ function generate() {
 
   for API in "${APIS[@]}"
   do
-    # swagger-cli bundle \
-    #   -r "source/swagger/parts/_${API}_part.yml" \
-    #   --outfile "${BUND_PATH}/swagger_${API}.yaml" --type=yaml
 
     ./source/scripts/full_swagger_generator ${OPTIONS- } \
       -f "source/swagger/parts/_${API}_part.yml" \
@@ -35,11 +32,6 @@ function generate() {
   done
 }
 
+#ruby source\scripts\full_swagger_generator -f "source/swagger/parts/_consents_apis_part.yml" -o source/swagger/parts
+
 generate $APIS
-generate $APIS_CONDITIONAL '-c'
-
-#rm -rf $BUND_PATH
-
-sed -i '1s/^\(\xef\xbb\xbf\)\?/\xef\xbb\xbf/' source/dictionary/*.csv
-sed -i '1s/^\(\xef\xbb\xbf\)\?/\xef\xbb\xbf/' source/dictionary/example/*.csv
-sed -i '1s/^\(\xef\xbb\xbf\)\?/\xef\xbb\xbf/' source/dictionary/fullswagger/*.yaml
