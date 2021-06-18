@@ -126,10 +126,51 @@ def format_definition(text)
   return text.match(/[^\[]*/)[0].strip.delete('\\\"')
 end
 
+def clean_paths_from_file(filename)
+  tempfile=File.open("file.tmp", 'w+:UTF-8')
+  f=File.new(filename)
+
+  shouldWriteLine = true
+
+  f.each do |line|
+
+    if shouldWriteLine
+      puts "line should: "+line
+    else      
+      puts "line should not: "+line
+    end
+
+    if (shouldWriteLine)
+      tempfile<<line
+    end
+ 
+    if (line.downcase=~/^paths:/)
+      shouldWriteLine = false
+    elsif (line.downcase=~/^components:/)
+      tempfile<<line
+      shouldWriteLine = true
+    end
+  end
+
+  f.close
+  tempfile.close
+  
+  FileUtils.mv("file.tmp", filename)
+end
+
 # Analyse
 puts "> Starting analyse on " + options[:filename].to_s
 
 url = oas['servers'][0]['url'].split("open-banking")[1]
+
+#alterar filename de acordo com a fase recebida por parâmetros
+# filename = output_path + spec['operationId'] + "_" + version + '.yaml'
+
+filename = output_path + "_open_banking_fase2_apis_part.yml"
+
+puts '  ├── Cleaning file ' + filename + ' from old paths'
+
+clean_paths_from_file(filename)
 
 oas['paths'].each_with_index do |(path, methods)|
 #aqui ja to dentro dos endpoints do paths
@@ -143,9 +184,7 @@ oas['paths'].each_with_index do |(path, methods)|
 
     puts '  ├── Extracting fields from responses...'
     version = "v" + oas['info']['version'].split(/\./, 3).first
-    #alterar filename de acordo com a fase recebida por parâmetros
-    # filename = output_path + spec['operationId'] + "_" + version + '.yaml'
-    filename = output_path + "_open_banking_fase2_apis_part.yml"
+
     puts '  ├── Writing file ' + filename
 
     tempfile=File.open("file.tmp", 'w+:UTF-8')

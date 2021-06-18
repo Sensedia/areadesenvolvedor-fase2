@@ -7,11 +7,11 @@ mkdir -p $BUND_PATH
 
 APIS=(
   "loans_apis"
-  "financings_apis"
-  "unarranged_accounts_overdraft_apis"
-  "invoice_financings_apis"
-  "resources_apis"
-  "consents_apis"
+  # "financings_apis"
+  # "unarranged_accounts_overdraft_apis"
+  # "invoice_financings_apis"
+  # "resources_apis"
+  # "consents_apis"
   # "payments_apis"
 )
 
@@ -25,7 +25,6 @@ function generate() {
 
   for API in "${APIS[@]}"
   do
-
     ./source/scripts/full_swagger_generator ${OPTIONS- } \
       -f "source/swagger/parts/_${API}_part.yml" \
       -o $DICT_PATH
