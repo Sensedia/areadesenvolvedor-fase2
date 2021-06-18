@@ -341,6 +341,12 @@
                     <a href="#como-utilizar-a-ferramenta-da-openid-foundation-para-testes-fapi-r-w-plain-fapi" class="toc-h2 toc-link" data-title="Como utilizar a ferramenta da OpenID Foundation para testes FAPI R/W - Plain FAPI">Como utilizar a ferramenta da OpenID Foundation para testes FAPI R/W - Plain FAPI</a>
                   </li>
                   <li>
+                    <a href="#disponibilizacao-da-ferramenta-de-certificacao-funcional" class="toc-h2 toc-link" data-title="Disponibilização da Ferramenta de Certificação Funcional">Disponibilização da Ferramenta de Certificação Funcional</a>
+                  </li>
+                  <li>
+                    <a href="#disponibilizacao-da-ferramenta-de-certificacao-fapi-e-dcr" class="toc-h2 toc-link" data-title="Disponibilização da Ferramenta de Certificação FAPI e DCR">Disponibilização da Ferramenta de Certificação FAPI e DCR</a>
+                  </li>
+                  <li>
                     <a href="#faq-testes-e-homologacao" class="toc-h2 toc-link" data-title="FAQ">FAQ</a>
                   </li>
               </ul>
@@ -3937,6 +3943,74 @@ testes e aos perfis FAPI que pode ser acessada através dos links abaixo:</p>
 <a href="https://openid.net/certification/fapi_op_testing/">How to run conformance tests for FAPI-RW OPs</a><br>
 <a href="https://openid.net/certification/op_submission/">How to request certification after successfully completing conformance testing for FAPI-RW and FAPI-CIBA OPs</a><br>
 <a href="https://openid.net/2021/04/14/guest-blog-financial-grade-api-fapi-explained-by-an-implementer-updated/">Financial-grade API (FAPI), Explained by an Implementer – Updated</a></p>
+
+<h2 id='disponibilizacao-da-ferramenta-de-certificacao-funcional'>Disponibilização da Ferramenta de Certificação Funcional</h2>
+
+<p>A Estrutura Inicial disponibilizou no dia 11/06, a versão beta das ferramentas de testes e homologação das APIs desenvolvidas pelas Instituições Participantes da Fase 2 do Open Banking.</p>
+
+<p>Dentro do escopo previsto pelo motor de testes, destacamos, de maneira não exaustiva, as principais validações, em curso de desenvolvimento: </p>
+
+<ul>
+<li>Open Banking Brasil – Funcional 
+
+<ul>
+<li>Estrutura das URLs </li>
+<li>Cabeçalhos </li>
+<li>Códigos de Resposta </li>
+<li>Escopos e Permissões </li>
+<li>Schema / Estrutura da API </li>
+</ul></li>
+</ul>
+
+<p>A plataforma de testes funcionais pode ser acessada em: </p>
+
+<p><a href="https://web.conformance.directory.openbankingbrasil.org.br/" target="_blank">https://web.conformance.directory.openbankingbrasil.org.br/</a>. </p>
+
+<p>A ferramenta foi disponibilizada no dia 11/06 com a primeira versão do perfil de segurança FAPI Brasil, disponibilizada pela OIDF e a API de contas. A previsão é termos testes para todas as APIs implementadas até  25/06</p>
+
+<p>A ferramenta também será atualizada conforme calendário de certificação, disponível em:</p>
+
+<p><a href="documents/Cronograma%20Sandbox_Versão%20-%2020210609.pdf" target="_blank">https://openbanking-brasil.github.io/areadesenvolvedor/documents/Cronograma Sandbox_Versão - 20210609.pdf</a></p>
+
+<p>Para acesso à plataforma e criação do plano de testes, é possível seguir o seguinte guia </p>
+
+<p><a href="https://openbanking-brasil.github.io/areadesenvolvedor/documents/Guia_OBB.pdf" target="_blank">https://openbanking-brasil.github.io/areadesenvolvedor/documents/Guia_OBB.pdf</a></p>
+
+<p>Para a execução dos testes funcionais das APIs, sem segurança, é necessário a execução da ferramenta localmente, disponibilizada no endereço <a href="https://gitlab.com/obb1/certification" target="_blank">https://gitlab.com/obb1/certification</a>. </p>
+
+<p>Além disso, também é possível consultar a documentação de referência, incluindo como rodar a ferramenta localmente, por meio dos links: </p>
+
+<p><a href="https://gitlab.com/obb1/certification/-/wikis/Introduction" target="_blank">https://gitlab.com/obb1/certification/-/wikis/Introduction</a></p>
+
+<p><a href="https://gitlab.com/openid/conformance-suite/-/wikis/home" target="_blank">https://gitlab.com/openid/conformance-suite/-/wikis/home</a></p>
+
+<p>Também foi realizado no dia um 15/06 um Workshop para demonstração da utilização da ferramenta, disponível em: <a href="https://youtu.be/C8TV7j3nb8I" target="_blank">https://youtu.be/C8TV7j3nb8I</a></p>
+
+<p>Vale notar que a ferramenta do Open Banking Brasil é baseada na ferramenta da OIDF, logo a extensa documentação produzida pela OIDF também se aplica a essa plataforma.</p>
+
+<h2 id='disponibilizacao-da-ferramenta-de-certificacao-fapi-e-dcr'>Disponibilização da Ferramenta de Certificação FAPI e DCR</h2>
+
+<p>A OIDF disponibilizou no dia 11/06 os perfis FAPI – Brasil e DCR – Brasil, que serão utilizados para realização da certificação funcional mandatória ao Open Banking Brasil.</p>
+
+<p>O acesso a plataforma e a as instruções de utilização desta podem ser consultadas através dos links: </p>
+
+<p><a href="https://www.certification.openid.net/login.html" target="_blank">https://www.certification.openid.net/login.html</a></p>
+
+<p><a href="https://openid.net/certification/fapi_op_testing" target="_blank">https://openid.net/certification/fapi_op_testing</a></p>
+
+<p>Exemplos das configurações dos testes podem ser encontrados em: </p>
+
+<p><a href="https://gitlab.com/openid/conformance-suite/-/wikis/Brazil-Example-Configuration" target="_blank">https://gitlab.com/openid/conformance-suite/-/wikis/Brazil-Example-Configuration</a></p>
+
+<p><a href="https://gitlab.com/openid/conformance-suite/-/wikis/Brazil-DCR-Example-Configuration" target="_blank">https://gitlab.com/openid/conformance-suite/-/wikis/Brazil-DCR-Example-Configuration</a></p>
+
+<p>Em caso de dúvidas sobre a execução dos testes, pedimos que entrem em contato pelo e-mail certificate@oidf.org. Para relatar possíveis bugs ou alterações necessárias, pedimos que a instituição abra um novo issue em: </p>
+
+<p><a href="https://gitlab.com/openid/conformance-suite/-/issues/new" target="_blank">https://gitlab.com/openid/conformance-suite/-/issues/new</a></p>
+
+<p>No dia 22/06 será realizado um Workshop em que haverá demonstração e esclarecimento de dúvidas sobre a ferramenta da OIDF. Após o Workshop essa agenda será disponibilizada no nosso canal do Youtube, acessível em: </p>
+
+<p><a href="https://www.youtube.com/channel/UCcEHG9ibMcBEK1tDAG-2WMQ" target="_blank">https://www.youtube.com/channel/UCcEHG9ibMcBEK1tDAG-2WMQ</a></p>
 
 <h2 id="faq-testes-e-homologacao">FAQ</h2>
 
