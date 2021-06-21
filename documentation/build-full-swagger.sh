@@ -7,21 +7,19 @@ mkdir -p $BUND_PATH
 
 APIS=(
   "loans_apis"
-  # "financings_apis"
-  # "unarranged_accounts_overdraft_apis"
-  # "invoice_financings_apis"
-  # "resources_apis"
-  # "consents_apis"
-  # "payments_apis"
-)
-
-APIS_CONDITIONAL=(
-
+  "financings_apis"
+  "unarranged_accounts_overdraft_apis"
+  "invoice_financings_apis"
+  "resources_apis"
+  "consents_apis"
+  "payments_apis"
 )
 
 function generate() {
   LIST=$1
   OPTIONS=$2
+
+  ruby source/scripts/path_content_cleaner
 
   for API in "${APIS[@]}"
   do

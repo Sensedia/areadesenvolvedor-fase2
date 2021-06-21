@@ -134,12 +134,6 @@ def clean_paths_from_file(filename)
 
   f.each do |line|
 
-    if shouldWriteLine
-      puts "line should: "+line
-    else      
-      puts "line should not: "+line
-    end
-
     if (shouldWriteLine)
       tempfile<<line
     end
@@ -167,10 +161,6 @@ url = oas['servers'][0]['url'].split("open-banking")[1]
 # filename = output_path + spec['operationId'] + "_" + version + '.yaml'
 
 filename = output_path + "_open_banking_fase2_apis_part.yml"
-
-puts '  ├── Cleaning file ' + filename + ' from old paths'
-
-clean_paths_from_file(filename)
 
 oas['paths'].each_with_index do |(path, methods)|
 #aqui ja to dentro dos endpoints do paths

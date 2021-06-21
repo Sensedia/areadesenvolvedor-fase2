@@ -1,0 +1,35 @@
+require 'pathname'
+require 'fileutils'
+
+def clean_paths_from_file(filename)
+  tempfile=File.open("file.tmp", 'w+:UTF-8')
+  f=File.new(filename)
+
+  shouldWriteLine = true
+
+  f.each do |line|
+
+    if (shouldWriteLine)
+      tempfile<<line
+    end
+ 
+    if (line.downcase=~/^paths:/)
+      shouldWriteLine = false
+    elsif (line.downcase=~/^components:/)
+      tempfile<<line
+    end
+  end
+
+  f.close
+  tempfile.close
+  
+  FileUtils.mv("file.tmp", filename)
+end
+
+pn = Pathname.new("source/swagger/parts/")
+
+filename = pn.to_s+"_open_banking_fase2_apis_part.yml"
+
+puts '  ├── Cleaning file ' + filename + ' from old paths'
+
+clean_paths_from_file(filename)
