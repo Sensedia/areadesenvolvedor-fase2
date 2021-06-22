@@ -1860,6 +1860,9 @@
             <a href="#fase-3-apis-do-open-banking-brasil" class="toc-h1 toc-link" data-title="Fase 3 - APIs do Open Banking Brasil v1.0.0-rc2.0">Fase 3 - APIs do Open Banking Brasil v1.0.0-rc2.0</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#iniciacao-de-pagamentos" class="toc-h2 toc-link" data-title="Iniciação de pagamentos">Iniciação de pagamentos</a>
+                  </li>
+                  <li>
                     <a href="#idempotencia" class="toc-h2 toc-link" data-title="Idempotência">Idempotência</a>
                   </li>
                   <li>
@@ -2666,7 +2669,7 @@ P.ex. Utilizar o termo <em>Post Code</em> (Reino Unido) ao invés de <em>Zip Cod
 
 <p><em>Arrays</em> devem ser nomeados no plural. Demais atributos deverão ser nomeados no singular.</p>
 
-<h3 id='convencoes-de-propriedade-dos-atributos'>Convenções de propriedade dos atributos</h3>
+<h3 id='convencoes-de-propriedade-dos-atributos'><span id="convencoes-de-propriedade-dos-atributos">Convenções de propriedade dos atributos</span></h3>
 
 <p><b>Tipos de dados dos atributos</b></p>
 
@@ -27042,8 +27045,8 @@ Caso haja mais de 1 evento por cliente, referente ao mesmo produto e/ou serviço
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: consents )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: consents )
 </aside>
 
 <h2 id='obter-detalhes-do-consentimento-identificado-por-consentid'>Obter detalhes do consentimento identificado por consentId.</h2>
@@ -27311,8 +27314,8 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: consents )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: consents )
 </aside>
 
 <h2 id='deletar-revogar-o-consentimento-identificado-por-consentid'>Deletar/revogar o consentimento identificado por consentId.</h2>
@@ -27838,8 +27841,8 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: resources consent:consentId )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: resources consent:consentId )
 </aside>
 
 <h1 id="fase-2-apis-do-open-banking-brasil-api-dados-cadastrais">API - Dados Cadastrais</h1>
@@ -31399,8 +31402,8 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: credit-card consent:consentId )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: credit-card consent:consentId )
 </aside>
 
 <h1 id="fase-2-apis-do-open-banking-brasil-api-contas">API - Contas</h1>
@@ -53979,14 +53982,12 @@ Adiantamento a depositantes</p>
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
 </blockquote>
+<h3 id='iniciacao-de-pagamentos'>Iniciação de pagamentos</h3>
+<p>Na fase 3 do Open Banking Brasil  será oferecida aos clientes a possibilidade de movimentação financeira a partir de aplicativos e plataformas externas ao ambiente no qual mantém sua conta.</p>
 
-<p>Na fase 3 do Open Banking Brasil, a iniciação de pagamento permitirá que o cliente solicite um pagamento Pix fora dos canais da detentora de conta através de uma iniciadora de transação de pagamento.  </p>
+<p>Na prática o que teremos é a oferta de pagamentos, transferências e outras operações executadas a partir de aplicativos de terceiros, sempre com a prévia coleta do consentimento do cliente para a iniciação destas transações.</p>
 
-<p>A solicitação de pagamento será processada apenas se o cliente consentir na iniciadora, através da API de consentimento fase 3, e autorizar na detentora de conta, por meio de autenticação com credenciais de acesso e confirmação dos dados do pagamento.  </p>
-
-<p>Diferente da fase 2, o consentimento é dado para cada transação e não pode ser revogado, pois é consumido no momento que a transação é confirmada e processada.  </p>
-
-<p>O processamento da transação é feito de forma instantânea, não sendo possível agendamentos.</p>
+<p>No âmbito da Resolução conjunta nº 1, de 04 de maio de 2020 o Open Banking Brasil passa a contar com os atores e operações ali definidos, reproduzidos a seguir.</p>
 <h3 id='idempotencia'>Idempotência</h3>
 <p>Segundo a W3C, &quot;um método HTTP idempotente é um método HTTP que pode ser chamado muitas vezes sem resultados diferentes ou efeitos colaterais. Não importa se o método é chamado apenas uma vez ou dez vezes. O resultado deve ser o mesmo. Essencialmente, significa que o resultado de uma solicitação executada com sucesso é independente do número de vezes que ela é executada. Por exemplo, na aritmética, adicionar zero a um número é uma operação idempotente.&quot;</p>
 
@@ -54014,7 +54015,7 @@ Adiantamento a depositantes</p>
 <h3 id='diagrama-de-sequencia'>Diagrama de Sequência</h3>
 <p><img src="images/sequence-diagrams/iniciacao_de_pagamento-60e65077.png" alt="Iniciacao_de_Pagamento" />
 <a href="images/sequence-diagrams/iniciacao_de_pagamento-60e65077.png" target="_blank">Download do Diagrama de Sequência</a></p>
-<h3 id='recomendacao-uso-de-pooling'>Recomendação uso de pooling</h3><h4 id='a-consulta-via-get-para-verificar-o-processamento-da-transacao-pode-ser-dado-a-qualquer-momento-desde-que-se-respeite-o-rate-limit-de'>A consulta via GET, para verificar o processamento da transação, pode ser dado a qualquer momento desde que se respeite o rate limit de:</h4>
+<h3 id='recomendacao-uso-de-pooling'>Recomendação uso de pooling</h3><h4 id='a-consulta-via-get-para-verificar-o-processamento-da-transacao-pode-ser-efetuada-a-qualquer-momento-desde-que-se-respeite-o-rate-limit-de'>A consulta via GET, para verificar o processamento da transação, pode ser efetuada a qualquer momento desde que se respeite o rate limit de:</h4>
 <ul>
 <li>300 TPS global, 50 TPS por instituição e 8 TPS por endereço IP (Internet Protocol).<br>
 Como sugestão, é indicado que a instituição iniciadora do pagamento implemente um retry exponencial.<br></li>
@@ -54143,9 +54144,11 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 
 <h3 id='dicionario-de-dados'>Dicionário de dados</h3>
 
-<p>Campos do retorno do endpoint de <code>/consents</code></p>
+<p>Campos de resposta do endpoint de <code>/consents</code></p>
 
 <p><a href='dictionary/paymentsPostConsents_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<p>Consulte a seção <strong>Convenções de payload</strong> para obter mais informações sobre <a href="#convencoes-de-propriedade-dos-atributos">Atributos Obrigatórios / Opcionais</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -54514,8 +54517,8 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: payments )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: payments )
 </aside>
 
 <h2 id='em-revisao-consultar-consentimento-para-iniciacao-de-pagamento'>[Em Revisão] Consultar consentimento para iniciação de pagamento.</h2>
@@ -54584,9 +54587,11 @@ None ( Scopes: payments )
 
 <h3 id='dicionario-de-dados-2'>Dicionário de dados</h3>
 
-<p>Campos do retorno do endpoint de <code>/consents</code></p>
+<p>Campos de resposta do endpoint de <code>/consents</code></p>
 
 <p><a href='dictionary/paymentsGetConsentsConsentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<p>Consulte a seção <strong>Convenções de payload</strong> para obter mais informações sobre <a href="#convencoes-de-propriedade-dos-atributos">Atributos Obrigatórios / Opcionais</a>.</p>
 
 <h3 id="[em-revisão]-consultar-consentimento-para-iniciação-de-pagamento.-parameters">Parâmetros</h3>
 
@@ -54860,8 +54865,8 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: payments )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: payments )
 </aside>
 
 <h2 id='em-revisao-pix-criar-iniciacao-de-pagamento'>[Em Revisão] Pix - Criar iniciação de pagamento.</h2>
@@ -54957,9 +54962,11 @@ None ( Scopes: payments )
 
 <h3 id='dicionario-de-dados-3'>Dicionário de dados</h3>
 
-<p>Campos do retorno do endpoint de <code>/pix/payments</code></p>
+<p>Campos de resposta do endpoint de <code>/pix/payments</code></p>
 
 <p><a href='dictionary/paymentsPostPixPayments_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<p>Consulte a seção <strong>Convenções de payload</strong> para obter mais informações sobre <a href="#convencoes-de-propriedade-dos-atributos">Atributos Obrigatórios / Opcionais</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -55382,8 +55389,8 @@ None ( Scopes: payments )
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: payments )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: payments )
 </aside>
 
 <h2 id='em-revisao-pix-consultar-iniciacao-de-pagamento'>[Em Revisão] Pix - Consultar iniciação de pagamento.</h2>
@@ -55452,9 +55459,11 @@ None ( Scopes: payments )
 
 <h3 id='dicionario-de-dados-4'>Dicionário de dados</h3>
 
-<p>Campos do retorno do endpoint de <code>/pix/payments</code></p>
+<p>Campos de resposta do endpoint de <code>/pix/payments</code>.  </p>
 
 <p><a href='dictionary/paymentsGetPixPaymentsPaymentId_v1.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<p>Consulte a seção <strong>Convenções de payload</strong> para obter mais informações sobre <a href="#convencoes-de-propriedade-dos-atributos">Atributos Obrigatórios / Opcionais</a>.</p>
 
 <h3 id="[em-revisão]-pix---consultar-iniciação-de-pagamento.-parameters">Parâmetros</h3>
 
@@ -55701,8 +55710,8 @@ None ( Scopes: payments )
 </tbody></table>
 
 <aside class="warning">
-Para realizar esta operação, você deve ser autenticado por meio de um dos seguintes métodos:
-None ( Scopes: payments )
+Para realizar esta operação, você deve estar autenticado e autorizado com os seguintes escopos:
+ ( Scopes: payments )
 </aside>
 
 <h1 id="fase-3-apis-do-open-banking-brasil-schemas">Schemas</h1>
