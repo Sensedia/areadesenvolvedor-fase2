@@ -126,6 +126,38 @@ def format_definition(text)
   return text.match(/[^\[]*/)[0].strip.delete('\\\"')
 end
 
+def get_file_data(file, section)
+
+  if ("schemas".eql? section)
+    upperLimit = /^  schemas:/
+    lowerLimit = /^  parameters:/
+  elsif ("parameters".eql? section)
+    upperLimit = /^  parameters:/
+    lowerLimit = /^  responses:/
+  elsif ("responses".eql? section)
+    upperLimit = /^  responses:/
+    lowerLimit = /^  responses:/
+  end
+
+  sectionContent = ""
+  isSection = false
+
+  file.each do |line|
+    if isSection
+      sectionContent << line
+    end
+    if (line.downcase=~upperLimit)
+      isSection = true
+    elsif (line.downcase=~lowerLimit)
+      isSection = false
+    end
+  end
+
+  file.close
+
+  return sectionContent
+end
+
 # Analyse
 #atualmente, filename tem o nome do arquivo filho gerador
 puts "> Starting analyse on " + options[:filename].to_s
@@ -180,21 +212,46 @@ end
 
 oas['components'].each_with_index do |(componentTitle, componentArray)|
   printedSchemas = Array.new
+  printedParameters = Array.new
+  printedResponses = Array.new
 
   puts '  ├── Writing file ' + filename
 
   tempfile=File.open("file.tmp", 'w+:UTF-8')
+
+  fileSchemas = get_file_data(File.new(filename), "schemas")
+  fileParameters = get_file_data(File.new(filename), "parameters")
+  fileComponents = get_file_data(File.new(filename), "responses")
+
   f=File.new(filename)
 
   f.each do |line|
     tempfile<<line
 
     if (line.downcase=~/^  schemas:/ && ("schemas".eql? componentTitle))
-      tempfile << oas['components']['schemas'].to_yaml.gsub!(/^/, '    ').split("---")[1]
+      tempfile << "\n"
+      oas['components']['schemas'].each_with_index do |(contentt, dataa)|
+        if (!fileSchemas.include? contentt)
+          tempfile << "    "+contentt+":"
+          tempfile << dataa.to_yaml.gsub!(/^/, '      ').split("---")[1]
+        end
+      end
     elsif (line.downcase=~/^  parameters:/ && ("parameters".eql? componentTitle))
-      tempfile << oas['components']['parameters'].to_yaml.gsub!(/^/, '    ').split("---")[1]
+      tempfile << "\n"
+      oas['components']['parameters'].each_with_index do |(contentt, dataa)|
+        if (!fileParameters.include? contentt)
+          tempfile << "    "+contentt+":"
+          tempfile << dataa.to_yaml.gsub!(/^/, '      ').split("---")[1]
+        end
+      end
     elsif (line.downcase=~/^  responses:/ && ("responses".eql? componentTitle))
-      tempfile << oas['components']['responses'].to_yaml.gsub!(/^/, '    ').split("---")[1]
+      tempfile << "\n"
+      oas['components']['responses'].each_with_index do |(contentt, dataa)|
+        if (!fileComponents.include? contentt)
+          tempfile << "    "+contentt+":"
+          tempfile << dataa.to_yaml.gsub!(/^/, '      ').split("---")[1]
+        end
+      end
     end
   end
 
@@ -209,5 +266,4 @@ end
 
 puts '> Files generated!'
 
-teste1 = gets 
 # exit 0

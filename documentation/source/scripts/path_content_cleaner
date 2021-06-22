@@ -15,16 +15,12 @@ def clean_paths_from_file(filename)
  
     if (line.downcase=~/^paths:/)
       shouldWriteLine = false
-    elsif (line.downcase=~/^components:/)
-      tempfile<<line
-    elsif (line.downcase=~/^  schemas:/)
-      tempfile<<line
-    elsif (line.downcase=~/^  parameters:/)
-      tempfile<<line
-    elsif (line.downcase=~/^  responses:/)
-      tempfile<<line
     end
   end
+  tempfile<<"components:"
+  tempfile<<"\n  schemas:"
+  tempfile<<"\n  parameters:"
+  tempfile<<"\n  responses:"
 
   f.close
   tempfile.close
