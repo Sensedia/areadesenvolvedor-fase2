@@ -7,12 +7,12 @@ mkdir -p $BUND_PATH
 
 APIS=(
   "loans_apis"
-  "financings_apis"
-  "unarranged_accounts_overdraft_apis"
-  "invoice_financings_apis"
-  "resources_apis"
-  "consents_apis"
-  "payments_apis"
+  # "financings_apis"
+  # "unarranged_accounts_overdraft_apis"
+  # "invoice_financings_apis"
+  # "resources_apis"
+  # "consents_apis"
+  # "payments_apis"
 )
 
 function generate() {

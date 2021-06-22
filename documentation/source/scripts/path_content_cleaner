@@ -17,6 +17,12 @@ def clean_paths_from_file(filename)
       shouldWriteLine = false
     elsif (line.downcase=~/^components:/)
       tempfile<<line
+    elsif (line.downcase=~/^  schemas:/)
+      tempfile<<line
+    elsif (line.downcase=~/^  parameters:/)
+      tempfile<<line
+    elsif (line.downcase=~/^  responses:/)
+      tempfile<<line
     end
   end
 
@@ -28,7 +34,8 @@ end
 
 pn = Pathname.new("source/swagger/parts/")
 
-filename = pn.to_s+"_open_banking_fase2_apis_part.yml"
+# filename = pn.to_s+"_open_banking_fase2_apis_part.yml"
+filename = "C:/Users/marcos.moreira/Desktop/Drive Sensedia/Open Banking/sensedia/areadesenvolvedor/documentation/source/swagger/parts/_open_banking_fase2_apis_part.yml"
 
 puts '  ├── Cleaning file ' + filename + ' from old paths'
 
