@@ -5,30 +5,44 @@ BUND_PATH=source/dictionary/bundles
 DICT_PATH=source/swagger/parts
 mkdir -p $BUND_PATH
 
-APIS=(
-  "loans_apis"
-  "financings_apis"
-  "unarranged_accounts_overdraft_apis"
-  "invoice_financings_apis"
-  "resources_apis"
-  "consents_apis"
-  # "payments_apis"
-)
-
 function generate() {
-  LIST=$1
-  OPTIONS=$2
+  VERSION=$1
 
-  ruby source/scripts/path_content_cleaner
+  if [ $VERSION == '2' ]; then
+    LIST=(
+      "loans_apis"
+      "financings_apis"
+      "unarranged_accounts_overdraft_apis"
+      "invoice_financings_apis"
+      "resources_apis"
+      "consents_apis"
+      "customers_apis"
+      "credit_cards_apis"
+      "accounts_apis"
+      # "payments_apis"
+    )
+  elif [ $VERSION == '3' ]; then
+    LIST=(
+      # "loans_apis"
+      # "financings_apis"
+      # "unarranged_accounts_overdraft_apis"
+      # "invoice_financings_apis"
+      # "resources_apis"
+      # "consents_apis"
+      "payments_apis"
+    )
+  fi
 
-  for API in "${APIS[@]}"
+  ruby source/scripts/path_content_cleaner -v $VERSION
+
+  for API in "${LIST[@]}"
   do
     ./source/scripts/full_swagger_generator ${OPTIONS- } \
       -f "source/swagger/parts/_${API}_part.yml" \
-      -o $DICT_PATH
+      -o $DICT_PATH \
+      -v $VERSION
   done
 }
 
-#ruby source\scripts\full_swagger_generator -f "source/swagger/parts/_consents_apis_part.yml" -o source/swagger/parts
-
-generate $APIS
+generate '2'
+generate '3'

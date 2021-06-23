@@ -9,122 +9,17 @@ require 'fileutils'
 
 options = {}
 cli = OptionParser.new do |parser|
-  parser.banner = 'Usage: -f swagger_file.yaml -o generated/'
-  # parser.on('-c', '--conditional', 'Enable conditional value on mandatory column')
-  #nao preciso mais desse condicional
   parser.on('-f', '--filename FILENAME', 'Yaml Swagger filename') do |f| Pathname.new f end
-  #aqui posso continuar passando file por file. Nao precisa passar
-  #todos de uma vez. A cada vez que chamo um yaml parcial,
-  # escrevo um pouco no arquivo e fecho ele
   parser.on('-o', '--output OUTPUT', 'Output directory') do |o| Pathname.new o end
-  #colocar aqui uma nova opcao para identificar a fase, para conseguirmos
-  #alterar dinamicamente em qual arquivo escrever
+  parser.on('-v', '--version VERSION', 'Open banking version e.g. fase 1, 2, 3') do |v| Pathname.new v end
 end
+
 cli.parse!(into: options)
+
+version = options[:version]
 
 oas = YAML.load_file(options[:filename])
 output_path = options[:output].realpath.to_s + '/'
-
-#nao preciso do header pq nao escrevo em CSV mais
-headers = {
-  'COLUMN_1'  => 'Xpath',
-  'COLUMN_2'  => 'Nome',
-  'COLUMN_3'  => 'Definição',
-  'COLUMN_4'  => 'Tipo de Dado',
-  'COLUMN_5'  => 'Tamanho',
-  'COLUMN_6'  => 'Mandatoriedade',
-  'COLUMN_7'  => 'Formato',
-  'COLUMN_8'  => 'Domínio',
-  'COLUMN_9'  => 'Mínimo de Ocorrências',
-  'COLUMN_10' => 'Máximo de Ocorrências',
-  'COLUMN_11' => 'Restrições',
-  'COLUMN_12' => 'Nulidade',
-  'COLUMN_13' => 'Tipo de Dado Json',
-  'COLUMN_14' => 'Exemplo'
-}
-
-
-#nao preciso mais dessa funcao
-def format_type(type)
-  return '' if !type
-  types = {
-    'array'         => 'Lista',
-    'double'        => 'Número',
-    'integer'       => 'Inteiro',
-    'string'        => 'Texto',
-    'number'        => 'Número',
-    'object'        => 'Objeto',
-    'boolean'       => 'Booleano',
-    'enum'          => 'Texto',
-    'date'          => 'Data',
-    'date-time'     => 'Date Hora'
-  }
-  return types[type.downcase] ? types[type.downcase] : 'Não Identificado!'
-end
-
-# Extract fields from Schema Object recursivily
-# Posso precisar desse método. Manter
-def extract_fields(schema, path = '', fields = [])
-  if ['array', 'object'].include? schema['type']
-    index = 'properties'
-
-    if schema['type'] == 'array' and !['array', 'object'].include? schema['items']['type']
-      items = schema['items']
-      items['isRequired'] = schema['isRequired']
-      items['maxItems'] = schema['maxItems']
-      items['minItems'] = schema['minItems']
-      items['description'] = schema['description']
-      items['name'] = schema['name']
-      items['type'] = schema['type'] + "-" + items['type'];
-
-      fields.concat extract_fields(items, path)
-      return fields
-    elsif path != ''
-      parent = schema.clone
-      parent['path'] = path
-      fields.push parent
-    end
-
-    schema = schema['items'] if schema['type'] == 'array'
-
-    schema[index].select{|key, _| !ignore.include? key}.each_with_index do |(name, spec)|
-      spec['name'] = name
-      spec['isRequired'] = true if schema['required'] and schema['required'].include? name
-
-      fields.concat extract_fields(spec, path + '/' + name)
-    end
-    return fields
-  else
-    schema['path'] = path
-    fields.push schema
-    return fields
-  end
-end
-
-# Write headers and rows on given filename
-#pode ser removido essa funcao
-def generate_csv(filename, headers, rows)
-  CSV.open(filename,'w', {:col_sep => ";"}) do |file|
-    file << headers.values
-    rows.each do |row|
-      file << row.values
-    end
-  end
-end
-
-def format_enum(enum)
-  return enum.join(" \n") if enum != nil
-end
-
-def format_restriction(text)
-  return '' if !text
-  return text.partition('[Restrição]').last
-end
-
-def format_definition(text)
-  return '' if !text
-  return text.match(/[^\[]*/)[0].strip.delete('\\\"')
-end
 
 def get_file_data(file, section)
 
@@ -158,31 +53,21 @@ def get_file_data(file, section)
   return sectionContent
 end
 
-# Analyse
-#atualmente, filename tem o nome do arquivo filho gerador
 puts "> Starting analyse on " + options[:filename].to_s
 
 url = oas['servers'][0]['url'].split("open-banking")[1]
 
-#alterar filename de acordo com a fase recebida por parâmetros
-# filename = output_path + spec['operationId'] + "_" + version + '.yaml'
-
-#filename é setado com nome do arquivo pai a ser gerado
-filename = output_path + "_open_banking_fase2_apis_part.yml"
+filename = output_path + "_open_banking_fase"+version.to_s+"_apis_part.yml"
 
 oas['paths'].each_with_index do |(path, methods)|
-#aqui ja to dentro dos endpoints do paths
-#exemplo: /contracts, etc
 
   printedPaths = Array.new
 
   methods.each_with_index do |(op, spec)|
-  #op é get, post, delete, etc
 
     puts '─ ' + op.upcase + ' ' + path
 
     puts '  ├── Extracting fields from responses...'
-    version = "v" + oas['info']['version'].split(/\./, 3).first
 
     puts '  ├── Writing file ' + filename
 

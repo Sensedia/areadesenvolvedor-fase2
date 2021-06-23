@@ -1,5 +1,14 @@
 require 'pathname'
 require 'fileutils'
+require 'optparse'
+
+options = {}
+cli = OptionParser.new do |parser|
+  parser.on('-v', '--version VERSION', 'Open banking version e.g. fase 1, 2, 3') do |v| Pathname.new v end
+  end
+cli.parse!(into: options)
+
+version = options[:version]
 
 def clean_paths_from_file(filename)
   tempfile=File.open("file.tmp", 'w+:UTF-8')
@@ -30,8 +39,7 @@ end
 
 pn = Pathname.new("source/swagger/parts/")
 
-# filename = pn.to_s+"_open_banking_fase2_apis_part.yml"
-filename = "C:/Users/marcos.moreira/Desktop/Drive Sensedia/Open Banking/sensedia/areadesenvolvedor/documentation/source/swagger/parts/_open_banking_fase2_apis_part.yml"
+filename = pn.to_s+"_open_banking_fase"+version.to_s+"_apis_part.yml"
 
 puts '  ├── Cleaning file ' + filename + ' from old paths'
 
