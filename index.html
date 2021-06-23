@@ -2681,7 +2681,8 @@ P.ex. Utilizar o termo <em>Post Code</em> (Reino Unido) ao invés de <em>Zip Cod
 
 <p>Os atributos obrigatórios devem estar presentes e ter um valor não nulo, seja em uma requisição ou resposta, para que payload seja considerado válido.</p>
 
-<p>Os atributos condicionais podem ter uma restrição vinculada a eles, tornando-os obrigatórios conforme a situação descrita na coluna &#39;restrição&#39; do dicionário de dados.</p>
+<p>Os atributos condicionais devem ter uma marcação de restrição vinculada a eles na documentação da API (Swagger), no campo &#39;description&#39;. 
+Esses atributos terão a coluna &#39;Mandatoriedade&#39; preenchida como &#39;Condicional&#39;, alem de terem a situação descrita na coluna &#39;Restrições&#39; do dicionário de dados.</p>
 
 <p><b>Atributos vazios / nulos</b></p>
 
@@ -53999,9 +54000,9 @@ Adiantamento a depositantes</p>
 
 <p>De forma análoga ao caso das detentoras de conta, as iniciadoras mantém certo grau de similaridade com o conceito de <a href="https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.openbanking.org.uk%2Fproviders%2Fthird-party-providers%2F&amp;amp;data=04%7C01%7Cclara.rohrmann%40bancointer.com.br%7C213ed77ede5b4e2af08c08d93226dbf8%7C05e665c9c5024a1998a5a913a6f52be8%7C1%7C0%7C637595964801593818%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;amp;sdata=AwM0i68xyxbQVEgYe9gIzWXUdUJuHX22GsGBARFP0r8%3D&amp;amp;reserved=0&lt;https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.openbanking.org.uk%2Fproviders%2Fthird-party-providers%2F&amp;amp;data=04%7C01%7Cclara.rohrmann%40bancointer.com.br%7C213ed77ede5b4e2af08c08d93226dbf8%7C05e665c9c5024a1998a5a913a6f52be8%7C1%7C0%7C637595964801593818%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;amp;sdata=AwM0i68xyxbQVEgYe9gIzWXUdUJuHX22GsGBARFP0r8%3D&amp;amp;reserved=0">TPP</a> - Third Party Provider do modelo britânico, devendo também observar critérios específicos de segurança, conforme detalhado neste <a href="https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fopenbanking-brasil.github.io%2Fspecs-seguranca%2Ftpp-user-guide.html&amp;amp;data=04%7C01%7Cclara.rohrmann%40bancointer.com.br%7C213ed77ede5b4e2af08c08d93226dbf8%7C05e665c9c5024a1998a5a913a6f52be8%7C1%7C0%7C637595964801593818%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;amp;sdata=jM1KEOJPgixn6XE98%2BHERACS3ZOjXcYzMbazr3KiCMs%3D&amp;amp;reserved=0&lt;https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fopenbanking-brasil.github.io%2Fspecs-seguranca%2Ftpp-user-guide.html&amp;amp;data=04%7C01%7Cclara.rohrmann%40bancointer.com.br%7C213ed77ede5b4e2af08c08d93226dbf8%7C05e665c9c5024a1998a5a913a6f52be8%7C1%7C0%7C637595964801593818%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;amp;sdata=jM1KEOJPgixn6XE98%2BHERACS3ZOjXcYzMbazr3KiCMs%3D&amp;amp;reserved=0">link</a>.</p>
 <h4 id='servico-de-iniciacao-de-transacao-de-pagamento'>Serviço de iniciação de transação de pagamento</h4>
-<p>É o serviço que possibilita a iniciação da instrução de uma transação de pagamento, ordenado pelo cliente, relativamente a uma conta de depósitos à vista(conta-corrente),  conta-salário, conta de poupança ou conta de pagamento pré-paga.</p>
+<p>É o serviço que possibilita a iniciação da instrução de uma transação de pagamento, ordenado pelo cliente, relativamente a uma conta de depósitos à vista (conta-corrente),  conta-salário, conta de poupança ou conta de pagamento pré-paga.</p>
 
-<p>Inicialmente o Open Banking estará disponibilizando a iniciação de PIX com execução na data corrente.</p>
+<p>Inicialmente o Open Banking estará disponibilizando a iniciação de Pix com execução na data corrente.</p>
 
 <p>Futuramente com a evolução do ecossistema novas modalidades de operações serão agregadas, assim como a possibilidade de agendamentos.</p>
 <h3 id='idempotencia'>Idempotência</h3>
