@@ -210,7 +210,7 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-7ed2e1f6.png" class="logo" alt="" />
-      <small style="padding: 23px; color: white">Versão: v1.0.0-rc6.9</small>
+      <small style="padding: 23px; color: white">Versão: v1.0.0-rc7.0</small>
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">javascript</a>
               <a href="#" data-language-name="python">python</a>
@@ -379,7 +379,7 @@
             <a href="#guias-de-implementacao" class="toc-h1 toc-link" data-title="Guias de implementação">Guias de implementação</a>
           </li>
           <li>
-            <a href="#fase-1-apis-do-open-banking-brasil-v1-0-1" class="toc-h1 toc-link" data-title="Fase 1 - APIs do Open Banking Brasil v1.0.1">Fase 1 - APIs do Open Banking Brasil v1.0.1</a>
+            <a href="#fase-1-apis-do-open-banking-brasil" class="toc-h1 toc-link" data-title="Fase 1 - APIs do Open Banking Brasil v1.0.1-rc1.0">Fase 1 - APIs do Open Banking Brasil v1.0.1-rc1.0</a>
           </li>
           <li>
             <a href="#apis-comuns" class="toc-h1 toc-link" data-title="APIs comuns">APIs comuns</a>
@@ -1857,7 +1857,7 @@
               </ul>
           </li>
           <li>
-            <a href="#fase-3-apis-do-open-banking-brasil" class="toc-h1 toc-link" data-title="Fase 3 - APIs do Open Banking Brasil v1.0.0-rc2.0">Fase 3 - APIs do Open Banking Brasil v1.0.0-rc2.0</a>
+            <a href="#fase-3-apis-do-open-banking-brasil" class="toc-h1 toc-link" data-title="Fase 3 - APIs do Open Banking Brasil v1.0.0-rc3.0">Fase 3 - APIs do Open Banking Brasil v1.0.0-rc3.0</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#iniciacao-de-pagamentos" class="toc-h2 toc-link" data-title="Iniciação de pagamentos">Iniciação de pagamentos</a>
@@ -4078,7 +4078,7 @@ Sua eventual atualização será previamente comunicada através dos informes do
 <p>Acesse neste <a href="https://github.com/OpenBanking-Brasil/mock-api" target="_blank"><em>link</em></a> uma implementação de referência da fase 1.</p>
 
 <p>Esta implementação de exemplo permite ao desenvolvedor realizar testes referentes à fase 1 (<em>open-data</em>) do Open Banking Brasil.</p>
-<h1 id='fase-1-apis-do-open-banking-brasil-v1-0-1'>Fase 1 - APIs do Open Banking Brasil v1.0.1</h1>
+<h1 id="fase-1-apis-do-open-banking-brasil">Fase 1 - APIs do Open Banking Brasil v1.0.1-rc1.0</h1>
 
 <p>Estas APIs disponíveis visam exibir e compartilhar dados não sensíveis de instituições participantes do OpenBanking Brasil, disponibilizando ao público informações sobre os seus canais de atendimento e as características de produtos e serviços bancários tradicionais que oferecem.</p>
 
@@ -4089,7 +4089,7 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 </thead><tbody>
 <tr>
-<td>1.0.1</td>
+<td>1.0.1-rc1.0</td>
 </tr>
 </tbody></table></p>
 
@@ -4268,7 +4268,7 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 </thead><tbody>
 <tr>
-<td>1.0.1</td>
+<td>1.0.1-rc1.0</td>
 </tr>
 </tbody></table></p>
 
@@ -5295,7 +5295,7 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 </thead><tbody>
 <tr>
-<td>1.0.1</td>
+<td>1.0.1-rc1.0</td>
 </tr>
 </tbody></table></p>
 
@@ -10356,7 +10356,7 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 </thead><tbody>
 <tr>
-<td>1.0.1</td>
+<td>1.0.1-rc1.0</td>
 </tr>
 </tbody></table></p>
 
@@ -25101,13 +25101,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número de chamadas não autenticadas no dia atual.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número de chamadas não autenticadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25119,13 +25119,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número de chamadas no dia atual para o nível de alta prioridade.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número de chamadas nos dias anteriores para o nível de alta prioridade. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25137,13 +25137,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número de chamadas no dia atual para o nível de média prioridade.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número de chamadas nos dias anteriores para o nível de média prioridade. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25155,13 +25155,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número de chamadas no dia atual para o nível não acompanhado.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número de chamadas nos dias anteriores para o nível não acompanhado. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25212,73 +25212,73 @@ Sua eventual atualização será previamente comunicada através dos informes do
 <td>unauthenticated</td>
 <td>object</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas não autenticadas.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas não autenticadas.</td>
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas no dia atual.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas no dia atual.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
 <tr>
 <td>highPriority</td>
 <td>object</td>
 <td>Sim</td>
-<td>Tempo médio de resposta de chamadas para o nível de alta prioridade.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas para o nível de alta prioridade.</td>
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas no dia atual.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas no dia atual.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
 <tr>
 <td>mediumPriority</td>
 <td>object</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas para o nível de média prioridade.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas para o nível de média prioridade.</td>
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas no dia atual.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas no dia atual.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
 <tr>
 <td>unattended</td>
 <td>object</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas para o nível não acompanhado.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas para o nível não acompanhado.</td>
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas no dia atual.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas no dia atual.</td>
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
-<td>Tempo médio de resposta para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
+<td>Tempo médio de resposta em milissegundos para chamadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
 </tbody></table>
 
@@ -25304,13 +25304,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </thead><tbody>
 <tr>
 <td>currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número médio de chamadas por segundo no dia.</td>
 </tr>
 <tr>
 <td>previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número médio de chamadas por segundo nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25338,13 +25338,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </thead><tbody>
 <tr>
 <td>currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Pico de chamadas por segundo no dia.</td>
 </tr>
 <tr>
 <td>previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Pico de chamadas por segundo nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25372,13 +25372,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </thead><tbody>
 <tr>
 <td>currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número de chamadas com erro no dia atual.</td>
 </tr>
 <tr>
 <td>previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número de chamadas com erro nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -25406,13 +25406,13 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </thead><tbody>
 <tr>
 <td>currentDay</td>
-<td>number</td>
+<td>integer</td>
 <td>Sim</td>
 <td>Número de chamadas rejeitadas no dia atual.</td>
 </tr>
 <tr>
 <td>previousDays</td>
-<td>[number]</td>
+<td>[integer]</td>
 <td>Sim</td>
 <td>Número de chamadas rejeitadas nos dias anteriores. O primeiro item do array é referente a ontem, e assim por diante. Devem ser retornados no máximo sete dias caso estejam disponíveis.</td>
 </tr>
@@ -53978,7 +53978,7 @@ Adiantamento a depositantes</p>
 </tr>
 </tbody></table>
 
-<h1 id="fase-3-apis-do-open-banking-brasil">Fase 3 - APIs do Open Banking Brasil v1.0.0-rc2.0</h1>
+<h1 id="fase-3-apis-do-open-banking-brasil">Fase 3 - APIs do Open Banking Brasil v1.0.0-rc3.0</h1>
 
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
@@ -54046,7 +54046,7 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">1.0.0-rc2.0</td>
+<td style="text-align: left">1.0.0-rc3.0</td>
 </tr>
 </tbody></table>
 <h4 id='visao-geral'>Visão Geral</h4>
@@ -57727,6 +57727,12 @@ Espera-se que o detentor dos dados garanta que a medição do tempo de resposta 
 </tr>
 </thead><tbody>
 <tr>
+<td>25/06/2020</td>
+<td>v1.0.0-rc7.0</td>
+<td>Correções nas APIs da Fase 1 e 3.</td>
+<td>Consulte o <a href="includes/release_notes/releasenotes_v1.0.0_rc7.0.html">Release Notes</a>.</td>
+</tr>
+<tr>
 <td>17/06/2020</td>
 <td>v1.0.0-rc6.9</td>
 <td>Correções nas APIs da Fase 3 e Inclusão de item no menu de Segurança.</td>
@@ -57959,6 +57965,7 @@ Para esclarecimento reiteramos que a modalidade 08.02 não faz parte do reportin
 <p>A princípio não há exigência normativa para se apresentar a distribuição de frequência para essas outras modalidades de crédito relacionadas à cartão de crédito. Conforme a Instrução Normativa BCB 35, de 2020, somente recairia essa exigência, no caso de cartão de crédito, sobre as operações de crédito rotativo e de parcelamento do saldo devedor da fatura, que já são operações que observam alguma espécie de padronização. De qualquer forma, esse é o escopo mínimo de dados, o que não impede que o GT e o conselho deliberativo deliberem por sua expansão em algum momento.</p>
 <h1 id='versoes-anteriores'>Versões anteriores</h1>
 <ul>
+<li><a href="./versions/v1.0.0-rc6.9/index.html" target="_blank">v1.0.0-rc6.9</a></li>
 <li><a href="./versions/v1.0.0-rc6.8/index.html" target="_blank">v1.0.0-rc6.8</a></li>
 <li><a href="./versions/v1.0.0-rc6.7/index.html" target="_blank">v1.0.0-rc6.7</a></li>
 <li><a href="./versions/v1.0.0-rc6.6/index.html" target="_blank">v1.0.0-rc6.6</a></li>
