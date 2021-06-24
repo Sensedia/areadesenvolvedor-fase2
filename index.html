@@ -1872,7 +1872,7 @@
                     <a href="#diagrama-de-sequencia" class="toc-h2 toc-link" data-title="Diagrama de Sequência">Diagrama de Sequência</a>
                   </li>
                   <li>
-                    <a href="#recomendacao-uso-de-pooling" class="toc-h2 toc-link" data-title="Recomendação uso de pooling">Recomendação uso de pooling</a>
+                    <a href="#recomendacao-uso-de-polling" class="toc-h2 toc-link" data-title="Recomendação uso de Polling">Recomendação uso de Polling</a>
                   </li>
               </ul>
           </li>
@@ -54055,7 +54055,7 @@ Adiantamento a depositantes</p>
 <h3 id='diagrama-de-sequencia'>Diagrama de Sequência</h3>
 <p><img src="images/sequence-diagrams/iniciacao_de_pagamento-08346400.png" alt="Iniciacao_de_Pagamento" />
 <a href="images/sequence-diagrams/iniciacao_de_pagamento-08346400.png" target="_blank">Download do Diagrama de Sequência</a></p>
-<h3 id='recomendacao-uso-de-pooling'>Recomendação uso de pooling</h3><h4 id='a-consulta-via-get-para-verificar-o-processamento-da-transacao-pode-ser-efetuada-a-qualquer-momento-desde-que-se-respeite-o-rate-limit-de'>A consulta via GET, para verificar o processamento da transação, pode ser efetuada a qualquer momento desde que se respeite o rate limit de:</h4>
+<h3 id='recomendacao-uso-de-polling'>Recomendação uso de Polling</h3><h4 id='a-consulta-via-get-para-verificar-o-processamento-da-transacao-pode-ser-dado-a-qualquer-momento-desde-que-se-respeite-o-rate-limit-de'>A consulta via GET, para verificar o processamento da transação, pode ser dado a qualquer momento desde que se respeite o rate limit de:</h4>
 <ul>
 <li>300 TPS global, 50 TPS por instituição e 8 TPS por endereço IP (Internet Protocol).<br>
 Como sugestão, é indicado que a instituição iniciadora do pagamento implemente um retry exponencial.<br></li>
