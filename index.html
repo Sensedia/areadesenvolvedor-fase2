@@ -371,6 +371,9 @@
             <a href="#problemas-conhecidos-da-especificacao" class="toc-h1 toc-link" data-title="Problemas conhecidos da especificação">Problemas conhecidos da especificação</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#especificacoes-da-fase-1-do-open-banking-brasil" class="toc-h2 toc-link" data-title="Especificações da fase 1 do Open Banking Brasil">Especificações da fase 1 do Open Banking Brasil</a>
+                  </li>
+                  <li>
                     <a href="#especificacoes-da-fase-2-do-open-banking-brasil" class="toc-h2 toc-link" data-title="Especificações da fase 2 do Open Banking Brasil">Especificações da fase 2 do Open Banking Brasil</a>
                   </li>
               </ul>
@@ -4069,7 +4072,27 @@ interface gráfica, acessar a sessão de FAQ e selecionar o menu &quot;API SysAi
 
 <p>Como documento adicional, é possível fazer o download de um PDF nesse link 
 (<a target="_blank" href="documents/OpenBankingEspecificacaoAPIServiceDesk.pdf">Especificação APIs Service Desk</a>) contendo todas as informações listadas no repositório acima.</p>
-<h1 id='problemas-conhecidos-da-especificacao'>Problemas conhecidos da especificação</h1><h2 id='especificacoes-da-fase-2-do-open-banking-brasil'>Especificações da fase 2 do Open Banking Brasil</h2>
+<h1 id='problemas-conhecidos-da-especificacao'>Problemas conhecidos da especificação</h1><h2 id='especificacoes-da-fase-1-do-open-banking-brasil'>Especificações da fase 1 do Open Banking Brasil</h2>
+<p>Apresentamos neste item orientações para problemas conhecidos da fase 1 do Open Banking Brasil. Na tabela a seguir listamos a versão inicial de problemas identificados e seu direcionamento.</p>
+
+<table><thead>
+<tr>
+<th>API/Menu</th>
+<th>Endpoint/Submenu</th>
+<th>Campo/detalhe</th>
+<th>Problema</th>
+<th>Orientação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>API Admin</td>
+<td>GET /metrics</td>
+<td>schema AverageMetrics - currentDay e previousDays</td>
+<td>O swagger não detalha a necessidade de fornecer resposta nestes campos em milissegundos, causando erros de apropriação no dashboard para algumas instituições.</td>
+<td>Publicada orientação na página principal do portal, os campos são do tipo inteiro(e não number) e deve-se considerar milissegundos até o ajuste explícito no swagger.</td>
+</tr>
+</tbody></table>
+<h2 id='especificacoes-da-fase-2-do-open-banking-brasil'>Especificações da fase 2 do Open Banking Brasil</h2>
 <p>Disponibilizamos neste <a href='documents/problemas_conhecidos_fase02_v01.pdf' target="_blank"><em>link</em></a> o arquivo com a lista inicial de problemas conhecidos das especificações das APIs da fase 2, contendo orientações às instituições participantes até que se publiquem as correções.  </p>
 
 <p>Este arquivo poderá ser atualizado conforme novos itens sejam identificados.<br>
