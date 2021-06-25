@@ -1,13 +1,7 @@
 type: object
 required:
   - data
-  - links
-  - meta
 properties:
   data:
     $ref: ./ResponsePaymentConsentData.yaml
-  links:
-    $ref: ../LinkSingle.yaml
-  meta:
-    $ref: ../Meta.yaml
 additionalProperties: false
