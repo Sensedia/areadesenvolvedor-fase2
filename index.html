@@ -1915,6 +1915,9 @@
                     <a href="#tocS_DebtorAccount" class="toc-h2 toc-link" data-title="DebtorAccount">DebtorAccount</a>
                   </li>
                   <li>
+                    <a href="#tocS_EndToEndId" class="toc-h2 toc-link" data-title="EndToEndId">EndToEndId</a>
+                  </li>
+                  <li>
                     <a href="#tocS_EnumAccountPaymentsType" class="toc-h2 toc-link" data-title="EnumAccountPaymentsType">EnumAccountPaymentsType</a>
                   </li>
                   <li>
@@ -56035,7 +56038,7 @@ Para realizar esta operação, você deve estar autenticado e autorizado com os 
 </tr>
 <tr>
 <td>endToEndId</td>
-<td>string</td>
+<td><a href="#schemaendtoendid">EndToEndId</a></td>
 <td>true</td>
 <td>Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres; “case sensitive”, isso é, diferencia letras maiúsculas e minúsculas), sendo:<br>• “E” – fixo (1 caractere);  <br>• xxxxxxxx – identificação do agente que gerou o ´EndToEndId´, podendo ser: o ISPB do participante direto, o ISPB do participante indireto ou os 8 primeiros dígitos do CNPJ do iniciador de pagamento (8 caracteres numéricos [0-9]);  <br>• yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. Para ordens prioritárias e não prioritárias, aceita-se o preenchimento, pelo agente que gerou o ´EndToEndId´, com uma tolerância máxima de 12 horas, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI;  <br>• kkkkkkkkkkk – sequencial criado pelo agente que gerou o ´EndToEndId´ (11 caracteres alfanuméricos [a-z/A-Z/0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.  <br>Admite-se que o ´EndToEndId´ seja gerado pelo participante direto, pelo participante indireto ou pelo iniciador de pagamento.  <br>Ele deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.</td>
 </tr>
@@ -56121,6 +56124,43 @@ As informações quanto à conta de origem do pagador poderão ser trazidas no c
 </tr>
 </tbody></table>
 
+<h2 id="tocS_EndToEndId">EndToEndId</h2>
+
+<p><a id="schemaendtoendid"></a>
+<a id="schema_EndToEndId"></a>
+<a id="tocSendtoendid"></a>
+<a id="tocsendtoendid"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"E9040088820210128000800123873170"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres; “case sensitive”, isso é, diferencia letras maiúsculas e minúsculas), sendo:
+• “E” – fixo (1 caractere);<br>
+• xxxxxxxx – identificação do agente que gerou o ´EndToEndId´, podendo ser: o ISPB do participante direto, o ISPB do participante indireto ou os 8 primeiros dígitos do CNPJ do iniciador de pagamento (8 caracteres numéricos [0-9]);<br>
+• yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. Para ordens prioritárias e não prioritárias, aceita-se o preenchimento, pelo agente que gerou o ´EndToEndId´, com uma tolerância máxima de 12 horas, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI;<br>
+• kkkkkkkkkkk – sequencial criado pelo agente que gerou o ´EndToEndId´ (11 caracteres alfanuméricos [a-z/A-Z/0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.<br>
+Admite-se que o ´EndToEndId´ seja gerado pelo participante direto, pelo participante indireto ou pelo iniciador de pagamento.<br>
+Ele deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.</p>
+
+<h3 id='propriedades-7'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>**</td>
+<td>string</td>
+<td>false</td>
+<td>Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres; “case sensitive”, isso é, diferencia letras maiúsculas e minúsculas), sendo:<br>• “E” – fixo (1 caractere);  <br>• xxxxxxxx – identificação do agente que gerou o ´EndToEndId´, podendo ser: o ISPB do participante direto, o ISPB do participante indireto ou os 8 primeiros dígitos do CNPJ do iniciador de pagamento (8 caracteres numéricos [0-9]);  <br>• yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. Para ordens prioritárias e não prioritárias, aceita-se o preenchimento, pelo agente que gerou o ´EndToEndId´, com uma tolerância máxima de 12 horas, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI;  <br>• kkkkkkkkkkk – sequencial criado pelo agente que gerou o ´EndToEndId´ (11 caracteres alfanuméricos [a-z/A-Z/0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.  <br>Admite-se que o ´EndToEndId´ seja gerado pelo participante direto, pelo participante indireto ou pelo iniciador de pagamento.  <br>Ele deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_EnumAccountPaymentsType">EnumAccountPaymentsType</h2>
 
 <p><a id="schemaenumaccountpaymentstype"></a>
@@ -56141,7 +56181,7 @@ SLRY - Salary - Conta-Salário.<br>
 SVGS - Savings - Conta de Poupança.<br>
 TRAN - TransactingAccount - Conta de Pagamento pré-paga.</p>
 
-<h3 id='propriedades-7'>Propriedades</h3>
+<h3 id='propriedades-8'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56206,7 +56246,7 @@ AUTHORISED - Autorizado<br>
 REJECTED - Rejeitado<br>
 CONSUMED - Consumido </p>
 
-<h3 id='propriedades-8'>Propriedades</h3>
+<h3 id='propriedades-9'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56263,7 +56303,7 @@ CONSUMED - Consumido </p>
 
 <p>Titular, pessoa natural ou juridica a quem se referem os dados de recebedor (creditor).</p>
 
-<h3 id='propriedades-9'>Propriedades</h3>
+<h3 id='propriedades-10'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56312,7 +56352,7 @@ CONSUMED - Consumido </p>
 
 <p>Este campo define o tipo de pagamento que será iniciado após a autorização do consentimento.</p>
 
-<h3 id='propriedades-10'>Propriedades</h3>
+<h3 id='propriedades-11'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56360,7 +56400,7 @@ CONSUMED - Consumido </p>
 • DATA_PGTO_INVALIDA: Data de pagamento inválida.<br>
 • NAO_INFORMADO: Não informado.  </p>
 
-<h3 id='propriedades-11'>Propriedades</h3>
+<h3 id='propriedades-12'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56422,7 +56462,7 @@ CONSUMED - Consumido </p>
 • JANELA_OPER_INVALIDA – Requisição está fora da janela de funcionamento.<br>
 • NAO_INFORMADO – Não informada pela detentora de conta.  </p>
 
-<h3 id='propriedades-12'>Propriedades</h3>
+<h3 id='propriedades-13'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56544,7 +56584,7 @@ EXPIRED_MULTIPLE_AUTHORISATIONS - Um (ou mais) aprovadores na detentora não tom
 EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
 [Restrição] Esse motivo deverá ser enviado quando o campo /data/status for igual a RJCT (REJECTED).  </p>
 
-<h3 id='propriedades-13'>Propriedades</h3>
+<h3 id='propriedades-14'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56768,7 +56808,7 @@ EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
 Em caso insucesso:<br>
 RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
-<h3 id='propriedades-14'>Propriedades</h3>
+<h3 id='propriedades-15'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56839,7 +56879,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto que contém a identificação da conta de destino do beneficiário/recebedor.  </p>
 
-<h3 id='propriedades-15'>Propriedades</h3>
+<h3 id='propriedades-16'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56898,7 +56938,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo os dados do recebedor (creditor).</p>
 
-<h3 id='propriedades-16'>Propriedades</h3>
+<h3 id='propriedades-17'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56946,7 +56986,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Usuário (pessoa natural) que encontra-se logado na instituição Iniciadora de Pagamento.</p>
 
-<h3 id='propriedades-17'>Propriedades</h3>
+<h3 id='propriedades-18'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -56994,7 +57034,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo dados de pagamento para consentimento.</p>
 
-<h3 id='propriedades-18'>Propriedades</h3>
+<h3 id='propriedades-19'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57046,7 +57086,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo dados do pagameto como moeda e valor.</p>
 
-<h3 id='propriedades-19'>Propriedades</h3>
+<h3 id='propriedades-20'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57092,7 +57132,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-20'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-21'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57154,7 +57194,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-21'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-22'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57216,7 +57256,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-22'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-23'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57311,7 +57351,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-23'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-24'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57439,7 +57479,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='propriedades-24'>Propriedades</h3>
+</span></code></pre></div><h3 id='propriedades-25'>Propriedades</h3>
 <table><thead>
 <tr>
 <th>Nome</th>
@@ -57507,7 +57547,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Objeto contendo dados do pagamento e da conta do recebedor (creditor).</p>
 
-<h3 id='propriedades-25'>Propriedades</h3>
+<h3 id='propriedades-26'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57525,7 +57565,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 </tr>
 <tr>
 <td>endToEndId</td>
-<td><a href="#schemacreatepixpaymentdata/properties/endtoendid">CreatePixPaymentData/properties/endToEndId</a></td>
+<td><a href="#schemaendtoendid">EndToEndId</a></td>
 <td>true</td>
 <td>Deve ser preenchido no formato padrão ExxxxxxxxyyyyMMddHHmmkkkkkkkkkkk (32 caracteres; “case sensitive”, isso é, diferencia letras maiúsculas e minúsculas), sendo:<br>• “E” – fixo (1 caractere);  <br>• xxxxxxxx – identificação do agente que gerou o ´EndToEndId´, podendo ser: o ISPB do participante direto, o ISPB do participante indireto ou os 8 primeiros dígitos do CNPJ do iniciador de pagamento (8 caracteres numéricos [0-9]);  <br>• yyyyMMddHHmm – data, hora e minuto (12 caracteres), seguindo o horário UTC, da submissão da ordem de pagamento, caso a liquidação seja prioritária, ou prevista para o envio da ordem ao sistema de liquidação, caso seja realizado um agendamento. Para ordens prioritárias e não prioritárias, aceita-se o preenchimento, pelo agente que gerou o ´EndToEndId´, com uma tolerância máxima de 12 horas, para o futuro e para o passado, em relação ao horário efetivo de processamento da ordem pelo SPI;  <br>• kkkkkkkkkkk – sequencial criado pelo agente que gerou o ´EndToEndId´ (11 caracteres alfanuméricos [a-z/A-Z/0-9]). Deve ser único dentro de cada “yyyyMMddHHmm”.  <br>Admite-se que o ´EndToEndId´ seja gerado pelo participante direto, pelo participante indireto ou pelo iniciador de pagamento.  <br>Ele deve ser único, não podendo ser repetido em qualquer outra operação enviada ao SPI.</td>
 </tr>
@@ -57604,7 +57644,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Referências para outros recusos da API requisitada.</p>
 
-<h3 id='propriedades-26'>Propriedades</h3>
+<h3 id='propriedades-27'>Propriedades</h3>
 
 <table><thead>
 <tr>
@@ -57663,7 +57703,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 
 <p>Meta informações referente a API requisitada.</p>
 
-<h3 id='propriedades-27'>Propriedades</h3>
+<h3 id='propriedades-28'>Propriedades</h3>
 
 <table><thead>
 <tr>
