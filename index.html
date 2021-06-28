@@ -1016,6 +1016,17 @@
           </li>
           <li>
             <a href="#fase-2-apis-do-open-banking-brasil" class="toc-h1 toc-link" data-title="Fase 2 - APIs do Open Banking Brasil v1.0.0-rc6.7">Fase 2 - APIs do Open Banking Brasil v1.0.0-rc6.7</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#mapeamento-de-roles-scopes-e-permissions-da-fase-2" class="toc-h2 toc-link" data-title="Mapeamento de roles, scopes e permissions da fase 2">Mapeamento de roles, scopes e permissions da fase 2</a>
+                  </li>
+                  <li>
+                    <a href="#fluxo-basico-de-consentimento" class="toc-h2 toc-link" data-title="Fluxo básico de consentimento">Fluxo básico de consentimento</a>
+                  </li>
+                  <li>
+                    <a href="#tempestividade-dos-dados-na-fase-2" class="toc-h2 toc-link" data-title="Tempestividade dos dados na fase 2">Tempestividade dos dados na fase 2</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#fase-2-apis-do-open-banking-brasil-api-consentimento" class="toc-h1 toc-link" data-title="API - Consentimento">API - Consentimento</a>
@@ -4096,7 +4107,29 @@ interface gráfica, acessar a sessão de FAQ e selecionar o menu &quot;API SysAi
 </tr>
 </tbody></table>
 <h2 id='especificacoes-da-fase-2-do-open-banking-brasil'>Especificações da fase 2 do Open Banking Brasil</h2>
-<p>Disponibilizamos neste <a href='documents/problemas_conhecidos_fase02_v01.pdf' target="_blank"><em>link</em></a> o arquivo com a lista inicial de problemas conhecidos das especificações das APIs da fase 2, contendo orientações às instituições participantes até que se publiquem as correções.  </p>
+<p>Apresentamos neste item orientações para problemas conhecidos da fase 2 do Open Banking Brasil.  </p>
+
+<p>Na tabela a seguir listamos alguns dos problemas recentemente identificados e seu direcionamento:</p>
+
+<table><thead>
+<tr>
+<th>API/Menu</th>
+<th>Endpoint/Submenu</th>
+<th>Campo/detalhe</th>
+<th>Problema</th>
+<th>Orientação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>API Consents</td>
+<td>GET /consents/{consentId}</td>
+<td>campo consentId</td>
+<td>No exemplo apresentado no portal, &quot;urn:bancoex:C1DD33123&quot; há a necessidade de esclarecer o item &quot;bancoex&quot;.</td>
+<td>Orientação do GT Arquitetura: Em vista que o id de consentimento não é interoperável, as instituições podem definir o URN seguindo a RFC citada podendo definir o namespace(bancoex) usando critérios próprios, desde que não infrinja as regras da RFC8141.</td>
+</tr>
+</tbody></table>
+
+<p>Adicionalmente disponibilizamos neste <a href='documents/problemas_conhecidos_fase02_v01.pdf' target="_blank"><em>link</em></a> o arquivo com a lista inicial de problemas conhecidos das especificações das APIs da fase 2, contendo orientações às instituições participantes até que se publiquem as correções.  </p>
 
 <p>Este arquivo poderá ser atualizado conforme novos itens sejam identificados.<br>
 Sua eventual atualização será previamente comunicada através dos informes do Open Banking Brasil.</p>
@@ -26733,6 +26766,25 @@ Caso haja mais de 1 evento por cliente, referente ao mesmo produto e/ou serviço
 <p>Clientes poderão solicitar o compartilhamento entre instituições participantes de seus dados cadastrais, de informações sobre transações em suas contas, cartão de crédito e produtos de crédito contratados. </p>
 
 <p>O compartilhamento ocorre apenas se a pessoa autorizar através da API de Consentimento, sempre para finalidades determinadas e por um prazo específico. E será possível para o cliente cancelar essa autorização a qualquer momento em qualquer uma das instituições envolvidas no compartilhamento.</p>
+
+<h3 id='mapeamento-de-roles-scopes-e-permissions-da-fase-2'>Mapeamento de roles, scopes e permissions da fase 2</h3>
+
+<p>A tabela de <em>roles</em>, <em>scopes</em> e <em>permissions</em> da fase 2 do Open Banking Brasil pode ser consultada <a href="documents/Mapeamento_roles_permissions.xlsx" target="_blank">neste link</a>.</p>
+
+<h3 id='fluxo-basico-de-consentimento'>Fluxo básico de consentimento</h3>
+
+<p>Disponibilizamos neste <a href="documents/fluxo_basico_consentimento.pdf" target="_blank">link</a> em formato pdf o arquivo contendo o desenho básico do fluxo de consentimento.  </p>
+
+<p>Adicionalmente é possível consultar <a href="https://openbanking-brasil.github.io/specs-seguranca/tpp-user-guide-ptbr.html#AcessoClientes" target="_blank">aqui</a> um fluxo mais detalhado elaborado pelo GT Segurança.</p>
+
+<h3 id='tempestividade-dos-dados-na-fase-2'>Tempestividade dos dados na fase 2</h3>
+
+<p>Conforme publicado na <a href="https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=resolu%C3%A7%C3%A3o%20BCB&numero=86" target="_blank">Resolução nº 86</a> admite-se que os dados compartilhados pela instituição transmissora dos dados tenham como defasagem máxima em relação à sua disponibilização em seus canais eletrônicos:</p>
+
+<ul>
+<li><p>I - até cinco minutos, com relação aos dados relativos ao saldo e às transações realizadas em conta de depósitos ou de pagamento</p></li>
+<li><p>II - até uma hora, para os demais casos.    </p></li>
+</ul>
 
 <h1 id="fase-2-apis-do-open-banking-brasil-api-consentimento">API - Consentimento</h1>
 
