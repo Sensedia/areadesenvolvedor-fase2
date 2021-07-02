@@ -1996,6 +1996,11 @@ components:
         meta:
           $ref: '#/components/schemas/Meta'
       additionalProperties: false
+    XFapiInteractionId:
+      type: string
+      pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
+      maxLength: 100
+      description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
   parameters:
     Authorization:
       name: Authorization
@@ -2084,7 +2089,7 @@ components:
       headers:
         x-fapi-interaction-id:
           schema:
-            $ref: '#/components/responses/OKResponsePersonalCustomersQualification/headers/x-fapi-interaction-id/schema'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -2094,10 +2099,7 @@ components:
       headers:
         x-fapi-interaction-id:
           schema:
-            type: string
-            pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-            maxLength: 100
-            description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -2107,7 +2109,7 @@ components:
       headers:
         x-fapi-interaction-id:
           schema:
-            $ref: '#/components/responses/OKResponsePersonalCustomersQualification/headers/x-fapi-interaction-id/schema'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -2117,7 +2119,7 @@ components:
       headers:
         x-fapi-interaction-id:
           schema:
-            $ref: '#/components/responses/OKResponsePersonalCustomersQualification/headers/x-fapi-interaction-id/schema'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -2127,7 +2129,7 @@ components:
       headers:
         x-fapi-interaction-id:
           schema:
-            $ref: '#/components/responses/OKResponsePersonalCustomersQualification/headers/x-fapi-interaction-id/schema'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -2137,7 +2139,7 @@ components:
       headers:
         x-fapi-interaction-id:
           schema:
-            $ref: '#/components/responses/OKResponsePersonalCustomersQualification/headers/x-fapi-interaction-id/schema'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
