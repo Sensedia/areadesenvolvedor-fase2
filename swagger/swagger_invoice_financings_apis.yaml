@@ -1326,7 +1326,7 @@ components:
       schema:
         type: string
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9-]{0,99}$'
-        maxLength: 40
+        maxLength: 100
     page:
       name: page
       in: query
