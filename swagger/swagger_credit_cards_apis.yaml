@@ -557,7 +557,6 @@ components:
       type: object
       description: Conjunto de informações referentes aos limites da conta de pagamento pós-paga.
       required:
-        - currency
         - creditLineLimitType
         - consolidationType
         - identificationNumber
@@ -1148,6 +1147,11 @@ components:
         meta:
           $ref: '#/components/schemas/Meta'
       additionalProperties: false
+    XFapiInteractionId:
+      type: string
+      pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
+      maxLength: 100
+      description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
   parameters:
     Authorization:
       name: Authorization
@@ -1309,12 +1313,8 @@ components:
       description: Conjunto de informações das Contas de pagamento pós paga
       headers:
         x-fapi-interaction-id:
-          description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
           schema:
-            type: string
-            pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-            maxLength: 100
-            description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -1323,12 +1323,8 @@ components:
       description: Dados de identificação da conta identificada por creditCardAccountId obtidos com sucesso.
       headers:
         x-fapi-interaction-id:
-          description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
           schema:
-            type: string
-            pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-            maxLength: 100
-            description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -1337,12 +1333,8 @@ components:
       description: Dados referentes à lista de faturas da conta identificada por creditCardAccountId obtidos com sucesso.
       headers:
         x-fapi-interaction-id:
-          description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
           schema:
-            type: string
-            pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-            maxLength: 100
-            description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -1351,12 +1343,8 @@ components:
       description: Dados dos limites da conta identificada por creditCardAccountId obtidos com sucesso.
       headers:
         x-fapi-interaction-id:
-          description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
           schema:
-            type: string
-            pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-            maxLength: 100
-            description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
@@ -1365,12 +1353,8 @@ components:
       description: Dados das lista de transações da conta identificada obtidos com sucesso.
       headers:
         x-fapi-interaction-id:
-          description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
           schema:
-            type: string
-            pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-            maxLength: 100
-            description: 'Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação. Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.'
+            $ref: '#/components/schemas/XFapiInteractionId'
       content:
         application/json:
           schema:
