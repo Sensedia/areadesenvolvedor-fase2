@@ -35590,7 +35590,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">1.0.0-rc6.7</td>
+<td style="text-align: left">1.0.0</td>
 </tr>
 </tbody></table>
 
@@ -36979,7 +36979,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">1.0.0-rc6.7</td>
+<td style="text-align: left">1.0.0</td>
 </tr>
 </tbody></table>
 
@@ -46902,7 +46902,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>dueAmount</td>
-<td>string</td>
+<td>number</td>
 <td>true</td>
 <td>Traz o valor do pagamento do contrato da modalidade de crédito consultada. Expresso em valor monetário com 2 casas decimais</td>
 </tr>
@@ -47060,7 +47060,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>CET</td>
-<td>number</td>
+<td>number(double)</td>
 <td>true</td>
 <td>CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).<br>O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -47363,13 +47363,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>preFixedRate</td>
-<td>number</td>
+<td>number(double)</td>
 <td>true</td>
 <td>Taxa pré fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
 <tr>
 <td>postFixedRate</td>
-<td>number¦null</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Taxa pós fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -47418,7 +47418,7 @@ Adiantamento a depositantes</p>
 <td>chargeAdditionalInfo</td>
 <td>string</td>
 <td>true</td>
-<td>Campos para informações adicionais.<br>[Restrição] Obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato.</td>
+<td>Campos para informações adicionais.<br>[Restrição] Obrigatório se selecionada a opção &#39;OUTROS&#39; em Tipo de encargo pactuado no contrato. Pode ser retornado NA caso a Instituição não possua essa informação.</td>
 </tr>
 <tr>
 <td>chargeRate</td>

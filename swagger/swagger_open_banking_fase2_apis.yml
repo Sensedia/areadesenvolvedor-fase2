@@ -120,7 +120,7 @@ tags:
     description: |
       |Versão|
       |:-----|
-      |1.0.0-rc6.7|
+      |1.0.0|
 
       ### Visão Geral
 
@@ -133,7 +133,7 @@ tags:
     description: |
       |Versão|
       |:-----|
-      |1.0.0-rc6.7|
+      |1.0.0|
 
       ### Visão Geral
 
@@ -6459,7 +6459,7 @@ components:
         chargeAdditionalInfo:
           type: string
           description: Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pago fora da parcela
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           maxLength: 140
         chargeAmount:
           description: Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.
@@ -6484,7 +6484,7 @@ components:
           maxLength: 10
           example: '2020-01-10'
         dueAmount:
-          type: string
+          type: number
           description: Traz o valor do pagamento do contrato da modalidade de crédito consultada. Expresso em valor monetário com 2 casas decimais
           maxLength: 12
           example: '200.00'
@@ -6534,7 +6534,7 @@ components:
         productName:
           type: string
           maxLength: 140
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           example: AD
           description: |
             Denominação/Identificação do nome da Modalidade da Operação de Crédito divulgado ao cliente
@@ -6593,7 +6593,7 @@ components:
           $ref: '#/components/schemas/EnumContractInstalmentPeriodicity'
         instalmentPeriodicityAdditionalInfo:
           type: string
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           maxLength: 50
           example: Informações adicionais sobre periodicidade
           description: |
@@ -6608,6 +6608,7 @@ components:
           description: Data de vencimento primeira parcela do principal
         CET:
           type: number
+          format: double
           maxLength: 19
           example: 0.29
           description: |
@@ -6618,7 +6619,7 @@ components:
           $ref: '#/components/schemas/EnumContractAmortizationScheduled'
         amortizationScheduledAdditionalInfo:
           type: string
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           maxLength: 50
           example: NA
           description: |
@@ -6702,13 +6703,13 @@ components:
         feeName:
           type: string
           maxLength: 140
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           description: Denominação da Tarifa pactuada
           example: Excesso em Conta
         feeCode:
           type: string
           maxLength: 140
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           description: Sigla identificadora da tarifa pactuada
           example: EXCESSO_CONTA
         feeChargeType:
@@ -6793,10 +6794,11 @@ components:
             Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
             [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
           maxLength: 140
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           example: ''
         preFixedRate:
           type: number
+          format: double
           description: |
             Taxa pré fixada aplicada sob o contrato da modalidade crédito.
             p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
@@ -6805,6 +6807,7 @@ components:
           example: 0.6
         postFixedRate:
           type: number
+          format: double
           description: |
             Taxa pós fixada aplicada sob o contrato da modalidade crédito.
             p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
@@ -6816,7 +6819,7 @@ components:
           type: string
           maxLength: 1200
           description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           example: ''
       additionalProperties: false
     InvoiceFinancingsFinanceCharge:
@@ -6832,8 +6835,8 @@ components:
           type: string
           description: |
             Campos para informações adicionais.
-            [Restrição] Obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato.
-          pattern: \w*\W*$|^NA$
+            [Restrição] Obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato. Pode ser retornado NA caso a Instituição não possua essa informação.
+          pattern: '[\w\W\s]*'
         chargeRate:
           type: number
           description: |
@@ -6957,6 +6960,7 @@ components:
         paymentId:
           type: string
           maxLength: 100
+          pattern: '[\w\W\s]*'
           example: Parcela regular
           description: Identificador de pagamento de responsabilidade de cada Instituição transmissora.
         isOverParcelPayment:
@@ -6966,6 +6970,7 @@ components:
         instalmentId:
           type: string
           maxLength: 100
+          pattern: '[\w\W\s]*'
           example: '15'
           description: 'Identificador de parcela, de responsabilidade de cada Instituição transmissora.'
         paidDate:
@@ -7012,13 +7017,13 @@ components:
                   feeName:
                     type: string
                     maxLength: 140
-                    pattern: \w*\W*
+                    pattern: '[\w\W\s]*'
                     description: Denominação da Tarifa pactuada
                     example: Excesso em Conta
                   feeCode:
                     type: string
                     maxLength: 140
-                    pattern: \w*\W*
+                    pattern: '[\w\W\s]*'
                     description: Sigla identificadora da tarifa pactuada
                     example: EXCESSO_CONTA
                   feeAmount:
@@ -7056,7 +7061,7 @@ components:
           type: string
           description: Texto livre de responsabilidade de cada Instituição transmissora para identificar o pagamento informado
           maxLength: 80
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           example: Parcela regular
         isOverParcelPayment:
           type: boolean
@@ -7066,7 +7071,7 @@ components:
           type: string
           description: Texto livre de responsabilidade de cada Instituição transmissora para identificar a parcela informada
           maxLength: 40
-          pattern: \w*\W*
+          pattern: '[\w\W\s]*'
           example: '15'
         paidDate:
           description: 'Traz a data de efetivação do pagamento referente ao contrato da modalidade de crédito consultada, conforme especificação RFC-3339.'
@@ -7110,13 +7115,13 @@ components:
                     type: string
                     description: Denominação da Tarifa avulsa paga fora da parcela
                     maxLength: 250
-                    pattern: \w*\W*
+                    pattern: '[\w\W\s]*'
                     example: reavaliação periódica do bem
                   feeCode:
                     type: string
                     description: Sigla identificadora da tarifa avulsa fora da parcela
                     maxLength: 140
-                    pattern: \w*\W*
+                    pattern: '[\w\W\s]*'
                     example: aval_bem
                   feeAmount:
                     description: Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.
@@ -7152,7 +7157,7 @@ components:
                   chargeAdditionalInfo:
                     type: string
                     description: Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pago fora da parcela
-                    pattern: \w*\W*
+                    pattern: '[\w\W\s]*'
                     maxLength: 140
                     example: Informações Adicionais
                   chargeAmount:
