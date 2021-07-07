@@ -769,7 +769,7 @@ components:
             [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
           maxLength: 140
           pattern: '[\w\W\s]*'
-          example: ''
+          example: Informações adicionais de Indexador ou tipo de taxa referencial
         preFixedRate:
           type: number
           format: double
@@ -794,7 +794,7 @@ components:
           maxLength: 1200
           description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
           pattern: '[\w\W\s]*'
-          example: ''
+          example: Informações adicionais
       additionalProperties: false
     InvoiceFinancingsFinanceCharge:
       type: object
@@ -811,6 +811,7 @@ components:
             Campos para informações adicionais.
             [Restrição] Obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pactuado no contrato. Pode ser retornado NA caso a Instituição não possua essa informação.
           pattern: '[\w\W\s]*'
+          example: Informações adicionais sobre encargos
         chargeRate:
           type: number
           description: |
@@ -937,9 +938,9 @@ components:
       properties:
         contractId:
           type: string
-          maxLength: 40
           pattern: '^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$'
-          example: '9279212601992927921265082'
+          maxLength: 100
+          example: '92792126019929279212650822221989319252576'
           description: 'Identifica de forma única o contrato da operação de crédito do cliente, mantendo as regras de imutabilidade dentro da instituição transmissora.'
         brandName:
           type: string
@@ -1125,6 +1126,7 @@ components:
           type: string
           description: Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pago fora da parcela
           pattern: '[\w\W\s]*'
+          example: Informações adicionais
           maxLength: 140
         chargeAmount:
           description: Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.

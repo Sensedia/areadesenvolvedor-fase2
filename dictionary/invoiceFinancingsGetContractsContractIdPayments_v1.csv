@@ -24,5 +24,5 @@ IOF_CONTRATACAO
 IOF_POR_ATRASO 
 SEM_ENCARGO 
 OUTROS";1;1;"";Não permitido;string;JUROS_REMUNERATORIOS_POR_ATRASO
-/data/releases/overParcel/charges/chargeAdditionalInfo;chargeAdditionalInfo;Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pago fora da parcela;Texto;140;Obrigatório;[\w\W\s]*;;1;1;"";Não permitido;string;
+/data/releases/overParcel/charges/chargeAdditionalInfo;chargeAdditionalInfo;Campo de preenchimento obrigatório se selecionada a opção 'OUTROS' em Tipo de encargo pago fora da parcela;Texto;140;Obrigatório;[\w\W\s]*;;1;1;"";Não permitido;string;Informações adicionais
 /data/releases/overParcel/charges/chargeAmount;chargeAmount;Valor do pagamento do encargo pago fora da parcela. Expresso em valor monetário com até 4 casas decimais.;Número;20;Obrigatório;^-?\d{1,15}\.\d{2,4}$;;1;1;"";Permitido;number;100000.04
