@@ -2022,6 +2022,9 @@
               </ul>
           </li>
           <li>
+            <a href="#calendario" class="toc-h1 toc-link" data-title="Calendário">Calendário</a>
+          </li>
+          <li>
             <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
           </li>
           <li>
@@ -2112,7 +2115,7 @@
 <h2 id='atualizacao-das-apis-no-diretorio'>Atualização das APIs no diretório</h2>
 <p>Publicado em 14 de abril de 2021</p>
 
-<p>Seguindo determinação do Banco Central do Brasil, todas as instituições financeiras vinculadas à Fase 1 do Open Banking deverão especificar todas as ramificações (endpoints) de suas famílias de APIs no diretório de <a target="_blank" href="https://auth.directory.openbankingbrasil.org.br/interaction/asl3sZulHvQW1SjMnXLtu">participantes do Open Banking</a>. Essa atualização deverá ser feita em até 15 dias a partir da data de envio deste documento.</p>
+<p>Seguindo determinação do Banco Central do Brasil, todas as instituições financeiras vinculadas à Fase 1 do Open Banking deverão especificar todas as ramificações (endpoints) de suas famílias de APIs no diretório de <a target="_blank" href="https://web.directory.openbankingbrasil.org.br/">participantes do Open Banking</a>. Essa atualização deverá ser feita em até 15 dias a partir da data de envio deste documento.</p>
 
 <p>Na prática, as instituições deverão excluir a entrada que já existe no diretório de participantes e incluir cada uma das ramificações que entenda serem válidas para o seu próprio caso.</p>
 
@@ -39946,7 +39949,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>payments</td>
-<td>[<a href="#schemacreditcardaccountsbillspayment">CreditCardAccountsBillsPayment</a>]</td>
+<td>[<a href="#schemacreditcardaccountsbillspayment">CreditCardAccountsBillsPayment</a>]¦null</td>
 <td>true</td>
 <td>Lista que traz os valores relativos aos pagamentos da Fatura da conta de pagamento pós-paga</td>
 </tr>
@@ -45935,7 +45938,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>CET</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).<br>O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -45953,19 +45956,19 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>interestRates</td>
-<td>[<a href="#schemafinancingscontractinterestrate">FinancingsContractInterestRate</a>]</td>
+<td>[<a href="#schemafinancingscontractinterestrate">FinancingsContractInterestRate</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFees</td>
-<td>[<a href="#schemafinancingscontractedfee">FinancingsContractedFee</a>]</td>
+<td>[<a href="#schemafinancingscontractedfee">FinancingsContractedFee</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFinanceCharges</td>
-<td>[<a href="#schemafinancingsfinancecharge">FinancingsFinanceCharge</a>]</td>
+<td>[<a href="#schemafinancingsfinancecharge">FinancingsFinanceCharge</a>]¦null</td>
 <td>true</td>
 <td>Lista que traz os encargos pactuados no contrato</td>
 </tr>
@@ -46171,7 +46174,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>preFixedRate</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>Taxa pré fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -46482,13 +46485,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>contractOutstandingBalance</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
-<td>[<a href="#schemafinancingsreleases">FinancingsReleases</a>]</td>
+<td>[<a href="#schemafinancingsreleases">FinancingsReleases</a>]¦null</td>
 <td>true</td>
 <td>Lista dos pagamentos realizados no período</td>
 </tr>
@@ -46548,7 +46551,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>isOverParcelPayment</td>
-<td>boolean</td>
+<td>boolean¦null</td>
 <td>true</td>
 <td>Identifica se é um pagamento pactuado (false) ou avulso (true).</td>
 </tr>
@@ -46572,7 +46575,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>paidAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento referente ao  contrato da modalidade de crédito consultada.<br>Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -46584,7 +46587,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» fees</td>
-<td>[object]</td>
+<td>[object]¦null</td>
 <td>true</td>
 <td>Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.</td>
 </tr>
@@ -46608,7 +46611,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» charges</td>
-<td>[<a href="#schemafinancingschargeoverparcel">FinancingsChargeOverParcel</a>]</td>
+<td>[<a href="#schemafinancingschargeoverparcel">FinancingsChargeOverParcel</a>]¦null</td>
 <td>true</td>
 <td>Lista dos encargos que foram pagos fora da parcela.</td>
 </tr>
@@ -46703,7 +46706,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>warrantyAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>false</td>
 <td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.</td>
 </tr>
@@ -47060,7 +47063,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>CET</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).<br>O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -47078,19 +47081,19 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>interestRates</td>
-<td>[<a href="#schemainvoicefinancingscontractinterestrate">InvoiceFinancingsContractInterestRate</a>]</td>
+<td>[<a href="#schemainvoicefinancingscontractinterestrate">InvoiceFinancingsContractInterestRate</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFees</td>
-<td>[<a href="#schemainvoicefinancingscontractedfee">InvoiceFinancingsContractedFee</a>]</td>
+<td>[<a href="#schemainvoicefinancingscontractedfee">InvoiceFinancingsContractedFee</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFinanceCharges</td>
-<td>[<a href="#schemainvoicefinancingsfinancecharge">InvoiceFinancingsFinanceCharge</a>]</td>
+<td>[<a href="#schemainvoicefinancingsfinancecharge">InvoiceFinancingsFinanceCharge</a>]¦null</td>
 <td>true</td>
 <td>Lista que traz os encargos pactuados no contrato</td>
 </tr>
@@ -47279,7 +47282,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>warrantyAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>false</td>
 <td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.</td>
 </tr>
@@ -47363,7 +47366,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>preFixedRate</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Taxa pré fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -47668,13 +47671,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>contractOutstandingBalance</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
-<td>[<a href="#schemainvoicefinancingsreleases">InvoiceFinancingsReleases</a>]</td>
+<td>[<a href="#schemainvoicefinancingsreleases">InvoiceFinancingsReleases</a>]¦null</td>
 <td>true</td>
 <td>Lista dos pagamentos realizados no período.</td>
 </tr>
@@ -47734,7 +47737,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>isOverParcelPayment</td>
-<td>boolean</td>
+<td>boolean¦null</td>
 <td>true</td>
 <td>Identifica se é um pagamento pactuado (false) ou avulso (true).</td>
 </tr>
@@ -47758,7 +47761,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>paidAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento referente ao  contrato da modalidade de crédito consultada.<br>Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -47770,7 +47773,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» fees</td>
-<td>[object]</td>
+<td>[object]¦null</td>
 <td>true</td>
 <td>Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.</td>
 </tr>
@@ -47794,7 +47797,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» charges</td>
-<td>[<a href="#schemainvoicefinancingschargeoverparcel">InvoiceFinancingsChargeOverParcel</a>]</td>
+<td>[<a href="#schemainvoicefinancingschargeoverparcel">InvoiceFinancingsChargeOverParcel</a>]¦null</td>
 <td>true</td>
 <td>Lista dos encargos que foram pagos fora da parcela.</td>
 </tr>
@@ -48474,7 +48477,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>CET</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).<br>O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
@@ -48498,19 +48501,19 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>interestRates</td>
-<td>[<a href="#schemaloanscontractinterestrate">LoansContractInterestRate</a>]</td>
+<td>[<a href="#schemaloanscontractinterestrate">LoansContractInterestRate</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFees</td>
-<td>[<a href="#schemaloanscontractedfee">LoansContractedFee</a>]</td>
+<td>[<a href="#schemaloanscontractedfee">LoansContractedFee</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFinanceCharges</td>
-<td>[<a href="#schemaloansfinancecharge">LoansFinanceCharge</a>]</td>
+<td>[<a href="#schemaloansfinancecharge">LoansFinanceCharge</a>]¦null</td>
 <td>true</td>
 <td>Lista que traz os encargos pactuados no contrato</td>
 </tr>
@@ -48941,13 +48944,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>contractOutstandingBalance</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor necessário para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
-<td>[<a href="#schemaloansreleases">LoansReleases</a>]</td>
+<td>[<a href="#schemaloansreleases">LoansReleases</a>]¦null</td>
 <td>true</td>
 <td>Lista dos pagamentos realizados no período</td>
 </tr>
@@ -49007,7 +49010,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>isOverParcelPayment</td>
-<td>boolean</td>
+<td>boolean¦null</td>
 <td>true</td>
 <td>Identifica se é um pagamento pactuado (false) ou avulso (true).</td>
 </tr>
@@ -49031,7 +49034,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>paidAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento referente ao  contrato da modalidade de crédito consultada.<br>Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -49043,13 +49046,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» fees</td>
-<td>[<a href="#schemaloansfeeoverparcel">LoansFeeOverParcel</a>]</td>
+<td>[<a href="#schemaloansfeeoverparcel">LoansFeeOverParcel</a>]¦null</td>
 <td>true</td>
 <td>Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.</td>
 </tr>
 <tr>
 <td>» charges</td>
-<td>[<a href="#schemaloanschargeoverparcel">LoansChargeOverParcel</a>]</td>
+<td>[<a href="#schemaloanschargeoverparcel">LoansChargeOverParcel</a>]¦null</td>
 <td>true</td>
 <td>Lista dos encargos que foram pagos fora da parcela.</td>
 </tr>
@@ -49144,7 +49147,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>warrantyAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>false</td>
 <td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.<br>[Restrição] Preenchimento obrigatório se tipo de garantia selecionada for diferente de &#39;SEM_TIPO_GARANTIA&#39;</td>
 </tr>
@@ -52952,7 +52955,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» warrantyAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.</td>
 </tr>
@@ -53255,7 +53258,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>CET</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>&quot;CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).<br>O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)&quot;</td>
 </tr>
@@ -53273,19 +53276,19 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>interestRates</td>
-<td>[<a href="#schemaunarrangedaccountoverdraftcontractinterestrate">UnarrangedAccountOverdraftContractInterestRate</a>]</td>
+<td>[<a href="#schemaunarrangedaccountoverdraftcontractinterestrate">UnarrangedAccountOverdraftContractInterestRate</a>]¦null</td>
 <td>true</td>
 <td>[Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito]</td>
 </tr>
 <tr>
 <td>contractedFees</td>
-<td>[<a href="#schemaunarrangedaccountoverdraftcontractedfee">UnarrangedAccountOverdraftContractedFee</a>]</td>
+<td>[<a href="#schemaunarrangedaccountoverdraftcontractedfee">UnarrangedAccountOverdraftContractedFee</a>]¦null</td>
 <td>true</td>
 <td>Lista que traz a relação de tarifas pactuadas no contrato</td>
 </tr>
 <tr>
 <td>contractedFinanceCharges</td>
-<td>[<a href="#schemaunarrangedaccountoverdraftfinancecharge">UnarrangedAccountOverdraftFinanceCharge</a>]</td>
+<td>[<a href="#schemaunarrangedaccountoverdraftfinancecharge">UnarrangedAccountOverdraftFinanceCharge</a>]¦null</td>
 <td>true</td>
 <td>Lista que traz os encargos pactuados no contrato</td>
 </tr>
@@ -53431,13 +53434,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>preFixedRate</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>&quot;Taxa pré fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)&quot;</td>
 </tr>
 <tr>
 <td>postFixedRate</td>
-<td>number</td>
+<td>number¦null</td>
 <td>true</td>
 <td>&quot;Taxa pós fixada aplicada sob o contrato da modalidade crédito.<br>p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros<br>(representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)&quot;</td>
 </tr>
@@ -53736,13 +53739,13 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>contractOutstandingBalance</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor necessario para o cliente liquidar a dívida.</td>
 </tr>
 <tr>
 <td>releases</td>
-<td>[<a href="#schemaunarrangedaccountoverdraftreleases">UnarrangedAccountOverdraftReleases</a>]</td>
+<td>[<a href="#schemaunarrangedaccountoverdraftreleases">UnarrangedAccountOverdraftReleases</a>]¦null</td>
 <td>true</td>
 <td>Lista dos pagamentos realizados no período</td>
 </tr>
@@ -53802,7 +53805,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>isOverParcelPayment</td>
-<td>boolean</td>
+<td>boolean¦null</td>
 <td>true</td>
 <td>Identifica se é um pagamento pactuado (false) ou avulso (true).</td>
 </tr>
@@ -53826,7 +53829,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>paidAmount</td>
-<td>number(double)</td>
+<td>number(double)¦null</td>
 <td>true</td>
 <td>Valor do pagamento referente ao  contrato da modalidade de crédito consultada.<br>Expresso em valor monetário com até 4 casas decimais.</td>
 </tr>
@@ -53838,7 +53841,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» fees</td>
-<td>[object]</td>
+<td>[object]¦null</td>
 <td>true</td>
 <td>Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.</td>
 </tr>
@@ -53862,7 +53865,7 @@ Adiantamento a depositantes</p>
 </tr>
 <tr>
 <td>» charges</td>
-<td>[<a href="#schemaunarrangedaccountoverdraftchargeoverparcel">UnarrangedAccountOverdraftChargeOverParcel</a>]</td>
+<td>[<a href="#schemaunarrangedaccountoverdraftchargeoverparcel">UnarrangedAccountOverdraftChargeOverParcel</a>]¦null</td>
 <td>true</td>
 <td>Lista dos encargos que foram pagos fora da parcela.</td>
 </tr>
@@ -57868,6 +57871,16 @@ Espera-se que o detentor dos dados garanta que a medição do tempo de resposta 
 <p><em>Live</em> do Cadastramento - acesse neste <a href="https://www.youtube.com/watch?v=ARUcxUIL1DQ&feature=youtu.be" target="_blank"><em>link</em></a> o tutorial em vídeo.</p>
 
 <p>Passo a passo do Cadastramento - acesse neste <a href='documents/Open_Banking_passo_a_passo_cadastro_v05.pdf' target="_blank"><em>link</em></a> o arquivo com instruções.</p>
+<h1 id='calendario'>Calendário</h1>
+<p>Este anexo tem como objetivo detalhar quando a versão das APIs do Open Banking é alterada, conforme a classificação da modificação:</p>
+
+<ul>
+<li>Major: quando há incompatibilidade com a versão corrente (v2.0.0)</li>
+<li>Minor: versão gerada quando há compatibilidade com a versão corrente (v1.1.0)</li>
+<li>Patch: versão gerada quando há correção de bug e compatibilidade com a versão corrente (v1.1.1)</li>
+</ul>
+
+<p>Ele poderá ser acessado clicando <a href="documents/calendario.pdf" target="_blank">aqui</a>.</p>
 <h1 id='change-log'>Change Log</h1>
 <p>A tabela abaixo lista as mudanças realizadas em ordem reversa de data (a data mais recente estará acima).</p>
 
