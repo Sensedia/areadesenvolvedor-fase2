@@ -5566,12 +5566,10 @@ components:
         Relação dos Códigos dos demais documentos pessoa natural.
     EnumSex:
       type: string
-      nullable: true
       enum:
         - FEMININO
         - MASCULINO
         - OUTRO
-        - null
       example: FEMININO
       description: |
         "Conjunto de características anatomofisiológicas que distinguem o homem e a mulher: Sexo masculino; sexo feminino". 
