@@ -3665,7 +3665,6 @@ components:
           maxItems: 12
           items:
             $ref: '#/components/schemas/EnumProductServiceType'
-          nullable: true
         procurators:
           type: array
           items:
@@ -3889,7 +3888,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EconomicActivity'
-          minItems: 1
+          minItems: 0
           description: 'Lista dos demais códigos relativos às demais atividades econômicas da empresa, segundo padrão CNAE (Classificação Nacional de Atividades Econômicas). De preenchimento obrigatório, se houver'
           nullable: true
         informedRevenue:
@@ -4504,7 +4503,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BusinessPostalAddress'
-          minItems: 1
+          minItems: 0
           description: Lista de endereços da pessoa jurídica
           nullable: true
         phones:
@@ -4534,7 +4533,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PersonalPostalAddress'
-          minItems: 1
+          minItems: 0
           description: Lista de endereços da pessoa natural
           nullable: true
         phones:
@@ -5918,7 +5917,6 @@ components:
             CET – Custo Efetivo Total deve ser expresso na forma de taxa percentual anual e   incorpora todos os encargos e despesas incidentes nas operações de crédito (taxa de juro, mas também tarifas, tributos, seguros e outras despesas cobradas).
             O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
             (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-          nullable: true
         amortizationScheduled:
           $ref: '#/components/schemas/EnumContractAmortizationScheduled'
         amortizationScheduledAdditionalInfo:
@@ -5933,20 +5931,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FinancingsContractInterestRate'
-          nullable: true
         contractedFees:
           type: array
           items:
             $ref: '#/components/schemas/FinancingsContractedFee'
           minItems: 1
-          nullable: true
         contractedFinanceCharges:
           type: array
           description: Lista que traz os encargos pactuados no contrato
           items:
             $ref: '#/components/schemas/FinancingsFinanceCharge'
           minItems: 1
-          nullable: true
       additionalProperties: false
     FinancingsContractedFee:
       type: object
@@ -6051,38 +6046,37 @@ components:
           $ref: '#/components/schemas/EnumContractReferentialRateIndexerSubType'
         referentialRateIndexerAdditionalInfo:
           type: string
-          description: |
-            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
-            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
           maxLength: 140
           pattern: '[\w\W\s]*'
           example: Informações adicionais
+          description: |
+            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
+            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
         preFixedRate:
           type: number
+          maxLength: 19
+          example: 0.6
           description: |
             Taxa pré fixada aplicada sob o contrato da modalidade crédito.
             p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
             (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-          maxLength: 19
-          example: 0.6
-          nullable: true
         postFixedRate:
           type: number
+          maxLength: 19
+          nullable: true
+          example: 0.55
           description: |
             Taxa pós fixada aplicada sob o contrato da modalidade crédito.
             p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
             (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-          maxLength: 19
-          nullable: true
-          example: 0.55
         additionalInfo:
           type: string
           maxLength: 1200
+          pattern: '[\w\W\s]*'
+          example: Informações adicionais
           description: |
             Texto com informações adicionais sobre a composição das taxas de juros pactuadas.
             [Restrição] Caso a instituição não possua a informação para compartilhamento, informar "NA".
-          pattern: '[\w\W\s]*'
-          example: Informações adicionais
       additionalProperties: false
     FinancingsFinanceCharge:
       type: object
@@ -6241,13 +6235,11 @@ components:
           maxLength: 20
           minLength: 0
           example: 100000.04
-          nullable: true
         releases:
           type: array
           description: Lista dos pagamentos realizados no período
           items:
             $ref: '#/components/schemas/FinancingsReleases'
-          nullable: true
       additionalProperties: false
     FinancingsReleases:
       type: object
@@ -6270,7 +6262,6 @@ components:
           type: boolean
           example: true
           description: Identifica se é um pagamento pactuado (false) ou avulso (true).
-          nullable: true
         instalmentId:
           type: string
           maxLength: 100
@@ -6302,7 +6293,6 @@ components:
           description: |
             Valor do pagamento referente ao  contrato da modalidade de crédito consultada.
             Expresso em valor monetário com até 4 casas decimais.
-          nullable: true
         overParcel:
           type: object
           description: Objeto das tarifas e encargos que foram pagos fora da parcela.
@@ -6344,13 +6334,11 @@ components:
                       [Restrição] Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo
                 additionalProperties: false
               description: 'Lista das tarifas que foram pagas fora da parcela, só para pagamento avulso.'
-              nullable: true
             charges:
               type: array
               items:
                 $ref: '#/components/schemas/FinancingsChargeOverParcel'
               description: Lista dos encargos que foram pagos fora da parcela.
-              nullable: true
           additionalProperties: false
       additionalProperties: false
     FinancingsTaxesOverParcel:
@@ -6399,12 +6387,11 @@ components:
         warrantyAmount:
           type: number
           format: double
-          pattern: '^-?\d{1,15}\.\d{2,4}$'
           maxLength: 20
+          pattern: '^-?\d{1,15}\.\d{2,4}$'
+          example: 200.0001
           description: |
             Valor original da garantia. Valor monetário, expresso com até 4 casas decimais.
-          example: 200.0001
-          nullable: true
       additionalProperties: false
     GeographicCoordinates:
       type: object
@@ -8244,7 +8231,6 @@ components:
             $ref: '#/components/schemas/EnumProductServiceType'
           minItems: 1
           maxItems: 12
-          nullable: true
         productsServicesTypeAdditionalInfo:
           type: string
           pattern: '[\w\W\s]*'
@@ -8421,7 +8407,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PersonalOtherDocument'
-          minItems: 1
+          minItems: 0
           description: Relação dos demais documentos
           nullable: true
         hasBrazilianNationality:
