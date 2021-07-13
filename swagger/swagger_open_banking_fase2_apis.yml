@@ -3600,11 +3600,9 @@ components:
           example: '43908445778'
         partiePersonType:
           type: string
-          nullable: true
           enum:
             - PESSOA_NATURAL
             - PESSOA_JURIDICA
-            - null
           example: PESSOA_NATURAL
           description: |
             Identificação do Tipo de Pessoa da pessoa envolvida na transação.
