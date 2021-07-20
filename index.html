@@ -1038,7 +1038,7 @@
                     <a href="#obter-detalhes-do-consentimento-identificado-por-consentid" class="toc-h2 toc-link" data-title="Obter detalhes do consentimento identificado por consentId.">Obter detalhes do consentimento identificado por consentId.</a>
                   </li>
                   <li>
-                    <a href="#deletar-revogar-o-consentimento-identificado-por-consentid" class="toc-h2 toc-link" data-title="Deletar/revogar o consentimento identificado por consentId.">Deletar/revogar o consentimento identificado por consentId.</a>
+                    <a href="#deletar-revogar-o-consentimento-identificado-por-consentid" class="toc-h2 toc-link" data-title="Deletar / Revogar o consentimento identificado por consentId.">Deletar / Revogar o consentimento identificado por consentId.</a>
                   </li>
               </ul>
           </li>
@@ -27222,12 +27222,6 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 <td><a href="#schemaresponseerror">ResponseError</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes.</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
 <td>429</td>
 <td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
 <td>A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido</td>
@@ -27271,7 +27265,7 @@ Para realizar esta operação, você deve estar autenticado e autorizado com os 
 consents
 </aside>
 
-<h2 id='deletar-revogar-o-consentimento-identificado-por-consentid'>Deletar/revogar o consentimento identificado por consentId.</h2>
+<h2 id='deletar-revogar-o-consentimento-identificado-por-consentid'>Deletar / Revogar o consentimento identificado por consentId.</h2>
 
 <p><a id="opIddeleteConsentsConsentId"></a></p>
 
@@ -27330,13 +27324,13 @@ consents
 
 <p><code>DELETE /consents/v1/consents/{consentId}</code></p>
 
-<p>Método para deletar/revogar o consentimento identificado por consentId.</p>
+<p>Método para deletar / revogar o consentimento identificado por consentId.</p>
 
 <h3 id='especificacao-em-oas-3-0-4'>Especificação em OAS 3.0</h3>
 
 <p><a href="swagger/swagger_consents_apis.yaml">Download da Especificação (OAS 3.0)</a></p>
 
-<h3 id="deletar/revogar-o-consentimento-identificado-por-consentid.-parameters">Parâmetros</h3>
+<h3 id="deletar-/-revogar-o-consentimento-identificado-por-consentid.-parameters">Parâmetros</h3>
 
 <table><thead>
 <tr>
@@ -27425,7 +27419,7 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
-<h3 id="deletar/revogar-o-consentimento-identificado-por-consentid.-responses">Resposta</h3>
+<h3 id="deletar-/-revogar-o-consentimento-identificado-por-consentid.-responses">Resposta</h3>
 
 <table><thead>
 <tr>
@@ -27475,12 +27469,6 @@ Informações mais detalhadas sobre a construção de namespaces devem ser consu
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8</td>
-<td><a href="#schemaresponseerror">ResponseError</a></td>
-</tr>
-<tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes.</td>
 <td><a href="#schemaresponseerror">ResponseError</a></td>
 </tr>
 <tr>
