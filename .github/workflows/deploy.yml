@@ -3,11 +3,11 @@ name: Deploy
 on:
   push:
     paths-ignore:
-    - '**/versions/v1.0.0-rc2'
-    - '**/versions/v1.0.0-rc3'
-    - '**/versions/v1.0.0-rc4.'
-    - '**/versions/v1.0.0-rc5.'
-    - '/versions/v1.0.0-rc6.'
+    - 'build/versions/v1.0.0-rc2'
+    - 'build/versions/v1.0.0-rc3'
+    - 'build/versions/v1.0.0-rc4'
+    - 'build/versions/v1.0.0-rc5.**'
+    - 'build/versions/v1.0.0-rc6.**'
     branches:
       - TESTE-1
 
