@@ -1877,6 +1877,9 @@
                     <a href="#diagrama-de-sequencia" class="toc-h2 toc-link" data-title="Diagrama de Sequência">Diagrama de Sequência</a>
                   </li>
                   <li>
+                    <a href="#maquina-de-estados" class="toc-h2 toc-link" data-title="Maquina de Estados">Maquina de Estados</a>
+                  </li>
+                  <li>
                     <a href="#recomendacao-uso-de-polling" class="toc-h2 toc-link" data-title="Recomendação uso de polling">Recomendação uso de polling</a>
                   </li>
                   <li>
@@ -54079,6 +54082,23 @@ A consulta encontra-se detalhada na seção das APIs para Pagamentos (<a href="
 </ul>
 
 <p>Os possíveis status de uma transação de iniciação de pagamento estão detalhados na documentação (<a href="#tocS_EnumPaymentStatusType">Open Banking Brasil</a>).</p>
+<h3 id='maquina-de-estados'>Maquina de Estados</h3><h4 id='os-possiveis-status-do-consentimento-sao'>Os possíveis status do consentimento são:</h4>
+<p>AWAITING_AUTHORISATION - Aguardando autorização<br>
+AUTHORISED - Autorizado<br>
+REJECTED - Rejeitado<br>
+CONSUMED - Consumido</p>
+
+<p><img src="images/sequence-diagrams/state-machine_phase3-04148601.png" alt="Maquina de Estados" /><br>
+<a href="images/sequence-diagrams/state-machine_phase3-04148601.png" target="_blank">Download da Maquina de Estados</a></p>
+
+<p>Algumas definições são importantes para tratar a transição dos estados do consentimento em diferentes momentos do fluxo:  </p>
+
+<ul>
+<li><p>O consentimento é sempre criado com o status AWAITING_AUTHORISATION e deve assumir o status AUTHORIZED, REJECTED ou CONSUMED antes do tempo de expiração - 5 minutos.  </p></li>
+<li><p>Em caso de consentimento expirado a detentora deverá retornar o status REJECTED.  </p></li>
+<li><p>Para o cenário em que o consentimento assume o status de AUTHORISED, o tempo máximo (do token FAPI Hybrid Flow) é de 60 minutos, sem refresh, e este é o tempo para consumir o consentimento autorizado, mudando seu status para CONSUMED. Não é possível prorrogar este tempo e a criação de um novo consentimento será necessária para os cenários de insucesso.  </p></li>
+<li><p>O consentimento assume o status CONSUMED após ocorrer a iniciação do pagamento com sucesso referente ao consentimento.  </p></li>
+</ul>
 <h3 id='recomendacao-uso-de-polling'>Recomendação uso de polling</h3><h4 id='a-consulta-via-get-para-verificar-o-processamento-da-transacao-pode-ser-efetuada-a-qualquer-momento-desde-que-se-respeite-o-rate-limit-de'>A consulta via GET, para verificar o processamento da transação, pode ser efetuada a qualquer momento desde que se respeite o rate limit de:</h4>
 <ul>
 <li>300 TPS global, 50 TPS por instituição e 8 TPS por endereço IP (Internet Protocol).<br>
