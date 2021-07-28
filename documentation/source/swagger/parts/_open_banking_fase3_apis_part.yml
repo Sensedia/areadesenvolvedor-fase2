@@ -543,7 +543,8 @@ components:
           description: |
             Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
-            $ref: ./headers/XFapiInteractionId.yaml           
+            $ref: ./headers/XFapiInteractionId.yaml      
+          required: true     
       content:
         application/json:
           schema:
@@ -556,6 +557,7 @@ components:
             Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: ./headers/XFapiInteractionId.yaml
+          required: true
       content:
         application/json:
           schema:
@@ -567,7 +569,8 @@ components:
           description: |
             Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
-            $ref: ./headers/XFapiInteractionId.yaml           
+            $ref: ./headers/XFapiInteractionId.yaml    
+          required: true       
       content:
         application/json:
           schema:
@@ -580,6 +583,7 @@ components:
             Um UUID RFC4122 usado como um ID de correlação. O transmissor deve usar o mesmo valor recebido na requisição para o cabeçalho de resposta recebido na requisição, caso não tenha sido fornecido, deve se usar um UUID RFC4122.
           schema:
             $ref: ./headers/XFapiInteractionId.yaml
+          required: true
       content:
         application/json:
           schema:

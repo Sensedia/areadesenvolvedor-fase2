@@ -3434,6 +3434,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: ./headers/XFapiInteractionId.yaml
+          required: true
       content:
         application/json:
           schema:
@@ -3444,6 +3445,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: ./headers/XFapiInteractionId.yaml
+          required: true
       content:
         application/json:
           schema:
@@ -3454,12 +3456,14 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: ./headers/XFapiInteractionId.yaml
+          required: true
     OKResponseResourceList:
       description: Dados de status dos recursos obtidos com sucesso.
       headers:
         x-fapi-interaction-id:
           schema:
             $ref: ./headers/XFapiInteractionId.yaml
+          required: true
       content:
         application/json:
           schema:

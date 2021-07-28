@@ -361,6 +361,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
+          required: true
       content:
         application/json:
           schema:
@@ -371,6 +372,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
+          required: true
       content:
         application/json:
           schema:
@@ -381,6 +383,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
+          required: true
       content:
         application/json:
           schema:
@@ -391,6 +394,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
+          required: true
       content:
         application/json:
           schema:
@@ -401,6 +405,7 @@ components:
         x-fapi-interaction-id:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
+          required: true
       content:
         application/json:
           schema:
