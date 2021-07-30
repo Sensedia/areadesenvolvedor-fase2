@@ -3167,6 +3167,62 @@ components:
           description: 'Moeda referente ao valor de operação contratada em caráter emergencial para cobertura de saldo devedor em conta de depósitos à vista e de excesso sobre o limite pactuado de cheque especial, segundo modelo ISO-4217. p.ex. ''BRL''. Pode ser preenchido com “NA” caso a instituição não possua a informação.'
           example: BRL
       additionalProperties: false
+    AccountsLimits:
+      type: object
+      description: Conjunto de informações referentes aos limites da conta de  pagamento pós-paga.
+      required:
+        - creditLineLimitType
+        - consolidationType
+        - limitType
+        - limitAmount
+        - avaiableAmount
+        - usedAmount
+      properties:
+        creditLineLimitType:
+          $ref: '#/components/schemas/EnumCreditCardAccountsLineLimitType'
+        consolidationType:
+          $ref: '#/components/schemas/EnumCreditCardAccountsConsolidationType'
+        lineName:
+          $ref: '#/components/schemas/EnumCreditCardAccountsLineName'
+        lineNameAdditionalInfo:
+          type: string
+          pattern: \w*\W*
+          description: Campo de preenchimento obrigatório se selecionada a opção 'OUTRAS' em lineName
+        limitType:
+          $ref: '#/components/schemas/EnumCreditCardAccountsLimitType'
+        limitAmount:
+          type: number
+          format: double
+          pattern: '^-?\d{1,15}\.\d{2,4}$'
+          nullable: true
+          description: Valor total do limite informado Expresso em valor monetário com 4 casas decimais
+          maxLength: 20
+          example: 2000
+        avaiableAmount:
+          type: number
+          format: double
+          pattern: '^-?\d{1,15}\.\d{2,4}$'
+          nullable: true
+          description: Valor disponível do limite informado.  Expresso em valor monetário com 4 casas decimais
+          maxLength: 20
+          example: 2000
+        usedAmount:
+          type: number
+          format: double
+          pattern: '^-?\d{1,15}\.\d{2,4}$'
+          nullable: true
+          description: Valor utilizado do limite informado Expresso em valor monetário com 4 casas decimais
+          maxLength: 20
+          example: 2000
+      example:
+        creditLineLimitType: LIMITE_CREDITO_MODALIDADE_OPERACAO
+        consolidationType: INDIVIDUAL
+        lineName: SAQUE_CREDITO_BRASIL
+        limitType: COM_LIMITE
+        limitAmount: 1000
+        avaiableAmount: 600
+        usedAmount: 400
+      additionalProperties: false
     AccountTransactionsData:
       type: object
       required:
@@ -3266,62 +3322,6 @@ components:
           pattern: '[\w\W\s]*'
           description: Dígito da conta da pessoa envolvida na transação
           example: '4'
-      additionalProperties: false
-    AccountsLimits:
-      type: object
-      description: Conjunto de informações referentes aos limites da conta de  pagamento pós-paga.
-      required:
-        - creditLineLimitType
-        - consolidationType
-        - limitType
-        - limitAmount
-        - avaiableAmount
-        - usedAmount
-      properties:
-        creditLineLimitType:
-          $ref: '#/components/schemas/EnumCreditCardAccountsLineLimitType'
-        consolidationType:
-          $ref: '#/components/schemas/EnumCreditCardAccountsConsolidationType'
-        lineName:
-          $ref: '#/components/schemas/EnumCreditCardAccountsLineName'
-        lineNameAdditionalInfo:
-          type: string
-          pattern: \w*\W*
-          description: Campo de preenchimento obrigatório se selecionada a opção 'OUTRAS' em lineName
-        limitType:
-          $ref: '#/components/schemas/EnumCreditCardAccountsLimitType'
-        limitAmount:
-          type: number
-          format: double
-          pattern: '^-?\d{1,15}\.\d{2,4}$'
-          nullable: true
-          description: Valor total do limite informado Expresso em valor monetário com 4 casas decimais
-          maxLength: 20
-          example: 2000
-        avaiableAmount:
-          type: number
-          format: double
-          pattern: '^-?\d{1,15}\.\d{2,4}$'
-          nullable: true
-          description: Valor disponível do limite informado.  Expresso em valor monetário com 4 casas decimais
-          maxLength: 20
-          example: 2000
-        usedAmount:
-          type: number
-          format: double
-          pattern: '^-?\d{1,15}\.\d{2,4}$'
-          nullable: true
-          description: Valor utilizado do limite informado Expresso em valor monetário com 4 casas decimais
-          maxLength: 20
-          example: 2000
-      example:
-        creditLineLimitType: LIMITE_CREDITO_MODALIDADE_OPERACAO
-        consolidationType: INDIVIDUAL
-        lineName: SAQUE_CREDITO_BRASIL
-        limitType: COM_LIMITE
-        limitAmount: 1000
-        avaiableAmount: 600
-        usedAmount: 400
       additionalProperties: false
     BusinessContacts:
       type: object
@@ -4940,20 +4940,20 @@ components:
         - EMPRESTIMO_CARTAO_CONSIGNADO
         - OUTROS
       example: CREDITO_A_VISTA
-    EnumCreditCardAccountsOtherCreditType:
+    EnumCreditCardAccountsOtherCredits:
       type: string
-      description: |
-        Traz outros tipos de crédito contratados no cartão.
-        [Restrição] Preenchimento obrigatório se o tipo transação selecionado for 'OPERACOES_CREDITO_CONTRATADAS_CARTAO'
+      description: Traz outros tipos de crédito contratados no cartão.
       enum:
         - CREDITO_ROTATIVO
         - PARCELAMENTO_FATURA
         - EMPRESTIMO
         - OUTROS
       example: CREDITO_ROTATIVO
-    EnumCreditCardAccountsOtherCredits:
+    EnumCreditCardAccountsOtherCreditType:
       type: string
-      description: Traz outros tipos de crédito contratados no cartão.
+      description: |
+        Traz outros tipos de crédito contratados no cartão.
+        [Restrição] Preenchimento obrigatório se o tipo transação selecionado for 'OPERACOES_CREDITO_CONTRATADAS_CARTAO'
       enum:
         - CREDITO_ROTATIVO
         - PARCELAMENTO_FATURA
@@ -5617,65 +5617,6 @@ components:
             $ref: '#/components/schemas/FinancingsFinanceCharge'
           minItems: 1
       additionalProperties: false
-    FinancingsContractInterestRate:
-      type: object
-      description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
-      required:
-        - taxType
-        - interestRateType
-        - taxPeriodicity
-        - calculation
-        - referentialRateIndexerType
-        - preFixedRate
-        - postFixedRate
-        - additionalInfo
-      properties:
-        taxType:
-          $ref: '#/components/schemas/EnumContractTaxType'
-        interestRateType:
-          $ref: '#/components/schemas/EnumContractInterestRateType'
-        taxPeriodicity:
-          $ref: '#/components/schemas/EnumContractTaxPeriodicity'
-        calculation:
-          $ref: '#/components/schemas/EnumContractCalculation'
-        referentialRateIndexerType:
-          $ref: '#/components/schemas/EnumContractReferentialRateIndexerType'
-        referentialRateIndexerSubType:
-          $ref: '#/components/schemas/EnumContractReferentialRateIndexerSubType'
-        referentialRateIndexerAdditionalInfo:
-          type: string
-          maxLength: 140
-          pattern: '[\w\W\s]*'
-          example: Informações adicionais
-          description: |
-            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
-            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
-        preFixedRate:
-          type: number
-          maxLength: 19
-          example: 0.6
-          description: |
-            Taxa pré fixada aplicada sob o contrato da modalidade crédito.
-            p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
-            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-        postFixedRate:
-          type: number
-          maxLength: 19
-          nullable: true
-          example: 0.55
-          description: |
-            Taxa pós fixada aplicada sob o contrato da modalidade crédito.
-            p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
-            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-        additionalInfo:
-          type: string
-          maxLength: 1200
-          pattern: '[\w\W\s]*'
-          example: Informações adicionais
-          description: |
-            Texto com informações adicionais sobre a composição das taxas de juros pactuadas.
-            [Restrição] Caso a instituição não possua a informação para compartilhamento, informar "NA".
-      additionalProperties: false
     FinancingsContractedFee:
       type: object
       description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
@@ -5751,6 +5692,65 @@ components:
           maxLength: 20
           minLength: 0
           example: 100000.04
+      additionalProperties: false
+    FinancingsContractInterestRate:
+      type: object
+      description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
+      required:
+        - taxType
+        - interestRateType
+        - taxPeriodicity
+        - calculation
+        - referentialRateIndexerType
+        - preFixedRate
+        - postFixedRate
+        - additionalInfo
+      properties:
+        taxType:
+          $ref: '#/components/schemas/EnumContractTaxType'
+        interestRateType:
+          $ref: '#/components/schemas/EnumContractInterestRateType'
+        taxPeriodicity:
+          $ref: '#/components/schemas/EnumContractTaxPeriodicity'
+        calculation:
+          $ref: '#/components/schemas/EnumContractCalculation'
+        referentialRateIndexerType:
+          $ref: '#/components/schemas/EnumContractReferentialRateIndexerType'
+        referentialRateIndexerSubType:
+          $ref: '#/components/schemas/EnumContractReferentialRateIndexerSubType'
+        referentialRateIndexerAdditionalInfo:
+          type: string
+          maxLength: 140
+          pattern: '[\w\W\s]*'
+          example: Informações adicionais
+          description: |
+            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
+            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
+        preFixedRate:
+          type: number
+          maxLength: 19
+          example: 0.6
+          description: |
+            Taxa pré fixada aplicada sob o contrato da modalidade crédito.
+            p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
+            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
+        postFixedRate:
+          type: number
+          maxLength: 19
+          nullable: true
+          example: 0.55
+          description: |
+            Taxa pós fixada aplicada sob o contrato da modalidade crédito.
+            p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
+            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
+        additionalInfo:
+          type: string
+          maxLength: 1200
+          pattern: '[\w\W\s]*'
+          example: Informações adicionais
+          description: |
+            Texto com informações adicionais sobre a composição das taxas de juros pactuadas.
+            [Restrição] Caso a instituição não possua a informação para compartilhamento, informar "NA".
       additionalProperties: false
     FinancingsFinanceCharge:
       type: object
@@ -6373,65 +6373,6 @@ components:
             - **Código do contrato:** 1 (uma) até 40 (quarenta) posições, sem complemento de caracteres.
           example: '92792126019929279212650822221989319252576'
       additionalProperties: false
-    InvoiceFinancingsContractInterestRate:
-      type: object
-      description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
-      required:
-        - taxType
-        - interestRateType
-        - taxPeriodicity
-        - calculation
-        - referentialRateIndexerType
-        - preFixedRate
-        - postFixedRate
-        - additionalInfo
-      properties:
-        taxType:
-          $ref: '#/components/schemas/EnumContractTaxType'
-        interestRateType:
-          $ref: '#/components/schemas/EnumContractInterestRateType'
-        taxPeriodicity:
-          $ref: '#/components/schemas/EnumContractTaxPeriodicity'
-        calculation:
-          $ref: '#/components/schemas/EnumContractCalculation'
-        referentialRateIndexerType:
-          $ref: '#/components/schemas/EnumContractReferentialRateIndexerType'
-        referentialRateIndexerSubType:
-          $ref: '#/components/schemas/EnumContractReferentialRateIndexerSubType'
-        referentialRateIndexerAdditionalInfo:
-          type: string
-          description: |
-            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
-            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
-          maxLength: 140
-          pattern: '[\w\W\s]*'
-          example: Informações adicionais de Indexador ou tipo de taxa referencial
-        preFixedRate:
-          type: number
-          format: double
-          description: |
-            Taxa pré fixada aplicada sob o contrato da modalidade crédito.
-            p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
-            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-          maxLength: 19
-          example: 0.6
-        postFixedRate:
-          type: number
-          format: double
-          description: |
-            Taxa pós fixada aplicada sob o contrato da modalidade crédito.
-            p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
-            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
-          maxLength: 19
-          nullable: true
-          example: 0.55
-        additionalInfo:
-          type: string
-          maxLength: 1200
-          description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
-          pattern: '[\w\W\s]*'
-          example: Informações adicionais
-      additionalProperties: false
     InvoiceFinancingsContractedFee:
       type: object
       description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
@@ -6505,6 +6446,65 @@ components:
           maxLength: 20
           minLength: 0
           example: 100000.04
+      additionalProperties: false
+    InvoiceFinancingsContractInterestRate:
+      type: object
+      description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
+      required:
+        - taxType
+        - interestRateType
+        - taxPeriodicity
+        - calculation
+        - referentialRateIndexerType
+        - preFixedRate
+        - postFixedRate
+        - additionalInfo
+      properties:
+        taxType:
+          $ref: '#/components/schemas/EnumContractTaxType'
+        interestRateType:
+          $ref: '#/components/schemas/EnumContractInterestRateType'
+        taxPeriodicity:
+          $ref: '#/components/schemas/EnumContractTaxPeriodicity'
+        calculation:
+          $ref: '#/components/schemas/EnumContractCalculation'
+        referentialRateIndexerType:
+          $ref: '#/components/schemas/EnumContractReferentialRateIndexerType'
+        referentialRateIndexerSubType:
+          $ref: '#/components/schemas/EnumContractReferentialRateIndexerSubType'
+        referentialRateIndexerAdditionalInfo:
+          type: string
+          description: |
+            Campo livre para complementar a informação relativa ao Tipo de taxa referencial ou indexador.
+            [Restrição] Obrigatório para complementar a informação relativa ao Tipo de taxa referencial ou indexador, quando selecionada o tipo ou subtipo OUTRO.
+          maxLength: 140
+          pattern: '[\w\W\s]*'
+          example: Informações adicionais de Indexador ou tipo de taxa referencial
+        preFixedRate:
+          type: number
+          format: double
+          description: |
+            Taxa pré fixada aplicada sob o contrato da modalidade crédito.
+            p.ex. 0.0045. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
+            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
+          maxLength: 19
+          example: 0.6
+        postFixedRate:
+          type: number
+          format: double
+          description: |
+            Taxa pós fixada aplicada sob o contrato da modalidade crédito.
+            p.ex. 0.0045 .O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros
+            (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)
+          maxLength: 19
+          nullable: true
+          example: 0.55
+        additionalInfo:
+          type: string
+          maxLength: 1200
+          description: Texto com informações adicionais sobre a composição das taxas de juros pactuadas
+          pattern: '[\w\W\s]*'
+          example: Informações adicionais
       additionalProperties: false
     InvoiceFinancingsFinanceCharge:
       type: object
@@ -7174,6 +7174,54 @@ components:
             $ref: '#/components/schemas/LoansFinanceCharge'
           minItems: 1
       additionalProperties: false
+    LoansContractedFee:
+      type: object
+      description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
+      required:
+        - feeName
+        - feeCode
+        - feeChargeType
+        - feeCharge
+        - feeAmount
+        - feeRate
+      properties:
+        feeName:
+          type: string
+          maxLength: 140
+          pattern: '[\w\W\s]*'
+          description: Denominação da Tarifa pactuada
+          example: Renovação de cadastro
+        feeCode:
+          type: string
+          maxLength: 140
+          pattern: '[\w\W\s]*'
+          description: Sigla identificadora da tarifa pactuada
+          example: CADASTRO
+        feeChargeType:
+          $ref: '#/components/schemas/EnumContractFeeChargeType'
+        feeCharge:
+          $ref: '#/components/schemas/EnumContractFeeCharge'
+        feeAmount:
+          type: number
+          format: double
+          maxLength: 20
+          pattern: '^-?\d{1,15}\.\d{2,4}$'
+          description: |
+            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
+          nullable: true
+          example: 100000.04
+        feeRate:
+          type: number
+          format: double
+          description: |
+            É o valor da tarifa em percentual pactuada no contrato. Deve-se informar 4 casas decimais, mesmo que preenchidas com zeros. Exemplo: 0.2000
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
+          maxLength: 19
+          nullable: true
+          example: 0.25
+      additionalProperties: false
+    LoansContractedWarranty:
+      $ref: '#/components/schemas/LoansWarranties'
     LoansContractInterestRate:
       type: object
       description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
@@ -7233,54 +7281,6 @@ components:
             Texto com informações adicionais sobre a composição das taxas de juros pactuadas.
             [Restrição] Caso a instituição não possua a informação para compartilhamento, informar NA.       
       additionalProperties: false
-    LoansContractedFee:
-      type: object
-      description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
-      required:
-        - feeName
-        - feeCode
-        - feeChargeType
-        - feeCharge
-        - feeAmount
-        - feeRate
-      properties:
-        feeName:
-          type: string
-          maxLength: 140
-          pattern: '[\w\W\s]*'
-          description: Denominação da Tarifa pactuada
-          example: Renovação de cadastro
-        feeCode:
-          type: string
-          maxLength: 140
-          pattern: '[\w\W\s]*'
-          description: Sigla identificadora da tarifa pactuada
-          example: CADASTRO
-        feeChargeType:
-          $ref: '#/components/schemas/EnumContractFeeChargeType'
-        feeCharge:
-          $ref: '#/components/schemas/EnumContractFeeCharge'
-        feeAmount:
-          type: number
-          format: double
-          maxLength: 20
-          pattern: '^-?\d{1,15}\.\d{2,4}$'
-          description: |
-            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
-          nullable: true
-          example: 100000.04
-        feeRate:
-          type: number
-          format: double
-          description: |
-            É o valor da tarifa em percentual pactuada no contrato. Deve-se informar 4 casas decimais, mesmo que preenchidas com zeros. Exemplo: 0.2000
-            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
-          maxLength: 19
-          nullable: true
-          example: 0.25
-      additionalProperties: false
-    LoansContractedWarranty:
-      $ref: '#/components/schemas/LoansWarranties'
     LoansFeeOverParcel:
       type: object
       required:
@@ -9421,6 +9421,51 @@ components:
             $ref: '#/components/schemas/UnarrangedAccountOverdraftFinanceCharge'
           minItems: 1
       additionalProperties: false
+    UnarrangedAccountOverdraftContractedFee:
+      type: object
+      required:
+        - feeName
+        - feeCode
+        - feeChargeType
+        - feeCharge
+        - feeAmount
+        - feeRate
+      properties:
+        feeName:
+          type: string
+          maxLength: 140
+          pattern: '[\w\W\s]*'
+          description: Denominação da Tarifa pactuada
+          example: Excesso em Conta
+        feeCode:
+          type: string
+          maxLength: 140
+          pattern: '[\w\W\s]*'
+          description: Sigla identificadora da tarifa pactuada
+          example: EXCESSO_CONTA
+        feeChargeType:
+          $ref: '#/components/schemas/EnumContractFeeChargeType'
+        feeCharge:
+          $ref: '#/components/schemas/EnumContractFeeCharge'
+        feeAmount:
+          type: number
+          format: double
+          pattern: '^-?\d{1,15}\.\d{2,4}$'
+          maxLength: 20
+          description: |
+            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
+          nullable: true
+          example: 100000.04
+        feeRate:
+          type: number
+          format: double
+          description: |
+            É o valor da tarifa em percentual pactuada no contrato. Deve-se informar 4 casas decimais, mesmo que preenchidas com zeros. Exemplo: 0.2000
+            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
+          maxLength: 19
+          example: 50
+          nullable: true
+      additionalProperties: false
     UnarrangedAccountOverdraftContractInterestRate:
       type: object
       description: Objeto que traz o conjunto de informações necessárias para demonstrar a composição das taxas de juros remuneratórios da Modalidade de crédito
@@ -9524,51 +9569,6 @@ components:
               3. Para os demais clientes (tipos de cliente 3, 4, 5 e 6), informar 14 (catorze) posições com complemento de zeros à esquerda se a identificação tiver tamanho inferior;
             - **Código do contrato:** 1 (uma) até 40 (quarenta) posições, sem complemento de caracteres."
           example: '92792126019929279212650822221989319252576'
-      additionalProperties: false
-    UnarrangedAccountOverdraftContractedFee:
-      type: object
-      required:
-        - feeName
-        - feeCode
-        - feeChargeType
-        - feeCharge
-        - feeAmount
-        - feeRate
-      properties:
-        feeName:
-          type: string
-          maxLength: 140
-          pattern: '[\w\W\s]*'
-          description: Denominação da Tarifa pactuada
-          example: Excesso em Conta
-        feeCode:
-          type: string
-          maxLength: 140
-          pattern: '[\w\W\s]*'
-          description: Sigla identificadora da tarifa pactuada
-          example: EXCESSO_CONTA
-        feeChargeType:
-          $ref: '#/components/schemas/EnumContractFeeChargeType'
-        feeCharge:
-          $ref: '#/components/schemas/EnumContractFeeCharge'
-        feeAmount:
-          type: number
-          format: double
-          pattern: '^-?\d{1,15}\.\d{2,4}$'
-          maxLength: 20
-          description: |
-            Valor monetário da tarifa pactuada no contrato. Preenchimento obrigatório quando a forma de cobrança for: Mínimo, Máximo ou Fixo.
-          nullable: true
-          example: 100000.04
-        feeRate:
-          type: number
-          format: double
-          description: |
-            É o valor da tarifa em percentual pactuada no contrato. Deve-se informar 4 casas decimais, mesmo que preenchidas com zeros. Exemplo: 0.2000
-            [Restrição] Preenchimento obrigatório quando a forma de cobrança for Percentual. Exemplo: 0.0150 = 1,5%.
-          maxLength: 19
-          example: 50
-          nullable: true
       additionalProperties: false
     UnarrangedAccountOverdraftFinanceCharge:
       type: object
