@@ -522,10 +522,10 @@
                     <a href="#bankingagentspostaladdress" class="toc-h2 toc-link" data-title="BankingAgentsPostalAddress">BankingAgentsPostalAddress</a>
                   </li>
                   <li>
-                    <a href="#bankingagentsstandard" class="toc-h2 toc-link" data-title="BankingAgentsStandard">BankingAgentsStandard</a>
+                    <a href="#bankingagentsservice" class="toc-h2 toc-link" data-title="BankingAgentsService">BankingAgentsService</a>
                   </li>
                   <li>
-                    <a href="#bankingagentsservice" class="toc-h2 toc-link" data-title="BankingAgentsService">BankingAgentsService</a>
+                    <a href="#bankingagentsstandard" class="toc-h2 toc-link" data-title="BankingAgentsStandard">BankingAgentsStandard</a>
                   </li>
                   <li>
                     <a href="#branch" class="toc-h2 toc-link" data-title="Branch">Branch</a>
@@ -11749,45 +11749,6 @@ Sua eventual atualização será previamente comunicada através dos informes do
 </tr>
 </tbody></table>
 
-<h2 id='bankingagentsstandard'>BankingAgentsStandard</h2>
-
-<p><a id="bankingAgentsStandard"></a></p>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"openingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"closingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Nome</th>
-<th style="text-align: left">Tipo</th>
-<th style="text-align: left">Obrigatório</th>
-<th style="text-align: left">Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">weekday</td>
-<td style="text-align: left"><a href="#schemaWeekDay">Enum WeekDay</a></td>
-<td style="text-align: left">Sim</td>
-<td style="text-align: left">Em formato texto, seguindo o domínio apresentado, devem ser colocados os dias da semana</td>
-</tr>
-<tr>
-<td style="text-align: left">openingTime</td>
-<td style="text-align: left"><a href="#commonFieldTimeString">TimeString</a></td>
-<td style="text-align: left">Não</td>
-<td style="text-align: left">Horário padrão de início de atendimento pelo Correspondente Bancário. (Uma string que representa a hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format). p.ex. &#39;10:00:57Z&#39;)</td>
-</tr>
-<tr>
-<td style="text-align: left">closingTime</td>
-<td style="text-align: left"><a href="#commonFieldTimeString">TimeString</a></td>
-<td style="text-align: left">Não</td>
-<td style="text-align: left">Horário padrão de encerramento de atendimento pelo Correspondente Bancário. (Uma string que representa a hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format). p.ex. &#39;16:00:57Z&#39;)</td>
-</tr>
-</tbody></table>
-
 <h2 id='bankingagentsservice'>BankingAgentsService</h2>
 
 <p><a id="schemaBankingAgentsService"></a></p>
@@ -11828,6 +11789,45 @@ Sua eventual atualização será previamente comunicada através dos informes do
 <td style="text-align: left">Não</td>
 <td style="text-align: left">Detalhes adicionais sobre os serviços prestados.</td>
 <td style="text-align: left">Será preenchido se selecionada a opção &quot;OUTROS&quot; serviços</td>
+</tr>
+</tbody></table>
+
+<h2 id='bankingagentsstandard'>BankingAgentsStandard</h2>
+
+<p><a id="bankingAgentsStandard"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"closingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Nome</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">weekday</td>
+<td style="text-align: left"><a href="#schemaWeekDay">Enum WeekDay</a></td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Em formato texto, seguindo o domínio apresentado, devem ser colocados os dias da semana</td>
+</tr>
+<tr>
+<td style="text-align: left">openingTime</td>
+<td style="text-align: left"><a href="#commonFieldTimeString">TimeString</a></td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Horário padrão de início de atendimento pelo Correspondente Bancário. (Uma string que representa a hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format). p.ex. &#39;10:00:57Z&#39;)</td>
+</tr>
+<tr>
+<td style="text-align: left">closingTime</td>
+<td style="text-align: left"><a href="#commonFieldTimeString">TimeString</a></td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Horário padrão de encerramento de atendimento pelo Correspondente Bancário. (Uma string que representa a hora conforme especificação RFC-3339, sempre com a utilização de timezone UTC(UTC time format). p.ex. &#39;16:00:57Z&#39;)</td>
 </tr>
 </tbody></table>
 
