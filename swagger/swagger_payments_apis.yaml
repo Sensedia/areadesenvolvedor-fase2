@@ -64,7 +64,7 @@ paths:
         - $ref: '#/components/parameters/XIdempotencyKey'
       requestBody:
         content:
-          application/json:
+          application/jwt:
             schema:
               $ref: '#/components/schemas/CreatePaymentConsent'
         description: Payload para criação do consentimento para iniciação do pagamento.
@@ -161,7 +161,7 @@ paths:
         - $ref: '#/components/parameters/XIdempotencyKey'
       requestBody:
         content:
-          application/json:
+          application/jwt:
             schema:
               $ref: '#/components/schemas/CreatePixPayment'
         description: Payload para criação da iniciação do pagamento Pix.
@@ -1409,7 +1409,7 @@ components:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
       content:
-        application/json:
+        application/jwt:
           schema:
             $ref: '#/components/schemas/ResponsePaymentConsent'
     200PaymentsConsentsConsentIdRead:
@@ -1421,7 +1421,7 @@ components:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
       content:
-        application/json:
+        application/jwt:
           schema:
             $ref: '#/components/schemas/ResponsePaymentConsent'
     201PaymentsInitiationPixPaymentCreated:
@@ -1433,7 +1433,7 @@ components:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
       content:
-        application/json:
+        application/jwt:
           schema:
             $ref: '#/components/schemas/ResponsePixPayment'
     200PaymentsInitiationPixPaymentIdRead:
@@ -1445,6 +1445,6 @@ components:
           schema:
             $ref: '#/components/schemas/XFapiInteractionId'
       content:
-        application/json:
+        application/jwt:
           schema:
             $ref: '#/components/schemas/ResponsePixPayment'
