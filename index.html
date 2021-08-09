@@ -53735,7 +53735,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <li><strong>Passo 1</strong> - Identifique a chave privada e o certificado de assinatura correspondente a serem usados para assinatura:</li>
 </ul>
 
-<p>O Iniciadora deve usar uma chave privada que tenha um certificado digital correspondente (que contém a chave pública correspondente) emitido pelo Open Banking Brasil.</p>
+<p>A Iniciadora deve usar uma chave privada que tenha um certificado digital correspondente (que contém a chave pública correspondente) emitido pelo Open Banking Brasil.</p>
 
 <p>O certificado de assinatura deve ser válido no momento da criação do JWS.</p>
 
@@ -53743,7 +53743,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <li><strong>Passo 2</strong> - Geração do JOSE Header</li>
 </ul>
 
-<p>O JOSE Header da assinatura deve conter os seguintes campos:</p>
+<p>O JOSE Header deve conter os seguintes campos:</p>
 
 <table><thead>
 <tr>
@@ -53781,7 +53781,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 
 <p><strong>Cabeçalho</strong> (<em>JSON Object Signing and Encryption – JOSE Header</em>), onde se define o algoritmo utilizado e inclui informações sobre a chave pública ou certificado que podem ser utilizadas para validar a assinatura;</p>
 
-<p><strong>Payload</strong> (<em>JWS Payload</em>): conteúdo propriamente dito e detalhado na especificação da API;</p>
+<p><strong>Payload</strong> (<em>JWS Payload</em>): conteúdo propriamente dito e detalhado na especificação da API além de informações sobre <code>claims</code> JWT ;</p>
 
 <p><strong>Assinatura digital</strong> (<em>JWS Signature</em>): assinatura digital, realizada conforme parâmetros do cabeçalho.</p>
 
@@ -53827,7 +53827,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 
 <p><span style="background: #e9e8e8; padding: 3px;"><strong>payload</strong> = Base64url(<strong>JOSEHeader</strong>)  +  &quot;.&quot; + Base64url(<strong>payload json</strong>)  +  &quot;.&quot;  +  Base64url(<strong>digital signature</strong>)</span></p>
 
-<p>Veja ao lado exemplo de mensagem JWS do consentimento contendo os dados do JOSE Header e mais as informações do payload do consentimento.</p>
+<p>Veja ao lado exemplo de mensagem JWS do consentimento contendo os dados do JOSE Header, as <code>claims</code> JWT e mais as informações do payload do consentimento.</p>
 
 <blockquote>
 <p>Exemplo de mensagem JWS</p>
@@ -53838,10 +53838,10 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
   </span><span class="nl">"typ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="w">
 </span><span class="p">}</span><span class="w">  
 </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11212121"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://amazingbanking.com.br/authorize"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1516239022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c47ea6549042a93d09abd80b7685dfcc23728e0d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/payments/v1/consents"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973676e-f90c-11eb-9a03-0242ac130003"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
