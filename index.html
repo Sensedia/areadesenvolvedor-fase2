@@ -53729,8 +53729,10 @@ Como sugestão, é indicado que a instituição iniciadora do pagamento implemen
 </ul>
 <h3 id='controle-de-acesso'>Controle de acesso</h3>
 <p>O endpoint de consulta de pagamento GET /pix/payments/{​​​paymentId}​​​ deve suportar acesso a partir de access_token emitido por meio de um grant_type do tipo <code>client credentials</code>, como opção do uso do token vinculado ao consentimento (hybrid flow).<br>
-Para evitar vazamento de informação, a detentora deve validar que o pagamento consultado pertence ao ClientId que o criou e, caso haja divergências, retorne um erro HTTP 400.  </p>
+Para evitar vazamento de informação, a detentora deve validar que o pagamento consultado pertence ao <code>client_id</code> que o criou e, caso haja divergências, retorne um erro HTTP 400.  </p>
 <h3 id='como-assinar-o-payload'>Como assinar o payload</h3>
+<p>No contexto da API Payment Initiation, os payloads de mensagem de consentimento e de pagamento que trafegam tanto por parte da instituição iniciadora de transação de pagamento quanto por parte da instituição detentora de conta devem estar assinados. Abaixo temos as orientações para assinatura das mensagens JWS. Informações complementares podem ser consultadas <a href="https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-financial-api-1_ID3-ptbr.html#jws" target="_blank">nesse link</a>.    </p>
+
 <ul>
 <li><strong>Passo 1</strong> - Identifique a chave privada e o certificado de assinatura correspondente a serem usados para assinatura:</li>
 </ul>
@@ -53777,7 +53779,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <li><strong>Passo 3</strong> - Montando a mensagem JWS</li>
 </ul>
 
-<p>Para garantir a integridade e o não-repúdio das informações tramitadas em <em>API´s sensíveis e que indicam essa necessidade na sua documentação</em>*, deve ser adotado a estrutura no padrão JWS definida na [<a href="https://datatracker.ietf.org/doc/html/rfc7515" target="_blank">RFC7515</a>] e que inclui:</p>
+<p>Para garantir a integridade e o não-repúdio das informações tramitadas em <em>API´s sensíveis e que indicam essa necessidade na sua documentação</em>, deve ser adotado a estrutura no padrão JWS definida na [<a href="https://datatracker.ietf.org/doc/html/rfc7515" target="_blank">RFC7515</a>] e que inclui:</p>
 
 <p><strong>Cabeçalho</strong> (<em>JSON Object Signing and Encryption – JOSE Header</em>), onde se define o algoritmo utilizado e inclui informações sobre a chave pública ou certificado que podem ser utilizadas para validar a assinatura;</p>
 
@@ -53799,7 +53801,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <td>aud</td>
 <td>string</td>
 <td>true</td>
-<td>(<strong><em>Request Object</em></strong>): o Provedor do Recurso (p. ex. a instituição detentora da conta) deverá validar se o valor do campo <strong>aud</strong> coincide com o endpoint sendo acionado.<br>(<strong><em>Response Object</em></strong>): o cliente da API (p. e. instituição iniciadora) deverá validar se o valor do campo <strong>aud</strong> coincide com o seu próprio <code>organisationId</code> listado no diretório.</td>
+<td>(<strong><em>Request Object</em></strong>): o Provedor do Recurso (p. ex. a instituição detentora da conta) deverá validar se o valor do campo <strong>aud</strong> coincide com o endpoint sendo acionado.<br>(<strong><em>Response Object</em></strong>): o cliente da API (p. ex. instituição iniciadora) deverá validar se o valor do campo <strong>aud</strong> coincide com o seu próprio <code>organisationId</code> listado no diretório.</td>
 </tr>
 <tr>
 <td>iss</td>
@@ -53811,7 +53813,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <td>jti</td>
 <td>string</td>
 <td>true</td>
-<td>(<strong><em>Request Object</em></strong> e <strong><em>Response Object</em></strong>): o valor do campo <strong>jit</strong> deverá ser preenchido com o UUID definido pela instituição de acordo com a RFC 4122 usando o versão 4.</td>
+<td>(<strong><em>Request Object</em></strong> e <strong><em>Response Object</em></strong>): o valor do campo <strong>jti</strong> deverá ser preenchido com o UUID definido pela instituição de acordo com a RFC 4122 usando o versão 4.</td>
 </tr>
 <tr>
 <td>iat</td>
@@ -53827,7 +53829,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 
 <p><span style="background: #e9e8e8; padding: 3px;"><strong>payload</strong> = Base64url(<strong>JOSEHeader</strong>)  +  &quot;.&quot; + Base64url(<strong>payload json</strong>)  +  &quot;.&quot;  +  Base64url(<strong>digital signature</strong>)</span></p>
 
-<p>Veja ao lado exemplo de mensagem JWS do consentimento contendo os dados do JOSE Header, as <code>claims</code> JWT e mais as informações do payload do consentimento.</p>
+<p>Veja ao lado exemplo de mensagem JWS do consentimento contendo os dados do JOSE Header, as <code>claims</code> JWT e as informações do payload do consentimento.</p>
 
 <blockquote>
 <p>Exemplo de mensagem JWS</p>
