@@ -53728,10 +53728,10 @@ CONSUMED - Consumido</p>
 Como sugestão, é indicado que a instituição iniciadora do pagamento implemente um retry exponencial.<br></li>
 </ul>
 <h3 id='controle-de-acesso'>Controle de acesso</h3>
-<p>O endpoint de consulta de pagamento GET /pix/payments/{​​​paymentId}​​​ deve suportar acesso a partir de access_token emitido por meio de um grant_type do tipo <code>client credentials</code>, como opção do uso do token vinculado ao consentimento (hybrid flow).<br>
+<p>O endpoint de consulta de pagamento GET /pix/payments/{​​​paymentId}​​​ deve suportar acesso a partir de access_token emitido por meio de um <em>grant_type</em> do tipo <code>client credentials</code>, como opção do uso do token vinculado ao consentimento (hybrid flow).<br>
 Para evitar vazamento de informação, a detentora deve validar que o pagamento consultado pertence ao <code>client_id</code> que o criou e, caso haja divergências, retorne um erro HTTP 400.  </p>
 <h3 id='como-assinar-o-payload'>Como assinar o payload</h3>
-<p>No contexto da API Payment Initiation, os payloads de mensagem de consentimento e de pagamento que trafegam tanto por parte da instituição iniciadora de transação de pagamento quanto por parte da instituição detentora de conta devem estar assinados. Abaixo temos as orientações para assinatura das mensagens JWS. Informações complementares podem ser consultadas <a href="https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-financial-api-1_ID3-ptbr.html#jws" target="_blank">nesse link</a>.    </p>
+<p>No contexto da API Payment Initiation, os payloads de mensagem de consentimento e de pagamento que trafegam tanto por parte da instituição iniciadora de transação de pagamento quanto por parte da instituição detentora de conta devem estar assinados. Abaixo temos as orientações para assinatura das mensagens JWS.  </p>
 
 <ul>
 <li><strong>Passo 1</strong> - Identifique a chave privada e o certificado de assinatura correspondente a serem usados para assinatura:</li>
@@ -53759,19 +53759,19 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <td>alg</td>
 <td>string</td>
 <td>true</td>
-<td>O algoritmo que será usado para assinar o JWS.  A lista de algoritmos válidos está aqui <a href="https://tools.ietf.org/html/rfc7518#section-3.1" target="_blank">https://tools.ietf.org/html/rfc7518#section-3.1</a>.</td>
+<td>O algoritmo que será usado para assinar o JWS. Deve ser preenchido com o valor <code>PS256</code>.</td>
 </tr>
 <tr>
 <td>kid</td>
 <td>string</td>
 <td>true</td>
-<td>Corresponder ao  certificado de assinatura do passo 1.</td>
+<td>Deve ser obrigatoriamente preenchido com o valor do identificador da chave utilizado para a assinatura.</td>
 </tr>
 <tr>
 <td>typ</td>
 <td>string</td>
 <td>true</td>
-<td>É o tipo de conteúdo usado para trafegar mensagens na API. Nesse caso será sempre JWT.</td>
+<td>É o tipo de conteúdo usado para trafegar mensagens na API. Deve ser preenchido com o valor <code>JWT</code>.</td>
 </tr>
 </tbody></table>
 
@@ -53787,7 +53787,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 
 <p><strong>Assinatura digital</strong> (<em>JWS Signature</em>): assinatura digital, realizada conforme parâmetros do cabeçalho.</p>
 
-<p>O payload das mensagens (<em>Request Object</em> e <em>Response Object</em>) assinadas devem incluir as seguintes <code>claims</code> presentes na <a href="JWT"><a href="https://datatracker.ietf.org/doc/html/rfc7519#section-4.1" target="_blank">RFC7519</a></a>:</p>
+<p>O payload das mensagens (requisição e resposta <em>JWT</em>) assinadas devem incluir as seguintes <code>claims</code> presentes na <a href="JWT"><a href="https://datatracker.ietf.org/doc/html/rfc7519#section-4.1" target="_blank">RFC7519</a></a>:</p>
 
 <table><thead>
 <tr>
@@ -53801,25 +53801,25 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <td>aud</td>
 <td>string</td>
 <td>true</td>
-<td>(<strong><em>Request Object</em></strong>): o Provedor do Recurso (p. ex. a instituição detentora da conta) deverá validar se o valor do campo <strong>aud</strong> coincide com o endpoint sendo acionado.<br>(<strong><em>Response Object</em></strong>): o cliente da API (p. ex. instituição iniciadora) deverá validar se o valor do campo <strong>aud</strong> coincide com o seu próprio <code>organisationId</code> listado no diretório.</td>
+<td>(<strong><em>requisição JWT</em></strong>): o Provedor do Recurso (p. ex. a instituição Detentora da Conta) deverá validar se o valor do campo <strong>aud</strong> coincide com o endpoint sendo acionado.<br>(<strong><em>resposta JWT</em></strong>): o cliente da API (p. ex. instituição Iniciadora) deverá validar se o valor do campo <strong>aud</strong> coincide com o seu próprio <code>organisationId</code> listado no diretório.</td>
 </tr>
 <tr>
 <td>iss</td>
 <td>string</td>
 <td>true</td>
-<td>(<strong><em>Request Object</em></strong> e <strong><em>Response Object</em></strong>): o receptor da mensagem deverá validar se o valor do campo <strong>iss</strong> coincide com o <code>organisationId</code> do emissor.</td>
+<td>(<strong><em>requisição JWT</em></strong> e <strong><em>resposta JWT</em></strong>): o receptor da mensagem deverá validar se o valor do campo <strong>iss</strong> coincide com o seu prório <code>organisationId</code> listado no diretório.</td>
 </tr>
 <tr>
 <td>jti</td>
 <td>string</td>
 <td>true</td>
-<td>(<strong><em>Request Object</em></strong> e <strong><em>Response Object</em></strong>): o valor do campo <strong>jti</strong> deverá ser preenchido com o UUID definido pela instituição de acordo com a <a href="https://datatracker.ietf.org/doc/html/rfc4122" target="_blank">RFC 4122</a> usando o versão 4.</td>
+<td>(<strong><em>requisição JWT</em></strong> e <strong><em>resposta JWT</em></strong>): o valor do campo <strong>jti</strong> deverá ser preenchido com o UUID definido pela instituição de acordo com a <a href="https://datatracker.ietf.org/doc/html/rfc4122" target="_blank">RFC 4122</a> usando o versão 4.</td>
 </tr>
 <tr>
 <td>iat</td>
 <td>string</td>
 <td>true</td>
-<td>(<strong><em>Request Object</em></strong> e <strong><em>Response Object</em></strong>): o valor do campo <strong>iat</strong> deverá ser preenchido com o <em>timestamp</em> com horário da geração da mensagem.</td>
+<td>(<strong><em>requisição JWT</em></strong> e <strong><em>resposta JWT</em></strong>): o valor do campo <strong>iat</strong> deverá ser preenchido com o horário da geração da mensagem e de acordo com o padrão estabelecido na <a href="https://datatracker.ietf.org/doc/html/rfc7519#section-2" target="_blank">RFC7519</a> para o formato <em>NumericDate</em></td>
 </tr>
 </tbody></table>
 
@@ -53829,21 +53829,43 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 
 <p><span style="background: #e9e8e8; padding: 3px;"><strong>payload</strong> = Base64url(<strong>JOSEHeader</strong>)  +  &quot;.&quot; + Base64url(<strong>payload json</strong>)  +  &quot;.&quot;  +  Base64url(<strong>digital signature</strong>)</span></p>
 
-<p>Veja ao lado exemplo de mensagem JWS do consentimento contendo os dados do JOSE Header, as <code>claims</code> JWT e as informações do payload do consentimento.</p>
+<p>Veja ao lado exemplo de mensagem JWS assinada e codificada e um exemplo de mensagem JWS decodificada.</p>
 
 <blockquote>
-<p>Exemplo de mensagem JWS</p>
+<p>Exemplo de requisição JWS assinada e codificada</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="w">
-  </span><span class="nl">"kid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imNEXb2RM58wAdlzCgX5FkyCyibRNC4mvUew2sSaCos"</span><span class="w">
+  </span><span class="s2">"eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ9.
+  eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJkYXRhIjp7ImxvZ2dlZFVzZXIiOnsiZG9jdW1lbnQiOnsiaWRlbnRpZmljYXRpb24iOiIxMTExMTExMTExMSIsInJlb
+  CI6IkNQRiJ9fSwiYnVzaW5lc3NFbnRpdHkiOnsiZG9jdW1lbnQiOnsiaWRlbnRpZmljYXRpb24iOiIxMTExMTExMTExMTExMSIsInJlbCI6IkNOUEoifX0sImNyZWRpdG9yIjp7InBlcnNvblR5cGUiOiJQRVNTT0FfTk
+  FUVVJBTCIsImNwZkNucGoiOiI1ODc2NDc4OTAwMDEzNyIsIm5hbWUiOiJNYXJjbyBBbnRvbmlvIGRlIEJyaXRvIn0sInBheW1lbnQiOnsidHlwZSI6IlBJWCIsImRhdGUiOiIyMDIxLTAxLTAxIiwiY3VycmVuY3kiOiJ
+  CUkwiLCJhbW91bnQiOiIxMDAwMDAuMTIifSwiZGVidG9yQWNjb3VudCI6eyJpc3BiIjoiMTIzNDU2NzgiLCJpc3N1ZXIiOiIxNzc0IiwibnVtYmVyIjoiMTIzNDU2Nzg5MCIsImFjY291bnRUeXBlIjoiQ0FDQyJ9fX0.
+  pmy1BPKWcUi-_cErF9yld2EYsTMGpSKIDXCmcGJlzB9nlCn2s3xTWO7ZS9EImkZlojaXNi1NmY5_-l_Rpx5aASs9RCW04D_BoSmNW8sNrzAoF9P5Yy92ymvOJQbqxnLVpmG9DTpmk50QqoWQEK5QMbXoc1yiVoXKrc9dJ
+  R9qlrsBeRt52mv33nuZPi0f6lEP9nqsQiKj4adyN_hWeozyiMxYOmuFh9xmFvDJefSHojmLMMsxLBvriRmcB9c-MaGvUbxe9PTWPNiL-qBPTpJmO82LkfuVIo0VJZXuVCGRDxAJ5J0i502bzXSC96iwJFwvE5iFbNwD
+  Il0HRICaEShFyw"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><strong>Em caso de erro</strong></p>
+
+<p>Na validação da assinatura pelo Provedor do Recurso a API deve retornar mensagem de erro <code>HTTP</code> com status code <code>400</code> e a resposta deve incluir na propriedade code do objeto de resposta de erro especificado na API (<em>ResponseError</em>) a indicação da falha com o conteúdo <code>BAD_SIGNATURE</code>.  </p>
+
+<p>Informações complementares de segurança podem ser consultadas em <a href="https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-financial-api-1_ID2-ptbr.md" target="_blank"> https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-financial-api-1_ID2-ptbr.md</a></p>
+
+<blockquote>
+<p>Exemplo de requisição JWS decodificada</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imNEXb2RM58wAdlzCgX5FkyCyibRNC4mvUew2sSaCos"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"typ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="w">
 </span><span class="p">}</span><span class="w">  
 </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c47ea6549042a93d09abd80b7685dfcc23728e0d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca1b98e1-97a2-43db-947f-8a08054c342e"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/payments/v1/consents"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973676e-f90c-11eb-9a03-0242ac130003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628257484"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2fd393c-107a-4ad4-be22-3cfeeea90efe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -53874,6 +53896,61 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
           </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
       </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<blockquote>
+<p>Exemplo de resposta JWS decodificado</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3449bf21-0b07-48e6-b6fc-13eb161a9901"</span><span class="p">,</span><span class="w"> 
+</span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca1b98e1-97a2-43db-947f-8a08054c342e"</span><span class="p">,</span><span class="w"> 
+</span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2fd393c-107a-4ad4-be22-3cfeeea90efe"</span><span class="p">,</span><span class="w"> 
+</span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628257737"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"consentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:bancoex:C1DD33123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"statusUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWAITING_AUTHORISATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loggedUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"businessEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111111"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNPJ"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"creditor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"personType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA_NATURAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cpfCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58764789000137"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marco Antonio de Brito"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"debtorAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ispb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CACC"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="err">https://api.banco.com.br/open-banking/api/v</span><span class="mi">1</span><span class="err">/resource</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
