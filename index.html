@@ -53711,7 +53711,7 @@ CONSUMED - Consumido</p>
 </ul>
 <h4 id='authorised'>AUTHORISED</h4>
 <ul>
-<li>Para o cenário em que o status assumiu AUTHORISED, o tempo máximo do expirationDateTime do consentimento deve assumir &quot;now + 60 minutos&quot;. Este é o tempo para consumir o consentimento autorizado, mudando seu status para CONSUMED. Não é possível prorrogar este tempo e a criação de um novo consentimento será necessária para os cenários de insucesso.<br></li>
+<li>Para o cenário em que o status assumiu AUTHORISED, o tempo máximo do expirationDateTime do consentimento deve assumir &quot;now + 60 minutos&quot;. Este é o tempo para consumir o consentimento autorizado, mudando seu status para CONSUMED. Não é possível prorrogar este tempo e a criação de um novo consentimento será necessária para os cenários de insucesso. O tempo do expirationDateTime é garantido com os 15 minutos do access token, sendo possível utilizar mais três refresh tokens até totalizar 60 minutos.<br></li>
 </ul>
 <h5 id='rejected'>REJECTED</h5>
 <ul>
