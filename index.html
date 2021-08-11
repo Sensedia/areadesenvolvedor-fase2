@@ -53739,7 +53739,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 <li><strong>Passo 1</strong> - Identifique a chave privada e o certificado de assinatura correspondente a serem usados para assinatura:</li>
 </ul>
 
-<p>A Iniciadora deve usar uma chave privada que tenha um certificado digital correspondente (que contém a chave pública correspondente) emitido pelo Open Banking Brasil.</p>
+<p>As assinaturas devem ser realizadas com uso do certificado digital de assinatura especificado no <a href="https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-certificate-standards-1_ID1-ptbr.md#certificado-de-assinatura-certificadoassinatura" target="_blank">Padrão de Certificados Open Banking Brasil</a>.</p>
 
 <p>O certificado de assinatura deve ser válido no momento da criação do JWS.</p>
 
@@ -53829,7 +53829,7 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
 
 <p>Formato da mensagem JWS:</p>
 
-<p><span style="background: #e9e8e8; padding: 3px;"><strong>payload</strong> = Base64url(<strong>JOSEHeader</strong>)  +  &quot;.&quot; + Base64url(<strong>payload json</strong>)  +  &quot;.&quot;  +  Base64url(<strong>digital signature</strong>)</span></p>
+<p><span style="background: #e9e8e8; padding: 3px;"><strong>payload</strong> = Base64url(<strong>JOSEHeader</strong>)  +  &quot;.&quot; + Base64url(<strong>payload JWT</strong>)  +  &quot;.&quot;  +  Base64url(<strong>digital signature</strong>)</span></p>
 
 <p>Veja ao lado exemplo de mensagem JWS assinada e codificada e um exemplo de mensagem JWS decodificada.</p>
 
@@ -53889,6 +53889,9 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
+
+</span><span class="err">*</span><span class="w"> </span><span class="s2">"Assinatura omitida por questões de brevidade"</span><span class="w">
+
 </span></code></pre></div>
 
 <blockquote>
@@ -53960,7 +53963,9 @@ Para evitar vazamento de informação, a detentora deve validar que o pagamento 
     </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-21T08:30:00Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">  
+
+</span><span class="err">*</span><span class="w"> </span><span class="s2">"Assinatura omitida por questões de brevidade"</span><span class="w">
 </span></code></pre></div>
 
 <p><strong>Em caso de erro</strong></p>
