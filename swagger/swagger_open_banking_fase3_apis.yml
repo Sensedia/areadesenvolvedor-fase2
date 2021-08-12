@@ -447,6 +447,7 @@ components:
         - localInstrument
         - payment
         - creditorAccount
+        - cnpjInitiator
       properties:
         localInstrument:
           $ref: '#/components/schemas/EnumLocalInstrument'
@@ -491,6 +492,12 @@ components:
             Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  
             No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
             [Restrição] Obrigatório quando o campo localInstrument for igual a DICT.
+        cnpjInitiator:
+          type: string
+          pattern: '^(\d{14})$|^NA$'
+          maxLength: 14
+          example: '50685362000135'
+          description: CNPJ do Iniciador de Pagamento devidamente habilitado para a prestação de Serviço de Iniciação no Pix.
       additionalProperties: false
     CreditorAccount:
       type: object
