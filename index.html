@@ -54994,6 +54994,7 @@ openid,consent:consentId,payments
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PDNG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rejectionReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_NOT_YET_ACTIVATED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"localInstrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DICT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpjInitiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
@@ -55346,6 +55347,7 @@ openid,consent:consentId,payments
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PDNG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rejectionReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_NOT_YET_ACTIVATED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"localInstrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DICT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpjInitiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
@@ -57399,6 +57401,7 @@ EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PDNG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rejectionReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_NOT_YET_ACTIVATED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"localInstrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DICT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpjInitiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
@@ -57472,6 +57475,7 @@ EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PDNG"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"rejectionReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_NOT_YET_ACTIVATED"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"localInstrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DICT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnpjInitiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.12"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
@@ -57552,6 +57556,12 @@ EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
 <td><a href="#schemaenumlocalinstrument">EnumLocalInstrument</a></td>
 <td>true</td>
 <td>Especifica a forma de iniciação do pagamento:  <br>- MANU - Inserção manual de dados da conta transacional  <br>- DICT - Inserção manual de chave Pix  <br>- QRDN - QR code dinâmico (<em>Domínio reservado para uso futuro</em>)  <br>- QRES - QR code estático (<em>Domínio reservado para uso futuro</em>)</td>
+</tr>
+<tr>
+<td>cnpjInitiator</td>
+<td>string</td>
+<td>true</td>
+<td>CNPJ do Iniciador de Pagamento devidamente habilitado para a prestação de Serviço de Iniciação no Pix.</td>
 </tr>
 <tr>
 <td>payment</td>
