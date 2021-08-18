@@ -1220,7 +1220,7 @@ components:
     UnprocessableEntityConsents:
       description: 'A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.'
       content:
-        application/json; charset=utf-8:
+        application/jwt:
           schema:
             type: object
             required:
@@ -1295,7 +1295,7 @@ components:
     UnprocessableEntityPixPayments:
       description: 'A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.'
       content:
-        application/json; charset=utf-8:
+        application/jwt:
           schema:
             type: object
             required:

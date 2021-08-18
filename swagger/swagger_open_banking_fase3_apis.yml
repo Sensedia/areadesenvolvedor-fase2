@@ -1414,7 +1414,7 @@ components:
     UnprocessableEntityConsents:
       description: 'A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.'
       content:
-        application/json; charset=utf-8:
+        application/jwt:
           schema:
             $ref: '#/components/schemas/422ResponseErrorCreateConsent'
           examples:
@@ -1438,7 +1438,7 @@ components:
     UnprocessableEntityPixPayments:
       description: 'A solicitação foi bem formada, mas não pôde ser processada devido à lógica de negócios específica da solicitação.'
       content:
-        application/json; charset=utf-8:
+        application/jwt:
           schema:
             $ref: '#/components/schemas/422ResponseErrorCreatePixPayment'
           examples:
