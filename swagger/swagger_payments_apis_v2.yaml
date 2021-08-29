@@ -333,45 +333,66 @@ components:
         - loggedUser
         - creditor
         - payment
+        - details
       properties:
         loggedUser:
           $ref: '#/components/schemas/LoggedUser'
         businessEntity:
           $ref: '#/components/schemas/BusinessEntity'
         creditor:
-          type: object
-          description: Objeto contendo os dados do recebedor (creditor).
-          required:
-            - personType
-            - cpfCnpj
-            - name
-          properties:
-            personType:
-              $ref: '#/components/schemas/Identification/properties/personType'
-            cpfCnpj:
-              type: string
-              minLength: 11
-              maxLength: 14
-              pattern: '^\d{11}$|^\d{14}$'
-              example: '58764789000137'
-              description: |
-                Identificação da pessoa envolvida na transação.  
-                Preencher com o CPF ou CNPJ, de acordo com o valor escolhido no campo type.  
-                O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços.  
-                O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.
-            name:
-              type: string
-              maxLength: 140
-              pattern: '[\w\W\s]*'
-              example: Marco Antonio de Brito
-              description: |
-                Em caso de pessoa natural deve ser informado o nome completo do titular da conta do recebedor.  
-                Em caso de pessoa jurídica deve ser informada a razão social ou o nome fantasia da conta do recebedor.
-          additionalProperties: false
+          $ref: '#/components/schemas/Identification'
         payment:
           $ref: '#/components/schemas/PaymentConsent'
         debtorAccount:
           $ref: '#/components/schemas/DebtorAccount'
+        details:
+          type: object
+          description: |
+            Objeto contendo os detalhes do pagamento.
+            [Restrição] No método POST /consents deve ser enviado obrigatoriamente. No método GET /consents/{consentId} é obrigatório para todo consentimento gerado que contêm as informações do recebedor. Consentimentos gerados anteriormente ao início da vigência da versão 2.0.0 da API, não deve existir o campo no payload de resposta.
+          required:
+            - localInstrument
+            - creditorAccount
+            - qrCode
+            - proxy
+          properties:
+            localInstrument:
+              $ref: '#/components/schemas/CreatePixPaymentData/properties/localInstrument'
+            qrCode:
+              type: string
+              maxLength: 512
+              pattern: '[\w\W\s]*'
+              example: |
+                00020104141234567890123426660014BR.GOV.BCB.PIX014466756C616E6F32303139406578616D706C652E636F6D27300012  
+                BR.COM.OUTRO011001234567895204000053039865406123.455802BR5915NOMEDORECEBEDOR6008BRASILIA61087007490062  
+                530515RP12345678-201950300017BR.GOV.BCB.BRCODE01051.0.080450014BR.GOV.BCB.PIX0123PADRAO.URL.PIX/0123AB  
+                CD81390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304EB76
+              description: |
+                Obs: Campo reservado para uso futuro.  
+                Sequência de caracteres que corresponde ao QR Code disponibilizado para o pagador.  
+                É a sequência de caracteres que seria lida pelo leitor de QR Code, e deve propiciar o retorno dos dados do pagador após consulta na DICT.  
+                Essa funcionalidade é possível tanto para QR Code estático quanto para QR Code dinâmico.  
+                No arranjo do Pix esta é a mesma sequência gerada e/ou lida pela funcionalidade Pix Copia e Cola.  
+                Este campo deverá ser no formato UTF-8.  
+                [Restrição] Preenchimento obrigatório para pagamentos por QR Code, observado o tamanho máximo de 512 bytes.
+            proxy:
+              type: string
+              maxLength: 77
+              pattern: '[\w\W\s]*'
+              example: '12345678901'
+              description: |
+                Chave cadastrada no DICT pertencente ao recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  
+                No caso de telefone celular deve ser informado no padrão E.1641.  
+                Para e-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  
+                No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  
+                Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  
+                No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
+                Se informado, a detentora da conta deve validar o proxy no DICT quando localInstrument for igual a DICT, QRDN (uso futuro) ou QRES (uso futuro) e validar o campo creditorAccount.
+                Esta validação é opcional caso o localInstrument for igual a INIC.  
+                [Restrição] Se localInstrument for igual a MANU, o campo proxy não deve ser preenchido. Se localInstrument for igual INIC, DICT, QRDN (uso futuro) ou QRES(uso futuro), o campo proxy deve ser sempre preenchido com a chave Pix.
+            creditorAccount:
+              $ref: '#/components/schemas/CreditorAccount'
+          additionalProperties: false
       additionalProperties: false
     CreatePixPaymentData:
       type: object
@@ -383,7 +404,22 @@ components:
         - cnpjInitiator
       properties:
         localInstrument:
-          $ref: '#/components/schemas/EnumLocalInstrument'
+          type: string
+          maxLength: 4
+          enum:
+            - MANU
+            - DICT
+            - QRDN
+            - QRES
+            - INIC
+          example: DICT
+          description: |
+            Especifica a forma de iniciação do pagamento:  
+            - MANU - Inserção manual de dados da conta transacional  
+            - DICT - Inserção manual de chave Pix  
+            - QRDN - QR code dinâmico (*Domínio reservado para uso futuro*)  
+            - QRES - QR code estático (*Domínio reservado para uso futuro*)  
+            - INIC - Indica que o recebedor (creditor) contratou o Iniciador de Pagamentos especificamente para realizar iniciações de pagamento em que o beneficiário é previamente conhecido.  
         payment:
           $ref: '#/components/schemas/PaymentPix'
         creditorAccount:
@@ -424,7 +460,9 @@ components:
             No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  
             Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  
             No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
-            [Restrição] Obrigatório quando o campo localInstrument for igual a DICT.
+            Se informado, a detentora da conta deve validar o proxy no DICT quando localInstrument for igual a DICT, QRDN (uso futuro) ou QRES (uso futuro) e validar o campo creditorAccount.
+            Esta validação é opcional caso o localInstrument for igual a INIC.
+            [Restrição] Se localInstrument for igual a MANU, o campo proxy não deve ser preenchido. Se localInstrument for igual INIC, DICT, QRDN (uso futuro) ou QRES(uso futuro), o campo proxy deve ser sempre preenchido com a chave Pix.  
         cnpjInitiator:
           type: string
           pattern: '^\d{14}$'
@@ -586,6 +624,7 @@ components:
         - loggedUser
         - creditor
         - payment
+        - details
       properties:
         consentId:
           type: string
@@ -652,11 +691,41 @@ components:
         businessEntity:
           $ref: '#/components/schemas/BusinessEntity'
         creditor:
-          $ref: '#/components/schemas/CreatePaymentConsentData/properties/creditor'
+          type: object
+          description: Objeto contendo os dados do recebedor (creditor).
+          required:
+            - personType
+            - cpfCnpj
+            - name
+          properties:
+            personType:
+              $ref: '#/components/schemas/Identification/properties/personType'
+            cpfCnpj:
+              type: string
+              minLength: 11
+              maxLength: 14
+              pattern: '^\d{11}$|^\d{14}$'
+              example: '58764789000137'
+              description: |
+                Identificação da pessoa envolvida na transação.  
+                Preencher com o CPF ou CNPJ, de acordo com o valor escolhido no campo type.  
+                O CPF será utilizado com 11 números e deverá ser informado sem pontos ou traços.  
+                O CNPJ será utilizado com 14 números e deverá ser informado sem pontos ou traços.
+            name:
+              type: string
+              maxLength: 140
+              pattern: '[\w\W\s]*'
+              example: Marco Antonio de Brito
+              description: |
+                Em caso de pessoa natural deve ser informado o nome completo do titular da conta do recebedor.  
+                Em caso de pessoa jurídica deve ser informada a razão social ou o nome fantasia da conta do recebedor.
+          additionalProperties: false
         payment:
           $ref: '#/components/schemas/PaymentConsent'
         debtorAccount:
           $ref: '#/components/schemas/DebtorAccount'
+        details:
+          $ref: '#/components/schemas/CreatePaymentConsentData/properties/details'
       additionalProperties: false
     ResponsePixPayment:
       type: object
@@ -778,7 +847,9 @@ components:
             No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  
             Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  
             No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  
-            [Restrição] Obrigatório quando o campo localInstrument for igual a DICT.
+            Se informado, a detentora da conta deve validar o proxy no DICT quando localInstrument for igual a DICT, QRDN (uso futuro) ou QRES (uso futuro) e validar o campo creditorAccount.
+            Esta validação é opcional caso o localInstrument for igual a INIC.  
+            [Restrição] Se localInstrument for igual a MANU, o campo proxy não deve ser preenchido. Se localInstrument for igual INIC, DICT, QRDN (uso futuro) ou QRES(uso futuro), o campo proxy deve ser sempre preenchido com a chave Pix.
         status:
           type: string
           maxLength: 45
@@ -896,7 +967,7 @@ components:
             EXPIRED_BILL - O QR Code não é mais válido (OB06).  
             [Restrição] Esse motivo deverá ser enviado quando o campo /data/status for igual a RJCT (REJECTED).  
         localInstrument:
-          $ref: '#/components/schemas/EnumLocalInstrument'
+          $ref: '#/components/schemas/CreatePixPaymentData/properties/localInstrument'
         cnpjInitiator:
           type: string
           pattern: '^\d{14}$'
@@ -1283,13 +1354,15 @@ components:
                       enum:
                         - FORMA_PGTO_INVALIDA
                         - DATA_PGTO_INVALIDA
+                        - DETALHE_PGTO_INVALIDO
                         - NAO_INFORMADO
                       example: FORMA_PGTO_INVALIDA
                       description: |
                         Códigos de erros previstos na criação de consentimento para a iniciação de pagamentos:  
                         • FORMA_PGTO_INVALIDA: Forma de pagamento inválida.  
                         • DATA_PGTO_INVALIDA: Data de pagamento inválida.  
-                        • NAO_INFORMADO: Não informado.  
+                        • DETALHE_PGTO_INVALIDO: Detalhe do pagamento inválido.
+                        • NAO_INFORMADO: Não informado.   
                     title:
                       type: string
                       maxLength: 255
@@ -1298,7 +1371,8 @@ components:
                       description: |
                         Título específico do erro reportado, de acordo com o código enviado:  
                         • FORMA_PGTO_INVALIDA: Forma de pagamento inválida.  
-                        • DATA_PGTO_INVALIDA: Data de pagamento inválida.  
+                        • DATA_PGTO_INVALIDA: Data de pagamento inválida. 
+                        • DETALHE_PGTO_INVALIDO: Detalhe do pagamento inválido.
                         • NAO_INFORMADO: Não informado.    
                     detail:
                       type: string
@@ -1309,6 +1383,7 @@ components:
                         Descrição específica do erro de acordo com o código reportado:  
                         • FORMA_PGTO_INVALIDA – Meio de pagamento inválido.  
                         • DATA_PGTO_INVALIDA – Data de pagamento inválida no contexto, por exemplo, data no passado. Para pagamentos únicos deve ser informada a data atual, do dia corrente.  
+                        • DETALHE_PGTO_INVALIDO: O campo [nome_campo] não atende os requisitos de preenchimento.  
                         • NAO_INFORMADO – Não reportado/identificado pela instituição detentora de conta.  
                   additionalProperties: false
               meta:
