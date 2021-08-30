@@ -247,50 +247,68 @@ paths:
             - payments      
 components:
   schemas:
+    422ResponseErrorCreateConsent:
+      $ref: ./schemas/payments_apis_v2/422ResponseErrorCreateConsent.yaml
+    422ResponseErrorCreatePixPayment:
+      $ref: ./schemas/payments_apis_v2/422ResponseErrorCreatePixPayment.yaml
+    Account:
+      $ref: ./schemas/business_commons/Account.yaml
     BusinessEntity:
       $ref: ./schemas/payments_apis_v2/BusinessEntity.yaml
-    CreditorAccount:
-      $ref: ./schemas/business_commons/CreditorAccount.yaml      
-    CreatePixPayment:
-      $ref: ./schemas/payments_apis_v2/CreatePixPayment.yaml
     CreatePaymentConsent:
       $ref: ./schemas/payments_apis_v2/CreatePaymentConsent.yaml
-    CreatePaymentConsentData:
-      $ref: ./schemas/payments_apis_v2/CreatePaymentConsentData.yaml
+    CreatePixPayment:
+      $ref: ./schemas/payments_apis_v2/CreatePixPayment.yaml
     CreatePixPaymentData:
       $ref: ./schemas/payments_apis_v2/CreatePixPaymentData.yaml
+    CreditorAccount:
+      $ref: ./schemas/business_commons/CreditorAccount.yaml
     DebtorAccount:
       $ref: ./schemas/business_commons/DebtorAccount.yaml
+    Details:
+      $ref: ./schemas/payments_apis_v2/PaymentDetails.yaml
     EndToEndId:
       $ref: ./schemas/business_commons/EndToEndId.yaml
-    LoggedUser:
-      $ref: ./schemas/payments_apis_v2/LoggedUser.yaml       
-    PaymentConsent:
-      $ref: ./schemas/payments_apis_v2/PaymentConsent.yaml
-    ResponsePaymentConsent:
-      $ref: ./schemas/payments_apis_v2/ResponsePaymentConsent.yaml
-    ResponsePaymentConsentData:
-      $ref: ./schemas/payments_apis_v2/ResponsePaymentConsentData.yaml
-    ResponsePixPayment:
-      $ref: ./schemas/payments_apis_v2/ResponsePixPayment.yaml
-    ResponseError:
-      $ref: ./schemas/ResponseError.yaml
-    ResponsePixPaymentData:
-      $ref: ./schemas/payments_apis_v2/ResponsePixPaymentData.yaml
-    PaymentPix:
-      $ref: ./schemas/payments_apis_v2/PaymentPix.yaml
     EnumAccountPaymentsType:
       $ref: ./schemas/enum/EnumAccountPaymentsType.yaml
+    EnumAuthorisationStatusType:
+      $ref: ./schemas/enum/EnumAuthorisationStatusType.yaml
+    EnumErrorsCreateConsent:
+      $ref: ./schemas/payments_apis_v2/EnumErrorsCreateConsent.yaml
+    EnumErrorsCreatePayment:
+      $ref: ./schemas/enum/EnumErrorsCreatePayment.yaml
     EnumLocalInstrument:
-      $ref: ./schemas/enum/EnumLocalInstrument.yaml
+      $ref: ./schemas/payments_apis_v2/EnumLocalInstrument.yaml
+    EnumPaymentPersonType:
+      $ref: ./schemas/enum/EnumPaymentPersonType.yaml
+    EnumPaymentStatusType:
+      $ref: ./schemas/enum/EnumPaymentStatusType.yaml
+    EnumPaymentType:
+      $ref: ./schemas/enum/EnumPaymentType.yaml
+    EnumRejectionReasonType:
+      $ref: ./schemas/enum/EnumRejectionReasonType.yaml
     Identification:
       $ref: ./schemas/payments_apis_v2/PaymentIdentification.yaml
-    XFapiInteractionId:  
-      $ref: ./headers/XFapiInteractionId.yaml
     Links:
-      $ref: ./schemas/LinkSingle.yaml
+      $ref: ./schemas/Links.yaml
+    LoggedUser:
+      $ref: ./schemas/payments_apis_v2/LoggedUser.yaml
     Meta:
       $ref: ./schemas/Meta.yaml
+    PaymentConsent:
+      $ref: ./schemas/payments_apis_v2/PaymentConsent.yaml
+    PaymentPix:
+      $ref: ./schemas/payments_apis_v2/PaymentPix.yaml
+    ResponseError:
+      $ref: ./schemas/ResponseError.yaml
+    ResponsePaymentConsent:
+      $ref: ./schemas/payments_apis_v2/ResponsePaymentConsent.yaml
+    ResponsePixPayment:
+      $ref: ./schemas/payments_apis_v2/ResponsePixPayment.yaml
+    ResponsePixPaymentData:
+      $ref: ./schemas/payments_apis_v2/ResponsePixPaymentData.yaml
+    XFapiInteractionId:  
+      $ref: ./headers/XFapiInteractionId.yaml
   parameters:
     consentId:
       $ref: ./parameters/ConsentId.yaml

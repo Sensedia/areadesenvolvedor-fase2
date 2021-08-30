@@ -428,7 +428,6 @@ components:
             - loggedUser
             - creditor
             - payment
-            - details
           properties:
             loggedUser:
               $ref: '#/components/schemas/LoggedUser'
@@ -440,8 +439,6 @@ components:
               $ref: '#/components/schemas/PaymentConsent'
             debtorAccount:
               $ref: '#/components/schemas/DebtorAccount'
-            details:
-              $ref: '#/components/schemas/Details'
           additionalProperties: false
       additionalProperties: false
     CreatePixPayment:
@@ -1044,6 +1041,8 @@ components:
           example: '100000.12'
           description: |
             Valor da transação com 2 casas decimais.
+        details:
+          $ref: '#/components/schemas/Details'
       additionalProperties: false
     PaymentPix:
       type: object
