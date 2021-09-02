@@ -5292,7 +5292,6 @@ components:
       description: |
         "Tipo da modalidade de crédito contratada, conforme circular 4.015 e descrição do DOC3040 do SCR). (Vide Enum)
         Adiantamento a depositantes, Direitos creditórios descontados Empréstimos,  Financiamentos, Financiamentos rurais  e Financiamentos imobiliários"
-      maxLength: 27
       enum:
         - ADIANTAMENTO_A_DEPOSITANTES
       example: ADIANTAMENTO_A_DEPOSITANTES
@@ -9638,9 +9637,9 @@ components:
             - MES
             - ANO
             - SEM_PRAZO_REMANESCENTE
-          maxLength: 22
+          maxLength: 6
           description: |
-            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.
+            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.   
         contractRemainingNumber:
           type: number
           maxLength: 6
