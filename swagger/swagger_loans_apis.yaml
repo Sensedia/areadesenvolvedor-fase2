@@ -944,9 +944,9 @@ components:
             - MES
             - ANO
             - SEM_PRAZO_REMANESCENTE
-          maxLength: 6
+          maxLength: 22
           description: |
-            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.   
+            Tipo de prazo remanescente do contrato referente à modalidade de crédito informada.
         contractRemainingNumber:
           type: number
           maxLength: 6
