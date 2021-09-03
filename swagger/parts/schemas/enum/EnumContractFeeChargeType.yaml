@@ -1,6 +1,6 @@
 type: string
 description: "Tipo de cobrança para a tarifa pactuada no contrato."
-maxLength: 11
+maxLength: 10
 enum:
   - UNICA
   - POR_PARCELA

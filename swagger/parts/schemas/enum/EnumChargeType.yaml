@@ -1,6 +1,6 @@
 type: string
 description: Tipo de encargo pago fora da parcela
-maxLength: 31
+maxLength: 35
 enum:
   - JUROS_REMUNERATORIOS_POR_ATRASO
   - MULTA_ATRASO_PAGAMENTO
