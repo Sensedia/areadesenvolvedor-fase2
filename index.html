@@ -53868,9 +53868,6 @@ Esse redirecionamento é o passo que permitirá o início da autenticação do u
 <h4 id='validacoes-de-negocios-detentora'>Validações de negócios (Detentora)</h4>
 <p>Ao receber o POST /payments/v1/pix/payments é importante observar que a Detentora deverá validar as informações passadas pela Iniciadora nos campos do payload de envio do consentimento e do pagamento (como, por exemplo, valores e dados do creditado), além de ser necessário decodificar o código para os casos de pagamentos iniciados a partir de um Pix QRCode, a fim de que a Detentora carregue as informações complementares (como, por exemplo, o TxID) na mensageria do Pix (atenção para a PACS008 e as <a href="https://www.bcb.gov.br/estabilidadefinanceira/pix?modalAberto=regulamentacao_pix" target="_blank">regulamentações do Pix</a>).<br>
 A Detentora deve validar as informações de detalhes do payload com os dados de detalhes do consentimento, de acordo com a forma de pagamento. Caso os dados do detalhe informados no consentimento sejam diferente dos dados enviados na iniciação de pagamento, a Detentora de retornar erro HTTP 422 Unprocessable Entity, com o code BENEFICIARIO_INCOMPATIVEL.  </p>
-<h4 id='post-payments-v1-pix-payments'>POST /payments/v1/pix/payments</h4>
-<p>A Detentora deve validar as informações do payload com os dados do consentimento, de acordo com a forma de pagamento. 
-Caso os dados do detalhe informados no consentimento sejam diferente dos dados enviados na iniciação de pagamento, a Detentora de retornar erro HTTP 422 Unprocessable Entity, com o code BENEFICIARIO_INCOMPATIVEL. Nesse cenário, o consentimento não deve assumir o status CONSUMED.  </p>
 <h4 id='efetivacao-do-pagamento-lt-lt-assync-gt-gt'>Efetivação do pagamento&lt;&lt;Assync&gt;&gt;</h4>
 <p>A Detentora de Conta efetua a transação de pagamento entre o Debtor e Creditor através da forma de pagamento escolhida pelo Debtor. A efetivação da transação acontece de maneira assíncrona ao fluxo do Open Banking, seguindo as regras e interfaces do arranjo utilizado (apenas PIX disponível nesse momento).</p>
 <h4 id='loop-polling'>Loop (Polling)</h4>
@@ -56379,14 +56376,14 @@ As informações quanto à conta de origem do pagador poderão ser trazidas no c
 <tr>
 <td>qrCode</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Obs: Campo reservado para uso futuro.  <br>Sequência de caracteres que corresponde ao QR Code disponibilizado para o pagador.  <br>É a sequência de caracteres que seria lida pelo leitor de QR Code, e deve propiciar o retorno dos dados do pagador após consulta na DICT.  <br>Essa funcionalidade é possível tanto para QR Code estático quanto para QR Code dinâmico.  <br>No arranjo do Pix esta é a mesma sequência gerada e/ou lida pela funcionalidade Pix Copia e Cola.  <br>Este campo deverá ser no formato UTF-8.  <br>[Restrição] Preenchimento obrigatório para pagamentos por QR Code, observado o tamanho máximo de 512 bytes.</td>
 </tr>
 <tr>
 <td>proxy</td>
 <td>string</td>
-<td>true</td>
-<td>Chave cadastrada no DICT pertencente ao recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  <br>No caso de telefone celular deve ser informado no padrão E.1641.  <br>Para e-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  <br>No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  <br>Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  <br>No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  <br>Se informado, a detentora da conta deve validar o proxy no DICT quando localInstrument for igual a DICT, QRDN (uso futuro) ou QRES (uso futuro) e validar o campo creditorAccount.<br>Esta validação é opcional caso o localInstrument for igual a INIC.  <br>[Restrição] Se localInstrument for igual a MANU, o campo proxy não deve ser preenchido. Se localInstrument for igual INIC, DICT, QRDN (uso futuro) ou QRES (uso futuro), o campo proxy deve ser sempre preenchido com a chave Pix.</td>
+<td>false</td>
+<td>Chave cadastrada no DICT pertencente ao recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  <br>No caso de telefone celular deve ser informado no padrão E.1641.  <br>Para e-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  <br>No caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  <br>Para o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  <br>No caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  <br>Se informado, a detentora da conta deve validar o proxy no DICT quando localInstrument for igual a DICT, QRDN (uso futuro) ou QRES (uso futuro) e validar o campo creditorAccount.<br>Esta validação é opcional caso o localInstrument for igual a INIC.  <br>[Restrição]  <br>Se localInstrument for igual a MANU, o campo proxy não deve ser preenchido.  <br>Se localInstrument for igual INIC, DICT, QRDN (uso futuro) ou QRES (uso futuro), o campo proxy deve ser sempre preenchido com a chave Pix.</td>
 </tr>
 <tr>
 <td>creditorAccount</td>
