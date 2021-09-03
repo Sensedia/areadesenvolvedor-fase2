@@ -1888,9 +1888,6 @@
                     <a href="#diagrama-de-sequencia" class="toc-h2 toc-link" data-title="Diagrama de Sequência" title="Diagrama de Sequência">Diagrama de Sequência</a>
                   </li>
                   <li>
-                    <a href="#iniciacao-pelo-recebedor" class="toc-h2 toc-link" data-title="Iniciação pelo Recebedor" title="Iniciação pelo Recebedor">Iniciação pelo Recebedor</a>
-                  </li>
-                  <li>
                     <a href="#maquina-de-estados" class="toc-h2 toc-link" data-title="Maquina de Estados" title="Maquina de Estados">Maquina de Estados</a>
                   </li>
                   <li>
@@ -53759,6 +53756,8 @@ Adiantamento a depositantes</p>
 <p>Inicialmente o Open Banking estará disponibilizando a iniciação de Pix com execução na data corrente.</p>
 
 <p>Futuramente com a evolução do ecossistema novas modalidades de operações serão agregadas, assim como a possibilidade de agendamentos.</p>
+<h4 id='iniciacao-pelo-recebedor'>Iniciação pelo Recebedor</h4>
+<p>Iniciação pelo recebedor ocorre quando a prestação de serviço pela iniciadora é para, e somente para,  o recebedor. Nestes casos somente será permitido como beneficiário do pagamento o próprio recebedor. Algumas Instituições Detentoras de conta precisarão ajustar seus sistemas de forma a apropriar o campo em sua estrutura ao invés de gerá-lo nos casos pertinentes.  </p>
 <h3 id='idempotencia'>Idempotência</h3>
 <p>Segundo a W3C, &quot;um método HTTP idempotente é um método HTTP que pode ser chamado muitas vezes sem resultados diferentes ou efeitos colaterais. Não importa se o método é chamado apenas uma vez ou dez vezes. O resultado deve ser o mesmo. Essencialmente, significa que o resultado de uma solicitação executada com sucesso é independente do número de vezes que ela é executada. Por exemplo, na aritmética, adicionar zero a um número é uma operação idempotente.&quot;</p>
 
@@ -53861,8 +53860,6 @@ Uma vez cadastrada, a Instituição Iniciadora deverá obter o token de acesso (
 <h4 id='post-payments-v1-consents'>POST /payments/v1/consents</h4>
 <p>Para a criação de consentimento, considerando o requerido para FAPI - Loding Intent (<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_Lodging_Intent.md" target="_blank">Financial_API_Lodging_Intent.md</a>), após a obtenção do token de acesso, a Instituição Iniciadora deverá usar esse token de acesso para fazer a requisição POST de consentimento.<br>
 A criação do consentimento encontra-se detalhada na seção das APIs para Pagamentos (<a href="#em-revisao-criar-consentimento-para-iniciacao-de-pagamento">Open Banking Brasil</a>).  </p>
-<h3 id='iniciacao-pelo-recebedor'>Iniciação pelo Recebedor</h3>
-<p>Iniciação pelo recebedor ocorre quando a prestação de serviço pela iniciadora é para, e somente para,  o recebedor. Nestes casos somente será permitido como beneficiário do pagamento o próprio recebedor.Algumas Instituições detentoras de conta precisarão ajustar seus sistemas de forma a apropriar o campo em sua estrutura ao invés de gerá-lo nos casos pertinentes.  </p>
 <h4 id='201-created'>201 Created</h4>
 <p>A API de Consentimento deverá responder o Http Status 201 e Payload contendo <strong><em>consentId</em></strong>, e status inicial do consentimento em <strong>AWAITING_AUTHORISATION</strong> conforme especificado na documentação <a href="#em-revisao-criar-consentimento-para-iniciacao-de-pagamento">Open Banking Brasil</a>.</p>
 <h4 id='redirecionamento'>Redirecionamento</h4>
