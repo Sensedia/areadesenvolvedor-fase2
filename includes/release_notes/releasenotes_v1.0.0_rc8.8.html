@@ -246,9 +246,19 @@
 <td><a href="../../#fase-3-apis-do-open-banking-brasil-api-pagamentos">API - Pagamentos</a></td>
 </tr>
 <tr>
-<td>Todas as Operações.</td>
+<td>Iniciação de pagamentos</td>
 <td>Inclusão do texto do conceito de Iniciação pelo Recebedor.</td>
 <td><a href="../../#iniciacao-de-pagamentos">API - Pagamentos</a></td>
+</tr>
+<tr>
+<td>Diagrama de Sequência</td>
+<td>Inclusão de validação de regra de negócio a ser executada pela detentora na iniciação de pagamento.</td>
+<td><a href="../../#diagrama-de-sequencia">API - Pagamentos</a></td>
+</tr>
+<tr>
+<td>Como assinar o payload</td>
+<td>Correção do texto para o parametro iss.</td>
+<td><a href="../../#como-assinar-o-payload">API - Pagamentos</a></td>
 </tr>
 <tr>
 <td>[POST] /payments/v1/consents</td>
@@ -257,7 +267,12 @@
 </tr>
 <tr>
 <td>[POST] /payments/v1/consents</td>
-<td>Inclusão de novo código de erro HTTP 422 DETALHE_PGTO_INVALIDO</td>
+<td>Inclusão de novo código de erro HTTP 422 DETALHE_PGTO_INVALIDO.</td>
+<td><a href="../../#criar-consentimento-para-iniciacao-de-pagamento">Criar consentimento para iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/consents</td>
+<td>Inclusão de tipo de iniciação de pagamento pelo recebedor no campo EnumLocalInstrument (INIC).</td>
 <td><a href="../../#criar-consentimento-para-iniciacao-de-pagamento">Criar consentimento para iniciação de pagamento.</a></td>
 </tr>
 <tr>
@@ -268,6 +283,11 @@
 <tr>
 <td>[POST] /payments/v1/pix/payments</td>
 <td>Inclusão do campo transactionIdentification no request e response.</td>
+<td><a href="../../#pix-criar-iniciacao-de-pagamento">Pix - Criar iniciação de pagamento.</a></td>
+</tr>
+<tr>
+<td>[POST] /payments/v1/pix/payments</td>
+<td>ResponsePixPaymentData e CreatePixPaymentData, alterar a descrição do campo proxy.</td>
 <td><a href="../../#pix-criar-iniciacao-de-pagamento">Pix - Criar iniciação de pagamento.</a></td>
 </tr>
 <tr>
