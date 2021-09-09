@@ -2,7 +2,7 @@
 info:
   title: Fase 2 - APIs do Open Banking Brasil
   description: |
-    Clientes poderão solicitar o compartilhamento entre instituições participantes de seus dados cadastrais, de informações sobre transações em suas contas, cartão de crédito e produtos de crédito contratados. 
+    Clientes poderão solicitar o compartilhamento entre instituições participantes de seus dados cadastrais, de informações sobre transações em suas contas, cartão de crédito e produtos de crédito contratados.
 
     O compartilhamento ocorre apenas se a pessoa autorizar através da API de Consentimento, sempre para finalidades determinadas e por um prazo específico. E será possível para o cliente cancelar essa autorização a qualquer momento em qualquer uma das instituições envolvidas no compartilhamento.
 
@@ -12,7 +12,7 @@ info:
 
     ###Fluxo básico de consentimento
 
-    Disponibilizamos neste <a href="documents/fluxo_basico_consentimento.pdf" target="_blank">link</a> em formato pdf o arquivo contendo o desenho básico do fluxo de consentimento.  
+    Disponibilizamos neste <a href="documents/fluxo_basico_consentimento.pdf" target="_blank">link</a> em formato pdf o arquivo contendo o desenho básico do fluxo de consentimento.
 
     Adicionalmente é possível consultar <a href="https://openbanking-brasil.github.io/specs-seguranca/tpp-user-guide-ptbr.html#AcessoClientes" target="_blank">aqui</a> um fluxo mais detalhado elaborado pelo GT Segurança.
 
@@ -22,8 +22,8 @@ info:
 
     - I - até cinco minutos, com relação aos dados relativos ao saldo e às transações realizadas em conta de depósitos ou de pagamento
 
-    - II - até uma hora, para os demais casos.    
-  version: 1.0.3
+    - II - até uma hora, para os demais casos.
+  version: 1.0.4
 tags:
   - name: API - Consentimento
     description: |
@@ -63,12 +63,12 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_customers_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_customers_apis.yaml">Download da Especificação (OAS 3.0)</a>
   - name: API - Cartão de Crédito
     description: |
       |Versão|
       |:-----|
-      |1.0.3|
+      |1.0.4|
 
       ### Visão Geral
 
@@ -76,7 +76,7 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_credit_cards_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_credit_cards_apis.yaml">Download da Especificação (OAS 3.0)</a>
   - name: API - Contas
     description: |
       |Versão|
@@ -89,12 +89,12 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_accounts_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_accounts_apis.yaml">Download da Especificação (OAS 3.0)</a>
   - name: API - Operações de Crédito - Empréstimos
     description: |
       |Versão|
       |:-----|
-      |1.0.3|
+      |1.0.4|
 
       ### Visão Geral
 
@@ -102,12 +102,12 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_loans_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_loans_apis.yaml">Download da Especificação (OAS 3.0)</a>
   - name: API - Operações de Crédito - Financiamentos
     description: |
       |Versão|
       |:-----|
-      |1.0.3|
+      |1.0.4|
 
       ### Visão Geral
 
@@ -115,12 +115,12 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_financings_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_financings_apis.yaml">Download da Especificação (OAS 3.0)</a>
   - name: API - Operações de Crédito - Adiantamento a Depositantes
     description: |
       |Versão|
       |:-----|
-      |1.0.3|
+      |1.0.4|
 
       ### Visão Geral
 
@@ -128,12 +128,12 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_unarranged_accounts_overdraft_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_unarranged_accounts_overdraft_apis.yaml">Download da Especificação (OAS 3.0)</a>
   - name: API - Operações de Crédito - Direitos Creditórios Descontados
     description: |
       |Versão|
       |:-----|
-      |1.0.3|
+      |1.0.4|
 
       ### Visão Geral
 
@@ -141,7 +141,7 @@ tags:
 
       ### Especificação em OAS 3.0
 
-      <a href="swagger/swagger_invoice_financings_apis.yaml">Download da Especificação (OAS 3.0)</a>  
+      <a href="swagger/swagger_invoice_financings_apis.yaml">Download da Especificação (OAS 3.0)</a>
 paths:
   /consents/v1/consents:
     post:
@@ -3964,6 +3964,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CreditCardAccountsBillsPayment'
+          minItems: 0
           description: Lista que traz os valores relativos aos pagamentos da Fatura da conta de pagamento pós-paga
       additionalProperties: false
     CreditCardAccountsBillsFinanceCharge:
@@ -5625,11 +5626,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FinancingsContractedFee'
+          minItems: 0
         contractedFinanceCharges:
           type: array
           description: Lista que traz os encargos pactuados no contrato
           items:
             $ref: '#/components/schemas/FinancingsFinanceCharge'
+          minItems: 0
       additionalProperties: false
     FinancingsContractedFee:
       type: object
@@ -6331,11 +6334,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InvoiceFinancingsContractedFee'
+          minItems: 0
         contractedFinanceCharges:
           type: array
           description: Lista que traz os encargos pactuados no contrato
           items:
             $ref: '#/components/schemas/InvoiceFinancingsFinanceCharge'
+          minItems: 0
       additionalProperties: false
     InvoiceFinancingsContractData:
       type: object
@@ -7178,11 +7183,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LoansContractedFee'
+          minItems: 0
         contractedFinanceCharges:
           type: array
           description: Lista que traz os encargos pactuados no contrato
           items:
             $ref: '#/components/schemas/LoansFinanceCharge'
+          minItems: 0
       additionalProperties: false
     LoansContractedFee:
       type: object
@@ -8702,6 +8709,7 @@ components:
           description: Conjunto de informações de conta de pagamento pós-paga
           items:
             $ref: '#/components/schemas/CreditCardAccountsData'
+          minItems: 0
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -9421,12 +9429,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UnarrangedAccountOverdraftContractedFee'
+          minItems: 0
           description: Lista que traz a relação de tarifas pactuadas no contrato
         contractedFinanceCharges:
           type: array
           description: Lista que traz os encargos pactuados no contrato
           items:
             $ref: '#/components/schemas/UnarrangedAccountOverdraftFinanceCharge'
+          minItems: 0
       additionalProperties: false
     UnarrangedAccountOverdraftContractedFee:
       type: object
