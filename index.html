@@ -55791,7 +55791,7 @@ openid,consent:consentId,payments
 </tr>
 <tr>
 <td>» code</td>
-<td>string</td>
+<td><a href="#schemaenumerrorscreateconsent">EnumErrorsCreateConsent</a></td>
 <td>true</td>
 <td>Códigos de erros previstos na criação de consentimento para a iniciação de pagamentos:  <br>• FORMA_PGTO_INVALIDA: Forma de pagamento inválida.  <br>• DATA_PGTO_INVALIDA: Data de pagamento inválida.  <br>• DETALHE_PGTO_INVALIDO: Detalhe do pagamento inválido.  <br>• NAO_INFORMADO: Não informado.</td>
 </tr>
@@ -55812,30 +55812,6 @@ openid,consent:consentId,payments
 <td><a href="#schemameta">Meta</a></td>
 <td>false</td>
 <td>Meta informações referente a API requisitada.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Código</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>FORMA_PGTO_INVALIDA</td>
-</tr>
-<tr>
-<td>code</td>
-<td>DATA_PGTO_INVALIDA</td>
-</tr>
-<tr>
-<td>code</td>
-<td>DETALHE_PGTO_INVALIDO</td>
-</tr>
-<tr>
-<td>code</td>
-<td>NAO_INFORMADO</td>
 </tr>
 </tbody></table>
 
@@ -56193,7 +56169,7 @@ openid,consent:consentId,payments
 </thead><tbody>
 <tr>
 <td>localInstrument</td>
-<td>string</td>
+<td><a href="#schemaenumlocalinstrument">EnumLocalInstrument</a></td>
 <td>true</td>
 <td>Especifica a forma de iniciação do pagamento:  <br>- MANU - Inserção manual de dados da conta transacional  <br>- DICT - Inserção manual de chave Pix  <br>- QRDN - QR code dinâmico (<em>Domínio reservado para uso futuro</em>)  <br>- QRES - QR code estático (<em>Domínio reservado para uso futuro</em>)  <br>- INIC - Indica que o recebedor (creditor) contratou o Iniciador de Pagamentos especificamente para realizar iniciações de pagamento em que o beneficiário é previamente conhecido.</td>
 </tr>
@@ -56238,36 +56214,6 @@ openid,consent:consentId,payments
 <td>string</td>
 <td>false</td>
 <td>Trata-se de um identificador de transação que deve ser retransmitido intacto pelo PSP do pagador ao gerar a ordem de pagamento. Essa informação permitirá ao recebedor identificar e correlacionar a transferência, quando recebida, com a apresentação das instruções ao pagador.<br>Os caracteres permitidos no contexto do Pix para o campo txid (EMV 62-05) são:<br>- Letras minúsculas, de ‘a’ a ‘z’<br>- Letras maiúsculas, de ‘A’ a ‘z’<br>- Dígitos decimais, de ‘0’ a ‘9’<br><br>[Restrição] Se localInstrument for igual a INIC, o campo transactionIdentification deve ser preenchido obrigatoriamente.<br>Se localInstrument for igual a MANU ou DICT, o campo transactionIdentification não deve ser preenchido.<br>A detentora de conta deve validar se a condicionalidade do campo foi atendida pela iniciadora de pagamento.</td>
-</tr>
-</tbody></table>
-
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
-
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>Código</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>localInstrument</td>
-<td>MANU</td>
-</tr>
-<tr>
-<td>localInstrument</td>
-<td>DICT</td>
-</tr>
-<tr>
-<td>localInstrument</td>
-<td>QRDN</td>
-</tr>
-<tr>
-<td>localInstrument</td>
-<td>QRES</td>
-</tr>
-<tr>
-<td>localInstrument</td>
-<td>INIC</td>
 </tr>
 </tbody></table>
 
@@ -56515,7 +56461,7 @@ TRAN - TransactingAccount - Conta de Pagamento pré-paga.</p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<h4 id='enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56580,7 +56526,7 @@ CONSUMED - Consumido </p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56641,7 +56587,7 @@ CONSUMED - Consumido </p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56707,7 +56653,7 @@ CONSUMED - Consumido </p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56789,7 +56735,7 @@ CONSUMED - Consumido </p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56850,7 +56796,7 @@ CONSUMED - Consumido </p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56906,7 +56852,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -56971,7 +56917,7 @@ RJCT (REJECTED) - Instrução de pagamento rejeitada.</p>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -57061,7 +57007,7 @@ EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -57948,7 +57894,7 @@ EXPIRED_BILL - O QR Code não é mais válido (OB06).<br>
 </tr>
 <tr>
 <td>localInstrument</td>
-<td><a href="#schemacreatepixpaymentdata/properties/localinstrument">CreatePixPaymentData/properties/localInstrument</a></td>
+<td><a href="#schemaenumlocalinstrument">EnumLocalInstrument</a></td>
 <td>true</td>
 <td>Especifica a forma de iniciação do pagamento:  <br>- MANU - Inserção manual de dados da conta transacional  <br>- DICT - Inserção manual de chave Pix  <br>- QRDN - QR code dinâmico (<em>Domínio reservado para uso futuro</em>)  <br>- QRES - QR code estático (<em>Domínio reservado para uso futuro</em>)  <br>- INIC - Indica que o recebedor (creditor) contratou o Iniciador de Pagamentos especificamente para realizar iniciações de pagamento em que o beneficiário é previamente conhecido.</td>
 </tr>
