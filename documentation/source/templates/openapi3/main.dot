@@ -103,9 +103,24 @@ Base URLs:
 ### Propriedades
 {{?}}
 
-{{? block.rows.length}}|Nome|Tipo|Obrigatório|Descrição|
+{{
+
+var phasesUsingConditional = ["fase-3"];
+var phaseHasConditional = false;
+for (var phase of phasesUsingConditional) {
+  if (data.title_prefix.includes(phase)) {
+    phaseHasConditional = true;
+  }
+}
+}}
+
+{{? block.rows.length}}|Nome|Tipo|Obrigatoriedade|Descrição|
 |---|---|---|---|---|{{?}}
-{{~ block.rows :p}}|{{=p.displayName}}|{{=p.safeType}}|{{=p.required}}|{{=p.description||''}}|
+{{~ block.rows :p}}|{{=p.displayName}}|{{=p.safeType}}|{{? 
+p.description != null && p.description.toString().includes("[Restrição]") &&
+phaseHasConditional}} {{="condicional"}} {{?? 
+p.description != null && p.required}} {{="obrigatório"}} {{??
+}} {{="opcional"}} {{?}}|{{=p.description||''}}|
 {{~}}
 {{~}}
 {{? (blocks[0].rows.length === 0) && (blocks.length === 1) }}
