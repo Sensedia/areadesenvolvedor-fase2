@@ -1,0 +1,66 @@
+post:
+  tags:
+    - "Consents"
+  summary: "Criar novo pedido de consentimento."
+  operationId: consentsPostConsents
+  description: "Método para a criação de um novo consentimento."
+  parameters:
+    - $ref: ../../parameters/Authorization.yaml
+    - $ref: ../../parameters/XFapiAuthDate.yaml
+    - $ref: ../../parameters/XFapiCustomerIpAddress.yaml
+    - $ref: ../../parameters/XFapiInteractionId.yaml
+    - $ref: ../../parameters/XCustomerUserAgent.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../schemas/consents_apis/CreateConsent.yaml
+    description: "Payload para criação do consentimento."
+    required: true
+  responses:
+    "201":
+      description: "Consentimento criado com sucesso."
+      headers:
+        x-fapi-interaction-id:
+          description: |
+            Um UID [RFC4122](https://tools.ietf.org/html/rfc4122) usado como um ID de correlação.  
+            Se fornecido, o transmissor deve "reproduzir" esse valor no cabeçalho de resposta.
+          schema:
+            type: string
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9\-]{0,99}$
+            minLength: 1
+            maxLength: 100
+            example: "73cac523-d3ae-2289-b106-330a6218710d"
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/consents_apis/ResponseConsent.yaml
+    "400":
+      $ref: ../../responses/BadRequest.yaml
+    "401":
+      $ref: ../../responses/Unauthorized.yaml
+    "403":
+      $ref: ../../responses/Forbidden.yaml
+    "404":
+      $ref: ../../responses/NotFound.yaml
+    "405":
+      $ref: ../../responses/MethodNotAllowed.yaml
+    "406":
+      $ref: ../../responses/NotAcceptable.yaml
+    "415":
+      $ref: ../../responses/UnsupportedMediaType.yaml
+    "422":
+      $ref: ../../responses/UnprocessableEntity.yaml
+    "429":
+      $ref: ../../responses/UnprocessableEntity.yaml
+    "500":
+      $ref: ../../responses/InternalServerError.yaml
+    default:
+      description: Erro inesperado.
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/ResponseError.yaml
+  security:
+    - OAuth2Security:
+        - consents
