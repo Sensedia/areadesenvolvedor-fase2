@@ -1,0 +1,58 @@
+get:
+  tags:
+    - Accounts
+  summary: Obtém a lista de contas consentidas pelo cliente.
+  operationId: accountsGetAccounts
+  description: Método para obter a lista de contas depósito à vista, poupança e pagamento pré-pagas mantidas pelo cliente na instituição transmissora e para as quais ele tenha fornecido consentimento.
+  parameters:
+    - $ref: ../../parameters/Authorization.yaml
+    - $ref: ../../parameters/XFapiAuthDate.yaml
+    - $ref: ../../parameters/XFapiCustomerIpAddress.yaml
+    - $ref: ../../parameters/XFapiInteractionId.yaml
+    - $ref: ../../parameters/XCustomerUserAgent.yaml
+    - $ref: ../../parameters/Page.yaml
+    - $ref: ../../parameters/PageSize.yaml
+    - $ref: ../../parameters/AccountsType.yaml
+  responses:
+    "200":
+      description: Dados de identificação das contas obtidos com sucesso.
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: ../../headers/XFapiInteractionId.yaml
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/accounts_apis/ResponseAccountList.yaml
+    "400":
+      $ref: ../../responses/BadRequest.yaml
+    "401":
+      $ref: ../../responses/Unauthorized.yaml
+    "403":
+      $ref: ../../responses/Forbidden.yaml
+    "404":
+      $ref: ../../responses/NotFound.yaml
+    "405":
+      $ref: ../../responses/MethodNotAllowed.yaml
+    "406":
+      $ref: ../../responses/NotAcceptable.yaml
+    "429":
+      $ref: ../../responses/TooManyRequests.yaml
+    "500":
+      $ref: ../../responses/InternalServerError.yaml
+    default:
+      description: Dados de identificação das contas obtidos com sucesso.
+      headers:
+        x-fapi-interaction-id:
+          schema:
+            $ref: ../../headers/XFapiInteractionId.yaml
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/accounts_apis/ResponseAccountList.yaml
+  security:
+    - OpenId:
+        - "openid"
+      OAuth2Security:
+        - "consent:consentId"
+        - "accounts"
