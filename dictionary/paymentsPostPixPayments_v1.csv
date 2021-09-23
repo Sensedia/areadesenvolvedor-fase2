@@ -131,11 +131,11 @@ DENIED_MULTIPLE_AUTHORISATIONS
 EXPIRED_MULTIPLE_AUTHORISATIONS 
 EXPIRED_BILL";0;1;" Esse motivo deverá ser enviado quando o campo /data/status for igual a RJCT (REJECTED).  
 ";Não permitido;string;USER_NOT_YET_ACTIVATED
-/data/localInstrument;localInstrument;"Especifica a forma de iniciação do pagamento:  
-- MANU - Inserção manual de dados da conta transacional  
-- DICT - Inserção manual de chave Pix  
-- QRDN - QR code dinâmico (*Domínio reservado para uso futuro*)  
-- QRES - QR code estático (*Domínio reservado para uso futuro*)  
+/data/localInstrument;localInstrument;"Especifica a forma de iniciação do pagamento:
+- MANU - Inserção manual de dados da conta transacional
+- DICT - Inserção manual de chave Pix
+- QRDN - QR code dinâmico
+- QRES - QR code estático
 - INIC - Indica que o recebedor (creditor) contratou o Iniciador de Pagamentos especificamente para realizar iniciações de pagamento em que o beneficiário é previamente conhecido.";Texto;4;Obrigatório;;"MANU 
 DICT 
 QRDN 
