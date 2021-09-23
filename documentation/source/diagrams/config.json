@@ -1,0 +1,14 @@
+{
+    "theme": "base",
+    "themeVariables": {
+        "actorBorder": "#003f66",
+        "actorBkg":"#13719e",
+        "actorTextColor":"#ffffff",
+        "actorLineColor":"#6c8ebf",
+        "signalColor":"#6c8ebf",
+        "signalTextColor":"#003f66",
+        "noteBkgColor":"#ffffff",
+        "noteTextColor":"#003f66",
+        "noteBorderColor":"#003f66"
+    }
+}

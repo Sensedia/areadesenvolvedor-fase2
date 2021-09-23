@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Build de diagramas com base nos arquivos de referência do diretório source/diagrams
+mmdc -i source/diagrams/iniciacao_de_pagamento.mmd -o source/images/sequence-diagrams/iniciacao_de_pagamento.png --width 1600 -C source/diagrams/diagram.css -c source/diagrams/config.json
+
 ###
 #ATENÇÃO: não é parar ligar a automação da Fase 1 sem a autorização do comitê de Open Banking
 # Open Banking Fase 1

@@ -1,0 +1,78 @@
+body {
+    background: white;
+}
+
+text.actor {
+    fill: #ffffff;
+    stroke: none;
+    font-family: Helvetica;
+}
+
+.actor-line {
+    stroke: #6c8ebf;
+	stroke-dasharray: 5px;
+}
+
+.messageLine0 {
+    stroke-width: 1.5;
+    stroke-dasharray: 0;
+    marker-end: 'url(#arrowhead)';
+    stroke: #6c8ebf;
+}
+
+.messageLine1 {
+    stroke-width: 1.5;
+    stroke-dasharray: 5;
+    stroke: #6c8ebf;
+}
+
+#arrowhead {
+    fill: #6c8ebf;
+}
+
+.messageText {
+    fill: #003f66;
+    stroke: none;
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 14px;
+}
+
+.labelBox {
+    stroke: #003f66;
+	stroke-width: 2px;
+    fill: #13719e;
+}
+
+.labelText {
+    fill: #ffffff;
+    stroke: none;
+    font-family: 'trebuchet ms', verdana, arial;
+}
+
+.loopText {
+    fill: #ffffff;
+    stroke: none;
+    font-family: 'trebuchet ms', verdana, arial;
+}
+
+.loopLine {
+    stroke-width: 2;
+    stroke-dasharray: 0;
+    marker-end: 'url(#arrowhead)';
+    stroke: #003f66;
+}
+
+.note {
+    stroke: #003f66;
+	stroke-dasharray: 5;
+    fill: none;
+	rx: 10;
+	ry: 10;
+}
+
+.noteText {
+    fill: #003f66;
+    stroke: none;
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 14px;
+}

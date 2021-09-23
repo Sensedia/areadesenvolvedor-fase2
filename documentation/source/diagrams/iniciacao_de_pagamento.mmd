@@ -1,0 +1,64 @@
+sequenceDiagram
+participant Debtor
+participant Iniciadora
+participant Detentora
+participant DICT
+participant Creditor
+
+Debtor->>Iniciadora: Seleciona detentora + dados pagamento
+%Note over Iniciadora: O fluxo alternativo abaixo se aplica caso a iniciação de pagamento não for via PIX Dados Manuais com agência e conta
+
+alt condicional QR Code e/ou Chave Pix
+    alt condicional QRCode (dinâmico)
+        Iniciadora->>Creditor: consulta dados QR Code
+        Creditor-->>Iniciadora: 
+    end
+    Iniciadora->>DICT: consulta dados
+    DICT-->>Iniciadora: 
+end
+
+Detentora->Iniciadora: Estabelece mTLS
+Iniciadora->>Detentora: POST /token (Pedido de access_token e scope:payments, openid)
+Detentora->>Detentora: Valida certificado SSL e scopes
+Detentora->>Detentora: gera access_token
+Detentora-->>Iniciadora: access-token (scope: payments, openid)
+Iniciadora->>Detentora: POST /payments/v1/consents
+Detentora-->>Iniciadora: 201 Created
+
+Note over Detentora: status do consentimento AWAITING_AUTHORISATION
+Iniciadora->>Detentora: redirecionamento
+
+alt
+    Debtor->>Detentora: Autenticação (FAPI)
+    Detentora->>Detentora: Autentica Debtor
+    alt Seleção de Conta
+        Detentora->>Detentora: Seleciona conta de débito
+    end
+    Detentora->>Detentora: Exibe informações do pagamento
+    Detentora->>Detentora: Autoriza iniciação de pagamento
+end
+
+Note over Detentora: status do consentimento AUTHORISED
+
+Detentora-->>Iniciadora: Redireciona para a Iniciadora (code)
+Iniciadora->>Detentora: POST /token (Pedido de access_token (code) e scope: payments)
+Detentora->>Detentora: Valida certificado SSL e scopes
+Detentora->>Detentora: gera access_token
+Detentora-->>Iniciadora: access-token (scope: payments)
+Iniciadora->>Detentora: POST payments/v1/pix/payments
+Detentora->>Detentora: Validações de negócios
+Detentora-->>Iniciadora: 201 Created
+
+Note over Detentora: status de consentimento CONSUMED
+
+Detentora->>Creditor: Efetivação do pagamento<<assync>>
+Creditor-->>Detentora: OK
+
+Note over Detentora: status do pagamento ACCEPTED_SETTLEMENT_COMPLETED
+
+loop polling
+    Iniciadora->>Detentora: GET payments/v1/pix/payments/{paymentId}
+    Detentora-->>Iniciadora: 200 OK
+end
+
+Iniciadora-->>Debtor: Exibe comprovante de iniciação de pagamento
