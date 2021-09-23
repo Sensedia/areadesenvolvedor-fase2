@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>v1.0.0-rc8.3 Release Notes</title>
+    <title>v1.0.0-rc9.1 Release Notes</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -213,7 +213,7 @@
       <small style="padding: 23px; color: white">Versão: v1.0.0-rc9.1</small>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-0-0-rc8-3-release-notes" class="toc-h1 toc-link" data-title="v1.0.0-rc8.3 Release Notes" title="v1.0.0-rc8.3 Release Notes">v1.0.0-rc8.3 Release Notes</a>
+            <a href="#v1-0-0-rc9-1-release-notes" class="toc-h1 toc-link" data-title="v1.0.0-rc9.1 Release Notes" title="v1.0.0-rc9.1 Release Notes">v1.0.0-rc9.1 Release Notes</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#implementacoes-no-portal" class="toc-h2 toc-link" data-title="Implementações no Portal" title="Implementações no Portal">Implementações no Portal</a>
@@ -231,10 +231,10 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='v1-0-0-rc8-3-release-notes'>v1.0.0-rc8.3 Release Notes</h1>
-<p>Release Notes para a v1.0.0-rc8.3 do projeto <a href="../../">Open Banking Brasil</a>.</p>
+        <h1 id='v1-0-0-rc9-1-release-notes'>v1.0.0-rc9.1 Release Notes</h1>
+<p>Release Notes para a v1.0.0-rc9.1 do projeto <a href="../../">Open Banking Brasil</a>.</p>
 
-<p>Estas mudanças foram aprovadas pelo Comitê de Mudanças do projeto Open Banking Brasil.  </p>
+<p>Estas mudanças foram aprovadas pelo Comitê de Mudanças do projeto Open Banking Brasil.</p>
 <h2 id='implementacoes-no-portal'>Implementações no Portal</h2>
 <table><thead>
 <tr>
@@ -244,14 +244,14 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Seção <em>Problemas conhecidos da especificação</em></td>
-<td>Atualização do conteudo do pdf do item <em>Problemas conhecidos da especificação - fase 2</em>.</td>
-<td><a href="../../#especificacoes-da-fase-2-do-open-banking-brasil">Página</a></td>
+<td>Problemas conhecidos da especificação</td>
+<td>Correção do link para as orientações dos problemas conhecidos da fase 3.</td>
+<td><a href="../../#especificacoes-da-fase-3-do-open-banking-brasil">Página</a></td>
 </tr>
 <tr>
-<td>Seção <em>Notificações</em></td>
-<td>Atualização do conteudo do item <em>Definições para o Lançamento Escalonado da fase 2</em>. Remoção do parágrafo referente ao <em>Limite de consentimentos</em>.</td>
-<td><a href="../../#definicoes-para-o-lancamento-escalonado-da-fase-2">Página</a></td>
+<td>Problemas conhecidos da especificação</td>
+<td>Atualização das orientações dos problemas conhecidos da fase 2.</td>
+<td><a href="../../#especificacoes-da-fase-2-do-open-banking-brasil">Página</a></td>
 </tr>
 </tbody></table>
 <h2 id='implementacoes-na-api-pagamentos-fase-3'>Implementações na API Pagamentos - Fase 3</h2>
@@ -264,18 +264,23 @@
 </thead><tbody>
 <tr>
 <td>Todas as Operações.</td>
-<td>Versionamento da API para 1.0.0-rc5.4</td>
+<td>Versionamento da API para release candidate 1.0.1-rc1.1</td>
 <td><a href="../../#fase-3-apis-do-open-banking-brasil-api-pagamentos">API - Pagamentos</a></td>
 </tr>
 <tr>
-<td>[POST] /payments/v1/pix/payments</td>
-<td>Alteração do campo <em>endToEndId</em> para condicional.</td>
-<td><a href="../../#em-revisao-pix-criar-iniciacao-de-pagamento">[Em Revisão] Pix - Criar iniciação de pagamento.</a></td>
+<td>Todas as Operações.</td>
+<td>Alteração da seção <em>Maquina de Estados</em>.</td>
+<td><a href="../../#maquina-de-estados">Página</a></td>
 </tr>
 <tr>
-<td>[GET]  /payments/v1/pix/payments/{paymentId}</td>
-<td>Alteração do campo <em>endToEndId</em> para condicional.</td>
-<td><a href="../../#em-revisao-pix-consultar-iniciacao-de-pagamento">[Em Revisão] Pix - Consultar iniciação de pagamento.</a></td>
+<td>Todas as Operações.</td>
+<td>Inclusão do campo <em>ibgeTownCode</em> no payload do request e do response.</td>
+<td><a href="../../#fase-3-apis-do-open-banking-brasil-api-pagamentos">API - Pagamentos</a></td>
+</tr>
+<tr>
+<td>Todas as Operações.</td>
+<td>Remoção da menção de <em>&#39;uso futuro&#39;</em> no campo de <em>QRCode</em>.</td>
+<td><a href="../../#fase-3-apis-do-open-banking-brasil-api-pagamentos">API - Pagamentos</a></td>
 </tr>
 </tbody></table>
 
